@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réalisations — Cockpit iAdOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ms-navy:#000050;--ms-cream:#F2EEE9;--ms-violet:#5C2EFD;--ms-mint:#00F5BE;
+  --ms-orange:#FF481E;--ms-navy-700:#0A0A6E;--ms-violet-700:#4A1FE0;
+  --ms-violet-100:#E4E1FE;--ms-mint-700:#00C99C;--ms-mint-100:#D6FCF1;
+  --ms-cream-200:#E7E2DA;--ms-cream-300:#DAD4C9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased}
+a{color:var(--ms-violet);text-decoration:none}
+h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
+@keyframes msFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.nav{background:var(--ms-navy);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-brand img{height:22px;width:auto;display:block}
+.nav-sep{width:1px;height:20px;background:#3A3A78;display:block}
+.nav-title{color:#fff;font-size:16px;font-weight:600}
+.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600}
+
+.hero{background:var(--ms-navy);color:var(--ms-cream);padding:30px 40px 36px;position:relative;overflow:hidden}
+.hero-bg1{position:absolute;top:-70px;right:-40px;width:230px;height:230px;border-radius:50%;background:var(--ms-navy-700)}
+.hero-bg2{position:absolute;top:-30px;right:200px;width:100px;height:100px;border-radius:50%;background:var(--ms-violet);opacity:.7}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative}
+.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:14px;font-weight:600}
+.hero h1{color:#fff;font-size:42px;font-weight:700;line-height:1.04;margin-top:14px}
+.hero p{font-size:18px;line-height:1.45;color:#BFBFE0;margin-top:12px;max-width:720px}
+
+.tabs{background:var(--ms-cream);display:flex;justify-content:center;gap:10px;padding:22px 20px 0}
+.tab{padding:10px 26px;border-radius:999px;font-size:15px;font-weight:500;background:#fff;border:1px solid var(--ms-cream-200);color:var(--ms-navy);transition:transform .18s ease-out,background .18s ease-out;text-decoration:none}
+.tab:hover{background:var(--ms-violet-100);color:var(--ms-violet-700);transform:translateY(-1px)}
+.tab.active{background:var(--ms-navy);color:#fff;font-weight:600;border:none}
+.tab.active:hover{transform:translateY(-1px);background:var(--ms-navy)}
+
+main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-direction:column;gap:32px}
+
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:16px}
+.sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
+.sec-meta{color:#6E6E92;font-size:13px}
+
+.kpi-band{background:var(--ms-navy);border-radius:28px;padding:26px 30px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;color:var(--ms-cream)}
+.kpi-num{font-size:34px;font-weight:700;color:#fff;line-height:1}
+.kpi-label{font-size:13.5px;color:var(--ms-mint);font-weight:500;margin-top:6px}
+
+.card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
+.card-tag{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;display:inline-block}
+.card h3{font-size:20px;font-weight:600;margin-top:12px;line-height:1.2}
+.card p{font-size:14px;color:#3B3B6B;margin-top:8px;line-height:1.5}
+.card-author{font-size:12.5px;color:var(--ms-violet-700);font-weight:600;margin-top:10px}
+
+.bilans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.bilan-hero{background:var(--ms-navy);border-radius:24px;padding:24px 26px;color:var(--ms-cream);grid-column:span 2;transition:transform .2s ease-out}
+.bilan-hero:hover{transform:translateY(-3px)}
+
+.rapports-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.analyses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cockpits-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.diffusion-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+.cockpit-violet{background:var(--ms-violet);border-radius:24px;padding:24px 26px;color:#fff;transition:transform .2s ease-out}
+.cockpit-violet:hover{transform:translateY(-3px)}
+.cockpit-violet .card-tag{background:rgba(255,255,255,.18);color:#fff}
+
+.comptes-list{display:flex;flex-wrap:wrap;gap:8px}
+.compte-pill{padding:8px 18px;border-radius:999px;background:#fff;border:1px solid var(--ms-cream-200);font-size:14.5px;font-weight:500}
+
+.double-benefit{background:var(--ms-mint-100);border-radius:18px;padding:16px 20px;margin-top:14px;font-size:14.5px;color:#00534F;line-height:1.55}
+
+.diffusion-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px}
+.diffusion-card h3{font-size:19px;font-weight:600;line-height:1.2}
+.diffusion-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.diffusion-card li{font-size:13.5px;color:#3B3B6B;line-height:1.45}
+
+.mint-rule{height:6px;background:var(--ms-mint)}
+footer{background:var(--ms-navy);padding:26px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
+footer img{height:20px;width:auto;display:block;opacity:.85}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+    <span class="nav-sep"></span>
+    <span class="nav-title">Cockpit iAdOps</span>
+  </a>
+  <span class="nav-tag">Scaling Infinity</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg1"></div>
+  <div class="hero-bg2"></div>
+  <div class="hero-inner">
+    <span class="hero-pill">Mai → juillet 2026</span>
+    <h1>Les réalisations</h1>
+    <p>Ce que les AdOps ont réellement produit avec Claude : bilans clients, reporting quotidien, analyses, cockpits — avec les gains de temps mesurés.</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <a href="index.html" class="tab">Le projet</a>
+  <a href="progression.html" class="tab">Progression AdOps</a>
+  <a href="realisations.html" class="tab active">Réalisations</a>
+  <a href="actu.html" class="tab">L'actu</a>
+</div>
+
+<main>
+
+  <section class="kpi-band">
+    <div><div class="kpi-num">30-40 min</div><div class="kpi-label">Un bilan client, contre 2h30 en manuel</div></div>
+    <div><div class="kpi-num">5 min</div><div class="kpi-label">De relecture, contre une demi-journée de mise en page</div></div>
+    <div><div class="kpi-num">1<sup style="font-size:18px">er</sup></div><div class="kpi-label">Bilan 100 % IA validé en restitution client</div></div>
+    <div><div class="kpi-num">11</div><div class="kpi-label">Comptes déjà embarqués</div></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Bilans de campagne</span>
+      <span class="sec-meta">5 réalisations</span>
+    </div>
+    <div class="bilans-grid">
+      <div class="bilan-hero">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="padding:5px 13px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:12.5px;font-weight:600">Première</span>
+          <span style="padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:12.5px;font-weight:600">Hespéride</span>
+          <span style="padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:12.5px;font-weight:600">30-40 min vs 2h30</span>
+        </div>
+        <h3 style="color:#fff;font-size:25px;font-weight:700;margin-top:14px;line-height:1.15">Le premier bilan de campagne 100 % produit par l'IA</h3>
+        <p style="font-size:15px;color:#BFBFE0;margin-top:10px;line-height:1.55">Sourcing automatique via les connecteurs (Mobsuccess, Slack, Notion, Gmail) et les uploads créas/mesure de visites, mise en forme à la charte, export PDF. Restitution client faite, support approuvé à 100 %. Bonus : Claude a repéré dans Slack l'usage de Pacer AI, absent du bilan manuel.</p>
+        <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:12px">Nicolas Saraiva · Noura · Ghofrane Touati · Briac De Monti</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .04s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">5 min de review</span>
+        <h3>Bilan PPTX Point P × Havas × Widely</h3>
+        <p>PPTX complet généré depuis un Excel de stats, repassé à la charte. Brief d'1 min, 2-3 phrases retouchées — contre une demi-journée de mise en page.</p>
+        <div class="card-author">Célina Bouguenna</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .08s ease-out both">
+        <span class="card-tag" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">À la charte</span>
+        <h3>Bilan Decathlon SPRING P2 2026</h3>
+        <p>Passé via Claude Design : rendu à la charte, et base réutilisable pour décliner les activations suivantes (Été Acte 1).</p>
+        <div class="card-author">Anne Coadou</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .12s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">30 min</span>
+        <h3>Bilan intermédiaire B:BOT</h3>
+        <p>Un bilan intermédiaire complet livré en trente minutes.</p>
+        <div class="card-author">Noura</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .16s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">~10 min · devenu un skill</span>
+        <h3>Bilan social media Gifi</h3>
+        <p>Données ads (Meta, TikTok) et organique, charte importée depuis GitHub. Transformé en skill réutilisable : bilan complet en ~10 min, sans saisie manuelle.</p>
+        <div class="card-author">Nicolas Saraiva</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Rapports &amp; reporting automatisés</span>
+      <span class="sec-meta">En routine sur les comptes</span>
+    </div>
+    <div class="rapports-grid">
+      <div class="card" style="animation:msFadeUp .5s .04s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">Quotidien · en production</span>
+        <h3>Rapports Weldom Drive-to-Store</h3>
+        <p>Rapport multi-campagnes chaque jour : budget, impressions, livraison par levier, analyse rédigée. Publié dans Slack, avec HTML, PDF et dashboard live.</p>
+        <div class="card-author">Steeve Gueret</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .10s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">Standardisé · multi-comptes</span>
+        <h3>Le rapport Excel de campagne</h3>
+        <p>Un Excel propre sorti du Dashboard en une phrase : global, par levier, par format, par magasin avec le budget planifié du Geo Planner. La première marche avant les bilans.</p>
+        <div class="card-author">Ekaterina Salnikova &amp; l'équipe</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .16s ease-out both">
+        <span class="card-tag" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Intersport</span>
+        <h3>Bilans et rapports Excel Intersport</h3>
+        <p>Reprise de la chaîne rapport → bilan via Claude sur le compte.</p>
+        <div class="card-author">Waël Ben Yahia</div>
+      </div>
+      <div class="card" style="animation:msFadeUp .5s .22s ease-out both">
+        <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">Automatisé</span>
+        <h3>Le récap de facturation</h3>
+        <p>Récap automatique des campagnes facturées, publié dans le canal facturation.</p>
+        <div class="card-author">Olivier Ta</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Analyses, données &amp; qualité</span>
+      <span class="sec-meta">Ce qui alimente la chaîne</span>
+    </div>
+    <div class="analyses-grid">
+      <div class="card">
+        <h3>Matomo branché dans Claude</h3>
+        <p>Connexion API des stats Matomo à côté des stats campagnes : un seul outil pour tout lire, et des rapports Excel enrichis derrière.</p>
+        <div class="card-author">Yannis Echchelh · Nicolas Saraiva · Alphonse Arthur — Decathlon</div>
+      </div>
+      <div class="card">
+        <h3>Le contrôle qualité avant lancement</h3>
+        <p>Audit du set-up : OI, tracking, formats, geo planner, footfall, synchro DSP — avec une partie Meta approfondie.</p>
+        <div class="card-author">Christopher Allène · Yannis Echchelh</div>
+      </div>
+      <div class="card">
+        <h3>La mémoire Mobsuccess</h3>
+        <p>Knowledge Hub, mails d'équipe et Drives clients indexés, plus une mémoire par client : n'importe qui peut demander un doc à Claude.</p>
+        <div class="card-author">Christopher Allène</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Cockpits de pilotage</span>
+      <span class="sec-meta">Le premier écran du matin</span>
+    </div>
+    <div class="cockpits-grid">
+      <div class="cockpit-violet">
+        <span style="padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.18);font-size:12.5px;font-weight:600">Installé en 5 min</span>
+        <h3 style="color:#fff;font-size:23px;font-weight:700;margin-top:12px;line-height:1.2">Le dashboard AdOps partagé</h3>
+        <p style="font-size:14.5px;color:#E4E1FE;margin-top:8px;line-height:1.5">Suivi quotidien par client et par campagne, tendance 14 jours, CPM par format, recommandations, to-do du jour, journal d'optimisations, export Excel et vue client partageable en call. Diffusé à l'équipe avec son tutoriel : chacun installe sa copie.</p>
+        <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:12px">Emeric Moulinneuf</div>
+      </div>
+      <div class="card">
+        <span class="card-tag" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Côté Leads</span>
+        <h3 style="font-size:23px;font-weight:700;margin-top:12px;line-height:1.2">Le cockpit Leads Ops</h3>
+        <p style="font-size:14.5px;color:#3B3B6B;margin-top:8px;line-height:1.5">Comptes, équipe, budgets, campagnes en cours et à venir, charge par personne — avec des actions automatiques : rapport mi-campagne, récap Slack, brouillon d'email de fin de campagne.</p>
+        <div class="card-author" style="margin-top:12px">Nicolas Saraiva · Stéphanie Ta · Noura</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Ce qui diffuse l'usage</span>
+      <span class="sec-meta">Animation, skills, squads</span>
+    </div>
+    <div class="diffusion-grid">
+      <div class="diffusion-card">
+        <h3>On anime l'équipe</h3>
+        <ul>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Le canal #adops_team_ia</b> — le QG IA : veille, skills à installer, galères et wins.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">La veille du lundi</b> — actus Claude et adtech, un cas d'usage AdOps, une astuce de la semaine.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">L'office hour Cowork</b> — un skill créé en direct en 7 minutes.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Le point IA du weekly</b> — récurrent, avec l'intervention des Ops.</li>
+        </ul>
+      </div>
+      <div class="diffusion-card">
+        <h3>On partage les skills</h3>
+        <ul>
+          <li>Le diagnostic des connecteurs — vérifier que la machine est prête, puis installer les manques.</li>
+          <li>L'autodiagnostic de skill — la grille qualité Mobsuccess avant tout partage.</li>
+          <li>Le rapport Excel et le contrôle qualité de campagne.</li>
+          <li>Un dépôt commun de skills AdOps : on crée, on audite, on partage.</li>
+        </ul>
+      </div>
+      <div class="diffusion-card">
+        <h3>On s'organise en squads</h3>
+        <ul>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Taskforce iAdOps</b> — le pilotage global, lancé en mai 2026.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Squad rapports &amp; bilans</b> — la chaîne rapport → bilan → bilan augmenté.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Squad QA</b> — audit avant lancement, récap de mise en ligne, suivi des optis.</li>
+          <li><b style="font-weight:600;color:var(--ms-navy)">Squad collaboratif</b> — l'espace Cowork partagé, testé sur Afflelou.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Les comptes embarqués</span>
+      <span class="sec-meta">11 clients touchés par la chaîne IA</span>
+    </div>
+    <div class="comptes-list">
+      <span class="compte-pill">Decathlon</span>
+      <span class="compte-pill">Bouygues</span>
+      <span class="compte-pill">Écoutez Voir</span>
+      <span class="compte-pill">Tape à l'Œil</span>
+      <span class="compte-pill">Atol</span>
+      <span class="compte-pill">Hespéride</span>
+      <span class="compte-pill">Point P</span>
+      <span class="compte-pill">Weldom</span>
+      <span class="compte-pill">Gifi</span>
+      <span class="compte-pill">Intersport</span>
+      <span class="compte-pill">Afflelou</span>
+    </div>
+    <div class="double-benefit">
+      <b style="color:var(--ms-navy);font-weight:600">Le double bénéfice, à chaque fois :</b> du temps gagné, et un livrable de meilleure qualité — zéro faute, mise en page à la charte, contexte du compte enrichi automatiquement.
+    </div>
+  </section>
+
+</main>
+
+<div class="mint-rule"></div>
+<footer>
+  <span>On avance ensemble</span>
+  <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'actu — Cockpit iAdOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ms-navy:#000050;--ms-cream:#F2EEE9;--ms-violet:#5C2EFD;--ms-mint:#00F5BE;
+  --ms-orange:#FF481E;--ms-navy-700:#0A0A6E;--ms-violet-700:#4A1FE0;
+  --ms-violet-100:#E4E1FE;--ms-mint-700:#00C99C;--ms-mint-100:#D6FCF1;
+  --ms-cream-200:#E7E2DA;--ms-cream-300:#DAD4C9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased}
+a{color:var(--ms-violet);text-decoration:none}
+h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.nav{background:var(--ms-navy);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-brand img{height:22px;width:auto;display:block}
+.nav-sep{width:1px;height:20px;background:#3A3A78;display:block}
+.nav-title{color:#fff;font-size:16px;font-weight:600}
+.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600}
+
+.hero{background:var(--ms-navy);color:var(--ms-cream);padding:30px 40px 36px;position:relative;overflow:hidden}
+.hero-bg1{position:absolute;top:-90px;right:-50px;width:250px;height:250px;border-radius:50%;background:var(--ms-navy-700)}
+.hero-bg2{position:absolute;top:-40px;right:210px;width:110px;height:110px;border-radius:50%;background:var(--ms-mint);opacity:.85}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative}
+.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:14px;font-weight:600}
+.hero h1{color:#fff;font-size:42px;font-weight:700;line-height:1.04;margin-top:18px}
+.hero p{font-size:18px;line-height:1.45;color:#BFBFE0;margin-top:12px;max-width:720px}
+
+.tabs{background:var(--ms-cream);display:flex;justify-content:center;gap:10px;padding:22px 20px 0}
+.tab{padding:10px 26px;border-radius:999px;font-size:15px;font-weight:500;background:#fff;border:1px solid var(--ms-cream-200);color:var(--ms-navy);transition:transform .18s ease-out,background .18s ease-out;text-decoration:none}
+.tab:hover{background:var(--ms-violet-100);color:var(--ms-violet-700);transform:translateY(-1px)}
+.tab.active{background:var(--ms-navy);color:#fff;font-weight:600;border:none}
+.tab.active:hover{transform:translateY(-1px);background:var(--ms-navy)}
+
+main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-direction:column;gap:32px}
+
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:16px}
+.sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
+.sec-meta{color:#6E6E92;font-size:13px}
+
+/* EDITION SWITCHER */
+.edition-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:4px solid var(--ms-mint);padding-top:12px}
+.edition-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.edition-btn{padding:8px 18px;border-radius:999px;border:1px solid var(--ms-cream-200);font-family:'Jost',sans-serif;font-size:14px;font-weight:600;cursor:pointer;background:#fff;color:var(--ms-navy);transition:background .15s,color .15s}
+.edition-btn.active{background:var(--ms-navy);color:#fff;border-color:var(--ms-navy)}
+.edition-btn.upcoming{color:#6E6E92;border:1px dashed var(--ms-cream-300)}
+
+.edition-panel{display:flex;flex-direction:column;gap:32px}
+.edition-panel.hidden{display:none}
+
+/* GRAND CHANTIER */
+.chantier-box{background:var(--ms-navy);border-radius:32px;padding:30px 34px;color:var(--ms-cream)}
+.chantier-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;margin-top:20px;align-items:start}
+.chantier-steps{display:flex;flex-direction:column;gap:14px}
+.chantier-step{display:flex;gap:16px;background:var(--ms-navy-700);border-radius:18px;padding:16px 18px}
+.chantier-step-num{width:36px;height:36px;flex:0 0 36px;border-radius:50%;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* DASHBOARD PREVIEW */
+.dash-preview{background:#fff;border-radius:22px;overflow:hidden;color:var(--ms-navy);box-shadow:0 18px 50px rgba(0,0,80,.35)}
+.dash-topbar{background:var(--ms-cream);display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--ms-cream-200)}
+.dash-dot{width:11px;height:11px;border-radius:50%;display:block}
+.dash-body{padding:18px}
+.dash-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.dash-kpi{background:var(--ms-navy);border-radius:14px;padding:13px}
+.dash-kpi-num{font-size:22px;font-weight:700;color:#fff;line-height:1}
+.dash-kpi-label{font-size:11.5px;color:var(--ms-mint);font-weight:500;margin-top:6px}
+.dash-bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
+.dash-section{border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px}
+.dash-section-title{font-size:11.5px;letter-spacing:.08em;color:#6E6E92;font-weight:600;margin-bottom:8px}
+.dash-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.dash-bar-row:last-child{margin-bottom:0}
+.dash-bar-track{flex:1;height:8px;background:#EEE7DF;border-radius:5px;overflow:hidden}
+.dash-bar-fill{height:100%;background:var(--ms-violet);border-radius:5px}
+.dash-actions{display:flex;gap:10px;margin-top:12px}
+.dash-action{flex:1;text-align:center;font-size:12.5px;font-weight:600;padding:10px;border-radius:12px}
+
+/* SQUADS */
+.squads-box{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:24px 28px}
+.squads-intro{display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
+.squads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:20px}
+.squad-card{background:var(--ms-cream);border-radius:18px;padding:16px}
+.squad-tag{display:inline-flex;padding:4px 11px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11.5px;font-weight:600}
+.squad-name{font-size:16px;font-weight:600;margin-top:10px}
+.squad-desc{font-size:13px;color:#6E6E92;margin-top:5px;line-height:1.45}
+
+/* EN PRODUCTION */
+.production-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.prod-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:26px 28px}
+.prod-pill{display:inline-flex;padding:6px 14px;border-radius:999px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:13px;font-weight:600}
+.prod-h3{font-size:25px;font-weight:700;margin-top:14px;line-height:1.15}
+.prod-body{font-size:15px;color:#3B3B6B;margin-top:8px;line-height:1.55}
+
+/* SLACK PREVIEW */
+.slack-preview{border:1px solid var(--ms-cream-200);border-radius:18px;margin-top:16px;overflow:hidden}
+.slack-bar{background:var(--ms-navy);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.slack-body{background:var(--ms-cream);padding:16px 18px}
+.slack-table{width:100%;border-collapse:collapse;margin-top:14px}
+.slack-table td{font-size:13px;padding:7px 2px;border-bottom:1px solid #ECE7E0}
+.slack-table tr:last-child td{padding:8px 2px;border-top:2px solid var(--ms-cream-200);border-bottom:0}
+
+/* CANAL SECTION */
+.canal-grid{display:grid;grid-template-columns:1.18fr 1fr;gap:20px;align-items:start}
+.canal-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;overflow:hidden}
+.canal-header{background:var(--ms-navy);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.canal-msg{padding:16px 18px;border-bottom:1px solid #F2EDE6}
+.canal-msg:last-child{border-bottom:0}
+.canal-avatar{width:28px;height:28px;border-radius:9px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.canal-cta{background:var(--ms-violet);border-radius:28px;padding:24px 28px;display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none;transition:background .18s}
+.canal-cta:hover{background:var(--ms-violet-700)}
+.code-pill{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--ms-violet-100);color:var(--ms-violet-700);border-radius:7px;padding:2px 7px;font-size:12px;font-weight:600}
+
+/* UPCOMING */
+.upcoming-box{background:#fff;border:1px dashed var(--ms-cream-300);border-radius:28px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+
+.mint-rule{height:6px;background:var(--ms-mint)}
+footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
+footer img{height:20px;width:auto;display:block;opacity:.85}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+    <span class="nav-sep"></span>
+    <span class="nav-title">Cockpit iAdOps</span>
+  </a>
+  <span class="nav-tag">Scaling Infinity</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg1"></div>
+  <div class="hero-bg2"></div>
+  <div class="hero-inner">
+    <span class="hero-pill">Point du 27 juillet 2026</span>
+    <h1>L'actu du projet</h1>
+    <p>Le grand chantier du moment, les usages déjà en production et la veille que l'équipe partage chaque semaine.</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <a href="index.html" class="tab">Le projet</a>
+  <a href="progression.html" class="tab">Progression AdOps</a>
+  <a href="realisations.html" class="tab">Réalisations</a>
+  <a href="actu.html" class="tab active">L'actu</a>
+</div>
+
+<main>
+
+  <!-- Edition switcher -->
+  <div class="edition-bar">
+    <span class="sec-label">Les éditions</span>
+    <span class="sec-meta">Un point toutes les une à deux semaines</span>
+    <div class="edition-buttons">
+      <button class="edition-btn active" data-edition="0">Semaine du 27 juil.</button>
+      <button class="edition-btn upcoming" data-edition="1">Semaine du 3 août</button>
+    </div>
+  </div>
+
+  <!-- Édition 0 : 27 juil. -->
+  <div id="edition-0" class="edition-panel">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">Pilotage &amp; adoption</span>
+      </div>
+      <div class="chantier-box">
+        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
+        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Chacun son cockpit de suivi</h2>
+        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Un dashboard perso, connecté au Dashboard Mobsuccess, qui devient le premier écran du matin : campagnes actives, alertes, to-do et actions en un clic. Objectif : un standard commun pour toute l'équipe.</p>
+        <div class="chantier-grid">
+          <div class="chantier-steps">
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Emeric a montré la voie</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Son dashboard présenté à l'équipe, avec tutoriel d'installation partagé.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Fait</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:#fff;color:var(--ms-navy)">2</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Chacun crée le sien</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Base commune (le prompt d'Emeric) que chacun adapte à son scope et ses comptes.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">jeu. 30 juil. · présentations au weekly</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Le dashboard standardisé</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">On assemble le best-of de tous les cockpits en un standard pour toute l'équipe.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">jeu. 6 août · le best-of</div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-preview">
+            <div class="dash-topbar">
+              <span class="dash-dot" style="background:#FF5F57"></span>
+              <span class="dash-dot" style="background:#FEBC2E"></span>
+              <span class="dash-dot" style="background:#28C840"></span>
+              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Dashboard AdOps — vue d'ensemble</span>
+            </div>
+            <div class="dash-body">
+              <div class="dash-kpis">
+                <div class="dash-kpi"><div class="dash-kpi-num">128 k€</div><div class="dash-kpi-label">Budget suivi</div></div>
+                <div class="dash-kpi"><div class="dash-kpi-num">24,6 M</div><div class="dash-kpi-label">Impressions</div></div>
+                <div class="dash-kpi"><div class="dash-kpi-num">1,04 %</div><div class="dash-kpi-label">CTR moyen</div></div>
+                <div class="dash-kpi"><div class="dash-kpi-num">18</div><div class="dash-kpi-label">Campagnes actives</div></div>
+              </div>
+              <div class="dash-bottom">
+                <div class="dash-section">
+                  <div class="dash-section-title">CAMPAGNES ACTIVES</div>
+                  <div class="dash-bar-row">
+                    <span style="font-size:13px;font-weight:600;width:88px">Decathlon</span>
+                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:82%"></span></span>
+                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">82%</span>
+                  </div>
+                  <div class="dash-bar-row">
+                    <span style="font-size:13px;font-weight:600;width:88px">Weldom</span>
+                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:76%"></span></span>
+                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">76%</span>
+                  </div>
+                  <div class="dash-bar-row">
+                    <span style="font-size:13px;font-weight:600;width:88px">Carrefour</span>
+                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:64%"></span></span>
+                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">64%</span>
+                  </div>
+                  <div class="dash-bar-row">
+                    <span style="font-size:13px;font-weight:600;width:88px">Intersport</span>
+                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:91%"></span></span>
+                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">91%</span>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div class="dash-section">
+                    <div class="dash-section-title">TO-DO DU JOUR</div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;background:var(--ms-violet);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">✓</span>Vérifier délivrabilité Weldom</div>
+                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;border:2px solid var(--ms-violet);display:block"></span>Optimiser CTR Carrefour</div>
+                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;border:2px solid var(--ms-violet);display:block"></span>Récap client Decathlon</div>
+                    </div>
+                  </div>
+                  <div class="dash-section">
+                    <div class="dash-section-title">ALERTES &amp; RECOS</div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <div style="display:flex;gap:9px;font-size:12.5px;color:#3B3B6B"><b style="color:var(--ms-orange)">!</b>2 magasins sans diffusion (Carrefour)</div>
+                      <div style="display:flex;gap:9px;font-size:12.5px;color:#3B3B6B"><b style="color:var(--ms-orange)">!</b>Budget Google sous-consommé</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dash-actions">
+                <span class="dash-action" style="background:var(--ms-violet);color:#fff">Générer le rapport</span>
+                <span class="dash-action" style="background:var(--ms-navy);color:#fff">Vue client (call)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Nouveau · les squads</span>
+        <span class="sec-meta">Famille A · Chaîne de production IA</span>
+      </div>
+      <div class="squads-box">
+        <div class="squads-intro">
+          <h3 style="font-size:26px;font-weight:700;line-height:1.15">Des squads dédiées, un sujet chacune</h3>
+          <p style="font-size:15px;color:#3B3B6B;line-height:1.55">Tous les sujets de la chaîne de production IA sont désormais répartis : chaque squad porte son sujet de bout en bout — cadrage, tests, industrialisation — et rend compte au weekly. Plus de sujet sans propriétaire.</p>
+        </div>
+        <div class="squads-grid">
+          <div class="squad-card"><span class="squad-tag">Squad 1</span><div class="squad-name">Set-up auto</div><p class="squad-desc">Le chantier de fond : monter une campagne sans saisie manuelle.</p></div>
+          <div class="squad-card"><span class="squad-tag">Squad 2</span><div class="squad-name">QA / Contrôle qualité</div><p class="squad-desc">Zéro erreur avant le go-live, sur tous les comptes.</p></div>
+          <div class="squad-card"><span class="squad-tag">Squad 3</span><div class="squad-name">Rapport auto</div><p class="squad-desc">100 % des rapports produits via le skill, sans retouche.</p></div>
+          <div class="squad-card"><span class="squad-tag">Squad 4</span><div class="squad-name">Bilan auto</div><p class="squad-desc">Du pilote à la série : le bilan de vague en quelques minutes.</p></div>
+          <div class="squad-card"><span class="squad-tag">Squad 5</span><div class="squad-name">Analyses spécifiques</div><p class="squad-desc">Les demandes sur mesure : potentiels, audiences, deep-dives.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Déjà en production</span>
+        <span class="sec-meta">Deux usages concrets</span>
+      </div>
+      <div class="production-grid">
+        <div class="prod-card">
+          <span class="prod-pill">QA · récap quotidien</span>
+          <h3 class="prod-h3">Le récap de campagne, chaque jour</h3>
+          <p class="prod-body">Généré par Claude depuis le Dashboard Mobsuccess et <b style="font-weight:600">posté automatiquement dans le canal Slack du client</b>. Déjà en place sur des comptes pilotes → bientôt étendu à <b style="font-weight:600">tous les clients</b>.</p>
+          <div class="slack-preview">
+            <div class="slack-bar">
+              <span style="color:#fff;font-size:14px;font-weight:600">Slack · # weldom-mobsuccess</span>
+              <span style="color:#8C8CC0;font-size:12px">7:02</span>
+            </div>
+            <div class="slack-body">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">C</span>
+                <span style="font-weight:600;font-size:14.5px">Claude</span>
+                <span style="padding:2px 8px;border-radius:6px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:10.5px;font-weight:600;letter-spacing:.06em">APP</span>
+                <span style="font-size:12px;color:#6E6E92">poste le récap chaque matin</span>
+              </div>
+              <div style="font-weight:600;font-size:15px;margin-top:12px">Weldom · Drive-to-Store — 6U07</div>
+              <div style="font-size:12.5px;color:#6E6E92;margin-top:4px">Données J-1 · Fin 21/07 · 100 % du temps écoulé</div>
+              <table class="slack-table">
+                <tbody>
+                  <tr><td style="font-weight:600">Meta</td><td style="color:#3B3B6B">96 % budget</td><td style="text-align:right;font-weight:600">286 % imp.</td></tr>
+                  <tr><td style="font-weight:600">RTB Display</td><td style="color:#3B3B6B">96 % budget</td><td style="text-align:right;font-weight:600">215 % imp.</td></tr>
+                  <tr><td style="font-weight:600">Google PMax</td><td style="color:#3B3B6B">95 % budget</td><td style="text-align:right;font-weight:600">95 % imp.</td></tr>
+                  <tr><td style="font-weight:700">Total</td><td style="font-weight:700">127 477 € / 133 100 €</td><td style="text-align:right;font-weight:700">96 %</td></tr>
+                </tbody>
+              </table>
+              <p style="font-size:13px;color:#3B3B6B;margin-top:12px;line-height:1.55">« Dernier jour de diffusion, budget quasi intégralement consommé (96 %) sur les trois leviers. Meta et RTB en belle sur-livraison, portées par une forte demande. Performance d'ensemble très satisfaisante. »</p>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <span class="prod-pill">Rapport &amp; bilan augmenté</span>
+          <h3 class="prod-h3">Le bilan client, augmenté par le contexte</h3>
+          <p class="prod-body">Le rapport factuel devient un bilan enrichi du contexte du compte (Slack, Notion, historique). Exemple : Hespéride, vague 2 (Drive-to-Store).</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px">
+            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">7,6 M</div>
+              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">Impressions</div>
+            </div>
+            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">133 K</div>
+              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">Clics</div>
+            </div>
+            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">3,88 €</div>
+              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">CPM</div>
+            </div>
+            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">1,76 %</div>
+              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">CTR</div>
+            </div>
+          </div>
+          <div style="background:var(--ms-mint-100);border-radius:16px;padding:14px 16px;margin-top:16px;font-size:13.5px;color:#00534F;line-height:1.55">
+            <b style="color:var(--ms-navy)">L'effet « augmenté » :</b> en lisant le canal Slack, Claude a repéré que <b style="color:var(--ms-navy)">Pacer AI (Orchestrator)</b> avait été activé — oublié du bilan manuel — et l'a mis en avant. Recos ajoutées : Meta vs Display sur les visites, et pistes d'optimisation de la LP Drive-to-Store.
+          </div>
+          <p style="font-size:13.5px;color:#3B3B6B;margin-top:14px;line-height:1.55">Retour agence après la présentation : « Bravo à tous ! Très beau compte à potentiel… et à marge ! »</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">On embarque toute l'équipe</span>
+        <span class="sec-meta">Veille &amp; retours d'expérience</span>
+      </div>
+      <div class="canal-grid">
+        <div class="canal-card">
+          <div class="canal-header">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
+              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
+            </span>
+            <span style="font-size:12.5px;color:#8C8CC0">le canal IA de l'équipe · créé le 22/07</span>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 10:14</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 27 juil.</div>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude apprend vos process en vous regardant faire (écran → skill réutilisable)</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google Ads étiquette les pubs générées par IA (avant l'AI Act, 2 août)</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Reporting &amp; détection d'anomalies automatisés : coût/conversion −20 à −30 %</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">OpenAI ouvre GPT-5.6 — un milieu de gamme aussi bon pour moitié prix</li>
+            </ul>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:8px">Astuce de la semaine : <span class="code-pill">campaign-excel-report</span></div>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-navy);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· 2ᵉ skill de la semaine</span>
+            </div>
+            <div style="margin-top:10px"><span class="code-pill">mob-skill-autodiagnostic</span></div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.45">Audite n'importe quel skill selon la grille officielle Mobsuccess (13 critères) et affiche un diagnostic + des correctifs. Idéal en duo avec <span class="code-pill">skill-creator</span>.</div>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">C</span>
+              <span style="font-size:13.5px;font-weight:600">Célina</span>
+              <span style="font-size:12px;color:#6E6E92">· retour d'expérience</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Bilan Point P × Havas × Widely, fait avec Claude Cowork</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Bilan PPTX généré depuis un Excel de stats. Brief d'1 min, relecture en ~5 min — contre une demi-journée habituellement.</div>
+          </div>
+        </div>
+        <a href="progression.html" class="canal-cta">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
+          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
+          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Ready », les trophées et les livrables de l'équipe.</p>
+          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /edition-0 -->
+
+  <!-- Édition 1 : 3 août (à venir) -->
+  <div id="edition-1" class="edition-panel hidden">
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Semaine du 3 août</span>
+        <span class="sec-meta">Édition en préparation</span>
+      </div>
+      <div class="upcoming-box">
+        <span style="display:inline-flex;padding:6px 16px;border-radius:999px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:13px;font-weight:600">À venir</span>
+        <h2 style="font-size:28px;font-weight:700;line-height:1.15">Le prochain point arrive lundi 3 août</h2>
+        <p style="font-size:15.5px;color:#3B3B6B;line-height:1.55;max-width:560px">Au programme : le best-of des cockpits présentés au weekly du 30 juillet, l'avancée des squads et la veille de la semaine.</p>
+        <a href="realisations.html" style="font-weight:600;font-size:15px;margin-top:4px">En attendant, voir les réalisations →</a>
+      </div>
+    </section>
+  </div><!-- /edition-1 -->
+
+</main>
+
+<div class="mint-rule"></div>
+<footer>
+  <span>On avance ensemble</span>
+  <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+</footer>
+
+<script>
+document.querySelectorAll('.edition-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const idx = this.dataset.edition;
+    document.querySelectorAll('.edition-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.edition-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById('edition-' + idx).classList.remove('hidden');
+  });
+});
+</script>
+</body>
+</html>

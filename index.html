@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le projet — Cockpit iAdOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ms-navy:#000050;--ms-cream:#F2EEE9;--ms-violet:#5C2EFD;--ms-mint:#00F5BE;
+  --ms-orange:#FF481E;--ms-navy-700:#0A0A6E;--ms-violet-700:#4A1FE0;
+  --ms-violet-100:#E4E1FE;--ms-mint-700:#00C99C;--ms-mint-100:#D6FCF1;
+  --ms-cream-200:#E7E2DA;--ms-cream-300:#DAD4C9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased}
+a{color:var(--ms-violet);text-decoration:none}
+h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* NAV */
+.nav{background:var(--ms-navy);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-brand img{height:22px;width:auto;display:block}
+.nav-sep{width:1px;height:20px;background:#3A3A78;display:block}
+.nav-title{color:#fff;font-size:16px;font-weight:600}
+.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600}
+
+/* TABS */
+.tabs{background:var(--ms-cream);display:flex;justify-content:center;gap:10px;padding:22px 20px 0}
+.tab{padding:10px 26px;border-radius:999px;font-size:15px;font-weight:500;background:#fff;border:1px solid var(--ms-cream-200);color:var(--ms-navy);transition:transform .18s ease-out,background .18s ease-out;text-decoration:none}
+.tab:hover{background:var(--ms-violet-100);color:var(--ms-violet-700);transform:translateY(-1px)}
+.tab.active{background:var(--ms-navy);color:#fff;font-weight:600;border:none}
+.tab.active:hover{transform:translateY(-1px);background:var(--ms-navy)}
+
+/* HEADER */
+.hero{background:var(--ms-navy);color:var(--ms-cream);padding:34px 40px 40px;position:relative;overflow:hidden}
+.hero-bg1{position:absolute;top:-70px;right:-60px;width:280px;height:280px;border-radius:50%;background:var(--ms-navy-700)}
+.hero-bg2{position:absolute;bottom:-90px;right:210px;width:200px;height:200px;border-radius:50%;background:var(--ms-violet);opacity:.5}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.5fr auto;gap:48px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:14px;font-weight:600}
+.hero h1{color:#fff;font-size:46px;font-weight:700;line-height:1.02;margin-top:14px;letter-spacing:-.01em}
+.hero p{font-size:19px;line-height:1.45;color:#BFBFE0;margin-top:12px;max-width:640px}
+.hero-claim{display:flex;align-items:center;gap:14px;margin-top:18px}
+.hero-claim-bar{display:block;width:64px;height:5px;border-radius:999px;background:var(--ms-mint)}
+.hero-claim-text{color:var(--ms-mint);font-size:15px;font-weight:600}
+.hero-deco{display:flex;flex-direction:column;align-items:flex-end;gap:20px}
+
+/* MAIN */
+main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-direction:column;gap:32px}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:16px}
+.sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
+.sec-meta{color:#6E6E92;font-size:13px}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
+
+/* KPI BAND */
+.kpi-band{background:var(--ms-navy);border-radius:28px;padding:28px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;color:var(--ms-cream)}
+.kpi-num{font-size:44px;font-weight:700;color:#fff;line-height:1}
+.kpi-label{font-size:14px;color:var(--ms-mint);font-weight:500;margin-top:6px}
+
+/* MISSION */
+.mission-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:40px;align-items:start}
+.mission-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.mission-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px}
+.mission-icon{width:38px;height:38px;border-radius:12px}
+.mission-kw{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--ms-violet-700);margin-top:16px}
+.mission-card h3{font-size:19px;font-weight:600;margin-top:8px;line-height:1.25}
+.mission-card p{font-size:14px;color:#6E6E92;margin-top:8px;line-height:1.5}
+
+/* TOPICS */
+.topics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.topic-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px}
+.topic-tag{width:42px;height:42px;border-radius:12px;color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center}
+.topic-card h3{font-size:18px;font-weight:600;margin:14px 0 12px;line-height:1.25}
+.topic-card ul{list-style:none;display:flex;flex-direction:column}
+.topic-card li{font-size:14px;color:#3B3B6B;padding:7px 0;border-bottom:1px solid #F2EDE6}
+.topic-card li:last-child{border-bottom:0}
+
+/* ROADMAP */
+.roadmap{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:22px 26px}
+.roadmap-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.roadmap-cols{display:grid;grid-template-columns:190px repeat(4,1fr);border-bottom:2px solid var(--ms-cream-200)}
+.roadmap-row{display:grid;grid-template-columns:190px repeat(4,1fr);align-items:stretch;border-bottom:1px solid #EFEAE2}
+.roadmap-row:last-child{border-bottom:0}
+.roadmap-label{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 0}
+.roadmap-cell{border-left:1px solid #EFEAE2;padding:10px;display:flex;flex-direction:column;gap:8px;min-height:56px}
+.roadmap-col-head{border-left:1px solid #EFEAE2;padding:0 10px 10px;font-size:13px;font-weight:600;color:var(--ms-violet-700)}
+.roadmap-col-head.acquired{color:var(--ms-mint-700)}
+.roadmap-chip{border-radius:12px;padding:9px 13px}
+.roadmap-chip-title{font-size:13.5px;font-weight:600;line-height:1.2}
+.roadmap-chip-sub{font-size:11.5px;margin-top:2px}
+
+/* CTA GRID */
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cta-violet{background:var(--ms-violet);border-radius:28px;padding:24px 28px;display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none;transition:background .18s}
+.cta-violet:hover{background:var(--ms-violet-700)}
+.cta-navy{background:var(--ms-navy);border-radius:28px;padding:24px 28px;display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none;transition:background .18s}
+.cta-navy:hover{background:var(--ms-navy-700)}
+.cta-pill{display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.cta-pill-glass{background:rgba(255,255,255,.16)}
+.cta-pill-glass-dark{background:rgba(255,255,255,.14)}
+.cta-h3{font-size:27px;font-weight:700;line-height:1.15;margin-top:6px}
+.cta-body{font-size:15px;line-height:1.55}
+.cta-link{font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)}
+
+/* FOOTER */
+.mint-rule{height:6px;background:var(--ms-mint)}
+footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
+footer img{height:20px;width:auto;display:block;opacity:.85}
+
+/* TOTEM decorative */
+.totem{display:flex;flex-direction:column;align-items:flex-end;gap:20px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+    <span class="nav-sep"></span>
+    <span class="nav-title">Cockpit iAdOps</span>
+  </a>
+  <span class="nav-tag">Scaling Infinity</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg1"></div>
+  <div class="hero-bg2"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="hero-pill">iAdOps · S2 2026</span>
+      <h1>Industrialiser nos opérations<br>grâce à l'IA</h1>
+      <p>Fiabiliser, standardiser et automatiser les tâches à faible valeur — pour remettre du temps au service du client.</p>
+      <div class="hero-claim">
+        <span class="hero-claim-bar"></span>
+        <span class="hero-claim-text">Scaling Infinity</span>
+      </div>
+    </div>
+    <div class="totem">
+      <!-- TargetTotem — 132×132 -->
+      <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="66" cy="66" r="60" stroke="#1A1A8E" stroke-width="3"/>
+        <circle cx="66" cy="66" r="46" stroke="#2E2EA8" stroke-width="3"/>
+        <circle cx="66" cy="66" r="32" stroke="var(--ms-violet)" stroke-width="3" opacity=".7"/>
+        <circle cx="66" cy="66" r="18" stroke="var(--ms-violet)" stroke-width="3"/>
+        <circle cx="66" cy="66" r="7" fill="var(--ms-mint)"/>
+        <line x1="66" y1="6" x2="66" y2="24" stroke="#3A3A78" stroke-width="2"/>
+        <line x1="66" y1="108" x2="66" y2="126" stroke="#3A3A78" stroke-width="2"/>
+        <line x1="6" y1="66" x2="24" y2="66" stroke="#3A3A78" stroke-width="2"/>
+        <line x1="108" y1="66" x2="126" y2="66" stroke="#3A3A78" stroke-width="2"/>
+      </svg>
+      <!-- StripedPill — 200×72 -->
+      <svg width="200" height="72" viewBox="0 0 200 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="72" rx="36" fill="#0A0A6E"/>
+        <clipPath id="sp"><rect width="200" height="72" rx="36"/></clipPath>
+        <g clip-path="url(#sp)" opacity=".12">
+          <line x1="-20" y1="0" x2="80" y2="120" stroke="white" stroke-width="18"/>
+          <line x1="20" y1="0" x2="120" y2="120" stroke="white" stroke-width="18"/>
+          <line x1="60" y1="0" x2="160" y2="120" stroke="white" stroke-width="18"/>
+          <line x1="100" y1="0" x2="200" y2="120" stroke="white" stroke-width="18"/>
+          <line x1="140" y1="0" x2="240" y2="120" stroke="white" stroke-width="18"/>
+        </g>
+        <text x="100" y="42" font-family="Jost,sans-serif" font-size="15" font-weight="700" fill="#00F5BE" text-anchor="middle" dominant-baseline="middle">Scaling Infinity</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <a href="index.html" class="tab active">Le projet</a>
+  <a href="progression.html" class="tab">Progression AdOps</a>
+  <a href="realisations.html" class="tab">Réalisations</a>
+  <a href="actu.html" class="tab">L'actu</a>
+</div>
+
+<main>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Notre mission</span>
+      <span class="sec-meta">Mobsuccess</span>
+    </div>
+    <div class="mission-grid">
+      <h2 style="font-size:31px;font-weight:700;line-height:1.14">Ce que fait le workstream iAdOps</h2>
+      <p style="font-size:17px;line-height:1.6;color:#3B3B6B">Nous outillons les équipes AdOps avec l'IA : chaque tâche répétitive du quotidien — set-up, contrôle qualité, rapport, bilan — devient un skill fiable, partagé et réutilisable par toute l'équipe. Le but n'est pas de faire plus vite pour faire plus, mais de libérer du temps d'expertise pour nos clients.</p>
+    </div>
+    <div class="mission-cards">
+      <div class="mission-card">
+        <div class="mission-icon" style="background:var(--ms-violet)"></div>
+        <div class="mission-kw">FIABILISER</div>
+        <h3>Zéro erreur avant le go-live</h3>
+        <p>Un contrôle qualité systématique et des livrables homogènes.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon" style="background:var(--ms-navy)"></div>
+        <div class="mission-kw">STANDARDISER</div>
+        <h3>Une méthode commune</h3>
+        <p>Piloter, itérer, généraliser — les mêmes skills pour toute l'équipe.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon" style="background:var(--ms-mint-700)"></div>
+        <div class="mission-kw">AUTOMATISER</div>
+        <h3>Du brief au bilan</h3>
+        <p>Rapports, bilans, set-up et QA produits via Claude.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon" style="background:var(--ms-orange)"></div>
+        <div class="mission-kw">RÉINVESTIR</div>
+        <h3>Du temps pour le client</h3>
+        <p>Le temps gagné réinvesti en qualité, conseil et stratégie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="kpi-band">
+    <div><div class="kpi-num">13</div><div class="kpi-label">Chantiers ouverts</div></div>
+    <div><div class="kpi-num">4</div><div class="kpi-label">Familles de sujets</div></div>
+    <div><div class="kpi-num">14</div><div class="kpi-label">AdOps embarqués</div></div>
+    <div><div class="kpi-num">6</div><div class="kpi-label">Marches du parcours</div></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Les sujets</span>
+      <span class="sec-meta">13 chantiers · 4 familles</span>
+    </div>
+    <div class="topics">
+      <div class="topic-card">
+        <div class="topic-tag" style="background:var(--ms-orange)">A</div>
+        <h3>Chaîne de production IA</h3>
+        <ul>
+          <li>Set-up auto</li>
+          <li>QA / Contrôle qualité</li>
+          <li>Rapport auto</li>
+          <li>Bilan auto</li>
+          <li>Analyses spécifiques</li>
+        </ul>
+      </div>
+      <div class="topic-card">
+        <div class="topic-tag" style="background:var(--ms-violet)">B</div>
+        <h3>Socle : mémoire &amp; collaboratif</h3>
+        <ul>
+          <li>Mémoire &amp; espace collaboratif</li>
+          <li>Outillage collaborateur</li>
+        </ul>
+      </div>
+      <div class="topic-card">
+        <div class="topic-tag" style="background:var(--ms-navy)">C</div>
+        <h3>Pilotage &amp; adoption</h3>
+        <ul>
+          <li>Dashboards &amp; cockpits</li>
+          <li>Adoption de l'équipe</li>
+        </ul>
+      </div>
+      <div class="topic-card">
+        <div class="topic-tag" style="background:var(--ms-mint-700)">D</div>
+        <h3>Innovation &amp; transverse</h3>
+        <ul>
+          <li>Agentification</li>
+          <li>Assistants &amp; générations IA</li>
+          <li>ROI &amp; mesure de la valeur</li>
+          <li>Pistes outils</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Où en est chaque sujet</span>
+      <span class="sec-meta">S2 2026 · vue partielle, elle bouge</span>
+    </div>
+    <div class="roadmap">
+      <div class="roadmap-header">
+        <span style="font-size:12.5px;color:#6E6E92">Maturité</span>
+        <span style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
+          <span style="height:4px;border-radius:999px;background:var(--ms-violet-100);display:block"></span>
+          <span style="height:4px;border-radius:999px;background:var(--ms-violet);display:block"></span>
+          <span style="height:4px;border-radius:999px;background:var(--ms-mint-700);display:block"></span>
+          <span style="height:4px;border-radius:999px;background:var(--ms-mint);display:block"></span>
+        </span>
+      </div>
+      <div class="roadmap-cols">
+        <div></div>
+        <div class="roadmap-col-head">Réflexion</div>
+        <div class="roadmap-col-head">En cours</div>
+        <div class="roadmap-col-head">Systématisation</div>
+        <div class="roadmap-col-head acquired">Acquis</div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-label">
+          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-orange);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">A</span>
+          <span style="font-size:14px;font-weight:600;line-height:1.2">Chaîne de production IA</span>
+        </div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Set-up auto</div></div>
+          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Analyses spécifiques</div></div>
+        </div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">QA / Contrôle qualité</div></div>
+          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Bilan auto</div></div>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)">
+            <div class="roadmap-chip-title">Rapport auto</div>
+            <div class="roadmap-chip-sub">100 % via skill</div>
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-label">
+          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">B</span>
+          <span style="font-size:14px;font-weight:600;line-height:1.2">Socle : mémoire &amp; collaboratif</span>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-violet);color:#fff">
+            <div class="roadmap-chip-title">Espace Cowork partagé</div>
+            <div class="roadmap-chip-sub">test en cours</div>
+          </div>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell"></div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-label">
+          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-navy);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">C</span>
+          <span style="font-size:14px;font-weight:600;line-height:1.2">Pilotage &amp; adoption</span>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-navy);color:#fff">
+            <div class="roadmap-chip-title">Dashboard AdOps</div>
+            <div class="roadmap-chip-sub">concours en cours</div>
+          </div>
+          <div class="roadmap-chip" style="background:var(--ms-navy);color:#fff">
+            <div class="roadmap-chip-title">Dashboard pilotage client</div>
+            <div class="roadmap-chip-sub">fiche, vie du client, to-do</div>
+          </div>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell"></div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-label">
+          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-mint-700);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">D</span>
+          <span style="font-size:14px;font-weight:600;line-height:1.2">Innovation &amp; transverse</span>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell">
+          <div class="roadmap-chip" style="background:var(--ms-mint-700);color:var(--ms-navy)">
+            <div class="roadmap-chip-title">Claude Tag</div>
+            <div class="roadmap-chip-sub">1 Claude par canal Slack</div>
+          </div>
+        </div>
+        <div class="roadmap-cell"></div>
+        <div class="roadmap-cell"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-grid">
+    <a href="progression.html" class="cta-violet">
+      <span class="cta-pill cta-pill-glass">Progression AdOps</span>
+      <h3 class="cta-h3">Où en est l'équipe, et ce qu'elle produit</h3>
+      <p class="cta-body" style="color:#E4E1FE">Le parcours « Équipe Ready », les trophées de chacun, les livrables et les tests en cours.</p>
+      <span class="cta-link">Voir la progression →</span>
+    </a>
+    <a href="actu.html" class="cta-navy">
+      <span class="cta-pill cta-pill-glass-dark">L'actu du projet</span>
+      <h3 class="cta-h3">Ce qui bouge cette semaine</h3>
+      <p class="cta-body" style="color:#BFBFE0">Le grand chantier du moment, les usages déjà en production et la veille de l'équipe.</p>
+      <span class="cta-link">Lire l'actu →</span>
+    </a>
+  </div>
+
+</main>
+
+<div class="mint-rule"></div>
+<footer>
+  <span>On avance ensemble</span>
+  <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+</footer>
+
+</body>
+</html>
