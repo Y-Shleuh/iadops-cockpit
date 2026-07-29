@@ -80,8 +80,18 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 /* TEAM GRID */
 .team-layout{display:grid;grid-template-columns:1fr 244px;gap:18px;align-items:start}
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(182px,1fr));gap:14px}
-.member-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.member-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
+.member-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;height:100%}
+/* FLIP CARD */
+.flip-card{perspective:900px;height:100%}
+.flip-card-inner{position:relative;height:100%;min-height:220px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:24px}
+.flip-card-front{height:100%}
+.flip-card-back{position:absolute;inset:0;transform:rotateY(180deg);background:var(--ms-navy);padding:18px 16px;display:flex;flex-direction:column;gap:8px}
+.flip-back-name{font-size:14px;font-weight:700;color:#fff;line-height:1.2}
+.flip-back-step{display:inline-flex;align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:600}
+.flip-trophies{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.flip-trophy{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.1);border-radius:999px;padding:4px 10px;font-size:11px;color:#fff;white-space:nowrap}
 .member-avatar{width:80px;height:80px;border-radius:22px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:26px;position:relative;flex:0 0 80px}
 .member-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .member-name{font-size:16.5px;font-weight:600;margin-top:14px}
@@ -379,100 +389,232 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     <div class="team-layout">
       <div class="team-grid">
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#00F5BE"><span style="color:#000050">NA</span><img src="photos/noura.jpg" alt="Noura Abou"></div>
-          <div class="member-name">Noura Abou</div>
-          <div class="member-role">Lead Operations Partner</div>
-          <span class="member-step" style="background:#00F5BE;color:#000050">Maître</span>
-          <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#00F5BE"><span style="color:#000050">NA</span><img src="photos/noura.jpg" alt="Noura Abou"></div>
+              <div class="member-name">Noura Abou</div>
+              <div class="member-role">Lead Operations Partner</div>
+              <span class="member-step" style="background:#00F5BE;color:#000050">Maître</span>
+              <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Noura Abou</div>
+              <span class="flip-back-step" style="background:#00F5BE;color:#000050">Maître</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🎥 Workshop IA</span><span class="flip-trophy">🎓 Ambassadeur</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>ST</span><img src="photos/stephanie.jpg" alt="Stéphanie Ta"></div>
-          <div class="member-name">Stéphanie Ta</div>
-          <div class="member-role">Lead Operations Partner</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>ST</span><img src="photos/stephanie.jpg" alt="Stéphanie Ta"></div>
+              <div class="member-name">Stéphanie Ta</div>
+              <div class="member-role">Lead Operations Partner</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Stéphanie Ta</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">✍️ Wording ads</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>EM</span><img src="photos/emeric.jpg" alt="Emeric Moulinneuf"></div>
-          <div class="member-name">Emeric Moulinneuf</div>
-          <div class="member-role">Operations Partner Specialist</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">9</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>EM</span><img src="photos/emeric.jpg" alt="Emeric Moulinneuf"></div>
+              <div class="member-name">Emeric Moulinneuf</div>
+              <div class="member-role">Operations Partner Specialist</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">9</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Emeric Moulinneuf</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#00C99C"><span style="color:#000050">CB</span><img src="photos/celina.jpg" alt="Célina Bouguenna"></div>
-          <div class="member-name">Célina Bouguenna</div>
-          <div class="member-role">Operations Partner Specialist</div>
-          <span class="member-step" style="background:#00C99C;color:#000050">Expert</span>
-          <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#00C99C"><span style="color:#000050">CB</span><img src="photos/celina.jpg" alt="Célina Bouguenna"></div>
+              <div class="member-name">Célina Bouguenna</div>
+              <div class="member-role">Operations Partner Specialist</div>
+              <span class="member-step" style="background:#00C99C;color:#000050">Expert</span>
+              <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Célina Bouguenna</div>
+              <span class="flip-back-step" style="background:#00C99C;color:#000050">Expert</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">⚙️ Zéro manuel</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>ET</span></div>
-          <div class="member-name">Eric Ta</div>
-          <div class="member-role">Operations Partner Senior</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">5</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>ET</span></div>
+              <div class="member-name">Eric Ta</div>
+              <div class="member-role">Operations Partner Senior</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">5</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Eric Ta</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">⏱️ Gain de temps</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>SG</span><img src="photos/steeve.jpg" alt="Steeve Guerret"></div>
-          <div class="member-name">Steeve Guerret</div>
-          <div class="member-role">Operations Partner Senior</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">10</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>SG</span><img src="photos/steeve.jpg" alt="Steeve Guerret"></div>
+              <div class="member-name">Steeve Guerret</div>
+              <div class="member-role">Operations Partner Senior</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">10</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Steeve Guerret</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">⏱️ Gain de temps</span><span class="flip-trophy">🔗 Connecteur</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#00C99C"><span style="color:#000050">AA</span><img src="photos/alphonse.jpg" alt="Alphonse Arthur"></div>
-          <div class="member-name">Alphonse Arthur</div>
-          <div class="member-role">Operations Partner Senior</div>
-          <span class="member-step" style="background:#00C99C;color:#000050">Expert</span>
-          <div class="member-trophies"><span class="trophy-badge">9</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#00C99C"><span style="color:#000050">AA</span><img src="photos/alphonse.jpg" alt="Alphonse Arthur"></div>
+              <div class="member-name">Alphonse Arthur</div>
+              <div class="member-role">Operations Partner Senior</div>
+              <span class="member-step" style="background:#00C99C;color:#000050">Expert</span>
+              <div class="member-trophies"><span class="trophy-badge">9</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Alphonse Arthur</div>
+              <span class="flip-back-step" style="background:#00C99C;color:#000050">Expert</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">⚙️ Zéro manuel</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">🧠 Créateur skill</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>ES</span><img src="photos/ekaterina.jpg" alt="Ekaterina Salnikova"></div>
-          <div class="member-name">Ekaterina Salnikova</div>
-          <div class="member-role">Operations Partner</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">5</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>ES</span><img src="photos/ekaterina.jpg" alt="Ekaterina Salnikova"></div>
+              <div class="member-name">Ekaterina Salnikova</div>
+              <div class="member-role">Operations Partner</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">5</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Ekaterina Salnikova</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>WB</span><img src="photos/wael.jpg" alt="Waël Ben Yahia"></div>
-          <div class="member-name">Waël Ben Yahia</div>
-          <div class="member-role">Operations Partner</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>WB</span><img src="photos/wael.jpg" alt="Waël Ben Yahia"></div>
+              <div class="member-name">Waël Ben Yahia</div>
+              <div class="member-role">Operations Partner</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Waël Ben Yahia</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🧠 Créateur skill</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>GT</span><img src="photos/ghofrane.jpg" alt="Ghofrane Touati"></div>
-          <div class="member-name">Ghofrane Touati</div>
-          <div class="member-role">Operations Partner Junior</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>GT</span><img src="photos/ghofrane.jpg" alt="Ghofrane Touati"></div>
+              <div class="member-name">Ghofrane Touati</div>
+              <div class="member-role">Operations Partner Junior</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Ghofrane Touati</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🧠 Créateur skill</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>AA</span><img src="photos/anis.jpg" alt="Anis Alouane"></div>
-          <div class="member-name">Anis Alouane</div>
-          <div class="member-role">Operations Partner Junior</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>AA</span><img src="photos/anis.jpg" alt="Anis Alouane"></div>
+              <div class="member-name">Anis Alouane</div>
+              <div class="member-role">Operations Partner Junior</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Anis Alouane</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🧠 Créateur skill</span><span class="flip-trophy">⏱️ Gain de temps</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="member-card">
-          <div class="member-avatar" style="background:#4A1FE0"><span>FR</span><img src="photos/fares.jpg" alt="Farès Ramdani"></div>
-          <div class="member-name">Farès Ramdani</div>
-          <div class="member-role">Operations Partner Junior</div>
-          <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
-          <div class="member-trophies"><span class="trophy-badge">6</span><span class="trophy-text">trophées</span></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front member-card">
+              <div class="member-avatar" style="background:#4A1FE0"><span>FR</span><img src="photos/fares.jpg" alt="Farès Ramdani"></div>
+              <div class="member-name">Farès Ramdani</div>
+              <div class="member-role">Operations Partner Junior</div>
+              <span class="member-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="member-trophies"><span class="trophy-badge">6</span><span class="trophy-text">trophées</span></div>
+            </div>
+            <div class="flip-card-back">
+              <div class="flip-back-name">Farès Ramdani</div>
+              <span class="flip-back-step" style="background:#4A1FE0;color:#fff">Aguerri</span>
+              <div class="flip-trophies">
+                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -559,68 +701,6 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     <span class="cta-banner-link">Voir les réalisations →</span>
   </a>
 
-  <!-- Tests en cours -->
-  <section>
-    <div class="sec-head">
-      <span class="sec-label">Les tests en cours</span>
-      <span class="sec-meta">Ce que l'équipe éprouve en ce moment</span>
-    </div>
-    <div class="tests-grid">
-      <div class="test-navy">
-        <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:13px;font-weight:600">Test collectif</span>
-        <h3 style="font-size:26px;font-weight:700;color:#fff;line-height:1.15">Chacun son cockpit de suivi</h3>
-        <p style="font-size:15px;line-height:1.55;color:#BFBFE0">Chaque AdOps construit son dashboard perso à partir de la base d'Emeric, l'adapte à son scope, puis le présente au weekly. Le best-of deviendra le standard de l'équipe.</p>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div class="test-row">
-            <span style="font-size:14.5px;color:#fff;font-weight:500">Présentations au weekly</span>
-            <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 30 juil.</span>
-          </div>
-          <div class="test-row">
-            <span style="font-size:14.5px;color:#fff;font-weight:500">Dashboard standardisé</span>
-            <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 6 août</span>
-          </div>
-        </div>
-      </div>
-      <div class="test-cards">
-        <div class="test-card" style="height:100%">
-          <div class="test-card-head">
-            <h4 style="font-size:16px;font-weight:700">CR 28/07 — Sujets en cours</h4>
-            <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">4 sujets</span>
-          </div>
-          <div style="display:flex;flex-direction:column;margin-top:14px">
-            <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Audit</span>
-                <span style="font-size:13.5px;font-weight:600">Contrôle avant lancement</span>
-              </div>
-              <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Stress-tester le skill QA sur d'autres leviers et campagnes — montrer un exemple de rendu au prochain point.</p>
-            </div>
-            <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Rapport</span>
-                <span style="font-size:13.5px;font-weight:600">Skill de mise en ligne testé</span>
-              </div>
-              <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Synchro, leviers, formats, créas, tracking et geoplanner — rendu en Slack canevas. Prochain chantier : rapport quotidien avec tâche programmée.</p>
-            </div>
-            <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">Optis</span>
-                <span style="font-size:13.5px;font-weight:600">Dashboard + to-do chez Emeric</span>
-              </div>
-              <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Optis historisées dans le dashboard, Claude propose aussi des améliorations. Prochaine étape : comparer avec les skills AdOps de Chris (lecture de log…).</p>
-            </div>
-            <div style="padding:12px 0">
-              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                <span class="test-badge" style="background:#FDE8E3;color:#C03B1A">Analyses</span>
-                <span style="font-size:13.5px;font-weight:600">Bilan Excel → one pager client</span>
-              </div>
-              <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Bilan produit via Claude, quelques ajustements KPIs, puis retravail dans Claude Design avec les créas. Simplifier la procédure de récupération des visuels.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </main>
 

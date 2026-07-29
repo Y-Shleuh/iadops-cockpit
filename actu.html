@@ -126,6 +126,16 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 /* UPCOMING */
 .upcoming-box{background:#fff;border:1px dashed var(--ms-cream-300);border-radius:28px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
 
+/* TESTS EN COURS */
+.tests-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.test-navy{background:var(--ms-navy);border-radius:28px;padding:24px 28px;color:var(--ms-cream);display:flex;flex-direction:column;gap:16px}
+.test-row{background:var(--ms-navy-700);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.test-cards{display:flex;flex-direction:column;gap:18px}
+.test-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px 24px;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.test-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
+.test-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.test-badge{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+
 .mint-rule{height:6px;background:var(--ms-mint)}
 footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
@@ -497,6 +507,69 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
           <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
           <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
         </a>
+      </div>
+    </section>
+
+    <!-- Tests en cours -->
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Les tests en cours</span>
+        <span class="sec-meta">Ce que l'équipe éprouve en ce moment</span>
+      </div>
+      <div class="tests-grid">
+        <div class="test-navy">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:13px;font-weight:600">Test collectif</span>
+          <h3 style="font-size:26px;font-weight:700;color:#fff;line-height:1.15">Chacun son cockpit de suivi</h3>
+          <p style="font-size:15px;line-height:1.55;color:#BFBFE0">Chaque AdOps construit son dashboard perso à partir de la base d'Emeric, l'adapte à son scope, puis le présente au weekly. Le best-of deviendra le standard de l'équipe.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="test-row">
+              <span style="font-size:14.5px;color:#fff;font-weight:500">Présentations au weekly</span>
+              <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 30 juil.</span>
+            </div>
+            <div class="test-row">
+              <span style="font-size:14.5px;color:#fff;font-weight:500">Dashboard standardisé</span>
+              <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 6 août</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-cards">
+          <div class="test-card" style="height:100%">
+            <div class="test-card-head">
+              <h4 style="font-size:16px;font-weight:700">CR 28/07 — Sujets en cours</h4>
+              <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">4 sujets</span>
+            </div>
+            <div style="display:flex;flex-direction:column;margin-top:14px">
+              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
+                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Audit</span>
+                  <span style="font-size:13.5px;font-weight:600">Contrôle avant lancement</span>
+                </div>
+                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Stress-tester le skill QA sur d'autres leviers et campagnes — montrer un exemple de rendu au prochain point.</p>
+              </div>
+              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
+                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Rapport</span>
+                  <span style="font-size:13.5px;font-weight:600">Skill de mise en ligne testé</span>
+                </div>
+                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Synchro, leviers, formats, créas, tracking et geoplanner — rendu en Slack canevas. Prochain chantier : rapport quotidien avec tâche programmée.</p>
+              </div>
+              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
+                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">Optis</span>
+                  <span style="font-size:13.5px;font-weight:600">Dashboard + to-do chez Emeric</span>
+                </div>
+                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Optis historisées dans le dashboard, Claude propose aussi des améliorations. Prochaine étape : comparer avec les skills AdOps de Chris (lecture de log…).</p>
+              </div>
+              <div style="padding:12px 0">
+                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span class="test-badge" style="background:#FDE8E3;color:#C03B1A">Analyses</span>
+                  <span style="font-size:13.5px;font-weight:600">Bilan Excel → one pager client</span>
+                </div>
+                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Bilan produit via Claude, quelques ajustements KPIs, puis retravail dans Claude Design avec les créas. Simplifier la procédure de récupération des visuels.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
