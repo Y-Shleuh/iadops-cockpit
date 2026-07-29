@@ -57,6 +57,8 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 .card h3{font-size:20px;font-weight:600;margin-top:12px;line-height:1.2}
 .card p{font-size:14px;color:#3B3B6B;margin-top:8px;line-height:1.5}
 .card-author{font-size:12.5px;color:var(--ms-violet-700);font-weight:600;margin-top:10px}
+.pdf-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;border-radius:999px;background:var(--ms-cream);border:1.5px solid var(--ms-cream-200);font-size:12.5px;font-weight:600;color:var(--ms-navy);text-decoration:none;transition:background .15s}
+.pdf-link:hover{background:var(--ms-cream-200)}
 
 .bilans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
 .bilan-hero{background:var(--ms-navy);border-radius:24px;padding:24px 26px;color:var(--ms-cream);grid-column:span 2;transition:transform .2s ease-out}
@@ -139,6 +141,10 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         <h3 style="color:#fff;font-size:25px;font-weight:700;margin-top:14px;line-height:1.15">Le premier bilan de campagne 100 % produit par l'IA</h3>
         <p style="font-size:15px;color:#BFBFE0;margin-top:10px;line-height:1.55">Sourcing automatique via les connecteurs (Mobsuccess, Slack, Notion, Gmail) et les uploads créas/mesure de visites, mise en forme à la charte, export PDF. Restitution client faite, support approuvé à 100 %. Bonus : Claude a repéré dans Slack l'usage de Pacer AI, absent du bilan manuel.</p>
         <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:12px">Nicolas Saraiva · Noura · Ghofrane Touati · Briac De Monti</div>
+        <a href="docs/bilan-hesperide.pdf" class="pdf-link" download>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 7l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bilan Hespéride (PDF)
+        </a>
       </div>
       <div class="card" style="animation:msFadeUp .5s .04s ease-out both">
         <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">5 min de review</span>
@@ -157,6 +163,10 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         <h3>Bilan intermédiaire B:BOT</h3>
         <p>Un bilan intermédiaire complet livré en trente minutes.</p>
         <div class="card-author">Noura</div>
+        <a href="docs/bilan-bbot-carrefour.pdf" class="pdf-link" download>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 7l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bilan B:BOT × Carrefour (PDF)
+        </a>
       </div>
       <div class="card" style="animation:msFadeUp .5s .16s ease-out both">
         <span class="card-tag" style="background:var(--ms-mint-100);color:#00534F">~10 min · devenu un skill</span>
@@ -169,6 +179,10 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         <h3>Convaincre son groupement avec les chiffres</h3>
         <p>Les clientes Écouter Voir ne maîtrisent pas le digital et peinent à justifier l'investissement face à leurs directeurs de magasin. Stéphanie leur produit un one pager en fin de campagne : résultats chiffrés, dispositif local, recommandation claire. Exemple : Ouverture Luçon (85) — 2 248 €, 497 888 impressions, CTR interstitiel 3,17 %.</p>
         <div class="card-author">Stéphanie Ta</div>
+        <a href="docs/bilan-ev-lucon.pdf" class="pdf-link" download>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 7l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bilan Écouter Voir — Luçon (PDF)
+        </a>
       </div>
     </div>
   </section>
