@@ -68,6 +68,13 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 .analyses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .cockpits-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .diffusion-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.tools-hero{background:var(--ms-navy);border-radius:24px;padding:28px 30px;color:var(--ms-cream);display:flex;flex-direction:column;gap:10px;transition:transform .2s ease-out}
+.tools-hero:hover{transform:translateY(-3px)}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tool-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
+.tool-link{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:8px 18px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:13px;font-weight:700;text-decoration:none;transition:background .15s}
+.tool-link:hover{background:var(--ms-mint-700)}
 
 .cockpit-violet{background:var(--ms-violet);border-radius:24px;padding:24px 26px;color:#fff;transition:transform .2s ease-out}
 .cockpit-violet:hover{transform:translateY(-3px)}
@@ -255,6 +262,37 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         <h3 style="font-size:23px;font-weight:700;margin-top:12px;line-height:1.2">Le cockpit Leads Ops</h3>
         <p style="font-size:14.5px;color:#3B3B6B;margin-top:8px;line-height:1.5">Comptes, équipe, budgets, campagnes en cours et à venir, charge par personne — avec des actions automatiques : rapport mi-campagne, récap Slack, brouillon d'email de fin de campagne.</p>
         <div class="card-author" style="margin-top:12px">Nicolas Saraiva · Stéphanie Ta · Noura</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Outils &amp; générateurs</span>
+      <span class="sec-meta">Industrialiser la mise en ligne</span>
+    </div>
+    <div class="tools-hero">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div>
+          <span style="padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12.5px;font-weight:600;color:var(--ms-mint)">Déployé en prod</span>
+          <h3 style="color:#fff;font-size:23px;font-weight:700;margin-top:10px;line-height:1.2">Bulk Generator</h3>
+          <p style="font-size:14.5px;color:#BFBFE0;margin-top:8px;line-height:1.5;max-width:640px">Application web qui génère les fichiers de bulk upload en un clic — wizard en 6 étapes, validation des champs, naming automatique. Deux générateurs disponibles : Snapchat Ads (Excel 111 colonnes) et Google Ads (CSV multi-formats). Développé avec Next.js, TypeScript et shadcn/ui.</p>
+        </div>
+        <a href="https://bulk-generator.vercel.app" target="_blank" class="tool-link">Ouvrir l'app ↗</a>
+      </div>
+    </div>
+    <div class="tools-grid" style="margin-top:14px">
+      <div class="tool-card">
+        <span class="card-tag" style="background:#FFDF00;color:#000">Snapchat Ads</span>
+        <h3 style="font-size:20px;font-weight:700;margin-top:12px;line-height:1.2">Bulk Upload Snapchat</h3>
+        <p style="font-size:14px;color:#3B3B6B;margin-top:8px;line-height:1.5">Génère le fichier Excel natif Snapchat (111 colonnes) à partir d'un wizard structuré. Gestion complète des campagnes, ad sets et créatifs — avec intégration Zapier pour les insights post-campagne et vérification automatique du naming.</p>
+        <div class="card-author" style="margin-top:12px">Yannis Echchelh</div>
+      </div>
+      <div class="tool-card">
+        <span class="card-tag" style="background:#E8F0FE;color:#1A73E8">Google Ads</span>
+        <h3 style="font-size:20px;font-weight:700;margin-top:12px;line-height:1.2">Bulk Upload Google Ads</h3>
+        <p style="font-size:14px;color:#3B3B6B;margin-top:8px;line-height:1.5">Génère les fichiers CSV compatibles Google Ads Editor en 6 étapes guidées. Campagnes Performance Max, Demand Gen, Display — naming automatique par compte, marché et format, prêt à importer sans retouche manuelle.</p>
+        <div class="card-author" style="margin-top:12px">Yannis Echchelh</div>
       </div>
     </div>
   </section>
