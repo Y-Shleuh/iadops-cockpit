@@ -159,7 +159,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <div class="hero-bg1"></div>
   <div class="hero-bg2"></div>
   <div class="hero-inner">
-    <span class="hero-pill">Point du 27 juillet 2026</span>
+    <span class="hero-pill">Point du 25 août 2026</span>
     <h1>L'actu du projet</h1>
     <p>Le grand chantier du moment, les usages déjà en production et la veille que l'équipe partage chaque semaine.</p>
   </div>
@@ -179,13 +179,14 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     <span class="sec-label">Les éditions</span>
     <span class="sec-meta">Un point toutes les une à deux semaines</span>
     <div class="edition-buttons">
-      <button class="edition-btn active" data-edition="0">Semaine du 27 juil.</button>
+      <button class="edition-btn upcoming" data-edition="0">Semaine du 27 juil.</button>
       <button class="edition-btn upcoming" data-edition="1">Semaine du 3 août</button>
+      <button class="edition-btn active" data-edition="2">25 août</button>
     </div>
   </div>
 
   <!-- Édition 0 : 27 juil. -->
-  <div id="edition-0" class="edition-panel">
+  <div id="edition-0" class="edition-panel hidden">
 
     <section>
       <div class="sec-head">
@@ -592,6 +593,195 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
       </div>
     </section>
   </div><!-- /edition-1 -->
+
+  <!-- Édition 2 : 25 août -->
+  <div id="edition-2" class="edition-panel">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">Automatisation &amp; chaîne de prod</span>
+      </div>
+      <div class="chantier-box">
+        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
+        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Brief créa auto depuis Monday</h2>
+        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Un bouton sur le board Monday appelle un agent Mobsuccess qui lit la ligne, rédige le brief complet et le pousse directement sur le LCM. Zéro saisie manuelle, brief standardisé en quelques secondes.</p>
+        <div class="chantier-grid">
+          <div class="chantier-steps">
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Squad lancée</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Steph, Yannis, Anis + AdContent embarquent sur le chantier brief auto.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · squad constituée</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Faisabilité confirmée (Mobanksy)</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Monday supporte désormais les agents natifs. Testé avec Mobanksy : bouton → agent → brief complet → push LCM. Ça marche.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">24 août · validé</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Mise en place par Chris &amp; Ahmat</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Implémentation de l'agent sur le board Monday de production, connexion LCM.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Début sept. · à venir</div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-preview">
+            <div class="dash-topbar">
+              <span class="dash-dot" style="background:#FF5F57"></span>
+              <span class="dash-dot" style="background:#FEBC2E"></span>
+              <span class="dash-dot" style="background:#28C840"></span>
+              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Monday · Board Brief Créa</span>
+            </div>
+            <div class="dash-body">
+              <div style="background:var(--ms-cream);border-radius:12px;padding:12px 14px;margin-bottom:12px">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">LIGNE MONDAY</div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Client</span><span style="font-weight:600;color:var(--ms-navy)">Carrefour BIO</span></div>
+                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Format</span><span style="font-weight:600;color:var(--ms-navy)">Interstitiel 320×480</span></div>
+                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Objectif</span><span style="font-weight:600;color:var(--ms-navy)">Drive-to-Store · oct. 2026</span></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:center;padding:10px 0">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:38px;height:38px;border-radius:12px;background:var(--ms-violet);display:flex;align-items:center;justify-content:center">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                  </div>
+                  <span style="font-size:13px;font-weight:700;color:var(--ms-navy)">Agent Mobsuccess</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="var(--ms-mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size:13px;font-weight:700;color:var(--ms-navy)">LCM</span>
+                </div>
+              </div>
+              <div style="background:var(--ms-navy);border-radius:12px;padding:12px 14px">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">BRIEF GÉNÉRÉ</div>
+                <div style="font-size:12px;color:#BFBFE0;line-height:1.55">Campagne Drive-to-Store pour Carrefour BIO — dispositif local autour des points de vente. Mettre en avant le rayon BIO accessible, ton chaleureux et naturel. Format interstitiel plein écran, CTA « Découvrir le magasin ».</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Déjà en production</span>
+        <span class="sec-meta">Deux nouveaux usages</span>
+      </div>
+      <div class="production-grid">
+        <div class="prod-card">
+          <span class="prod-pill">Tâche programmée · rapport matinal</span>
+          <h3 class="prod-h3">Le rapport du matin, sans rien faire</h3>
+          <p class="prod-body">Chaque matin, une tâche Claude programmée envoie un DM Slack à Ekaterina avec les <b style="font-weight:600">campagnes terminées la veille</b>, un lien vers le rapport Excel, et la liste des <b style="font-weight:600">campagnes en sous-dépense</b> avec leur lien LCM direct.</p>
+          <div class="slack-preview">
+            <div class="slack-bar">
+              <span style="color:#fff;font-size:14px;font-weight:600">Slack · DM Ekaterina</span>
+              <span style="color:#8C8CC0;font-size:12px">8:00</span>
+            </div>
+            <div class="slack-body">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">C</span>
+                <span style="font-weight:600;font-size:14.5px">Claude</span>
+                <span style="padding:2px 8px;border-radius:6px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:10.5px;font-weight:600;letter-spacing:.06em">TÂCHE AUTO</span>
+              </div>
+              <div style="font-weight:600;font-size:15px;margin-top:12px">📋 Rapport du matin — 25 août</div>
+              <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.5"><b style="color:var(--ms-navy)">Terminées hier :</b> Weldom Évreux (RTB), Decathlon Nantes (Meta)<br><span style="color:var(--ms-violet-700);text-decoration:underline">→ Rapport Excel</span></div>
+              <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.5"><b style="color:var(--ms-orange)">Sous-dépense :</b> Carrefour Bio Bordeaux (64 %)<br><span style="color:var(--ms-violet-700);text-decoration:underline">→ Voir sur LCM</span></div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Ekaterina Nazarova · lancé le 6 août</div>
+        </div>
+        <div class="prod-card">
+          <span class="prod-pill">1-pager livrable · méthode équipe</span>
+          <h3 class="prod-h3">Le livrable 5 min qui convainc</h3>
+          <p class="prod-body">Nicolas pousse l'équipe à créer des <b style="font-weight:600">templates de livrables</b> — des 1-pagers comme le test Botanic de Célina — réalisables en 5 à 10 min via Claude Design avec la charte Mobsuccess. La méthode Nicolas pour standardiser les rendus équipe.</p>
+          <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1.5px solid #E2DDD5;font-family:'Jost',sans-serif">
+            <div style="background:#fff;padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+              <div>
+                <span style="display:inline-block;padding:3px 10px;border-radius:999px;background:#5C2EFD;color:#fff;font-size:9px;font-weight:700;letter-spacing:.04em">Test livrable</span>
+                <div style="font-size:16px;font-weight:700;color:#000050;margin-top:6px;line-height:1.15">Botanic × Célina<br>Bilan campagne</div>
+                <div style="font-size:9.5px;color:#6E6E92;margin-top:4px">Claude Design + charte MS · ~5 min</div>
+              </div>
+              <span style="font-size:10px;font-weight:800;color:#000050;white-space:nowrap;padding-top:4px">mobsuccess</span>
+            </div>
+            <div style="background:#000050;padding:11px 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
+              <div><div style="font-size:12px;font-weight:700;color:#fff">5 min</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">DURÉE</div></div>
+              <div><div style="font-size:12px;font-weight:700;color:#fff">Charte MS</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">DESIGN SYSTEM</div></div>
+              <div><div style="font-size:12px;font-weight:700;color:#fff">1-pager</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">FORMAT</div></div>
+            </div>
+            <div style="background:#F2EEE9;padding:10px 14px">
+              <p style="font-size:10px;color:#3B3B6B;line-height:1.55">« Créez votre template de livrable client en 5-10 min avec Claude Design et la charte MS. Un standard à partager en équipe. »</p>
+              <div style="font-size:9.5px;color:var(--ms-violet-700);font-weight:600;margin-top:6px">Nicolas Saraiva · 24 août</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">On embarque toute l'équipe</span>
+        <span class="sec-meta">Veille &amp; retours d'expérience</span>
+      </div>
+      <div class="canal-grid">
+        <div class="canal-card">
+          <div class="canal-header">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
+              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
+            </span>
+            <span style="font-size:12.5px;color:#8C8CC0">le canal IA de l'équipe</span>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 17 août · 10:21</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 17 août</div>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google Ads : les enchères à cible (CPA / ROAS) changent de nom — ne pas paniquer</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude in Chrome = Claude Cowork mais dans votre vrai navigateur</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Filigrane invisible sur les images IA (conformité AI Act en vue)</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Fable 5 en tête de l'Agent Arena — le meilleur modèle pour tâches autonomes</li>
+            </ul>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">E</span>
+              <span style="font-size:13.5px;font-weight:600">Ekaterina</span>
+              <span style="font-size:12px;color:#6E6E92">· mer. 6 août</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Tâche programmée — rapport matinal automatique</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">J'ai mis en place une tâche Claude qui m'envoie chaque matin les campagnes terminées + lien Excel + campagnes en sous-dépense. Plus besoin d'aller chercher l'info.</div>
+            <div style="margin-top:8px"><span class="code-pill">scheduled-task</span></div>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
+              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
+              <span style="font-size:12px;color:#6E6E92">· dim. 24 août</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Templates livrables — méthode équipe</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Je vous encourage tous à créer votre template de livrable client type (1-pager comme le test Botanic de Célina). 5-10 min avec Claude Design + charte MS. On partage en équipe pour standardiser nos rendus.</div>
+          </div>
+        </div>
+        <a href="progression.html" class="canal-cta">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
+          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
+          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
+          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /edition-2 -->
 
 </main>
 
