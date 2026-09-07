@@ -159,7 +159,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <div class="hero-bg1"></div>
   <div class="hero-bg2"></div>
   <div class="hero-inner">
-    <span class="hero-pill">Point du 24 août 2026</span>
+    <span class="hero-pill">Point du 1er septembre 2026</span>
     <h1>L'actu du projet</h1>
     <p>Le grand chantier du moment, les usages déjà en production et la veille que l'équipe partage chaque semaine.</p>
   </div>
@@ -181,7 +181,9 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     <div class="edition-buttons">
       <button class="edition-btn upcoming" data-edition="0">Semaine du 27 juil.</button>
       <button class="edition-btn upcoming" data-edition="1">Semaine du 3 août</button>
-      <button class="edition-btn active" data-edition="2">Semaine du 24 août</button>
+      <button class="edition-btn upcoming" data-edition="3">Semaine du 11 août</button>
+      <button class="edition-btn upcoming" data-edition="2">Semaine du 24 août</button>
+      <button class="edition-btn active" data-edition="4">Semaine du 1er sept.</button>
     </div>
   </div>
 
@@ -578,20 +580,167 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 
   </div><!-- /edition-0 -->
 
-  <!-- Édition 1 : 3 août (à venir) -->
+  <!-- Édition 1 : 3 août -->
   <div id="edition-1" class="edition-panel hidden">
+
     <section>
       <div class="sec-head">
-        <span class="sec-label">Semaine du 3 août</span>
-        <span class="sec-meta">Édition en préparation</span>
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">Pilotage &amp; adoption</span>
       </div>
-      <div class="upcoming-box">
-        <span style="display:inline-flex;padding:6px 16px;border-radius:999px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:13px;font-weight:600">À venir</span>
-        <h2 style="font-size:28px;font-weight:700;line-height:1.15">Le prochain point arrive lundi 3 août</h2>
-        <p style="font-size:15.5px;color:#3B3B6B;line-height:1.55;max-width:560px">Au programme : le best-of des cockpits présentés au weekly du 30 juillet, l'avancée des squads et la veille de la semaine.</p>
-        <a href="realisations.html" style="font-weight:600;font-size:15px;margin-top:4px">En attendant, voir les réalisations →</a>
+      <div class="chantier-box">
+        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
+        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Le dashboard unifié — le best-of</h2>
+        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Chaque AdOps a présenté son cockpit au weekly du 30 juillet. Noura ouvre le Drive « COCKPITS ADOPS » pour assembler le best-of en un dashboard standardisé pour toute l'équipe.</p>
+        <div class="chantier-grid">
+          <div class="chantier-steps">
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Weekly 30 juil. — démos en live</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Chaque AdOps présente son cockpit perso (1 min). Le chantier du dashboard unifié est lancé.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">30 juil. · fait</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Drive « COCKPITS ADOPS » ouvert</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Noura crée le dossier de dépôt (HTML + notice). Deadline : 5 août. Noura &amp; Ghofrane assemblent le best-of.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">31 juil. · fait</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Dashboard standardisé — le best-of</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Assemblage du meilleur de chaque cockpit en un standard unique pour l'équipe, avec layer d'actions auto.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">6 août · en cours</div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-preview">
+            <div class="dash-topbar">
+              <span class="dash-dot" style="background:#FF5F57"></span>
+              <span class="dash-dot" style="background:#FEBC2E"></span>
+              <span class="dash-dot" style="background:#28C840"></span>
+              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Drive · COCKPITS ADOPS</span>
+            </div>
+            <div class="dash-body">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:10px">COCKPITS DÉPOSÉS</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-cream);border-radius:10px;padding:10px 12px">
+                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-violet);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">E</span>
+                  <div><div style="font-size:13px;font-weight:600;color:var(--ms-navy)">Emeric Moulinneuf</div><div style="font-size:11px;color:#6E6E92">dashboard-emeric.html · référence</div></div>
+                  <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--ms-mint)">✓</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-cream);border-radius:10px;padding:10px 12px">
+                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-mint-700);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">N</span>
+                  <div><div style="font-size:13px;font-weight:600;color:var(--ms-navy)">Noura Abou</div><div style="font-size:11px;color:#6E6E92">dashboard-noura.html</div></div>
+                  <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--ms-mint)">✓</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-navy);border-radius:10px;padding:10px 12px">
+                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">★</span>
+                  <div><div style="font-size:13px;font-weight:600;color:#fff">Best-of unifié</div><div style="font-size:11px;color:#8C8CC0">assemblage en cours · Noura &amp; Ghofrane</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Déjà en production</span>
+        <span class="sec-meta">Deux nouveaux usages</span>
+      </div>
+      <div class="production-grid">
+        <div class="prod-card">
+          <span class="prod-pill">Pilotage · marge en temps réel</span>
+          <h3 class="prod-h3">La marge dans les dashboards</h3>
+          <p class="prod-body">Olivier découvre que le KPI <span class="code-pill">buying_cost</span> est lisible via Claude. Résultat : <b style="font-weight:600">marge = spend − buying_cost</b> directement dans les cockpits perso. Plus besoin d'aller chercher la donnée ailleurs.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+            <div style="background:var(--ms-navy);border-radius:14px;padding:14px 16px;text-align:center">
+              <div style="font-size:22px;font-weight:700;color:#fff">spend</div>
+              <div style="font-size:11.5px;color:var(--ms-mint);margin-top:4px">−  buying_cost</div>
+            </div>
+            <div style="background:var(--ms-mint);border-radius:14px;padding:14px 16px;text-align:center">
+              <div style="font-size:22px;font-weight:700;color:var(--ms-navy)">= marge</div>
+              <div style="font-size:11.5px;color:var(--ms-navy);margin-top:4px;font-weight:600">en direct</div>
+            </div>
+          </div>
+          <div style="background:var(--ms-mint-100);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:13px;color:#00534F;line-height:1.5">Prochaine étape : intégrer les fees mesure dans le calcul.</div>
+          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:12px">Olivier · 5 août</div>
+        </div>
+        <div class="prod-card">
+          <span class="prod-pill">Connecteur · correctif MCP</span>
+          <h3 class="prod-h3">Correctif connecteur MCP Mobsuccess</h3>
+          <p class="prod-body">Le connecteur MCP Mobsuccess est mis à jour le 6 août, en même temps que le lancement de la tâche planifiée d'Ekaterina. Un point de fiabilité clé pour les skills qui lisent les données de campagne.</p>
+          <div class="slack-preview">
+            <div class="slack-bar">
+              <span style="color:#fff;font-size:14px;font-weight:600">Slack · # adops_team_ia</span>
+              <span style="color:#8C8CC0;font-size:12px">6 août</span>
+            </div>
+            <div class="slack-body">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-mint-700);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">E</span>
+                <span style="font-weight:600;font-size:14px">Ekaterina Salnikova</span>
+              </div>
+              <div style="font-size:13px;color:#3B3B6B;margin-top:10px;line-height:1.55">Tâche planifiée en place ✓ — rapport matinal automatique + correctif connecteur MCP Mobsuccess déployé.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">On embarque toute l'équipe</span>
+        <span class="sec-meta">Veille &amp; retours d'expérience</span>
+      </div>
+      <div class="canal-grid">
+        <div class="canal-card">
+          <div class="canal-header">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
+              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
+            </span>
+            <span style="font-size:12.5px;color:#8C8CC0">semaine du 3 août</span>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 3 août · 10:09</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 3 août</div>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude Cowork disponible en solo — mode de travail profond sur un projet</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Anthropic ouvre les tâches planifiées en beta — automatiser sans coder</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google étiquette enfin les créas IA dans Google Ads (conformité AI Act)</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Meta AI dépasse 1 milliard d'utilisateurs actifs</li>
+            </ul>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-navy);color:#fff">O</span>
+              <span style="font-size:13.5px;font-weight:600">Olivier</span>
+              <span style="font-size:12px;color:#6E6E92">· mar. 5 août</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Marge dans les cockpits — buying_cost via Claude</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">J'ai trouvé comment accéder au <span class="code-pill">buying_cost</span> via Claude → on peut afficher la marge directement dans nos dashboards. Restent les fees mesure à intégrer.</div>
+          </div>
+        </div>
+        <a href="progression.html" class="canal-cta">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
+          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
+          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
+          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
+        </a>
+      </div>
+    </section>
+
   </div><!-- /edition-1 -->
 
   <!-- Édition 2 : 25 août -->
@@ -782,6 +931,331 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     </section>
 
   </div><!-- /edition-2 -->
+
+  <!-- Édition 3 : 11 août -->
+  <div id="edition-3" class="edition-panel hidden">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">Automatisation &amp; outillage</span>
+      </div>
+      <div class="chantier-box">
+        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
+        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Claude dans Chrome = Cowork</h2>
+        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Claude dans Chrome devient une session Cowork à part entière : skills, connecteurs et historique directement dans le navigateur. La barrière des outils sans API (DSP, portails partenaires) tombe.</p>
+        <div class="chantier-grid">
+          <div class="chantier-steps">
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Claude dans Chrome = session Cowork</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Skills, connecteurs et historique disponibles dans le navigateur — plus besoin de basculer entre Claude Code et le portail.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · déployé</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Outils sans connecteur débloqués</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">DSP, portails partenaires, interfaces sans MCP dédié : Claude peut cliquer et remplir directement. À généraliser sur tous les portails.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · débloqué</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Généralisation sur tous les portails</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Documenter les parcours DSP + portails partenaires pour en faire des skills réutilisables par l'équipe.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">À venir</div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-preview">
+            <div class="dash-topbar">
+              <span class="dash-dot" style="background:#FF5F57"></span>
+              <span class="dash-dot" style="background:#FEBC2E"></span>
+              <span class="dash-dot" style="background:#28C840"></span>
+              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Chrome · session Cowork AdOps</span>
+            </div>
+            <div class="dash-body">
+              <div style="background:var(--ms-cream);border-radius:10px;padding:10px 12px;margin-bottom:10px">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:6px">COWORK ACTIF</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11px;font-weight:600">Skills AdOps</span>
+                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-navy);color:#fff;font-size:11px;font-weight:600">MCP Mobsuccess</span>
+                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:11px;font-weight:600">Historique</span>
+                </div>
+              </div>
+              <div style="background:var(--ms-navy);border-radius:10px;padding:10px 12px">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">PORTAILS DÉBLOQUÉS</div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> DSP / Trading desk</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> Portails partenaires</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> Interfaces sans MCP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Déjà en production</span>
+        <span class="sec-meta">Deux avancées majeures</span>
+      </div>
+      <div class="production-grid">
+        <div class="prod-card">
+          <span class="prod-pill">Looker · feu vert</span>
+          <h3 class="prod-h3">Looker : go pour les dashboards</h3>
+          <p class="prod-body">Le point Looker du 20 août aboutit à un <b style="font-weight:600">feu vert</b>. Les dashboards de reporting peuvent désormais s'appuyer sur Looker comme couche de visualisation, en complément des cockpits Claude.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:20px;padding:16px 20px;background:var(--ms-mint-100);border-radius:16px">
+            <span style="font-size:40px;line-height:1">✅</span>
+            <div>
+              <div style="font-size:18px;font-weight:700;color:var(--ms-navy)">Feu vert Looker</div>
+              <div style="font-size:13px;color:#00534F;margin-top:4px">Dashboards validés · intégration en cours</div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Point du 20 août</div>
+        </div>
+        <div class="prod-card">
+          <span class="prod-pill">Nouveau levier · ChatGPT Ads</span>
+          <h3 class="prod-h3">ChatGPT Ads ouvre en France</h3>
+          <p class="prod-body">OpenAI ouvre ChatGPT Ads à la France (+31 pays EU) le 24 août. <b style="font-weight:600">Ciblage par intention conversationnelle</b> — un levier inédit à intégrer aux recos client dès maintenant.</p>
+          <div style="background:var(--ms-navy);border-radius:14px;padding:16px 18px;margin-top:16px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">NOUVEAU LEVIER</div>
+            <div style="font-size:17px;font-weight:700;color:#fff">ChatGPT Ads</div>
+            <div style="font-size:13px;color:#BFBFE0;margin-top:6px;line-height:1.45">Ciblage par intention conversationnelle · disponible en France depuis le 24/08</div>
+            <div style="display:inline-flex;margin-top:10px;padding:4px 12px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11.5px;font-weight:600">À intégrer aux recos</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">On embarque toute l'équipe</span>
+        <span class="sec-meta">Veille &amp; retours d'expérience</span>
+      </div>
+      <div class="canal-grid">
+        <div class="canal-card">
+          <div class="canal-header">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
+              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
+            </span>
+            <span style="font-size:12.5px;color:#8C8CC0">semaine du 11 août</span>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 11 août · 10:05</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 11 août</div>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude dans Chrome = Cowork natif dans le navigateur — skills + connecteurs + historique</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Anthropic lève 3,5 Mds $ (valorisation 60 Mds) — l'entreprise IA la mieux financée</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Meta lance Movie Gen : génération vidéo pro directement depuis l'interface Ads</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google Looker s'ouvre aux exports Claude — dashboards hybrides SQL + IA</li>
+            </ul>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
+              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 11 août</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Brief Squad lancée — 11 août</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">La squad Brief créa (Steph, Yannis, Anis + AdContent) est constituée. On se retrouve début sept pour la mise en place avec Chris et Ahmat.</div>
+          </div>
+        </div>
+        <a href="progression.html" class="canal-cta">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
+          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
+          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
+          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /edition-3 -->
+
+  <!-- Édition 4 : 1er sept. -->
+  <div id="edition-4" class="edition-panel">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">QA &amp; Brand safety</span>
+      </div>
+      <div class="chantier-box">
+        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
+        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Whitelist IA de placement</h2>
+        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Claude catégorise et trie les publishers RTB, écarte les inventaires douteux et tient à jour une whitelist d'inclusion. Plus fiable et plus rapide qu'une blacklist à courir après.</p>
+        <div class="chantier-grid">
+          <div class="chantier-steps">
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Catégorisation des publishers</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Claude analyse et note chaque publisher selon la brand safety — jeux, contenu douteux et inventaires à risque exclus.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Fait</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Publication Whiteliste_08_26</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Ekaterina &amp; Yannis publient la whitelist v08_26 — prête à être appliquée sur les comptes.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">31 août · publiée</div>
+              </div>
+            </div>
+            <div class="chantier-step">
+              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
+              <div>
+                <h4 style="font-size:17px;font-weight:600;color:#fff">Mise à jour mensuelle automatique</h4>
+                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Tâche planifiée Claude → actualisation mensuelle de la whitelist sans intervention manuelle.</p>
+                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Prochain cran</div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-preview">
+            <div class="dash-topbar">
+              <span class="dash-dot" style="background:#FF5F57"></span>
+              <span class="dash-dot" style="background:#FEBC2E"></span>
+              <span class="dash-dot" style="background:#28C840"></span>
+              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Whitelist · Whiteliste_08_26</span>
+            </div>
+            <div class="dash-body">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">PUBLISHERS CATÉGORISÉS</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:var(--ms-mint);flex-shrink:0"></span>
+                  <span style="font-size:12.5px;font-weight:600;color:var(--ms-navy)">Inclus (brand safe)</span>
+                  <span style="margin-left:auto;font-size:13px;font-weight:700;color:var(--ms-mint)">✓ whitelist</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:var(--ms-orange);flex-shrink:0"></span>
+                  <span style="font-size:12.5px;font-weight:600;color:var(--ms-navy)">Exclus (jeux, contenu douteux)</span>
+                  <span style="margin-left:auto;font-size:13px;font-weight:700;color:var(--ms-orange)">✗ retirés</span>
+                </div>
+              </div>
+              <div style="background:var(--ms-navy);border-radius:10px;padding:10px 12px">
+                <div style="font-size:11px;color:var(--ms-mint);font-weight:700;margin-bottom:4px">AVANTAGE</div>
+                <div style="font-size:12px;color:#BFBFE0;line-height:1.5">Whitelist d'inclusion → plus fiable qu'une blacklist réactive. Mise à jour mensuelle possible via tâche planifiée.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Déjà en production</span>
+        <span class="sec-meta">Trois livrables en une semaine</span>
+      </div>
+      <div class="production-grid">
+        <div class="prod-card">
+          <span class="prod-pill">Skill · bilan &amp; point d'étape</span>
+          <h3 class="prod-h3">Le skill bilan pour toute l'équipe</h3>
+          <p class="prod-body">Nicolas publie le skill « Bilan / Point d'étape » pour toute l'équipe. Il distingue automatiquement bilan (campagne terminée) et point d'étape (en cours), récupère les stats via les skills MCP et respecte la charte. <b style="font-weight:600">Testé sur Botanic (1/09).</b></p>
+          <div style="background:var(--ms-cream);border-radius:14px;padding:14px 16px;margin-top:14px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">CE QUE FAIT LE SKILL</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Détecte bilan vs point d'étape</div>
+              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Pose les questions créa + logo</div>
+              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Récupère les stats via MCP</div>
+              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Contrôle la cohérence des chiffres</div>
+              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Respecte la charte Mobsuccess</div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Nicolas Saraiva · 1er septembre</div>
+        </div>
+        <div class="prod-card">
+          <span class="prod-pill">Claude Design · motion design</span>
+          <h3 class="prod-h3">Animation Pacer × Carrefour</h3>
+          <p class="prod-body">Nicolas exploite le nouveau mode « Animation » de Claude Design : un <span class="code-pill">.md</span> en entrée → une vidéo MP4 en quelques minutes. Premier cas d'usage : <b style="font-weight:600">animation du fonctionnement de Pacer AI sur Carrefour</b> pour l'appel d'offres.</p>
+          <div style="background:var(--ms-navy);border-radius:14px;padding:16px 18px;margin-top:16px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">NOUVEAU MODE CLAUDE DESIGN</div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="text-align:center">
+                <div style="font-size:13px;color:#BFBFE0">Fichier .md</div>
+              </div>
+              <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M2 6h20M16 2l6 4-6 4" stroke="#00F5BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div style="text-align:center">
+                <div style="font-size:13px;color:#BFBFE0">Vidéo MP4</div>
+              </div>
+              <div style="margin-left:auto;font-size:12px;font-weight:700;color:var(--ms-mint)">~5 min</div>
+            </div>
+          </div>
+          <div style="background:var(--ms-mint-100);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:13px;color:#00534F;line-height:1.5">One-pagers Anis (Boulanger) et Célina (Botanic) également produits en ~10 min chacun le même jour.</div>
+          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:12px">Nicolas Saraiva · 1er septembre</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">On embarque toute l'équipe</span>
+        <span class="sec-meta">Veille &amp; retours d'expérience</span>
+      </div>
+      <div class="canal-grid">
+        <div class="canal-card">
+          <div class="canal-header">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
+              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
+            </span>
+            <span style="font-size:12.5px;color:#8C8CC0">semaine du 1er sept.</span>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
+              <span style="font-size:13.5px;font-weight:600">Yannis</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 1 sept. · 10:12</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 1er sept.</div>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude Design lance le mode Animation : .md → vidéo MP4 en quelques minutes</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">ChatGPT Ads désormais actif en France — premier levier conversationnel à cibler</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Fable 5.1 — nouveau modèle Anthropic spécialisé agentique, en tête d'Agent Arena</li>
+              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">AI Act : filigrane obligatoire sur les images IA dès le 15/09 — à anticiper sur nos créas</li>
+            </ul>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">E</span>
+              <span style="font-size:13.5px;font-weight:600">Ekaterina Salnikova</span>
+              <span style="font-size:12px;color:#6E6E92">· dim. 31 août</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Whitelist IA de placement publiée — Whiteliste_08_26</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Avec Yannis, on a produit la whitelist IA des publishers RTB. Claude catégorise, retire les jeux douteux, tient la liste à jour. Disponible pour tous les comptes.</div>
+          </div>
+          <div class="canal-msg">
+            <div style="display:flex;gap:10px;align-items:center">
+              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
+              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
+              <span style="font-size:12px;color:#6E6E92">· lun. 1 sept.</span>
+            </div>
+            <div style="font-size:14px;font-weight:600;margin-top:10px">Skill bilan / point d'étape — dispo pour toute l'équipe</div>
+            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Le skill est disponible dans votre Claude. Testé sur Botanic avec Célina. Si vous avez un bilan à faire, c'est le moment de l'essayer !</div>
+            <div style="margin-top:8px"><span class="code-pill">skill-bilan-point-etape</span></div>
+          </div>
+        </div>
+        <a href="progression.html" class="canal-cta">
+          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
+          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
+          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
+          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /edition-4 -->
 
 </main>
 
