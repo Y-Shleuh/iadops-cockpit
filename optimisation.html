@@ -275,6 +275,13 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
           <div class="step-text">Mémorise la règle pour qu'elle s'applique <strong style="color:#fff">par défaut</strong>.</div>
         </div>
         <div class="methode-ref">Méthode Devin Fusion — cognition.com/blog/devin-fusion</div>
+        <div style="margin-top:14px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.09em;color:#8C8CC0;margin-bottom:8px">INSTRUCTION À COLLER DANS CLAUDE</div>
+          <div style="position:relative">
+            <pre id="prompt-text" style="background:rgba(0,0,0,.35);border-radius:12px;padding:14px 16px;font-family:'Jost',system-ui,sans-serif;font-size:13px;color:#E4E1FE;line-height:1.55;white-space:pre-wrap;word-break:break-word;margin:0">Lis d'abord la méthode ici : https://cognition.com/blog/devin-fusion — puis applique la méthode hybride « sidekick » (Devin Fusion) : agis en LEAD avec Fable et utilise Sonnet comme SIDEKICK. En tant que lead, tu planifies, tu tranches les ambiguïtés et tu fais la revue finale ; tu délègues au sidekick (Sonnet) les tâches mécaniques et volumineuses. C'est toi, le lead, qui décides dynamiquement quand déléguer et quand exécuter toi-même, en restant le plus économe possible en tokens. Mémorise cette règle et applique-la par défaut.</pre>
+            <button onclick="copyPrompt(this)" style="position:absolute;top:10px;right:10px;padding:5px 12px;border-radius:8px;border:none;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s">Copier</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -405,6 +412,15 @@ function setPeriod(period, btn) {
 }
 
 renderCards('reference');
+
+function copyPrompt(btn) {
+  const text = document.getElementById('prompt-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copié ✓';
+    btn.style.opacity = '.7';
+    setTimeout(() => { btn.textContent = 'Copier'; btn.style.opacity = '1'; }, 2000);
+  });
+}
 </script>
 </body>
 </html>
