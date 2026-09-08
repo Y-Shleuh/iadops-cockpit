@@ -105,7 +105,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 .person-conseil{border-radius:12px;padding:10px 13px;font-size:13px;line-height:1.45}
 
 /* METHODE */
-.methode-box{background:var(--ms-navy);border-radius:24px;padding:28px 32px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.methode-box{background:var(--ms-navy);border-radius:24px;padding:28px 32px;color:#fff}
 .methode-title{font-size:28px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:10px}
 .methode-sub{font-size:15px;color:#BFBFE0;line-height:1.55}
 .methode-config{margin-top:16px;padding:14px 18px;background:rgba(255,255,255,.07);border-radius:14px;font-size:13px;color:#BFBFE0;line-height:1.5}
@@ -243,12 +243,11 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
       <span class="sec-meta">Fable en lead · Sonnet en sidekick</span>
     </div>
     <div class="methode-box">
-      <div>
-        <div class="methode-title">Fable en lead,<br>Sonnet en sidekick</div>
-        <div class="methode-sub">Deux agents : un lead (cerveau — plan, ambiguïtés, revue finale) et un sidekick moins cher (mécanique, volumineux). C'est le lead qui décide dynamiquement quand déléguer et quand faire lui-même.</div>
-        <div class="methode-config">
-          <strong style="color:var(--ms-mint)">Config :</strong> Fable en lead · Sonnet en sidekick<br>
-          Surtout pour les usages agentiques — Cowork tâches longues et Claude Code.
+      <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:18px">
+        <div class="methode-title" style="font-size:22px;margin:0">Fable en lead · Sonnet en sidekick</div>
+        <div class="methode-sub" style="flex:1;min-width:200px;font-size:13.5px">Deux agents : lead (plan, ambiguïtés, revue finale) + sidekick moins cher (mécanique, volumineux). Le lead décide dynamiquement quand déléguer.</div>
+        <div class="methode-config" style="flex-shrink:0;margin:0;padding:8px 14px;font-size:12.5px">
+          <strong style="color:var(--ms-mint)">Config :</strong> Fable lead · Sonnet sidekick — surtout usages agentiques (Cowork, Claude Code)
         </div>
       </div>
       <div class="methode-steps">
