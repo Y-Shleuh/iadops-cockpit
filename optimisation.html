@@ -228,17 +228,11 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 
   <!-- SECTION 3 : PAR PERSONNE -->
   <section>
-    <div class="sec-head" style="margin-bottom:10px">
-      <span class="sec-label">Calibrage par personne</span>
-      <span class="sec-meta" id="period-meta">9 juin → 7 sept. 2026 — cumul</span>
+    <div class="sec-head" style="margin-bottom:12px">
+      <span class="sec-label">Par AdOps — mix de modèles, adéquation &amp; conseil</span>
+      <span class="sec-meta">9 juin → 7 sept. 2026 · tendance août en bas de chaque carte</span>
     </div>
-    <div class="period-row">
-      <div style="font-size:13px;color:#6E6E92">Drapeaux : 🟢 bon calibrage &nbsp;·&nbsp; 🟠 à surveiller &nbsp;·&nbsp; 🔴 à corriger</div>
-      <div class="period-toggle">
-        <button class="period-btn active" id="btn-ref" onclick="setPeriod('reference', this)">9 juin → 7 sept.</button>
-        <button class="period-btn" id="btn-cmp" onclick="setPeriod('comparaison', this)">Août 2026</button>
-      </div>
-    </div>
+    <div style="font-size:12.5px;color:#8C8CC0;margin-bottom:16px">🟢 bon calibrage &nbsp;·&nbsp; 🟠 à surveiller &nbsp;·&nbsp; 🔴 à corriger &nbsp;·&nbsp; Tendance août : <span style="color:#C73000">▲</span> hausse · <span style="color:#00C99C">▼</span> baisse vs cumul S2</div>
     <div class="people-grid" id="people-grid"></div>
   </section>
 
@@ -306,47 +300,81 @@ const PHOTO_MAP = {
 
 const DATA = {
   reference: [
-    {name:'Yannis',    req:31565,web:83, mix:{sonnet:35,opus:52,haiku:6,fable:8}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
-    {name:'Célina',    req:7807, web:70, mix:{sonnet:22,opus:57,haiku:10,fable:11},adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
-    {name:'Eric',      req:691,  web:21, mix:{sonnet:86,opus:9,haiku:5,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Olivier Ta',req:19708,web:46, mix:{sonnet:76,opus:24,haiku:0,fable:0}, adeq:'🟠',conseil:'Zéro Haiku — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
-    {name:'Anis',      req:9285, web:20, mix:{sonnet:69,opus:27,haiku:4,fable:0}, adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
-    {name:'Noura',     req:6258, web:337,mix:{sonnet:54,opus:34,haiku:11,fable:0},adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
-    {name:'Stéphanie', req:5942, web:10, mix:{sonnet:84,opus:15,haiku:1,fable:0}, adeq:'🟠',conseil:'Zéro Haiku — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
-    {name:'Steeve',    req:13506,web:1,  mix:{sonnet:97,opus:0,haiku:3,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Ekaterina', req:8556, web:67, mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Emeric',    req:7175, web:8,  mix:{sonnet:95,opus:1,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Ghofrane',  req:6635, web:15, mix:{sonnet:80,opus:12,haiku:4,fable:4}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Farès',     req:5293, web:18, mix:{sonnet:79,opus:9,haiku:12,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Waël',      req:3856, web:2,  mix:{sonnet:94,opus:0,haiku:6,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Alphonse',  req:2726, web:10, mix:{sonnet:96,opus:2,haiku:3,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Yannis',    req:31565, cout:55,  web:83,  mix:{sonnet:35,opus:52,haiku:6,fable:8},
+     produits:[['Claude Code',34],['Cowork',34],['Chat',25],['Claude Design',5],['Claude in Chrome',1]],
+     adeq:'🔴', conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Célina',    req:7807,  cout:150, web:70,  mix:{sonnet:22,opus:57,haiku:10,fable:11},
+     produits:[['Cowork',93],['Claude Design',5],['Chat',2]],
+     adeq:'🔴', conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Eric',      req:691,   cout:0,   web:21,  mix:{sonnet:86,opus:9,haiku:5,fable:0},
+     produits:[['Chat',75],['Claude in Chrome',16],['Claude Design',9]],
+     adeq:'🔴', conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Olivier Ta',req:19708, cout:134, web:46,  mix:{sonnet:76,opus:24,haiku:0,fable:0},
+     produits:[['Cowork',96],['Chat',3]],
+     adeq:'🟠', conseil:'Zéro Haiku — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
+    {name:'Anis',      req:9285,  cout:66,  web:20,  mix:{sonnet:69,opus:27,haiku:4,fable:0},
+     produits:[['Cowork',46],['Chat',37],['Claude Design',17]],
+     adeq:'🟠', conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
+    {name:'Noura',     req:6258,  cout:0,   web:337, mix:{sonnet:54,opus:34,haiku:11,fable:0},
+     produits:[['Cowork',62],['Claude Design',34],['Chat',4]],
+     adeq:'🟠', conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
+    {name:'Stéphanie', req:5942,  cout:0,   web:10,  mix:{sonnet:84,opus:15,haiku:1,fable:0},
+     produits:[['Cowork',82],['Claude Design',14],['Chat',4]],
+     adeq:'🟠', conseil:'Haiku quasi nul — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
+    {name:'Steeve',    req:13506, cout:1,   web:1,   mix:{sonnet:97,opus:0,haiku:3,fable:0},
+     produits:[['Cowork',99],['Chat',1]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Ekaterina', req:8556,  cout:0,   web:67,  mix:{sonnet:96,opus:0,haiku:4,fable:0},
+     produits:[['Cowork',78],['Chat',21],['Claude in Chrome',1]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Emeric',    req:7175,  cout:0,   web:8,   mix:{sonnet:95,opus:1,haiku:4,fable:0},
+     produits:[['Cowork',94],['Office Agents',4],['Claude in Chrome',2],['Chat',1]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Ghofrane',  req:6635,  cout:3,   web:15,  mix:{sonnet:80,opus:12,haiku:4,fable:4},
+     produits:[['Cowork',62],['Chat',26],['Claude Design',12]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Farès',     req:5293,  cout:0,   web:18,  mix:{sonnet:79,opus:9,haiku:12,fable:0},
+     produits:[['Cowork',53],['Claude in Chrome',28],['Chat',18]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Waël',      req:3856,  cout:0,   web:2,   mix:{sonnet:94,opus:0,haiku:6,fable:0},
+     produits:[['Cowork',86],['Chat',10],['Claude Code',4]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Alphonse',  req:2726,  cout:0,   web:10,  mix:{sonnet:96,opus:2,haiku:3,fable:0},
+     produits:[['Cowork',86],['Chat',12],['Claude Design',2]],
+     adeq:'🟢', conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
   ],
   comparaison: [
-    {name:'Olivier Ta',req:8346, web:0,  mix:{sonnet:43,opus:57,haiku:0,fable:0}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
-    {name:'Yannis',    req:9372, web:40, mix:{sonnet:24,opus:64,haiku:10,fable:3},adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
-    {name:'Célina',    req:2958, web:0,  mix:{sonnet:0,opus:84,haiku:16,fable:0}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
-    {name:'Eric',      req:182,  web:0,  mix:{sonnet:87,opus:0,haiku:13,fable:0}, adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Alphonse',  req:606,  web:0,  mix:{sonnet:92,opus:0,haiku:8,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Waël',      req:1253, web:0,  mix:{sonnet:91,opus:0,haiku:9,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Ghofrane',  req:1110, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Farès',     req:1045, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
-    {name:'Noura',     req:2623, web:1,  mix:{sonnet:64,opus:34,haiku:3,fable:0}, adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
-    {name:'Stéphanie', req:2374, web:1,  mix:{sonnet:84,opus:14,haiku:2,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Anis',      req:2557, web:0,  mix:{sonnet:84,opus:15,haiku:1,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Steeve',    req:4142, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Ekaterina', req:4835, web:1,  mix:{sonnet:94,opus:0,haiku:6,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
-    {name:'Emeric',    req:1834, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Olivier Ta',req:8346, mix:{sonnet:43,opus:57,haiku:0,fable:0}},
+    {name:'Yannis',    req:9372, mix:{sonnet:24,opus:64,haiku:10,fable:3}},
+    {name:'Célina',    req:2958, mix:{sonnet:0, opus:84,haiku:16,fable:0}},
+    {name:'Eric',      req:182,  mix:{sonnet:87,opus:0, haiku:13,fable:0}},
+    {name:'Alphonse',  req:606,  mix:{sonnet:92,opus:0, haiku:8, fable:0}},
+    {name:'Waël',      req:1253, mix:{sonnet:91,opus:0, haiku:9, fable:0}},
+    {name:'Ghofrane',  req:1110, mix:{sonnet:96,opus:0, haiku:4, fable:0}},
+    {name:'Farès',     req:1045, mix:{sonnet:96,opus:0, haiku:4, fable:0}},
+    {name:'Noura',     req:2623, mix:{sonnet:64,opus:34,haiku:3, fable:0}},
+    {name:'Stéphanie', req:2374, mix:{sonnet:84,opus:14,haiku:2, fable:0}},
+    {name:'Anis',      req:2557, mix:{sonnet:84,opus:15,haiku:1, fable:0}},
+    {name:'Steeve',    req:4142, mix:{sonnet:96,opus:0, haiku:4, fable:0}},
+    {name:'Ekaterina', req:4835, mix:{sonnet:94,opus:0, haiku:6, fable:0}},
+    {name:'Emeric',    req:1834, mix:{sonnet:96,opus:0, haiku:4, fable:0}},
   ]
 };
 
-function fmtReq(n) {
-  if (n >= 10000) return Math.round(n / 1000) + 'k';
-  if (n >= 1000)  return (n / 1000).toFixed(1) + 'k';
-  return n.toString();
+const AOUT = {};
+DATA.comparaison.forEach(d => AOUT[d.name] = d);
+
+function fmtNum(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 function initColor(name) {
   return INIT_COLORS[name.charCodeAt(0) % INIT_COLORS.length];
+}
+
+function adeqDot(adeq) {
+  const color = adeq === '🔴' ? '#FF481E' : adeq === '🟠' ? '#FF9900' : '#00C99C';
+  return `<div style="width:13px;height:13px;border-radius:50%;background:${color};flex-shrink:0;margin-left:8px"></div>`;
 }
 
 function adeqTheme(adeq) {
@@ -355,13 +383,25 @@ function adeqTheme(adeq) {
   return {bg:'rgba(0,201,156,.05)',border:'#A8EEE0',conseil:'rgba(0,201,156,.1)'};
 }
 
-function renderCards(period) {
+function fmtDelta(model, current, delta) {
+  if (delta === 0) return `<span style="color:#A09CB0">${model} ${current}% =</span>`;
+  const abs = Math.abs(delta);
+  if (delta > 0) {
+    const color = model === 'Opus' ? '#C73000' : '#00C99C';
+    return `<span style="color:${color}">${model} ${current}% ▲+${abs}</span>`;
+  } else {
+    const color = model === 'Opus' ? '#00C99C' : '#FF9900';
+    return `<span style="color:${color}">${model} ${current}% ▼${abs}</span>`;
+  }
+}
+
+function renderCards() {
   const grid = document.getElementById('people-grid');
-  const people = DATA[period];
-  grid.innerHTML = people.map((p, i) => {
+  grid.innerHTML = DATA.reference.map((p, i) => {
     const slug = PHOTO_MAP[p.name];
     const delay = (i * 0.035).toFixed(3);
     const t = adeqTheme(p.adeq);
+    const a = AOUT[p.name];
 
     const avImg = slug
       ? `<img class="person-av" src="photos/${slug}.jpg" alt="${p.name}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
@@ -373,45 +413,49 @@ function renderCards(period) {
       .map(([k, v]) => `<div class="model-seg" style="flex:${v};background:${COLORS[k]}" title="${k}: ${v}%"></div>`)
       .join('');
 
-    const pills = Object.entries(p.mix)
+    const mixText = Object.entries(p.mix)
       .filter(([,v]) => v > 0)
-      .map(([k, v]) => `<div class="mix-pill"><div class="mix-pill-dot" style="background:${COLORS[k]}"></div>${k[0].toUpperCase() + k.slice(1).charAt(0).toUpperCase()}&nbsp;${v}%</div>`)
-      .join('');
+      .map(([k, v]) => `<span style="color:${COLORS[k]};font-weight:600">${v}% ${k[0].toUpperCase() + k.slice(1)}</span>`)
+      .join('<span style="color:#C8C4BC"> · </span>');
+
+    const produitsText = p.produits.map(([name, pct]) => `${name} ${pct}%`).join(' · ');
+
+    const statsLine = [
+      `${fmtNum(p.req)} req`,
+      p.cout > 0 ? `$${p.cout}` : null,
+      p.web > 0 ? `${p.web} web-search` : null,
+    ].filter(Boolean).join(' · ');
+
+    let trendHtml = '';
+    if (a) {
+      const opusDelta  = a.mix.opus  - p.mix.opus;
+      const haikuDelta = a.mix.haiku - p.mix.haiku;
+      trendHtml = `<div style="border-top:1px solid #E7E2DA;margin-top:10px;padding-top:10px;font-size:12.5px">
+  <span style="color:#A09CB0;font-weight:600;margin-right:6px">août 2026</span>${[
+    fmtDelta('Opus',  a.mix.opus,  opusDelta),
+    fmtDelta('Haiku', a.mix.haiku, haikuDelta),
+    `<span style="color:#6E6E92">${fmtNum(a.req)} req</span>`,
+  ].join('<span style="color:#C8C4BC"> · </span>')}
+</div>`;
+    }
 
     return `<div class="person-card" style="animation-delay:${delay}s;border:1.5px solid ${t.border};background:${t.bg}">
-  <div class="person-top">
+  <div style="display:flex;align-items:center;gap:10px">
     ${avImg}${avInit}
-    <div style="flex:1;min-width:0">
-      <div class="person-name">${p.name}</div>
-      <div class="model-bar">${bar}</div>
-    </div>
-    <div style="font-size:22px;line-height:1;flex-shrink:0;margin-left:8px">${p.adeq}</div>
+    <div class="person-name" style="flex:1;min-width:0">${p.name}</div>
+    ${adeqDot(p.adeq)}
   </div>
-  <div class="person-stats">
-    <div class="stat-chip">
-      <div class="stat-num">${fmtReq(p.req)}</div>
-      <div class="stat-lbl">requêtes</div>
-    </div>
-    ${p.web > 0 ? `<div class="stat-chip">
-      <div class="stat-num">${p.web}</div>
-      <div class="stat-lbl">web searches</div>
-    </div>` : ''}
-    <div class="mix-pills" style="margin-left:auto">${pills}</div>
-  </div>
-  <div class="person-conseil" style="background:${t.conseil}">${p.conseil}</div>
+  <div style="font-size:12.5px;color:#6E6E92;margin:5px 0 8px">${statsLine}</div>
+  <div class="model-bar">${bar}</div>
+  <div style="font-size:13px;margin-top:5px;line-height:1.6">${mixText}</div>
+  <div style="font-size:12px;color:#6E6E92;margin-top:3px">Produits : ${produitsText}</div>
+  <div class="person-conseil" style="background:${t.conseil};margin-top:8px">${p.conseil}</div>
+  ${trendHtml}
 </div>`;
   }).join('');
 }
 
-function setPeriod(period, btn) {
-  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('period-meta').textContent =
-    period === 'reference' ? '9 juin → 7 sept. 2026 — cumul' : 'Août 2026 — comparaison';
-  renderCards(period);
-}
-
-renderCards('reference');
+renderCards();
 
 function copyPrompt(btn) {
   const text = document.getElementById('prompt-text').textContent;
