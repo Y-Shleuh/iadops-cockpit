@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Optimisation Claude — Cockpit iAdOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ms-navy:#000050;--ms-cream:#F2EEE9;--ms-violet:#5C2EFD;--ms-mint:#00F5BE;
+  --ms-orange:#FF481E;--ms-navy-700:#0A0A6E;--ms-violet-700:#4A1FE0;
+  --ms-violet-100:#E4E1FE;--ms-mint-700:#00C99C;--ms-mint-100:#D6FCF1;
+  --ms-cream-200:#E7E2DA;--ms-cream-300:#DAD4C9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased}
+a{color:var(--ms-violet);text-decoration:none}
+h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
+@keyframes msFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.nav{background:var(--ms-navy);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-brand img{height:22px;width:auto;display:block}
+.nav-sep{width:1px;height:20px;background:#3A3A78;display:block}
+.nav-title{color:#fff;font-size:16px;font-weight:600}
+.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600}
+
+.hero{background:var(--ms-navy);color:var(--ms-cream);padding:30px 40px 36px;position:relative;overflow:hidden}
+.hero-bg1{position:absolute;top:-120px;right:60px;width:260px;height:260px;border-radius:50%;background:var(--ms-violet);opacity:.55}
+.hero-bg2{position:absolute;bottom:-120px;right:-40px;width:220px;height:220px;border-radius:50%;background:var(--ms-navy-700)}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative}
+.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:14px;font-weight:600}
+.hero h1{color:#fff;font-size:42px;font-weight:700;line-height:1.04;margin-top:18px}
+.hero p{font-size:18px;line-height:1.45;color:#BFBFE0;margin-top:12px;max-width:720px}
+
+.tabs{background:var(--ms-cream);display:flex;justify-content:center;gap:10px;padding:22px 20px 0;flex-wrap:wrap}
+.tab{padding:10px 26px;border-radius:999px;font-size:15px;font-weight:500;background:#fff;border:1px solid var(--ms-cream-200);color:var(--ms-navy);transition:transform .18s ease-out,background .18s ease-out;text-decoration:none}
+.tab:hover{background:var(--ms-violet-100);color:var(--ms-violet-700);transform:translateY(-1px)}
+.tab.active{background:var(--ms-navy);color:#fff;font-weight:600;border:none}
+.tab.active:hover{transform:translateY(-1px);background:var(--ms-navy)}
+
+main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-direction:column;gap:32px}
+
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:16px}
+.sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
+.sec-meta{color:#6E6E92;font-size:13px}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi-tile{background:#fff;border:1px solid var(--ms-cream-200);border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:4px}
+.kpi-value{font-size:34px;font-weight:700;line-height:1;color:var(--ms-navy)}
+.kpi-sub{font-size:12px;color:#6E6E92;margin-top:1px}
+.kpi-label{font-size:13px;color:#6E6E92;font-weight:500}
+.kpi-tile.kmint{background:#D6FCF1;border-color:#00C99C}
+.kpi-tile.kmint .kpi-value{color:#00534F}
+.kpi-tile.kwarn{background:rgba(255,72,30,.07);border-color:#FF8F6B}
+.kpi-tile.kwarn .kpi-value{color:#C73000}
+
+/* GLOBAL MIX BAR */
+.mix-bar-wrap{background:#fff;border:1px solid var(--ms-cream-200);border-radius:20px;padding:20px 24px}
+.mix-bar-lbl{font-size:11.5px;font-weight:700;letter-spacing:.09em;color:#6E6E92;margin-bottom:10px}
+.mix-bar{display:flex;height:18px;border-radius:999px;overflow:hidden;gap:2px}
+.mix-seg{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;min-width:0}
+.mix-legend{display:flex;gap:20px;margin-top:12px;flex-wrap:wrap}
+.mix-li{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500}
+.mix-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.mix-note{font-size:11.5px;color:#8C8CC0;margin-top:10px;line-height:1.4;font-style:italic}
+
+/* GUIDE */
+.guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.guide-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.guide-badge{display:inline-flex;padding:4px 12px;border-radius:999px;font-size:11.5px;font-weight:700;width:fit-content}
+.guide-model{font-size:20px;font-weight:700}
+.guide-usage{font-size:13px;color:#3B3B6B;line-height:1.5}
+
+/* PERIOD TOGGLE */
+.period-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
+.period-toggle{display:flex;gap:6px;flex-shrink:0}
+.period-btn{padding:8px 18px;border-radius:999px;font-size:13px;font-weight:600;border:1.5px solid var(--ms-cream-200);background:#fff;color:var(--ms-navy);cursor:pointer;transition:all .16s ease;font-family:inherit}
+.period-btn:hover{border-color:var(--ms-violet);color:var(--ms-violet)}
+.period-btn.active{background:var(--ms-navy);color:#fff;border-color:var(--ms-navy)}
+
+/* PERSON CARDS */
+.people-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.person-card{background:#fff;border-radius:22px;padding:20px 22px;display:flex;flex-direction:column;gap:14px;animation:msFadeUp .4s ease-out both;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.person-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,80,.1)}
+.person-top{display:flex;align-items:center;gap:12px}
+.person-av{width:44px;height:44px;border-radius:50%;border:2px solid var(--ms-cream-200);object-fit:cover;flex-shrink:0;display:block}
+.person-av-init{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;flex-shrink:0}
+.person-name{font-size:17px;font-weight:600;line-height:1.2}
+.model-bar{height:7px;border-radius:999px;overflow:hidden;display:flex;gap:1.5px;margin-top:6px}
+.model-seg{height:100%;transition:flex .3s ease}
+
+.person-stats{display:flex;gap:14px;align-items:flex-end}
+.stat-chip{display:flex;flex-direction:column;gap:2px}
+.stat-num{font-size:21px;font-weight:700;color:var(--ms-navy);line-height:1}
+.stat-lbl{font-size:11px;color:#6E6E92;font-weight:500;letter-spacing:.02em}
+.mix-pills{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.mix-pill{display:flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:#3B3B6B}
+.mix-pill-dot{width:7px;height:7px;border-radius:50%}
+
+.person-conseil{border-radius:12px;padding:10px 13px;font-size:13px;line-height:1.45}
+
+/* METHODE */
+.methode-box{background:var(--ms-navy);border-radius:24px;padding:28px 32px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.methode-title{font-size:28px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:10px}
+.methode-sub{font-size:15px;color:#BFBFE0;line-height:1.55}
+.methode-config{margin-top:16px;padding:14px 18px;background:rgba(255,255,255,.07);border-radius:14px;font-size:13px;color:#BFBFE0;line-height:1.5}
+.methode-steps{display:flex;flex-direction:column;gap:12px}
+.methode-step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--ms-mint);color:var(--ms-navy);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:14px;color:#BFBFE0;line-height:1.5}
+.methode-ref{margin-top:14px;padding:12px 16px;background:rgba(0,245,190,.08);border-radius:12px;font-size:13px;color:var(--ms-mint);font-weight:600}
+
+.mint-rule{height:6px;background:var(--ms-mint)}
+footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
+footer img{height:20px;width:auto;display:block;opacity:.85}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+    <span class="nav-sep"></span>
+    <span class="nav-title">Cockpit iAdOps</span>
+  </a>
+  <span class="nav-tag">Scaling Infinity</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg1"></div>
+  <div class="hero-bg2"></div>
+  <div class="hero-inner">
+    <span class="hero-pill">Optimisation · S2 2026</span>
+    <h1>Mix de modèles<br>&amp; calibrage</h1>
+    <p>129 000 requêtes analysées sur le S2. Qui sur-utilise Opus, qui pourrait basculer sur Haiku ? Un point par personne avec le conseil.</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <a href="index.html" class="tab">Le projet</a>
+  <a href="progression.html" class="tab">Progression AdOps</a>
+  <a href="optimisation.html" class="tab active">Optimisation</a>
+  <a href="realisations.html" class="tab">Réalisations</a>
+  <a href="actu.html" class="tab">L'actu</a>
+</div>
+
+<main>
+
+  <!-- SECTION 1 : VUE GLOBALE -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Vue d'ensemble · 9 juin → 7 sept. 2026</span>
+      <span class="sec-meta">14 AdOps · cumul S2</span>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-tile">
+        <div class="kpi-value">129k</div>
+        <div class="kpi-label">requêtes totales</div>
+      </div>
+      <div class="kpi-tile">
+        <div class="kpi-value">$409</div>
+        <div class="kpi-label">coût net (partiel)</div>
+        <div class="kpi-sub">Claude Design &amp; sièges non comptés</div>
+      </div>
+      <div class="kpi-tile kmint">
+        <div class="kpi-value">67%</div>
+        <div class="kpi-label">Sonnet — le bon défaut</div>
+      </div>
+      <div class="kpi-tile kwarn">
+        <div class="kpi-value">25%</div>
+        <div class="kpi-label">Opus — à surveiller</div>
+      </div>
+    </div>
+    <div class="mix-bar-wrap">
+      <div class="mix-bar-lbl">MIX GLOBAL DES MODÈLES · S2 2026</div>
+      <div class="mix-bar">
+        <div class="mix-seg" style="flex:67;background:#5C2EFD">Sonnet 67%</div>
+        <div class="mix-seg" style="flex:25;background:#FF481E">Opus 25%</div>
+        <div class="mix-seg" style="flex:5;background:#00C99C">Haiku 5%</div>
+        <div class="mix-seg" style="flex:3;background:#8C8CC0">3%</div>
+      </div>
+      <div class="mix-legend">
+        <div class="mix-li"><div class="mix-dot" style="background:#5C2EFD"></div>Sonnet · 67%</div>
+        <div class="mix-li"><div class="mix-dot" style="background:#FF481E"></div>Opus · 25%</div>
+        <div class="mix-li"><div class="mix-dot" style="background:#00C99C"></div>Haiku · 5%</div>
+        <div class="mix-li"><div class="mix-dot" style="background:#8C8CC0"></div>Fable · 3%</div>
+      </div>
+      <div class="mix-note">Le coût n'est pas exhaustif : Claude Design = 0 $ et une partie de Chat/Claude Code est incluse dans le siège. Se fier au mix de modèles plus qu'au coût.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 : GUIDE -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">Le guide du bon modèle</span>
+      <span class="sec-meta">Quel modèle pour quelle tâche</span>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card" style="border-top:3px solid #00C99C">
+        <div class="guide-badge" style="background:#D6FCF1;color:#00534F">Haiku</div>
+        <div class="guide-model" style="color:#00534F">Le léger</div>
+        <div class="guide-usage">Tâches légères &amp; répétitives : reformulation de mails, tri, extraction simple, réponses courtes.</div>
+      </div>
+      <div class="guide-card" style="border-top:3px solid #5C2EFD">
+        <div class="guide-badge" style="background:#E4E1FE;color:#4A1FE0">Sonnet</div>
+        <div class="guide-model" style="color:#5C2EFD">Le défaut</div>
+        <div class="guide-usage">Le défaut AdOps : rapport, bilan, analyse de perf, recap, recherche de data.</div>
+      </div>
+      <div class="guide-card" style="border-top:3px solid #FF481E">
+        <div class="guide-badge" style="background:rgba(255,72,30,.1);color:#C73000">Opus</div>
+        <div class="guide-model" style="color:#C73000">Le lourd</div>
+        <div class="guide-usage">Raisonnement lourd, refonte, gros multi-étapes, orchestration complexe d'outils.</div>
+      </div>
+      <div class="guide-card" style="border-top:3px solid #8C8CC0">
+        <div class="guide-badge" style="background:#F0EFF8;color:#4A4A8E">Fable</div>
+        <div class="guide-model" style="color:#4A4A8E">Le créatif</div>
+        <div class="guide-usage">Usages ultra-légers / créatifs très simples. Éviter pour l'analyse et le motion design.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 : PAR PERSONNE -->
+  <section>
+    <div class="sec-head" style="margin-bottom:10px">
+      <span class="sec-label">Calibrage par personne</span>
+      <span class="sec-meta" id="period-meta">9 juin → 7 sept. 2026 — cumul</span>
+    </div>
+    <div class="period-row">
+      <div style="font-size:13px;color:#6E6E92">Drapeaux : 🟢 bon calibrage &nbsp;·&nbsp; 🟠 à surveiller &nbsp;·&nbsp; 🔴 à corriger</div>
+      <div class="period-toggle">
+        <button class="period-btn active" id="btn-ref" onclick="setPeriod('reference', this)">9 juin → 7 sept.</button>
+        <button class="period-btn" id="btn-cmp" onclick="setPeriod('comparaison', this)">Août 2026</button>
+      </div>
+    </div>
+    <div class="people-grid" id="people-grid"></div>
+  </section>
+
+  <!-- SECTION 4 : MÉTHODE SIDEKICK -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">La méthode équipe</span>
+      <span class="sec-meta">Fable en lead · Sonnet en sidekick</span>
+    </div>
+    <div class="methode-box">
+      <div>
+        <div class="methode-title">Fable en lead,<br>Sonnet en sidekick</div>
+        <div class="methode-sub">Deux agents : un lead (cerveau — plan, ambiguïtés, revue finale) et un sidekick moins cher (mécanique, volumineux). C'est le lead qui décide dynamiquement quand déléguer et quand faire lui-même.</div>
+        <div class="methode-config">
+          <strong style="color:var(--ms-mint)">Config :</strong> Fable en lead · Sonnet en sidekick<br>
+          Surtout pour les usages agentiques — Cowork tâches longues et Claude Code.
+        </div>
+      </div>
+      <div class="methode-steps">
+        <div class="methode-step">
+          <span class="step-num">1</span>
+          <div class="step-text">Travaille avec <strong style="color:#fff">Fable</strong> en lead.</div>
+        </div>
+        <div class="methode-step">
+          <span class="step-num">2</span>
+          <div class="step-text">Colle l'instruction : Fable prend <strong style="color:#fff">Sonnet en sidekick</strong> et délègue lui-même le mécanique.</div>
+        </div>
+        <div class="methode-step">
+          <span class="step-num">3</span>
+          <div class="step-text">Laisse le lead arbitrer — il délègue le volumineux/répétitif et garde le jugement.</div>
+        </div>
+        <div class="methode-step">
+          <span class="step-num">4</span>
+          <div class="step-text">Mémorise la règle pour qu'elle s'applique <strong style="color:#fff">par défaut</strong>.</div>
+        </div>
+        <div class="methode-ref">Méthode Devin Fusion — cognition.com/blog/devin-fusion</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="mint-rule"></div>
+<footer>
+  <span>On avance ensemble</span>
+  <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
+</footer>
+
+<script>
+const COLORS = {sonnet:'#5C2EFD',opus:'#FF481E',haiku:'#00C99C',fable:'#8C8CC0'};
+const INIT_COLORS = ['#5C2EFD','#FF481E','#00C99C','#4A1FE0','#C73000','#00534F'];
+const PHOTO_MAP = {
+  'Yannis':'yannis','Olivier Ta':'olivier','Noura':'noura','Stéphanie':'stephanie',
+  'Eric':'eric','Steeve':'steeve','Alphonse':'alphonse','Emeric':'emeric',
+  'Célina':'celina','Ekaterina':'ekaterina','Waël':'wael','Ghofrane':'ghofrane',
+  'Anis':'anis','Farès':'fares'
+};
+
+const DATA = {
+  reference: [
+    {name:'Yannis',    req:31565,web:83, mix:{sonnet:35,opus:52,haiku:6,fable:8}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Célina',    req:7807, web:70, mix:{sonnet:22,opus:57,haiku:10,fable:11},adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Eric',      req:691,  web:21, mix:{sonnet:86,opus:9,haiku:5,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Olivier Ta',req:19708,web:46, mix:{sonnet:76,opus:24,haiku:0,fable:0}, adeq:'🟠',conseil:'Zéro Haiku — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
+    {name:'Anis',      req:9285, web:20, mix:{sonnet:69,opus:27,haiku:4,fable:0}, adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
+    {name:'Noura',     req:6258, web:337,mix:{sonnet:54,opus:34,haiku:11,fable:0},adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
+    {name:'Stéphanie', req:5942, web:10, mix:{sonnet:84,opus:15,haiku:1,fable:0}, adeq:'🟠',conseil:'Zéro Haiku — passe les tâches légères (mails, tri, extraction) sur Haiku.'},
+    {name:'Steeve',    req:13506,web:1,  mix:{sonnet:97,opus:0,haiku:3,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Ekaterina', req:8556, web:67, mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Emeric',    req:7175, web:8,  mix:{sonnet:95,opus:1,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Ghofrane',  req:6635, web:15, mix:{sonnet:80,opus:12,haiku:4,fable:4}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Farès',     req:5293, web:18, mix:{sonnet:79,opus:9,haiku:12,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Waël',      req:3856, web:2,  mix:{sonnet:94,opus:0,haiku:6,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Alphonse',  req:2726, web:10, mix:{sonnet:96,opus:2,haiku:3,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+  ],
+  comparaison: [
+    {name:'Olivier Ta',req:8346, web:0,  mix:{sonnet:43,opus:57,haiku:0,fable:0}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Yannis',    req:9372, web:40, mix:{sonnet:24,opus:64,haiku:10,fable:3},adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Célina',    req:2958, web:0,  mix:{sonnet:0,opus:84,haiku:16,fable:0}, adeq:'🔴',conseil:'Trop d\'Opus — réserve-le au raisonnement lourd, bascule le reste sur Sonnet.'},
+    {name:'Eric',      req:182,  web:0,  mix:{sonnet:87,opus:0,haiku:13,fable:0}, adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Alphonse',  req:606,  web:0,  mix:{sonnet:92,opus:0,haiku:8,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Waël',      req:1253, web:0,  mix:{sonnet:91,opus:0,haiku:9,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Ghofrane',  req:1110, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Farès',     req:1045, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🔴',conseil:'Adoption faible — peu de requêtes sur la période. Un accompagnement l\'aiderait à embarquer.'},
+    {name:'Noura',     req:2623, web:1,  mix:{sonnet:64,opus:34,haiku:3,fable:0}, adeq:'🟠',conseil:'Opus élevé — vérifie qu\'il est bien réservé aux tâches complexes.'},
+    {name:'Stéphanie', req:2374, web:1,  mix:{sonnet:84,opus:14,haiku:2,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Anis',      req:2557, web:0,  mix:{sonnet:84,opus:15,haiku:1,fable:0}, adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Steeve',    req:4142, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Ekaterina', req:4835, web:1,  mix:{sonnet:94,opus:0,haiku:6,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+    {name:'Emeric',    req:1834, web:0,  mix:{sonnet:96,opus:0,haiku:4,fable:0},  adeq:'🟢',conseil:'Bon calibrage — Sonnet par défaut, Opus mesuré.'},
+  ]
+};
+
+function fmtReq(n) {
+  if (n >= 10000) return Math.round(n / 1000) + 'k';
+  if (n >= 1000)  return (n / 1000).toFixed(1) + 'k';
+  return n.toString();
+}
+
+function initColor(name) {
+  return INIT_COLORS[name.charCodeAt(0) % INIT_COLORS.length];
+}
+
+function adeqTheme(adeq) {
+  if (adeq === '🔴') return {bg:'rgba(255,72,30,.05)',border:'#FFBFB0',conseil:'rgba(255,72,30,.08)'};
+  if (adeq === '🟠') return {bg:'rgba(255,170,0,.05)',border:'#FFE09A',conseil:'rgba(255,170,0,.09)'};
+  return {bg:'rgba(0,201,156,.05)',border:'#A8EEE0',conseil:'rgba(0,201,156,.1)'};
+}
+
+function renderCards(period) {
+  const grid = document.getElementById('people-grid');
+  const people = DATA[period];
+  grid.innerHTML = people.map((p, i) => {
+    const slug = PHOTO_MAP[p.name];
+    const delay = (i * 0.035).toFixed(3);
+    const t = adeqTheme(p.adeq);
+
+    const avImg = slug
+      ? `<img class="person-av" src="photos/${slug}.jpg" alt="${p.name}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+      : '';
+    const avInit = `<div class="person-av-init" style="background:${initColor(p.name)};display:${slug ? 'none' : 'flex'}">${p.name[0]}</div>`;
+
+    const bar = Object.entries(p.mix)
+      .filter(([,v]) => v > 0)
+      .map(([k, v]) => `<div class="model-seg" style="flex:${v};background:${COLORS[k]}" title="${k}: ${v}%"></div>`)
+      .join('');
+
+    const pills = Object.entries(p.mix)
+      .filter(([,v]) => v > 0)
+      .map(([k, v]) => `<div class="mix-pill"><div class="mix-pill-dot" style="background:${COLORS[k]}"></div>${k[0].toUpperCase() + k.slice(1).charAt(0).toUpperCase()}&nbsp;${v}%</div>`)
+      .join('');
+
+    return `<div class="person-card" style="animation-delay:${delay}s;border:1.5px solid ${t.border};background:${t.bg}">
+  <div class="person-top">
+    ${avImg}${avInit}
+    <div style="flex:1;min-width:0">
+      <div class="person-name">${p.name}</div>
+      <div class="model-bar">${bar}</div>
+    </div>
+    <div style="font-size:22px;line-height:1;flex-shrink:0;margin-left:8px">${p.adeq}</div>
+  </div>
+  <div class="person-stats">
+    <div class="stat-chip">
+      <div class="stat-num">${fmtReq(p.req)}</div>
+      <div class="stat-lbl">requêtes</div>
+    </div>
+    ${p.web > 0 ? `<div class="stat-chip">
+      <div class="stat-num">${p.web}</div>
+      <div class="stat-lbl">web searches</div>
+    </div>` : ''}
+    <div class="mix-pills" style="margin-left:auto">${pills}</div>
+  </div>
+  <div class="person-conseil" style="background:${t.conseil}">${p.conseil}</div>
+</div>`;
+  }).join('');
+}
+
+function setPeriod(period, btn) {
+  document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('period-meta').textContent =
+    period === 'reference' ? '9 juin → 7 sept. 2026 — cumul' : 'Août 2026 — comparaison';
+  renderCards(period);
+}
+
+renderCards('reference');
+</script>
+</body>
+</html>
