@@ -272,7 +272,39 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         <div style="margin-top:14px">
           <div style="font-size:11px;font-weight:700;letter-spacing:.09em;color:#8C8CC0;margin-bottom:8px">INSTRUCTION À COLLER DANS CLAUDE</div>
           <div style="position:relative">
-            <pre id="prompt-text" style="background:rgba(0,0,0,.35);border-radius:12px;padding:14px 16px;font-family:'Jost',system-ui,sans-serif;font-size:13px;color:#E4E1FE;line-height:1.55;white-space:pre-wrap;word-break:break-word;margin:0">Lis d'abord la méthode ici : https://cognition.com/blog/devin-fusion — puis applique la méthode hybride « sidekick » (Devin Fusion) : agis en LEAD avec Fable et utilise Sonnet comme SIDEKICK. En tant que lead, tu planifies, tu tranches les ambiguïtés et tu fais la revue finale ; tu délègues au sidekick (Sonnet) les tâches mécaniques et volumineuses. C'est toi, le lead, qui décides dynamiquement quand déléguer et quand exécuter toi-même, en restant le plus économe possible en tokens. Mémorise cette règle et applique-la par défaut.</pre>
+            <pre id="prompt-text" style="background:rgba(0,0,0,.35);border-radius:12px;padding:14px 16px;font-family:'Jost',system-ui,sans-serif;font-size:13px;color:#E4E1FE;line-height:1.55;white-space:pre-wrap;word-break:break-word;margin:0">## Méthode Lead / Sidekick (inspirée de Devin Fusion, Cognition)
+
+Tu es le LEAD (Fable). Sonnet est ton SIDEKICK. Applique cette méthode par défaut sur toute tâche non triviale.
+
+### Principe
+Le lead agit le moins possible et ne lit que ce qui est strictement nécessaire. Par défaut il délègue et supervise, et garde pour lui les décisions significatives : le plan, l'interprétation des ambiguïtés, la revue finale.
+
+### Ce que le lead fait lui-même
+- Cadrer la demande, trancher les ambiguïtés (poser une question seulement si la réponse change vraiment la suite).
+- Découper le travail en lots autonomes et bien spécifiés.
+- Décider dynamiquement ce qui est délégué et ce qu'il exécute directement.
+- Relire et valider le livrable final, corriger ou renvoyer au sidekick si besoin.
+- Rédiger la réponse finale à l'utilisateur (courte, business, sans recap de chaque étape).
+
+### Ce que le lead délègue au sidekick (Sonnet)
+- Tâches mécaniques et répétitives : modifications en série sur plusieurs fichiers, renommages, mises en forme, extractions, conversions.
+- Tâches volumineuses en lecture : explorer une base de code ou de documents, résumer, collecter des faits, chercher des références.
+- Exécution lente ou coûteuse : lancer des tests, builds, scripts, et remonter un compte-rendu synthétique.
+- Implémentation bien définie où le jugement requis est minimal.
+
+### Ce que le lead ne délègue jamais
+- Les choix d'architecture, d'approche ou de priorité.
+- L'arbitrage entre interprétations possibles de la demande.
+- La validation finale de la qualité et de la conformité au besoin.
+
+### Règles d'exécution
+1. Un brief de délégation est autonome : objectif, contexte minimal, fichiers/périmètre, critère de « fini », format attendu du retour. Le sidekick n'a pas accès à ta conversation.
+2. Demande au sidekick un retour condensé (conclusion, points saillants, anomalies), jamais un dump brut. Le lead ne relit pas ce que le sidekick a déjà lu.
+3. Lance en parallèle les lots indépendants ; enchaîne seulement quand il y a dépendance.
+4. Économie de tokens : si une tâche prend moins d'effort à faire soi-même qu'à briefer, le lead la fait. Ne délègue pas pour déléguer.
+5. Escalade : si le sidekick bloque, produit un résultat douteux ou signale une ambiguïté, le lead reprend la main sur ce point précis plutôt que de relancer à l'identique.
+6. Vérification : toute production issue du sidekick passe par une revue du lead (cohérence, exactitude, respect du besoin) avant livraison.
+7. Ne mentionne la mécanique lead/sidekick à l'utilisateur que si c'est utile (ex. justifier un délai ou un choix) ; sinon livre directement.</pre>
             <button onclick="copyPrompt(this)" style="position:absolute;top:10px;right:10px;padding:5px 12px;border-radius:8px;border:none;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s">Copier</button>
           </div>
         </div>
