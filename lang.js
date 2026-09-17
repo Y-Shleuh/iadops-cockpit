@@ -304,6 +304,47 @@ const D = {
   'Skill de mise en ligne testé': 'Go-live skill tested',
   'Dashboard + to-do chez Emeric': "Dashboard + to-do at Emeric's",
   'Bilan Excel → one pager client': 'Excel wrap-up → client one-pager',
+
+  // ── progression.html — manquants ──────────────────────────────────────
+  'Congé maternité': 'Maternity leave',
+  "Le premier dashboard AdOps interactif, diffusé à l'équipe avec son tutoriel d'installation.":
+    "The first interactive AdOps dashboard, shared with the team along with its installation tutorial.",
+
+  // flip-trophy labels (sans emoji — le moteur les réinjecte automatiquement)
+  'Mails': 'Emails',
+  'Recherche': 'Research',
+  'Recap': 'Recap',
+
+  // ── actu.html — manquants ─────────────────────────────────────────────
+  'Trois livrables en une semaine': 'Three deliverables in one week',
+  'PUBLISHERS CATÉGORISÉS': 'CATEGORIZED PUBLISHERS',
+  'Inclus (brand safe)': 'Included (brand safe)',
+  'Exclus (jeux, contenu douteux)': 'Excluded (gaming, questionable content)',
+  '✗ retirés': '✗ removed',
+  'AVANTAGE': 'ADVANTAGE',
+  "Whitelist d'inclusion → plus fiable qu'une blacklist réactive. Mise à jour mensuelle possible via tâche planifiée.":
+    "Inclusion whitelist → more reliable than a reactive blacklist. Monthly update possible via scheduled task.",
+  'CE QUE FAIT LE SKILL': 'WHAT THE SKILL DOES',
+  'Détecte bilan vs point d\'étape': 'Detects wrap-up vs status update',
+  'Pose les questions créa + logo': 'Asks the creative + logo questions',
+  'Récupère les stats via MCP': 'Retrieves stats via MCP',
+  'Contrôle la cohérence des chiffres': 'Checks the consistency of the figures',
+  'Respecte la charte Mobsuccess': 'Follows the Mobsuccess charter',
+  'NOUVEAU MODE CLAUDE DESIGN': 'NEW CLAUDE DESIGN MODE',
+  "One-pagers Anis (Boulanger) et Célina (Botanic) également produits en ~10 min chacun le même jour.":
+    "One-pagers for Anis (Boulanger) and Célina (Botanic) also produced in ~10 min each on the same day.",
+  'Trophées AdOps': 'AdOps Trophies',
+  "Skill · bilan & point d'étape": "Skill · wrap-up & status update",
+  "Claude catégorise et trie les publishers RTB, écarte les inventaires douteux et tient à jour une whitelist d'inclusion. Plus fiable et plus rapide qu'une blacklist à courir après.":
+    "Claude categorizes and sorts RTB publishers, filters out questionable inventory and keeps an inclusion whitelist up to date. More reliable and faster than a reactive blacklist.",
+  "Claude analyse et note chaque publisher selon la brand safety — jeux, contenu douteux et inventaires à risque exclus.":
+    "Claude analyzes and scores each publisher for brand safety — gaming, questionable content and risky inventory excluded.",
+  "Ekaterina & Yannis publient la whitelist v08_26 — prête à être appliquée sur les comptes.":
+    "Ekaterina & Yannis publish whitelist v08_26 — ready to be applied to accounts.",
+  "Tâche planifiée Claude → actualisation mensuelle de la whitelist sans intervention manuelle.":
+    "Scheduled Claude task → automatic monthly whitelist update with no manual intervention.",
+  "Nicolas publie le skill « Bilan / Point d'étape » pour toute l'équipe. Il distingue automatiquement bilan (campagne terminée) et point d'étape (en cours), récupère les stats via les skills MCP et respecte la charte.":
+    "Nicolas publishes the 'Wrap-up / Status Update' skill for the whole team. It automatically distinguishes wrap-up (completed campaign) from status update (in progress), retrieves stats via MCP skills and follows the charter.",
 };
 
 /* ── ENGINE ─────────────────────────────────────────────────────────── */
@@ -326,9 +367,19 @@ function applyLang(target) {
     const key = norm(raw);
     if (!key) continue;
     if (target === 'en') {
-      if (D[key] !== undefined) {
+      let translated = D[key];
+      let prefix = '';
+      if (translated === undefined) {
+        // Handle emoji-prefixed text: "🚀 Installé" → prefix="🚀 ", rest="Installé"
+        const sp = key.indexOf(' ');
+        if (sp > 0 && sp <= 8 && !/[a-zA-ZÀ-ɏ]/.test(key.slice(0, sp))) {
+          prefix = key.slice(0, sp + 1);
+          translated = D[key.slice(sp + 1)];
+        }
+      }
+      if (translated !== undefined) {
         if (!saved.has(node)) saved.set(node, raw);
-        node.textContent = D[key];
+        node.textContent = prefix + translated;
       }
     } else {
       if (saved.has(node)) {
