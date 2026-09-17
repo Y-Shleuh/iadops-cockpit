@@ -719,6 +719,97 @@ const D = {
   "pour l'appel d'offres.": 'for the pitch.',
   'Fichier .md': '.md file',
   'Vidéo MP4': 'MP4 video',
+
+  // ── actu.html — messages canal Slack (toutes éditions) ───────────────
+  "le canal IA de l'équipe · créé le 22/07": "the team's AI channel · created 22/07",
+  '· lun. 10:14': '· Mon. 10:14',
+  'Veille IA adops — semaine du 27 juil.': 'AI AdOps brief — week of July 27',
+  'Claude apprend vos process en vous regardant faire (écran → skill réutilisable)':
+    'Claude learns your processes by watching you work (screen → reusable skill)',
+  "Google Ads étiquette les pubs générées par IA (avant l'AI Act, 2 août)":
+    'Google Ads labels AI-generated ads (ahead of AI Act, Aug. 2)',
+  'Reporting & détection d\'anomalies automatisés : coût/conversion −20 à −30 %':
+    'Automated reporting & anomaly detection: cost/conversion −20 to −30%',
+  "OpenAI ouvre GPT-5.6 — un milieu de gamme aussi bon pour moitié prix":
+    'OpenAI opens GPT-5.6 — a mid-range option just as good for half the price',
+  'Astuce de la semaine :': 'Tip of the week:',
+  '· 2ᵉ skill de la semaine': '· 2nd skill of the week',
+  "Audite n'importe quel skill selon la grille officielle Mobsuccess (13 critères) et affiche un diagnostic + des correctifs. Idéal en duo avec":
+    'Audits any skill against the official Mobsuccess grid (13 criteria) and displays a diagnostic + fixes. Ideal paired with',
+  '· retour d\'expérience': '· experience sharing',
+  'Bilan Point P × Havas × Widely, fait avec Claude Cowork':
+    'Point P × Havas × Widely wrap-up, done with Claude Cowork',
+  "Bilan PPTX généré depuis un Excel de stats. Brief d'1 min, relecture en ~5 min — contre une demi-journée habituellement.":
+    'PPTX wrap-up generated from a stats Excel. 1-min brief, ~5 min review — vs. half a day usually.',
+  'semaine du 3 août': 'week of Aug. 3',
+  '· lun. 3 août · 10:09': '· Mon. Aug. 3 · 10:09',
+  'Veille IA adops — semaine du 3 août': 'AI AdOps brief — week of Aug. 3',
+  'Claude Cowork disponible en solo — mode de travail profond sur un projet':
+    'Claude Cowork available solo — deep work mode on a project',
+  'Anthropic ouvre les tâches planifiées en beta — automatiser sans coder':
+    'Anthropic opens scheduled tasks in beta — automate without coding',
+  'Google étiquette enfin les créas IA dans Google Ads (conformité AI Act)':
+    'Google finally labels AI creatives in Google Ads (AI Act compliance)',
+  'Meta AI dépasse 1 milliard d\'utilisateurs actifs': 'Meta AI surpasses 1 billion active users',
+  '· mar. 5 août': '· Tue. Aug. 5',
+  'Marge dans les cockpits — buying_cost via Claude': 'Margin in cockpits — buying_cost via Claude',
+  "J'ai trouvé comment accéder au": 'I found how to access',
+  'via Claude → on peut afficher la marge directement dans nos dashboards. Restent les fees mesure à intégrer.':
+    'via Claude → we can display margin directly in our dashboards. Measurement fees still to integrate.',
+  'semaine du 11 août': 'week of Aug. 11',
+  '· lun. 11 août · 10:05': '· Mon. Aug. 11 · 10:05',
+  'Veille IA adops — semaine du 11 août': 'AI AdOps brief — week of Aug. 11',
+  'Claude dans Chrome = Cowork natif dans le navigateur — skills + connecteurs + historique':
+    'Claude in Chrome = native Cowork in the browser — skills + connectors + history',
+  "Anthropic lève 3,5 Mds $ (valorisation 60 Mds) — l'entreprise IA la mieux financée":
+    'Anthropic raises $3.5B (valuation $60B) — the best-funded AI company',
+  'Meta lance Movie Gen : génération vidéo pro directement depuis l\'interface Ads':
+    'Meta launches Movie Gen: professional video generation directly from the Ads interface',
+  'Filigrane invisible sur les images IA (conformité AI Act en vue)':
+    'Invisible watermark on AI images (AI Act compliance ahead)',
+  '· mer. 6 août': '· Wed. Aug. 6',
+  'Tâche programmée — rapport matinal automatique': 'Scheduled task — automatic morning report',
+  "J'ai mis en place une tâche Claude qui m'envoie chaque matin les campagnes terminées + lien Excel + campagnes en sous-dépense. Plus besoin d'aller chercher l'info.":
+    "I set up a Claude task that sends me every morning the completed campaigns + Excel link + underspending campaigns. No more hunting for the info.",
+  '· dim. 24 août': '· Sun. Aug. 24',
+  'Templates livrables — méthode équipe': 'Deliverable templates — team method',
+  "Je vous encourage tous à créer votre template de livrable client type (1-pager comme le test Botanic de Célina). 5-10 min avec Claude Design + charte MS. On partage en équipe pour standardiser nos rendus.":
+    "I encourage everyone to create their own client deliverable template (1-pager like Célina's Botanic test). 5-10 min with Claude Design + MS charter. We share as a team to standardize our outputs.",
+  'semaine du 24 août': 'week of Aug. 24',
+  '· lun. 24 août · 10:08': '· Mon. Aug. 24 · 10:08',
+  'Veille IA adops — semaine du 24 août': 'AI AdOps brief — week of Aug. 24',
+  "ChatGPT Ads ouvre en France (+31 pays EU) — ciblage par intention conversationnelle à intégrer aux recos":
+    'ChatGPT Ads opens in France (+31 EU countries) — conversational intent targeting to add to recommendations',
+  'Looker feu vert : dashboards de reporting validés pour le cockpit':
+    'Looker green light: reporting dashboards validated for the cockpit',
+  'Brief créa auto validé avec Mobanksy — pipeline Monday → LCM fonctionnel':
+    'Auto creative brief validated with Mobanksy — Monday → LCM pipeline working',
+  'Google Ads : les enchères à cible (CPA / ROAS) changent de nom — rien ne change en pratique':
+    'Google Ads: target bidding (CPA / ROAS) is being renamed — nothing changes in practice',
+  'Templates livrables — faisabilité confirmée': 'Deliverable templates — feasibility confirmed',
+  "Brief créa auto validé avec Mobanksy : bouton Monday → agent → brief LCM. Je vous encourage à créer vos templates livrables client (1-pager type Botanic). 5-10 min avec Claude Design + charte MS.":
+    'Auto creative brief validated with Mobanksy: Monday button → agent → LCM brief. I encourage you to create your client deliverable templates (1-pager Botanic type). 5-10 min with Claude Design + MS charter.',
+  'semaine du 1er sept.': 'week of Sept. 1',
+  '· lun. 1 sept. · 10:12': '· Mon. Sept. 1 · 10:12',
+  'Veille IA adops — semaine du 1er sept.': 'AI AdOps brief — week of Sept. 1',
+  'Claude Design lance le mode Animation : .md → vidéo MP4 en quelques minutes':
+    'Claude Design launches Animation mode: .md → MP4 video in a few minutes',
+  'ChatGPT Ads désormais actif en France — premier levier conversationnel à cibler':
+    'ChatGPT Ads now active in France — first conversational channel to target',
+  "Fable 5.1 — nouveau modèle Anthropic spécialisé agentique, en tête d'Agent Arena":
+    'Fable 5.1 — new Anthropic model specialized for agentic work, top of Agent Arena',
+  'AI Act : filigrane obligatoire sur les images IA dès le 15/09 — à anticiper sur nos créas':
+    'AI Act: mandatory watermark on AI images from 15/09 — to anticipate on our creatives',
+  '· dim. 31 août': '· Sun. Aug. 31',
+  'Whitelist IA de placement publiée — Whiteliste_08_26':
+    'AI publisher whitelist published — Whiteliste_08_26',
+  "Avec Yannis, on a produit la whitelist IA des publishers RTB. Claude catégorise, retire les jeux douteux, tient la liste à jour. Disponible pour tous les comptes.":
+    "With Yannis, we produced the AI whitelist of RTB publishers. Claude categorizes, removes questionable content, keeps the list up to date. Available for all accounts.",
+  '· lun. 1 sept.': '· Mon. Sept. 1',
+  "Skill bilan / point d'étape — dispo pour toute l'équipe":
+    'Wrap-up / status update skill — available for the whole team',
+  "Le skill est disponible dans votre Claude. Testé sur Botanic avec Célina. Si vous avez un bilan à faire, c'est le moment de l'essayer !":
+    "The skill is available in your Claude. Tested on Botanic with Célina. If you have a wrap-up to do, now's the time to try it!",
 };
 
 /* ── ENGINE ─────────────────────────────────────────────────────────── */
