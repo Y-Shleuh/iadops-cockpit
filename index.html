@@ -128,8 +128,9 @@ main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-dir
 .topic-tag{width:42px;height:42px;border-radius:12px;color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
 .topic-card h3{font-size:19px;font-weight:700;margin:16px 0 12px;line-height:1.2;letter-spacing:-.025em}
 .topic-card ul{list-style:none;display:flex;flex-direction:column}
-.topic-card li{font-size:14px;color:#3B3B6B;padding:8px 0;border-bottom:1px solid #F2EDE6}
+.topic-card li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:14px;color:#3B3B6B;padding:8px 0;border-bottom:1px solid #F2EDE6}
 .topic-card li:last-child{border-bottom:0}
+.topic-card li b{font-family:var(--mono);font-size:11px;font-weight:500;color:#8A8AA8;flex-shrink:0}
 
 /* ── BOARD « OÙ EN EST CHAQUE SUJET » ───────────────────────────────── */
 .board{background:var(--ms-deep);border-radius:28px;padding:34px 36px;color:var(--ms-cream);position:relative;overflow:hidden}
@@ -157,7 +158,7 @@ main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-dir
 .cols{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;align-items:start}
 .col{background:rgba(242,238,233,.04);border:1px solid rgba(242,238,233,.12);border-radius:18px;padding:14px 11px}
 .col-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px;padding:0 3px}
-.col-head span{font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+.col-head span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 .col-head b{font-size:19px;font-weight:800;letter-spacing:-.04em;color:#fff}
 .col-rule{height:4px;margin:9px 3px 13px;border-radius:999px;transform-origin:left;animation:growX 1.2s var(--ease) both}
 .subj{background:rgba(242,238,233,.06);border:1px solid rgba(242,238,233,.1);border-radius:12px;padding:10px 11px;margin-bottom:7px;transition:transform .3s var(--ease),background .3s,border-color .3s}
@@ -345,8 +346,8 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   </section>
 
   <section class="kpi-band">
-    <div class="kpi"><div class="kpi-num" data-count="13">13</div><div class="kpi-rule" style="background:var(--ms-violet)"></div><div class="kpi-label">Chantiers ouverts</div></div>
-    <div class="kpi"><div class="kpi-num" data-count="4">4</div><div class="kpi-rule" style="background:var(--ms-mint);animation-delay:.12s"></div><div class="kpi-label">Familles de sujets</div></div>
+    <div class="kpi"><div class="kpi-num" data-count="11" id="kpi-chantiers">11</div><div class="kpi-rule" style="background:var(--ms-violet)"></div><div class="kpi-label">Chantiers ouverts</div></div>
+    <div class="kpi"><div class="kpi-num" data-count="4" id="kpi-familles">4</div><div class="kpi-rule" style="background:var(--ms-mint);animation-delay:.12s"></div><div class="kpi-label">Familles de sujets</div></div>
     <div class="kpi"><div class="kpi-num" data-count="14">14</div><div class="kpi-rule" style="background:var(--ms-orange);animation-delay:.24s"></div><div class="kpi-label">AdOps embarqués</div></div>
     <div class="kpi"><div class="kpi-num" data-count="6">6</div><div class="kpi-rule" style="background:var(--ms-cream);animation-delay:.36s"></div><div class="kpi-label">Marches du parcours</div></div>
   </section>
@@ -354,47 +355,9 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <section>
     <div class="sec-head">
       <span class="sec-label">Les sujets</span>
-      <span class="sec-meta">13 chantiers · 4 familles</span>
+      <span class="sec-meta" id="topics-meta">11 chantiers · 4 familles</span>
     </div>
-    <div class="topics">
-      <div class="topic-card">
-        <div class="topic-tag" style="background:var(--ms-orange)">A</div>
-        <h3>Chaîne de production IA</h3>
-        <ul>
-          <li>Set-up auto</li>
-          <li>QA / Contrôle qualité</li>
-          <li>Rapport auto</li>
-          <li>Bilan auto</li>
-          <li>Analyses spécifiques</li>
-        </ul>
-      </div>
-      <div class="topic-card">
-        <div class="topic-tag" style="background:var(--ms-violet)">B</div>
-        <h3>Socle : mémoire &amp; collaboratif</h3>
-        <ul>
-          <li>Mémoire &amp; espace collaboratif</li>
-          <li>Outillage collaborateur</li>
-        </ul>
-      </div>
-      <div class="topic-card">
-        <div class="topic-tag" style="background:var(--ms-navy)">C</div>
-        <h3>Pilotage &amp; adoption</h3>
-        <ul>
-          <li>Dashboards &amp; cockpits</li>
-          <li>Adoption de l'équipe</li>
-        </ul>
-      </div>
-      <div class="topic-card">
-        <div class="topic-tag" style="background:var(--ms-mint-700)">D</div>
-        <h3>Innovation &amp; transverse</h3>
-        <ul>
-          <li>Agentification</li>
-          <li>Assistants &amp; générations IA</li>
-          <li>ROI &amp; mesure de la valeur</li>
-          <li>Pistes outils</li>
-        </ul>
-      </div>
-    </div>
+    <div class="topics" id="topics-grid"></div>
   </section>
 
   <section class="board" id="sujets-root">
@@ -431,23 +394,27 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 <script src="lang.js"></script>
 <script>
 /* ── Compteurs animés ───────────────────────────────────────────────── */
-(function countUp() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('[data-count]').forEach(function (el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    if (!isFinite(target)) return;
-    var start = null, dur = 1400;
-    el.textContent = '0';
-    function step(ts) {
-      if (start === null) start = ts;
-      var p = Math.min(1, (ts - start) / dur);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = String(Math.round(target * e));
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  });
-})();
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function animateCount(el, target) {
+  if (!el || !isFinite(target)) return;
+  if (REDUCED) { el.textContent = String(target); return; }
+  var start = null, dur = 1400;
+  el.textContent = '0';
+  function step(ts) {
+    if (start === null) start = ts;
+    var p = Math.min(1, (ts - start) / dur);
+    var e = 1 - Math.pow(1 - p, 3);
+    el.textContent = String(Math.round(target * e));
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+/* Valeurs de repli du markup — remplacées dès que le JSON est lu. */
+document.querySelectorAll('[data-count]').forEach(function (el) {
+  animateCount(el, parseInt(el.getAttribute('data-count'), 10));
+});
 
 /* ── Board « Où en est chaque sujet » ───────────────────────────────── */
 (async function renderSujets() {
@@ -480,6 +447,29 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     var d = await res.json();
     var sj = d.sujets;
     var flat = sj.flat, families = sj.families, statusMeta = sj.statusMeta;
+    var chantiers = sj.chantiers || [];
+
+    /* ── KPI recalés sur le JSON ─────────────────────────────────────── */
+    animateCount(document.getElementById('kpi-chantiers'), chantiers.length);
+    animateCount(document.getElementById('kpi-familles'), families.length);
+    var tMeta = document.getElementById('topics-meta');
+    if (tMeta) tMeta.textContent = chantiers.length + ' chantiers · ' + families.length + ' familles';
+
+    /* ── « Les sujets » : une carte par famille, ses chantiers dedans ── */
+    var grid = document.getElementById('topics-grid');
+    if (grid) {
+      grid.innerHTML = families.map(function (fam, fi) {
+        var mine = chantiers.filter(function (c) { return c.fam === fi; });
+        var lis = mine.map(function (c) {
+          var n = (c.subs || []).length;
+          return '<li>' + esc(c.name) + '<b>' + n + '</b></li>';
+        }).join('');
+        return '<div class="topic-card">' +
+          '<div class="topic-tag" style="background:' + esc(FAM_CHIP[fi] || '#000050') + '">' + esc(fam[0]) + '</div>' +
+          '<h3>' + esc(fam.slice(4)) + '</h3>' +
+          '<ul>' + lis + '</ul></div>';
+      }).join('');
+    }
 
     /* Regroupement par statut, dans l'ordre de la rampe */
     var buckets = {};
@@ -535,7 +525,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
           '</div>';
       }).join('');
       return '<div class="col">' +
-        '<div class="col-head"><span style="color:' + esc(c.tint) + '">' + esc(c.label.toUpperCase()) + '</span>' +
+        '<div class="col-head"><span style="color:' + esc(c.tint) + '">' + esc(c.label) + '</span>' +
         '<b>' + c.items.length + '</b></div>' +
         '<div class="col-rule" style="background:' + esc(c.tint) + '"></div>' +
         items + '</div>';
@@ -547,6 +537,10 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
         meta: '4 FAMILLES · S2 2026<b>MIS À JOUR AUTOMATIQUEMENT</b>'
       }) +
       distHtml + famHtml + colsHtml + '</div>';
+
+    /* Ces sections arrivent après DOMContentLoaded : lang.js ne les a pas
+       vues passer, on lui redemande d'appliquer la langue courante. */
+    if (window.iadopsLang) window.iadopsLang.refresh();
 
   } catch (e) {
     root.innerHTML = '<div class="board-glow"></div><div class="board-in">' +

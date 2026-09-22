@@ -853,6 +853,20 @@ const D = {
   'Claude Design mieux intégré': 'Claude Design better integrated',
   "Design tourne désormais dans la conversation, sans ouvrir de fenêtre à part — plus fluide pour passer un livrable à la charte.":
     'Design now runs inside the conversation, without opening a separate window — smoother for styling a deliverable to the brand guidelines.',
+
+  // ── index.html — sections pilotées par iadops-data.json ──────────────
+  'Chaîne de production': 'Production chain',
+  'Mémoire & collaboration': 'Memory & collaboration',
+  'Supports & livrables client': 'Client materials & deliverables',
+  'Dashboards & cockpits': 'Dashboards & cockpits',
+  'Agentification': 'Agentification',
+  'À explorer': 'To explore',
+  'En construction': 'Under construction',
+  'Premiers usages': 'First uses',
+  'En adoption': 'Being adopted',
+  'Généralisé': 'Rolled out',
+  'Écarté': 'Dropped',
+  'Sujets suivis': 'Topics tracked',
 };
 
 /* ── ENGINE ─────────────────────────────────────────────────────────── */
@@ -937,5 +951,12 @@ document.addEventListener('DOMContentLoaded', function () {
   inject();
   if (lang === 'en') applyLang('en');
 });
+
+/* Les sections rendues après un fetch arrivent APRÈS DOMContentLoaded :
+   elles appellent ceci pour se faire traduire à leur tour. */
+window.iadopsLang = {
+  get current() { return lang; },
+  refresh: function () { if (lang === 'en') applyLang('en'); }
+};
 
 })();
