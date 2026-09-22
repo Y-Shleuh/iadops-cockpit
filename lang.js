@@ -831,6 +831,9 @@ const D = {
   "Un hub complet de pilotage des campagnes. Présenté au Meetup Ops (16/09) — très bien reçu, avec une session dédiée au feedback et aux idées — puis au Comité Innovation devant la direction : jugé « no-brainer, il faut avancer ».":
     "A complete campaign management hub. Presented at the Ops Meetup (16/09) — very well received, with a dedicated session for feedback and ideas — then at the Innovation Committee in front of management: deemed \"no-brainer, let's move forward\".",
   'Dashboard Boulanger (calls hebdo)': 'Boulanger dashboard (weekly calls)',
+  'Dashboard · calls hebdo': 'Dashboard · weekly calls',
+  'Dashboard Boulanger': 'Boulanger Dashboard',
+  'Ouvrir le dashboard ↗': 'Open the dashboard ↗',
   "Remplace un Looker devenu lourd à maintenir : vue d'ensemble des perfs par campagne (CTR & CPM/jour à la demande cliente) + un onglet de comparaison de deux campagnes. Support des points hebdo.":
     'Replaces a Looker instance that became heavy to maintain: performance overview by campaign (CTR & CPM/day on client request) + a two-campaign comparison tab. Supports weekly check-ins.',
   'Suivi Google Ads (Intersport, Afflelou, Feu Vert)': 'Google Ads tracking (Intersport, Afflelou, Feu Vert)',
