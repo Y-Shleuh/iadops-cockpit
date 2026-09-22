@@ -86,18 +86,26 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 .topic-card li:last-child{border-bottom:0}
 
 /* ROADMAP */
-.roadmap{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:22px 26px}
-.roadmap-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.roadmap-cols{display:grid;grid-template-columns:190px repeat(4,1fr);border-bottom:2px solid var(--ms-cream-200)}
-.roadmap-row{display:grid;grid-template-columns:190px repeat(4,1fr);align-items:stretch;border-bottom:1px solid #EFEAE2}
-.roadmap-row:last-child{border-bottom:0}
-.roadmap-label{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 0}
-.roadmap-cell{border-left:1px solid #EFEAE2;padding:10px;display:flex;flex-direction:column;gap:8px;min-height:56px}
-.roadmap-col-head{border-left:1px solid #EFEAE2;padding:0 10px 10px;font-size:13px;font-weight:600;color:var(--ms-violet-700)}
-.roadmap-col-head.acquired{color:var(--ms-mint-700)}
-.roadmap-chip{border-radius:12px;padding:9px 13px}
-.roadmap-chip-title{font-size:13.5px;font-weight:600;line-height:1.2}
-.roadmap-chip-sub{font-size:11.5px;margin-top:2px}
+/* ADOPTION GAUGE VIEW */
+.ado-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.ado-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#3B3B6B;background:#fff;border:1px solid var(--ms-cream-200);border-radius:999px;padding:4px 10px}
+.ado-legend-dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px}
+.ado-families{display:flex;flex-direction:column;gap:14px}
+.ado-family{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;overflow:hidden}
+.ado-fam-header{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--ms-cream);border-bottom:1px solid var(--ms-cream-200)}
+.ado-fam-letter{width:26px;height:26px;border-radius:7px;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 26px}
+.ado-fam-name{font-size:14px;font-weight:600;color:var(--ms-navy)}
+.ado-chantier-name{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#6E6E92;padding:6px 18px 4px;background:rgba(0,0,0,.025)}
+.ado-sub{display:flex;align-items:center;gap:16px;padding:9px 18px;border-top:1px solid #F5F0EA}
+.ado-sub-left{flex:1;min-width:0}
+.ado-sub-name{font-size:13px;font-weight:600;color:var(--ms-navy)}
+.ado-sub-detail{font-size:11px;color:#6E6E92;line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ado-sub-right{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.ado-gauge{display:flex;gap:3px}
+.ado-seg{width:20px;height:5px;border-radius:999px}
+.ado-status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;min-width:96px;text-align:center}
+.ado-error{padding:32px;text-align:center;color:#6E6E92;font-size:14px}
+@media(max-width:700px){.ado-sub{flex-direction:column;align-items:flex-start}.ado-sub-right{margin-top:4px}}
 
 /* CTA GRID */
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -277,99 +285,12 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     </div>
   </section>
 
-  <section>
+  <section id="sujets-root">
     <div class="sec-head">
       <span class="sec-label">Où en est chaque sujet</span>
-      <span class="sec-meta">S2 2026 · vue partielle, elle bouge</span>
+      <span class="sec-meta">S2 2026 · mis à jour automatiquement</span>
     </div>
-    <div class="roadmap">
-      <div class="roadmap-header">
-        <span style="font-size:12.5px;color:#6E6E92">Maturité</span>
-        <span style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
-          <span style="height:4px;border-radius:999px;background:var(--ms-violet-100);display:block"></span>
-          <span style="height:4px;border-radius:999px;background:var(--ms-violet);display:block"></span>
-          <span style="height:4px;border-radius:999px;background:var(--ms-mint-700);display:block"></span>
-          <span style="height:4px;border-radius:999px;background:var(--ms-mint);display:block"></span>
-        </span>
-      </div>
-      <div class="roadmap-cols">
-        <div></div>
-        <div class="roadmap-col-head">Réflexion</div>
-        <div class="roadmap-col-head">En cours</div>
-        <div class="roadmap-col-head">Expert</div>
-        <div class="roadmap-col-head acquired">Acquis</div>
-      </div>
-      <div class="roadmap-row">
-        <div class="roadmap-label">
-          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-orange);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">A</span>
-          <span style="font-size:14px;font-weight:600;line-height:1.2">Chaîne de production IA</span>
-        </div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Set-up auto</div></div>
-          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Analyses spécifiques</div></div>
-        </div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">QA / Contrôle qualité</div></div>
-          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)"><div class="roadmap-chip-title">Bilan auto</div></div>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-orange);color:var(--ms-navy)">
-            <div class="roadmap-chip-title">Rapport auto</div>
-            <div class="roadmap-chip-sub">100 % via skill</div>
-          </div>
-        </div>
-      </div>
-      <div class="roadmap-row">
-        <div class="roadmap-label">
-          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">B</span>
-          <span style="font-size:14px;font-weight:600;line-height:1.2">Socle : mémoire &amp; collaboratif</span>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-violet);color:#fff">
-            <div class="roadmap-chip-title">Espace Cowork partagé</div>
-            <div class="roadmap-chip-sub">test en cours</div>
-          </div>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell"></div>
-      </div>
-      <div class="roadmap-row">
-        <div class="roadmap-label">
-          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-navy);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">C</span>
-          <span style="font-size:14px;font-weight:600;line-height:1.2">Pilotage &amp; adoption</span>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-navy);color:#fff">
-            <div class="roadmap-chip-title">Dashboard AdOps</div>
-            <div class="roadmap-chip-sub">concours en cours</div>
-          </div>
-          <div class="roadmap-chip" style="background:var(--ms-navy);color:#fff">
-            <div class="roadmap-chip-title">Dashboard pilotage client</div>
-            <div class="roadmap-chip-sub">fiche, vie du client, to-do</div>
-          </div>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell"></div>
-      </div>
-      <div class="roadmap-row">
-        <div class="roadmap-label">
-          <span style="width:28px;height:28px;flex:0 0 28px;border-radius:9px;background:var(--ms-mint-700);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">D</span>
-          <span style="font-size:14px;font-weight:600;line-height:1.2">Innovation &amp; transverse</span>
-        </div>
-        <div class="roadmap-cell">
-          <div class="roadmap-chip" style="background:var(--ms-mint-700);color:var(--ms-navy)">
-            <div class="roadmap-chip-title">Claude Tag</div>
-            <div class="roadmap-chip-sub">1 Claude par canal Slack</div>
-          </div>
-        </div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell"></div>
-        <div class="roadmap-cell"></div>
-      </div>
-    </div>
+    <div style="color:#6E6E92;font-size:14px;padding:20px 0">Chargement…</div>
   </section>
 
   <div class="cta-grid">
@@ -396,5 +317,91 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 </footer>
 
 <script src="lang.js"></script>
+<script>
+(async function renderSujets() {
+  const root = document.getElementById('sujets-root');
+  const FAM_COLORS = ['#FF481E','#5C2EFD','#000050','#00C99C'];
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  try {
+    const res = await fetch('iadops-data.json');
+    if (!res.ok) throw new Error('fetch');
+    const d = await res.json();
+    const { flat, families, statusMeta, adoScale } = d.sujets;
+
+    // Legend
+    const legendHtml = `<div class="ado-legend">${
+      adoScale.map(sc => `<span class="ado-legend-item"><span class="ado-legend-dot" style="background:${esc(sc.color)}"></span>${esc(sc.name)}</span>`).join('')
+    }</div>`;
+
+    // Group flat subjects by family → chantier
+    const byFam = families.map(() => ({}));
+    flat.forEach(s => {
+      const fam = byFam[s.famIndex];
+      if (!fam[s.chantierId]) fam[s.chantierId] = { name: s.chantier, subs: [] };
+      fam[s.chantierId].subs.push(s);
+    });
+
+    const familiesHtml = families.map((famName, fi) => {
+      const color = FAM_COLORS[fi] || '#000050';
+      const letter = famName[0];
+      const label = famName.slice(4); // after "A · "
+
+      const chantiersHtml = Object.values(byFam[fi]).map(ch => {
+        const subsHtml = ch.subs.map(s => {
+          const meta = statusMeta[s.status] || { color:'#888', label: s.status };
+          const bgAlpha = meta.color + '1A';
+          const fillColor = (adoScale[s.adoLevel] || adoScale[0]).color;
+          const gaugeSegs = Array.from({length:4}, (_,i) =>
+            `<span class="ado-seg" style="background:${i < s.adoLevel ? esc(fillColor) : '#EDE8E0'}"></span>`
+          ).join('');
+          const detailHtml = s.detail
+            ? `<div class="ado-sub-detail" title="${esc(s.detail)}">${esc(s.detail)}</div>`
+            : '';
+          const whoHtml = s.who ? `<span style="font-size:10.5px;color:#6E6E92;margin-top:2px;display:block">${esc(s.who)}</span>` : '';
+          return `<div class="ado-sub">
+            <div class="ado-sub-left">
+              <div class="ado-sub-name">${esc(s.sujet)}</div>
+              ${detailHtml}${whoHtml}
+            </div>
+            <div class="ado-sub-right">
+              <div class="ado-gauge">${gaugeSegs}</div>
+              <span class="ado-status" style="color:${esc(meta.color)};background:${bgAlpha}">${esc(s.statusLabel)}</span>
+            </div>
+          </div>`;
+        }).join('');
+        return `<div><div class="ado-chantier-name">${esc(ch.name)}</div>${subsHtml}</div>`;
+      }).join('');
+
+      return `<div class="ado-family">
+        <div class="ado-fam-header">
+          <span class="ado-fam-letter" style="background:${esc(color)}">${esc(letter)}</span>
+          <span class="ado-fam-name">${esc(label)}</span>
+        </div>
+        ${chantiersHtml}
+      </div>`;
+    }).join('');
+
+    root.innerHTML = `
+      <div class="sec-head">
+        <span class="sec-label">Où en est chaque sujet</span>
+        <span class="sec-meta">S2 2026 · mis à jour automatiquement</span>
+      </div>
+      ${legendHtml}
+      <div class="ado-families">${familiesHtml}</div>`;
+
+  } catch(e) {
+    root.innerHTML = `
+      <div class="sec-head">
+        <span class="sec-label">Où en est chaque sujet</span>
+        <span class="sec-meta">S2 2026</span>
+      </div>
+      <div class="ado-error">Données indisponibles — rechargez la page.</div>`;
+  }
+})();
+</script>
 </body>
 </html>

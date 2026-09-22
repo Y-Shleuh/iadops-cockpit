@@ -1,0 +1,1791 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-22T19:09:42.026Z",
+    "source": "iadops-cockpit",
+    "schema": 2
+  },
+  "classement": {
+    "levels": [
+      {
+        "n": 1,
+        "name": "Initié",
+        "col": "#B9AEF9",
+        "desc": "Être opérationnel"
+      },
+      {
+        "n": 2,
+        "name": "Actif",
+        "col": "#9B8CF6",
+        "desc": "Les usages de base"
+      },
+      {
+        "n": 3,
+        "name": "Aguerri",
+        "col": "#7C62F3",
+        "desc": "Élargir & varier"
+      },
+      {
+        "n": 4,
+        "name": "Expert",
+        "col": "#5C2EFD",
+        "desc": "Autonomie avancée"
+      },
+      {
+        "n": 5,
+        "name": "Maître",
+        "col": "#4A1FE0",
+        "desc": "Industrialiser"
+      },
+      {
+        "n": 6,
+        "name": "Référent",
+        "col": "#00C99C",
+        "desc": "Diffuser aux autres"
+      }
+    ],
+    "bareme": {
+      "install": 1,
+      "ready": 1,
+      "regulier": 1,
+      "rapport": 2,
+      "bilan": 2,
+      "multi": 2,
+      "c-mails": 2,
+      "c-recherche": 3,
+      "c-analyse": 3,
+      "c-suivi": 3,
+      "c-recap": 3,
+      "zeromanuel": 4,
+      "c-gain": 4,
+      "skill": 4,
+      "c-connecteur": 5,
+      "n-setup": 5,
+      "n-qa": 5,
+      "n-tache": 4,
+      "n-bilanaug": 5,
+      "ambassadeur": 6,
+      "c-workshop": 6,
+      "c-usecase": 6,
+      "n-mentor": 6
+    },
+    "trophies": [
+      {
+        "id": "install",
+        "icon": "🚀",
+        "label": "Installé",
+        "desc": "Claude installé sur le poste + connecteurs de base opérationnels.",
+        "color": "#60a5fa"
+      },
+      {
+        "id": "ready",
+        "icon": "✅",
+        "label": "Ready",
+        "desc": "Skill « automation-ia-ready » lancé et validé — environnement complet.",
+        "color": "#12996b"
+      },
+      {
+        "id": "regulier",
+        "icon": "🔁",
+        "label": "Usage régulier",
+        "desc": "Utilise Claude plusieurs fois par semaine, spontanément.",
+        "color": "#0ea5e9"
+      },
+      {
+        "id": "rapport",
+        "icon": "📄",
+        "label": "1er rapport",
+        "desc": "A produit au moins un rapport de campagne via un skill.",
+        "color": "#6366f1"
+      },
+      {
+        "id": "bilan",
+        "icon": "📊",
+        "label": "1er bilan",
+        "desc": "A produit au moins un bilan de campagne via Claude.",
+        "color": "#4f46e5"
+      },
+      {
+        "id": "multi",
+        "icon": "🏢",
+        "label": "Multi-comptes",
+        "desc": "Utilise Claude sur au moins deux comptes clients différents.",
+        "color": "#8b5cf6"
+      },
+      {
+        "id": "c-mails",
+        "icon": "✉️",
+        "label": "Reformulation de mails",
+        "desc": "Rédige / reformule ses mails clients avec Claude.",
+        "color": "#f97316",
+        "custom": true
+      },
+      {
+        "id": "c-recherche",
+        "icon": "🔎",
+        "label": "Recherche de data",
+        "desc": "Fait rechercher / récupérer des données par Claude.",
+        "color": "#0ea5e9",
+        "custom": true
+      },
+      {
+        "id": "c-analyse",
+        "icon": "🧪",
+        "label": "Analyse",
+        "desc": "Fait analyser des performances de campagne par Claude.",
+        "color": "#a855f7",
+        "custom": true
+      },
+      {
+        "id": "c-suivi",
+        "icon": "📈",
+        "label": "Suivi campagne & optis",
+        "desc": "Suit ses campagnes et pilote ses optimisations avec Claude.",
+        "color": "#ef4444",
+        "custom": true
+      },
+      {
+        "id": "c-recap",
+        "icon": "🗂️",
+        "label": "Recap / dashboard campagne",
+        "desc": "Produit un récap de campagne en cours / un dashboard de suivi.",
+        "color": "#6366f1",
+        "custom": true
+      },
+      {
+        "id": "zeromanuel",
+        "icon": "⚙️",
+        "label": "Zéro manuel",
+        "desc": "Ne fait plus en manuel ce que Claude peut faire — réflexe par défaut.",
+        "color": "#c47d00"
+      },
+      {
+        "id": "skill",
+        "icon": "🧠",
+        "label": "Créateur de skill",
+        "desc": "A créé ou amélioré un skill réutilisable par l'équipe.",
+        "color": "#d1435b"
+      },
+      {
+        "id": "c-gain",
+        "icon": "⏱️",
+        "label": "Gain de temps mesuré",
+        "desc": "A documenté un gain de temps chiffré sur une tâche.",
+        "color": "#22c55e",
+        "custom": true
+      },
+      {
+        "id": "n-tache",
+        "icon": "⏰",
+        "label": "Tâche programmée",
+        "desc": "A mis en place une automatisation récurrente (tâche programmée) qui tourne seule.",
+        "color": "#F59E0B",
+        "custom": true
+      },
+      {
+        "id": "c-connecteur",
+        "icon": "🔗",
+        "label": "Nouveau connecteur",
+        "desc": "A branché un nouveau connecteur / MCP utile à l'équipe.",
+        "color": "#14b8a6",
+        "custom": true
+      },
+      {
+        "id": "n-setup",
+        "icon": "⚙️",
+        "label": "Set-up auto",
+        "desc": "A monté une campagne (LCM/DSP) sans saisie manuelle, via Claude.",
+        "color": "#0EA5A5",
+        "custom": true
+      },
+      {
+        "id": "n-qa",
+        "icon": "🛡️",
+        "label": "QA sans faille",
+        "desc": "Contrôle qualité systématique avant go-live, zéro erreur de paramétrage.",
+        "color": "#E11D48",
+        "custom": true
+      },
+      {
+        "id": "n-bilanaug",
+        "icon": "✨",
+        "label": "Bilan augmenté",
+        "desc": "A produit un bilan enrichi du contexte du compte (Slack, Notion, historique).",
+        "color": "#7C3AED",
+        "custom": true
+      },
+      {
+        "id": "ambassadeur",
+        "icon": "🎓",
+        "label": "Ambassadeur",
+        "desc": "Forme les autres / propose des cas d'usage",
+        "color": "#e0a800"
+      },
+      {
+        "id": "c-workshop",
+        "icon": "🎥",
+        "label": "Workshop IA",
+        "desc": "A animé / produit un workshop via Claude",
+        "color": "#ec4899",
+        "custom": true
+      },
+      {
+        "id": "c-usecase",
+        "icon": "💡",
+        "label": "Nouveau cas d'usage",
+        "desc": "A proposé un nouveau cas d'usage IA",
+        "color": "#f59e0b",
+        "custom": true
+      },
+      {
+        "id": "n-mentor",
+        "icon": "🎓",
+        "label": "Mentor cross-équipe",
+        "desc": "A formé / diffusé un usage à une autre équipe que les AdOps.",
+        "color": "#0891B2",
+        "custom": true
+      }
+    ],
+    "people": [
+      {
+        "id": "p-noura",
+        "name": "Noura Abou",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi",
+          "c-mails",
+          "c-recherche",
+          "c-analyse",
+          "c-suivi",
+          "c-recap",
+          "n-bilanaug",
+          "c-workshop"
+        ],
+        "level": 3,
+        "levelName": "Aguerri"
+      },
+      {
+        "id": "p-steph",
+        "name": "Stéphanie Ta",
+        "badges": [
+          "install",
+          "bilan",
+          "c-mails",
+          "ready",
+          "multi",
+          "regulier",
+          "rapport",
+          "c-recap",
+          "c-suivi",
+          "n-bilanaug",
+          "c-recherche",
+          "c-analyse",
+          "c-usecase"
+        ],
+        "level": 3,
+        "levelName": "Aguerri"
+      },
+      {
+        "id": "p-eric",
+        "name": "Eric Ta",
+        "badges": [
+          "install",
+          "regulier",
+          "multi",
+          "ready"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      },
+      {
+        "id": "p-steeve",
+        "name": "Steeve Guerret",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi",
+          "c-suivi",
+          "c-recap"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      },
+      {
+        "id": "p-alphonse",
+        "name": "Alphonse Arthur",
+        "badges": [
+          "ready",
+          "install",
+          "rapport",
+          "bilan",
+          "c-analyse",
+          "regulier",
+          "multi",
+          "zeromanuel",
+          "skill"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      },
+      {
+        "id": "p-emeric",
+        "name": "Emeric Moulinneuf",
+        "badges": [
+          "install",
+          "rapport",
+          "bilan",
+          "c-recherche",
+          "c-suivi",
+          "ready",
+          "c-recap",
+          "regulier",
+          "multi",
+          "c-mails"
+        ],
+        "level": 2,
+        "levelName": "Actif"
+      },
+      {
+        "id": "p-celina",
+        "name": "Célina Bouguenna",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi",
+          "zeromanuel",
+          "c-mails",
+          "c-recherche",
+          "c-analyse",
+          "c-suivi",
+          "c-recap",
+          "n-tache",
+          "n-bilanaug",
+          "c-gain"
+        ],
+        "level": 3,
+        "levelName": "Aguerri"
+      },
+      {
+        "id": "p-katie",
+        "name": "Ekaterina Salnikova",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "regulier",
+          "multi",
+          "c-mails",
+          "bilan",
+          "c-analyse",
+          "c-recherche",
+          "c-suivi",
+          "zeromanuel",
+          "skill",
+          "n-tache",
+          "c-recap"
+        ],
+        "level": 3,
+        "levelName": "Aguerri"
+      },
+      {
+        "id": "p-wael",
+        "name": "Waël Ben Yahia",
+        "badges": [
+          "ready",
+          "install",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      },
+      {
+        "id": "p-ghofrane",
+        "name": "Ghofrane Touati",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi",
+          "c-recherche",
+          "c-analyse",
+          "c-suivi",
+          "c-recap",
+          "skill",
+          "n-tache"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      },
+      {
+        "id": "p-anis",
+        "name": "Anis Alouane",
+        "badges": [
+          "install",
+          "ready",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi",
+          "c-mails",
+          "c-recherche",
+          "c-analyse",
+          "c-suivi",
+          "c-recap",
+          "c-gain",
+          "n-tache",
+          "n-bilanaug"
+        ],
+        "level": 3,
+        "levelName": "Aguerri"
+      },
+      {
+        "id": "p-fares",
+        "name": "Farès Ramdani",
+        "badges": [
+          "ready",
+          "install",
+          "rapport",
+          "bilan",
+          "regulier",
+          "multi"
+        ],
+        "level": 1,
+        "levelName": "Initié"
+      }
+    ]
+  },
+  "sujets": {
+    "families": [
+      "A · Chaîne de production",
+      "B · Mémoire & collaboration",
+      "C · Pilotage & adoption",
+      "D · Innovation & transverse"
+    ],
+    "chantiers": [
+      {
+        "id": "c-setup",
+        "fam": 0,
+        "name": "Set-up auto",
+        "squad": "Squad Set-up",
+        "color": "var(--teal,#0d9488)",
+        "status": "reflex",
+        "subs": [
+          {
+            "id": "setup-monday-ecarte",
+            "name": "Set-up via brief Monday",
+            "detail": "Ancienne approche : brief Monday comme source de vérité → OI → campagne LCM. Écartée, remplacée par le flux MAM.",
+            "status": "ecarte"
+          },
+          {
+            "id": "setup-recept-brief-client",
+            "name": "Réception auto du brief client (MAM)",
+            "detail": "Réception et structuration automatiques du brief annonceur (mail, doc, échange) en amont du set-up.",
+            "status": "build"
+          },
+          {
+            "id": "setup-recept-brief-crea",
+            "name": "Réception auto du brief créa client (MAM)",
+            "detail": "Réception et structuration automatiques du brief créatif transmis par le client.",
+            "status": "build"
+          },
+          {
+            "id": "setup-envoi-brief-adcontent",
+            "name": "Envoi auto du brief créa à Adcontent (MAM)",
+            "detail": "Transmettre automatiquement le brief créatif reçu du client à Adcontent (studio créa).",
+            "status": "build"
+          },
+          {
+            "id": "setup-lcm-from-mam",
+            "name": "Création auto de projet LCM depuis un brief (MAM)",
+            "detail": "Générer le projet LCM (OI + campagne) directement à partir d'un brief structuré dans MAM.",
+            "status": "build"
+          }
+        ]
+      },
+      {
+        "id": "c-qa",
+        "fam": 0,
+        "name": "QA / Contrôle qualité",
+        "squad": "Squad QA",
+        "color": "var(--amber)",
+        "status": "fiab",
+        "subs": [
+          {
+            "id": "qa-audit",
+            "name": "Audit / contrôle avant lancement",
+            "detail": "Cf. tous les canaux d'alerting. Setup : OI, formats, tracking, geo, audiences. Skills QA Carrefour de Christopher (preflight check DLPO/Aladin + cohérence LCM ; live check J+1 magasins sans diffusion) à mutualiser.",
+            "status": "fiab",
+            "who": "Katie"
+          },
+          {
+            "id": "qa-proactive",
+            "name": "QA proactive (alerter avant le client)",
+            "detail": "Un agent détecte les erreurs et prévient avant que le client (ex. Olivier/Carrefour) ne les voie. Angle clé de la QA agentique (AO Carrefour 27/07). Aujourd'hui rempli en partie par le nouvel agent IA Katchr.",
+            "status": "test"
+          },
+          {
+            "id": "qa-delivrabilite",
+            "name": "Suivi délivrabilité & optis",
+            "detail": "Dépenses, impressions, CPM, magasins en retard + suivi des optimisations (Pacer AI). Presque un monitoring naturel & partagé.",
+            "status": "fiab",
+            "who": "Emeric"
+          },
+          {
+            "id": "qa-mel",
+            "name": "Récap de mise en ligne",
+            "detail": "Au lancement de la campagne (mail, Excel…).",
+            "status": "test",
+            "who": "Célina · Steeve"
+          },
+          {
+            "id": "qa-quotidien",
+            "name": "Récap quotidien",
+            "detail": "Envoyé chaque matin dans le canal client (mail, Excel…).",
+            "status": "test",
+            "who": "Célina · Steeve"
+          },
+          {
+            "id": "qa-whitelist",
+            "name": "Whitelist IA de placement (brand safety)",
+            "detail": "Claude catégorise/trie les publishers et retire les jeux douteux → whitelist d'inclusion tenue à jour (Whiteliste_08_26, Ekaterina & Yannis, 31/08). Plus fiable qu'une blacklist à courir après.",
+            "status": "test",
+            "who": "Ekaterina"
+          }
+        ]
+      },
+      {
+        "id": "c-analyses",
+        "fam": 0,
+        "name": "Supports & livrables client",
+        "squad": "Squad Rapports & bilans",
+        "color": "var(--green)",
+        "status": "acquis",
+        "subs": [
+          {
+            "id": "rap-excel",
+            "name": "Rapport de campagne",
+            "detail": "Le rapport de perf : factuel (Excel structuré par levier / format / magasin, campaign-excel-report) puis augmenté (commenté + contexte), et les récaps mi-campagne & fin de campagne. Déjà utilisé par les équipes.",
+            "status": "acquis"
+          },
+          {
+            "id": "bil-auto",
+            "name": "Bilan de campagne",
+            "detail": "Le bilan factuel (synthèse de perf + recommandations) puis augmenté du contexte du compte (Slack, Gmail, historique) pour des corrélations qu'un humain raterait.",
+            "status": "test"
+          },
+          {
+            "id": "bil-onepager",
+            "name": "One-pager",
+            "detail": "Livrable court et clair pour les PDV/centrales peu matures : produit en ~5-10 min (Steph, Anis/Boulanger, Célina/Botanic). Tous formats : HTML via statics.mobsuccess, PDF, artefact…",
+            "status": "test"
+          },
+          {
+            "id": "sup-pige",
+            "name": "Doc d'alignement set-up",
+            "detail": "Document d'alignement avant le set-up de la campagne : cadrage et validation des éléments avant mise en ligne, puis point de suivi. Format adapté (HTML via statics.mobsuccess, PDF, artefact…).",
+            "status": "test"
+          },
+          {
+            "id": "bil-analyses",
+            "name": "Analyses ad hoc (tous formats)",
+            "detail": "Analyses à la demande, déclinables dans tous les formats via skill : Excel, mail, PDF, infographie charte MS ; format HTML-mail unifié inter-comptes.",
+            "status": "reflex"
+          },
+          {
+            "id": "sup-hub-faq",
+            "name": "Hub Analyses & FAQ client",
+            "detail": "Un hub qui regroupe les analyses et une FAQ pour le client : point d'entrée unique des supports, au format adapté.",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-memoire",
+        "fam": 1,
+        "name": "Mémoire & espace collaboratif",
+        "squad": "Squad Collab & process",
+        "color": "var(--brand)",
+        "status": "test",
+        "who": "Squad Collab",
+        "subs": [
+          {
+            "id": "col-cowork",
+            "name": "Espace Cowork collaboratif partagé",
+            "detail": "Solution mémoire partagée via un Drive (pilote Afflelou) : fiche client HTML + historique décisionnel + récap quotidien. Archi (Jérémy) : chaque projet Cowork reste local, tous pointent vers le même dossier Drive ; instructions communes à recopier dans chaque projet à chaque modif. But final : la Cabé.",
+            "status": "test"
+          },
+          {
+            "id": "col-memoire-cabe",
+            "name": "Mémoire & fiche client",
+            "detail": "Mémoire métier via le MCP Mobsuccess (recall/remember/forget) clustérisée par client + la Cabé (Notion + Drive + SharePoint indexés). Fiche client sur le modèle 3 strates (sans recopie) ; couche vivante poussée dans un board Monday [PILOTAGE]. Posé par Christopher (22-24/07).",
+            "status": "test"
+          },
+          {
+            "id": "col-nocturne",
+            "name": "Tâche planifiée nocturne (synthèse quotidienne)",
+            "detail": "Tourne sur un poste admin, agrège Slack + TL;DV + Drive → fiche client / « vie du client » à jour. POC Ahmat sur les comptes de Samy.",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-outillage",
+        "fam": 1,
+        "name": "Outillage collaborateur",
+        "squad": "Squad Collab & process",
+        "color": "var(--blue)",
+        "status": "test",
+        "subs": [
+          {
+            "id": "col-onboarding",
+            "name": "Onboarding outillé (/adops-onboarding)",
+            "detail": "Raccorde un arrivant selon son rôle (Admin/Lead/User) + installe les bons skills.",
+            "status": "acquis"
+          },
+          {
+            "id": "col-collecteurs",
+            "name": "Collecteurs + capture-session + consolidateur",
+            "detail": "Collecte des sources → journaux → récap quotidien.",
+            "status": "test"
+          },
+          {
+            "id": "col-static",
+            "name": "Projets Cowork × statics.mobsuccess",
+            "detail": "Produire des pages/livrables dans Cowork et les publier sur statics.mobsuccess (hébergement Mobsuccess) : docs d'alignement, one-pagers, supports partageables par URL. Ex. op-picard.",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-pilotage",
+        "fam": 2,
+        "name": "Dashboards & cockpits",
+        "squad": "Collab & process · Transverse",
+        "color": "var(--purple,#a855f7)",
+        "status": "test",
+        "subs": [
+          {
+            "id": "dash-mam",
+            "name": "MAM — Media Activity Manager",
+            "detail": "Hub centralisé de gestion des campagnes — dashboard et cockpit en un seul outil. Présenté au Meetup Ops et au Comité Innovation (16/09).",
+            "status": "test",
+            "who": "Noura, Yannis"
+          },
+          {
+            "id": "init-cockpit-leads",
+            "name": "Cockpit AdOps personnalisé (via artefact) → unifié",
+            "detail": "Concours d'équipe : Emeric a montré la voie (tuto partagé) ; chaque AdOps a présenté le sien au weekly du 30/07 ; dépôt du HTML + notice dans le Drive « COCKPITS ADOPS » → assemblage du best-of en LE dashboard standardisé (Noura & Ghofrane). + layer d'actions auto (récap Slack, rapport, vue client).",
+            "status": "test"
+          },
+          {
+            "id": "dash-factu",
+            "name": "Relance facturation automatisée",
+            "detail": "Tâche planifiée Claude → Slack : campagnes terminées + lien du rapport Excel, et campagnes en sous-dépense + lien LCM. Critères réglables par personne (Ekaterina, 06/08).",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-adoption",
+        "fam": 2,
+        "name": "Adoption de l'équipe",
+        "squad": "Squad Collab & process",
+        "color": "var(--brand)",
+        "status": "test",
+        "subs": [
+          {
+            "id": "col-canal-ia",
+            "name": "Canal #adops_team_ia (diffusion & animation)",
+            "detail": "Hub de communication IA de toute l'équipe AdOps (créé le 22/07) : veille IA hebdo chaque lundi, skill/astuce de la semaine, partage de skills & tutoriels, retours d'expérience (REX), entraide. Sert à diffuser les avancées et animer l'adoption.",
+            "status": "acquis"
+          },
+          {
+            "id": "col-suivi-adoption",
+            "name": "Suivi de l'adoption (compteurs & trophées)",
+            "detail": "Nombre d'AdOps prêts (skill automation-ia-ready), compteurs et trophées de la montée en puissance (onglet Progression AdOps), et onglet Optimisation Claude qui lit l'usage par modèle depuis le spend-report admin.",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-agent",
+        "fam": 3,
+        "name": "Agentification",
+        "squad": "Transverse · R&D",
+        "color": "var(--grey)",
+        "status": "reflex",
+        "subs": [
+          {
+            "id": "agent-mvp",
+            "name": "Agent autonome bout-en-bout",
+            "detail": "Les 4 briques mises bout à bout. MVP Q4 → 2027.",
+            "status": "reflex"
+          },
+          {
+            "id": "agent-screenrec",
+            "name": "Screen-record → skill auto",
+            "detail": "Idée Nico (25/07) : filmer un parcours AdOps de A à Z (set up campagne, avec audio) et le donner à Claude pour générer des skills / briques d'automatisation, voire une version agentique du LCM.",
+            "status": "reflex"
+          }
+        ]
+      },
+      {
+        "id": "c-assistants",
+        "fam": 3,
+        "name": "Assistants & générations IA",
+        "squad": "Transverse",
+        "color": "var(--purple,#a855f7)",
+        "status": "test",
+        "subs": [
+          {
+            "id": "col-brief-annonceur",
+            "name": "Brief annonceur auto (mémoire MCP)",
+            "detail": "Via le seul MCP Mobsuccess, Claude génère un brief annonceur (historique, points d'attention, 3 infos clés). Démo sur Afflelou en PDF (24/07).",
+            "status": "test"
+          },
+          {
+            "id": "gen-animation",
+            "name": "Motion design via Claude Design (Animation)",
+            "detail": "Nouveau mode « Animation » de Claude Design : un .md en entrée → une vidéo MP4 en quelques minutes. Ex. animation du fonctionnement de Pacer sur Carrefour pour l'AO (Nico, 01/09).",
+            "status": "test"
+          }
+        ]
+      },
+      {
+        "id": "c-diffusion",
+        "fam": 3,
+        "name": "ROI & mesure de la valeur",
+        "squad": "Transverse",
+        "color": "var(--blue)",
+        "status": "reflex",
+        "subs": [
+          {
+            "id": "init-roi",
+            "name": "ROI vs gain de temps",
+            "detail": "Valoriser le temps gagné grâce à l'IA : heures rendues, € économisés, comptes couverts en plus — mesurer le retour sur investissement des chantiers.",
+            "status": "reflex"
+          }
+        ]
+      },
+      {
+        "id": "c-outils",
+        "fam": 3,
+        "name": "Pistes outils",
+        "squad": "Transverse",
+        "color": "var(--grey)",
+        "status": "reflex",
+        "subs": [
+          {
+            "id": "init-claude-tag",
+            "name": "Claude Tag (1 Claude par channel Slack)",
+            "detail": "Pilote sur Intersport (avec la mémoire MCP). Marche mieux en mono-canal ; coût à l'usage à évaluer (risque trop cher). (Workstream 22/07)",
+            "status": "test"
+          }
+        ]
+      }
+    ],
+    "overrides": {
+      "rapport-auto": "fiab",
+      "bilan-auto": "test",
+      "bilan-augmente": "reflex",
+      "rap-excel": "acquis",
+      "rap-brut-comm": "test",
+      "qa-audit": "test",
+      "qa-mel": "test",
+      "qa-quotidien": "test",
+      "qa-optis": "test",
+      "qa-mi-fin": "fiab",
+      "qa-alim-bilan": "test",
+      "col-compteur": "reflex",
+      "setup-brief": "bloc",
+      "setup-campagne": "bloc",
+      "col-cowork": "test",
+      "col-memoire-cabe": "fiab",
+      "col-nocturne": "reflex",
+      "col-memoire": "reflex",
+      "setup-brief-sources": "bloc",
+      "sup-hub-faq": "fiab",
+      "gen-animation": "fiab",
+      "col-brief-annonceur": "fiab",
+      "bil-auto": "acquis",
+      "sup-pige": "fiab",
+      "bil-analyses": "fiab",
+      "qa-proactive": "test",
+      "init-cockpit-leads": "acquis",
+      "col-static": "fiab",
+      "col-collecteurs": "ecarte",
+      "init-claude-tag": "fiab",
+      "bil-onepager": "acquis",
+      "dash-mam": "build",
+      "dash-factu": "acquis",
+      "col-suivi-adoption": "acquis"
+    },
+    "statusMeta": {
+      "acquis": {
+        "label": "Généralisé",
+        "color": "#12996b",
+        "adoLevel": 4
+      },
+      "test": {
+        "label": "En adoption",
+        "color": "#2563eb",
+        "adoLevel": 3
+      },
+      "fiab": {
+        "label": "Premiers usages",
+        "color": "#c47d00",
+        "adoLevel": 2
+      },
+      "build": {
+        "label": "En construction",
+        "color": "#0891B2",
+        "adoLevel": 1
+      },
+      "reflex": {
+        "label": "À explorer",
+        "color": "#8b93a5",
+        "adoLevel": 1
+      },
+      "bloc": {
+        "label": "En pause",
+        "color": "#d1435b",
+        "adoLevel": 0
+      },
+      "ecarte": {
+        "label": "Écarté",
+        "color": "#8A8497",
+        "adoLevel": 0
+      }
+    },
+    "adoScale": [
+      {
+        "level": 0,
+        "name": "En pause",
+        "color": "#991B1B"
+      },
+      {
+        "level": 1,
+        "name": "À explorer",
+        "color": "#B9B3A7"
+      },
+      {
+        "level": 2,
+        "name": "Premiers usages",
+        "color": "#F59E0B"
+      },
+      {
+        "level": 3,
+        "name": "En adoption",
+        "color": "#5C2EFD"
+      },
+      {
+        "level": 4,
+        "name": "Généralisé",
+        "color": "#00C99C"
+      }
+    ],
+    "flat": [
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-setup",
+        "chantier": "Set-up auto",
+        "chantierAdoLevel": 1,
+        "subId": "setup-monday-ecarte",
+        "sujet": "Set-up via brief Monday",
+        "detail": "Ancienne approche : brief Monday comme source de vérité → OI → campagne LCM. Écartée, remplacée par le flux MAM.",
+        "status": "ecarte",
+        "statusLabel": "Écarté",
+        "adoLevel": 0,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-setup",
+        "chantier": "Set-up auto",
+        "chantierAdoLevel": 1,
+        "subId": "setup-recept-brief-client",
+        "sujet": "Réception auto du brief client (MAM)",
+        "detail": "Réception et structuration automatiques du brief annonceur (mail, doc, échange) en amont du set-up.",
+        "status": "build",
+        "statusLabel": "En construction",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-setup",
+        "chantier": "Set-up auto",
+        "chantierAdoLevel": 1,
+        "subId": "setup-recept-brief-crea",
+        "sujet": "Réception auto du brief créa client (MAM)",
+        "detail": "Réception et structuration automatiques du brief créatif transmis par le client.",
+        "status": "build",
+        "statusLabel": "En construction",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-setup",
+        "chantier": "Set-up auto",
+        "chantierAdoLevel": 1,
+        "subId": "setup-envoi-brief-adcontent",
+        "sujet": "Envoi auto du brief créa à Adcontent (MAM)",
+        "detail": "Transmettre automatiquement le brief créatif reçu du client à Adcontent (studio créa).",
+        "status": "build",
+        "statusLabel": "En construction",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-setup",
+        "chantier": "Set-up auto",
+        "chantierAdoLevel": 1,
+        "subId": "setup-lcm-from-mam",
+        "sujet": "Création auto de projet LCM depuis un brief (MAM)",
+        "detail": "Générer le projet LCM (OI + campagne) directement à partir d'un brief structuré dans MAM.",
+        "status": "build",
+        "statusLabel": "En construction",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-audit",
+        "sujet": "Audit / contrôle avant lancement",
+        "detail": "Cf. tous les canaux d'alerting. Setup : OI, formats, tracking, geo, audiences. Skills QA Carrefour de Christopher (preflight check DLPO/Aladin + cohérence LCM ; live check J+1 magasins sans diffusion) à mutualiser.",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": "Katie"
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-proactive",
+        "sujet": "QA proactive (alerter avant le client)",
+        "detail": "Un agent détecte les erreurs et prévient avant que le client (ex. Olivier/Carrefour) ne les voie. Angle clé de la QA agentique (AO Carrefour 27/07). Aujourd'hui rempli en partie par le nouvel agent IA Katchr.",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-delivrabilite",
+        "sujet": "Suivi délivrabilité & optis",
+        "detail": "Dépenses, impressions, CPM, magasins en retard + suivi des optimisations (Pacer AI). Presque un monitoring naturel & partagé.",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": "Emeric"
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-mel",
+        "sujet": "Récap de mise en ligne",
+        "detail": "Au lancement de la campagne (mail, Excel…).",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": "Célina · Steeve"
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-quotidien",
+        "sujet": "Récap quotidien",
+        "detail": "Envoyé chaque matin dans le canal client (mail, Excel…).",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": "Célina · Steeve"
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-qa",
+        "chantier": "QA / Contrôle qualité",
+        "chantierAdoLevel": 3,
+        "subId": "qa-whitelist",
+        "sujet": "Whitelist IA de placement (brand safety)",
+        "detail": "Claude catégorise/trie les publishers et retire les jeux douteux → whitelist d'inclusion tenue à jour (Whiteliste_08_26, Ekaterina & Yannis, 31/08). Plus fiable qu'une blacklist à courir après.",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": "Ekaterina"
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "rap-excel",
+        "sujet": "Rapport de campagne",
+        "detail": "Le rapport de perf : factuel (Excel structuré par levier / format / magasin, campaign-excel-report) puis augmenté (commenté + contexte), et les récaps mi-campagne & fin de campagne. Déjà utilisé par les équipes.",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "bil-auto",
+        "sujet": "Bilan de campagne",
+        "detail": "Le bilan factuel (synthèse de perf + recommandations) puis augmenté du contexte du compte (Slack, Gmail, historique) pour des corrélations qu'un humain raterait.",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "bil-onepager",
+        "sujet": "One-pager",
+        "detail": "Livrable court et clair pour les PDV/centrales peu matures : produit en ~5-10 min (Steph, Anis/Boulanger, Célina/Botanic). Tous formats : HTML via statics.mobsuccess, PDF, artefact…",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "sup-pige",
+        "sujet": "Doc d'alignement set-up",
+        "detail": "Document d'alignement avant le set-up de la campagne : cadrage et validation des éléments avant mise en ligne, puis point de suivi. Format adapté (HTML via statics.mobsuccess, PDF, artefact…).",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "bil-analyses",
+        "sujet": "Analyses ad hoc (tous formats)",
+        "detail": "Analyses à la demande, déclinables dans tous les formats via skill : Excel, mail, PDF, infographie charte MS ; format HTML-mail unifié inter-comptes.",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 0,
+        "famille": "A · Chaîne de production",
+        "chantierId": "c-analyses",
+        "chantier": "Supports & livrables client",
+        "chantierAdoLevel": 3,
+        "subId": "sup-hub-faq",
+        "sujet": "Hub Analyses & FAQ client",
+        "detail": "Un hub qui regroupe les analyses et une FAQ pour le client : point d'entrée unique des supports, au format adapté.",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-memoire",
+        "chantier": "Mémoire & espace collaboratif",
+        "chantierAdoLevel": 2,
+        "subId": "col-cowork",
+        "sujet": "Espace Cowork collaboratif partagé",
+        "detail": "Solution mémoire partagée via un Drive (pilote Afflelou) : fiche client HTML + historique décisionnel + récap quotidien. Archi (Jérémy) : chaque projet Cowork reste local, tous pointent vers le même dossier Drive ; instructions communes à recopier dans chaque projet à chaque modif. But final : la Cabé.",
+        "status": "test",
+        "statusLabel": "En adoption",
+        "adoLevel": 3,
+        "who": "Squad Collab"
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-memoire",
+        "chantier": "Mémoire & espace collaboratif",
+        "chantierAdoLevel": 2,
+        "subId": "col-memoire-cabe",
+        "sujet": "Mémoire & fiche client",
+        "detail": "Mémoire métier via le MCP Mobsuccess (recall/remember/forget) clustérisée par client + la Cabé (Notion + Drive + SharePoint indexés). Fiche client sur le modèle 3 strates (sans recopie) ; couche vivante poussée dans un board Monday [PILOTAGE]. Posé par Christopher (22-24/07).",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": "Squad Collab"
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-memoire",
+        "chantier": "Mémoire & espace collaboratif",
+        "chantierAdoLevel": 2,
+        "subId": "col-nocturne",
+        "sujet": "Tâche planifiée nocturne (synthèse quotidienne)",
+        "detail": "Tourne sur un poste admin, agrège Slack + TL;DV + Drive → fiche client / « vie du client » à jour. POC Ahmat sur les comptes de Samy.",
+        "status": "reflex",
+        "statusLabel": "À explorer",
+        "adoLevel": 1,
+        "who": "Squad Collab"
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-outillage",
+        "chantier": "Outillage collaborateur",
+        "chantierAdoLevel": 2,
+        "subId": "col-onboarding",
+        "sujet": "Onboarding outillé (/adops-onboarding)",
+        "detail": "Raccorde un arrivant selon son rôle (Admin/Lead/User) + installe les bons skills.",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-outillage",
+        "chantier": "Outillage collaborateur",
+        "chantierAdoLevel": 2,
+        "subId": "col-collecteurs",
+        "sujet": "Collecteurs + capture-session + consolidateur",
+        "detail": "Collecte des sources → journaux → récap quotidien.",
+        "status": "ecarte",
+        "statusLabel": "Écarté",
+        "adoLevel": 0,
+        "who": ""
+      },
+      {
+        "famIndex": 1,
+        "famille": "B · Mémoire & collaboration",
+        "chantierId": "c-outillage",
+        "chantier": "Outillage collaborateur",
+        "chantierAdoLevel": 2,
+        "subId": "col-static",
+        "sujet": "Projets Cowork × statics.mobsuccess",
+        "detail": "Produire des pages/livrables dans Cowork et les publier sur statics.mobsuccess (hébergement Mobsuccess) : docs d'alignement, one-pagers, supports partageables par URL. Ex. op-picard.",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 2,
+        "famille": "C · Pilotage & adoption",
+        "chantierId": "c-pilotage",
+        "chantier": "Dashboards & cockpits",
+        "chantierAdoLevel": 3,
+        "subId": "dash-mam",
+        "sujet": "MAM — Media Activity Manager",
+        "detail": "Hub centralisé de gestion des campagnes — dashboard et cockpit en un seul outil. Présenté au Meetup Ops et au Comité Innovation (16/09).",
+        "status": "build",
+        "statusLabel": "En construction",
+        "adoLevel": 1,
+        "who": "Noura, Yannis"
+      },
+      {
+        "famIndex": 2,
+        "famille": "C · Pilotage & adoption",
+        "chantierId": "c-pilotage",
+        "chantier": "Dashboards & cockpits",
+        "chantierAdoLevel": 3,
+        "subId": "init-cockpit-leads",
+        "sujet": "Cockpit AdOps personnalisé (via artefact) → unifié",
+        "detail": "Concours d'équipe : Emeric a montré la voie (tuto partagé) ; chaque AdOps a présenté le sien au weekly du 30/07 ; dépôt du HTML + notice dans le Drive « COCKPITS ADOPS » → assemblage du best-of en LE dashboard standardisé (Noura & Ghofrane). + layer d'actions auto (récap Slack, rapport, vue client).",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 2,
+        "famille": "C · Pilotage & adoption",
+        "chantierId": "c-pilotage",
+        "chantier": "Dashboards & cockpits",
+        "chantierAdoLevel": 3,
+        "subId": "dash-factu",
+        "sujet": "Relance facturation automatisée",
+        "detail": "Tâche planifiée Claude → Slack : campagnes terminées + lien du rapport Excel, et campagnes en sous-dépense + lien LCM. Critères réglables par personne (Ekaterina, 06/08).",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 2,
+        "famille": "C · Pilotage & adoption",
+        "chantierId": "c-adoption",
+        "chantier": "Adoption de l'équipe",
+        "chantierAdoLevel": 4,
+        "subId": "col-canal-ia",
+        "sujet": "Canal #adops_team_ia (diffusion & animation)",
+        "detail": "Hub de communication IA de toute l'équipe AdOps (créé le 22/07) : veille IA hebdo chaque lundi, skill/astuce de la semaine, partage de skills & tutoriels, retours d'expérience (REX), entraide. Sert à diffuser les avancées et animer l'adoption.",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 2,
+        "famille": "C · Pilotage & adoption",
+        "chantierId": "c-adoption",
+        "chantier": "Adoption de l'équipe",
+        "chantierAdoLevel": 4,
+        "subId": "col-suivi-adoption",
+        "sujet": "Suivi de l'adoption (compteurs & trophées)",
+        "detail": "Nombre d'AdOps prêts (skill automation-ia-ready), compteurs et trophées de la montée en puissance (onglet Progression AdOps), et onglet Optimisation Claude qui lit l'usage par modèle depuis le spend-report admin.",
+        "status": "acquis",
+        "statusLabel": "Généralisé",
+        "adoLevel": 4,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-agent",
+        "chantier": "Agentification",
+        "chantierAdoLevel": 1,
+        "subId": "agent-mvp",
+        "sujet": "Agent autonome bout-en-bout",
+        "detail": "Les 4 briques mises bout à bout. MVP Q4 → 2027.",
+        "status": "reflex",
+        "statusLabel": "À explorer",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-agent",
+        "chantier": "Agentification",
+        "chantierAdoLevel": 1,
+        "subId": "agent-screenrec",
+        "sujet": "Screen-record → skill auto",
+        "detail": "Idée Nico (25/07) : filmer un parcours AdOps de A à Z (set up campagne, avec audio) et le donner à Claude pour générer des skills / briques d'automatisation, voire une version agentique du LCM.",
+        "status": "reflex",
+        "statusLabel": "À explorer",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-assistants",
+        "chantier": "Assistants & générations IA",
+        "chantierAdoLevel": 2,
+        "subId": "col-brief-annonceur",
+        "sujet": "Brief annonceur auto (mémoire MCP)",
+        "detail": "Via le seul MCP Mobsuccess, Claude génère un brief annonceur (historique, points d'attention, 3 infos clés). Démo sur Afflelou en PDF (24/07).",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-assistants",
+        "chantier": "Assistants & générations IA",
+        "chantierAdoLevel": 2,
+        "subId": "gen-animation",
+        "sujet": "Motion design via Claude Design (Animation)",
+        "detail": "Nouveau mode « Animation » de Claude Design : un .md en entrée → une vidéo MP4 en quelques minutes. Ex. animation du fonctionnement de Pacer sur Carrefour pour l'AO (Nico, 01/09).",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-diffusion",
+        "chantier": "ROI & mesure de la valeur",
+        "chantierAdoLevel": 1,
+        "subId": "init-roi",
+        "sujet": "ROI vs gain de temps",
+        "detail": "Valoriser le temps gagné grâce à l'IA : heures rendues, € économisés, comptes couverts en plus — mesurer le retour sur investissement des chantiers.",
+        "status": "reflex",
+        "statusLabel": "À explorer",
+        "adoLevel": 1,
+        "who": ""
+      },
+      {
+        "famIndex": 3,
+        "famille": "D · Innovation & transverse",
+        "chantierId": "c-outils",
+        "chantier": "Pistes outils",
+        "chantierAdoLevel": 2,
+        "subId": "init-claude-tag",
+        "sujet": "Claude Tag (1 Claude par channel Slack)",
+        "detail": "Pilote sur Intersport (avec la mémoire MCP). Marche mieux en mono-canal ; coût à l'usage à évaluer (risque trop cher). (Workstream 22/07)",
+        "status": "fiab",
+        "statusLabel": "Premiers usages",
+        "adoLevel": 2,
+        "who": ""
+      }
+    ]
+  },
+  "blocages": [
+    {
+      "t": "API LCM",
+      "d": "Lectures OK. Feu vert de Chris (27/07) pour avancer sur le set-up auto ; écriture / faisabilité à confirmer.",
+      "s": "fiab"
+    },
+    {
+      "t": "MCP Meta",
+      "d": "Top pour les lectures ; traçabilité de la source à fiabiliser (notice bout en bout).",
+      "s": "fiab"
+    },
+    {
+      "t": "Supermetrics",
+      "d": "Accès limité (nb de sources) ; connecteur Google à étendre (sujet Jérémy).",
+      "s": "fiab"
+    },
+    {
+      "t": "MCP Notion",
+      "d": "Perdu suite au downgrade des comptes Notion — pourtant très utile.",
+      "s": "bloc"
+    },
+    {
+      "t": "Confidentialité / RGPD",
+      "d": "Slack, Gmail & données client dans Claude → cadre à valider.",
+      "s": "reflex"
+    },
+    {
+      "t": "Cowork non collaboratif natif",
+      "d": "Projets Cowork locaux/individuels ; collab via un dossier Drive commun. Instructions globales à recopier dans chaque projet et re-synchroniser à chaque modif (pas de centralisation native).",
+      "s": "fiab"
+    },
+    {
+      "t": "Claude Design (perf)",
+      "d": "Claude Design ralentit fortement / fait crasher certains postes (remonté par Célina). À surveiller.",
+      "s": "fiab"
+    },
+    {
+      "t": "QuickSight",
+      "d": "Ouverture en cours (Christopher) — reste audiences & métriques par objectif.",
+      "s": "reflex"
+    },
+    {
+      "t": "Adoption & budget",
+      "d": "Risque de non-usage (facturation à l'usage) + upgrades comptes Claude à arbitrer.",
+      "s": "reflex"
+    },
+    {
+      "t": "Édition concurrente (lock)",
+      "d": "Deux équipes (Ops / Conseil / Créa) ne peuvent pas éditer le même doc via Claude en même temps → risque d'écrasement. Parade : découpage/réunification ou mécanisme de lock. Non tranché. (Réu Setup Mémoire 01/07)",
+      "s": "fiab"
+    },
+    {
+      "t": "Déclenchement fin de session",
+      "d": "Le skill de capture est manuel et nécessite une machine active ; lancement auto incertain → tester skill manuel + tâche planifiée nocturne de rattrapage.",
+      "s": "fiab"
+    },
+    {
+      "t": "Marge dans les dashboards",
+      "d": "buying_cost désormais lisible via Claude → marge = spend − buying_cost dans les cockpits (Olivier, 05/08). Restent les fees mesure à intégrer.",
+      "s": "fiab"
+    },
+    {
+      "t": "Outils sans connecteur (DSP / portails)",
+      "d": "Partiellement débloqué : Claude dans Chrome (session Cowork) peut cliquer/remplir les interfaces sans MCP dédié. À généraliser sur les portails partenaires.",
+      "s": "fiab"
+    },
+    {
+      "t": "Qualité de la mémoire",
+      "d": "Risque de sur-alimentation / infos erronées captées. Parade : CR intermédiaire validé par l'humain avant gravure + filtrage des catégories.",
+      "s": "reflex"
+    }
+  ],
+  "historique": [
+    {
+      "d": "21 mai 2026",
+      "t": "Création de #taskforce-ia-evolution-iadops (Nicolas). TaskForce lancée sous le lead de Yannis."
+    },
+    {
+      "d": "9 juin",
+      "t": "Sync Yannis × Nico : Claude Cowork posé comme socle. Comptes impliqués : Décathlon, Bouygues, Écoutez Voir, Tape à l'Œil, Atol."
+    },
+    {
+      "d": "10 juin",
+      "t": "Canal ia-adops-bilan-weldom (futur rapports/bilans) + protocole de test Weldom."
+    },
+    {
+      "d": "11 juin",
+      "t": "Bilan Hespéride en ~30-40 min via Claude vs 2h30 manuel — cas de référence."
+    },
+    {
+      "d": "25-26 juin",
+      "t": "Workflow bilans via Claude Design (design system GitHub) + skill /bilan-social-media."
+    },
+    {
+      "d": "30 juin",
+      "t": "Prez « Roadmap iAdOps S2 2026 » finalisée. Kick-off squad rapports & bilans."
+    },
+    {
+      "d": "1 juillet",
+      "t": "Roadmap S2 partagée officiellement (30 réponses). Lancement opérationnel. Réunion « Setup Mémoire Agents Claude » (Yannis, Nico, Christopher, Ahmat, Jérémy) : 2 pilotes parallèles décidés — Drive partagé sur Afflelou & Claude Tag sur un autre client (crédits offerts 2000$) ; règle : projet toujours dans un Drive interne partagé, jamais perso."
+    },
+    {
+      "d": "8 juillet",
+      "t": "Création de #iadops-qa."
+    },
+    {
+      "d": "9 juillet",
+      "t": "Création de #iadops-collab-process. Décision : squad process distincte, même équipe."
+    },
+    {
+      "d": "10 juillet",
+      "t": "Lancement de l'espace Cowork collaboratif Afflelou (avec Jérémy). Yannis crée un projet Claude collaboratif de pilotage."
+    },
+    {
+      "d": "13 juillet",
+      "t": "Yannis propose des créneaux pour présenter la roadmap aux équipes."
+    },
+    {
+      "d": "15-17 juillet",
+      "t": "Structuration finale des squads, équipes complétées, schémas. Nico lance l'initiative Cockpit AdOps & Leads."
+    },
+    {
+      "d": "17 juillet",
+      "t": "CR calls squads. Rapports & bilans : tester le skill rapport sur Afflelou, skill commenté (niveau supérieur), design system MS, analyses multi-formats (Excel/mail/PDF/infographie). Collab-process : finaliser set-up Claude×Drive (Noura/Ghofrane), dashboard client, cockpit AdOps unifié, suivi de l'adoption IA (compteurs/trophées)."
+    },
+    {
+      "d": "20 juillet",
+      "t": "Célina Bouguenna rejoint la squad QA."
+    },
+    {
+      "d": "21 juillet",
+      "t": "Réunion de lancement de la squad QA (Yannis + Anis, Steeve, Stéphanie, Ekaterina, Célina, Emeric)."
+    },
+    {
+      "d": "21 juillet",
+      "t": "Point Yannis / Jérémy sur la mémoire Claude : décision de pousser le recap hebdo dans un dashboard Monday (interactif + historisé) plutôt que le HTML écrasé chaque semaine. Noura doit installer le skill Consolidateur pour un recap à jour."
+    },
+    {
+      "d": "22 juillet",
+      "t": "Workstream iAdOps (Yannis, Christopher, Ahmat, Nico). Christopher pose une solution mémoire via le MCP Mobsuccess (recall/remember/forget, clustérisée par client) et la « Cabé » (base de connaissances : Notion + Drive, dispo ~23/07). 2 pilotes : Afflelou (mémoire partagée via un Drive, dont le but final est la Cabé) et Intersport (test de Claude Tag + mémoire MCP). Brief Monday confirmé comme source de vérité (Monday↔LCM). Christopher partage ses skills QA Carrefour (preflight / live check)."
+    },
+    {
+      "d": "23 juillet",
+      "t": "Christopher indexe SharePoint dans la Cabé et réussit un clustering par client (via l'arborescence des dossiers). Jérémy clarifie l'archi collaborative (projet Cowork local + dossier Drive partagé + instructions communes à recopier). Noura rejoint la squad QA."
+    },
+    {
+      "d": "24 juillet",
+      "t": "Christopher génère un brief annonceur Afflelou (historique, points d'attention, 3 infos clés) en PDF via le seul MCP Mobsuccess. Projet Claude Afflelou consolidé → à recréer sur chaque poste + mise à jour du connecteur Mobsuccess."
+    },
+    {
+      "d": "25 juillet",
+      "t": "Nicolas propose l'approche screen-record : filmer un parcours AdOps de A à Z (avec audio) et le donner à Claude pour en tirer des briques d'automatisation / une version agentique du LCM."
+    },
+    {
+      "d": "27 juillet",
+      "t": "Feu vert de Chris sur le Set-up auto → chantier lancé. Dashboard AdOps lancé en concours : jeu. 30/07 chaque AdOps présente le sien, jeu. 6/08 construction du dashboard standardisé (best-of)."
+    },
+    {
+      "d": "30 juillet",
+      "t": "Weekly AdOps : chaque AdOps présente son cockpit de suivi (démo d'1 min). Le chantier du dashboard unifié est lancé."
+    },
+    {
+      "d": "31 juillet",
+      "t": "Noura ouvre le Drive « COCKPITS ADOPS » (dépôt du HTML + notice, deadline 5/08) pour assembler le best-of. Le scoreboard iAdOps est mis en ligne (progression.html / actu.html)."
+    },
+    {
+      "d": "5 août",
+      "t": "Olivier trouve le KPI buying_cost via Claude → marge = spend − buying_cost directement dans les dashboards."
+    },
+    {
+      "d": "6 août",
+      "t": "Ekaterina crée une tâche planifiée Claude → Slack pour la facturation (campagnes terminées + rapport Excel, budgets sous-consommés + lien LCM). Correctif du connecteur MCP Mobsuccess."
+    },
+    {
+      "d": "11 août",
+      "t": "Claude dans Chrome devient une session Cowork : skills, connecteurs et historique dans le navigateur → débloque les outils sans connecteur (DSP, portails)."
+    },
+    {
+      "d": "20 août",
+      "t": "Point Looker (dashboards) — Feu Vert."
+    },
+    {
+      "d": "24 août",
+      "t": "ChatGPT Ads ouvre en France (+31 pays EU) : nouveau levier à intégrer aux recos, avec un ciblage par intention conversationnelle."
+    },
+    {
+      "d": "31 août",
+      "t": "Ekaterina & Yannis publient une whitelist IA de placement (Whiteliste_08_26). Anis (Boulanger) et Célina (Botanic) produisent des one-pagers client en ~10 min."
+    },
+    {
+      "d": "1 septembre",
+      "t": "Nicolas publie le skill « Bilan / Point d'étape » pour toute l'équipe et exploite le nouveau mode « Animation » de Claude Design (motion design, ex. Pacer × Carrefour)."
+    },
+    {
+      "d": "9 septembre",
+      "t": "Onglet « Optimisation Claude » mis en ligne : usage par modèle + reco par personne, avec une piste d'optimisation des tokens (Fable en lead / Sonnet en sidekick, élaborée avec Ahmat). Connecteur MCP Vistar (DOOH) ouvert à toute l'équipe en lecture seule (Jérémy)."
+    },
+    {
+      "d": "16 septembre",
+      "t": "Meetup Ops & Comité Innovation : démo IA/Automation (trophées, cockpit, optimisation) au CODIR et aux équipes ; présentation de MAM (hub de gestion de campagnes centralisé) ; design system dans Claude Design ; extension de la méthode aux équipes Paid Media Content, Conseil Newbiz et Farly. Cap posé : le métier évolue vers « bâtisseur » et orchestration d'agents."
+    }
+  ],
+  "squads": [
+    {
+      "name": "iadops-collab-process",
+      "role": "Game master — org, process, adoption & communication (le compteur)",
+      "members": [
+        "Yannis (lead)",
+        "Nicolas",
+        "Noura",
+        "Ghofrane",
+        "Ekaterina",
+        "Olivier Ta"
+      ],
+      "color": "var(--brand)"
+    },
+    {
+      "name": "iadops-rapports-et-bilans",
+      "role": "Rapports Excel → bilans → bilan augmenté (chantier le plus avancé)",
+      "members": [
+        "Yannis",
+        "Noura",
+        "Ghofrane",
+        "Ekaterina",
+        "Olivier Ta",
+        "Nicolas"
+      ],
+      "color": "var(--green)"
+    },
+    {
+      "name": "iadops-qa",
+      "role": "Audit avant lancement, récap mise en ligne, suivi optis, délivrabilité",
+      "members": [
+        "Yannis",
+        "Olivier Ta",
+        "Nicolas",
+        "Emeric",
+        "Ekaterina",
+        "Anis",
+        "Steeve",
+        "Stéphanie Ta",
+        "Célina",
+        "Noura"
+      ],
+      "color": "var(--amber)"
+    }
+  ],
+  "roadmap": [
+    {
+      "l": "QA",
+      "seg": [
+        {
+          "w": 35,
+          "c": "var(--brand)",
+          "t": "stress-test"
+        },
+        {
+          "w": 65,
+          "c": "var(--blue)",
+          "t": "systématisation"
+        }
+      ]
+    },
+    {
+      "l": "Rapport auto",
+      "seg": [
+        {
+          "w": 45,
+          "c": "var(--brand)",
+          "t": "100 % via skill"
+        },
+        {
+          "w": 55,
+          "c": "var(--grey-soft)",
+          "t": ""
+        }
+      ]
+    },
+    {
+      "l": "Bilans",
+      "seg": [
+        {
+          "w": 30,
+          "c": "var(--brand)",
+          "t": "pilotes"
+        },
+        {
+          "w": 35,
+          "c": "var(--grey-soft)",
+          "t": ""
+        },
+        {
+          "w": 35,
+          "c": "var(--blue)",
+          "t": "série via skill"
+        }
+      ]
+    },
+    {
+      "l": "Set-up auto",
+      "seg": [
+        {
+          "w": 100,
+          "c": "var(--grey-soft)",
+          "t": "chantier de fond — cond. API LCM"
+        }
+      ]
+    },
+    {
+      "l": "Agentification",
+      "seg": [
+        {
+          "w": 50,
+          "c": "var(--grey-soft)",
+          "t": "réflexion"
+        },
+        {
+          "w": 25,
+          "c": "var(--blue)",
+          "t": "MVP"
+        },
+        {
+          "w": 25,
+          "c": "var(--grey-soft)",
+          "t": "cadrage"
+        }
+      ]
+    }
+  ],
+  "canaux": [
+    [
+      "#taskforce-ia-evolution-iadops",
+      "21/05/2026",
+      "Nicolas Saraiva",
+      "Canal chapeau de la TaskForce",
+      "https://mobsuccess.slack.com/archives/C0B5DK3PKCZ"
+    ],
+    [
+      "#iadops-rapports-et-bilans",
+      "10/06/2026",
+      "Yannis",
+      "Squad rapports & bilans",
+      "https://mobsuccess.slack.com/archives/C0B9GETMGDR"
+    ],
+    [
+      "#iadops-qa",
+      "08/07/2026",
+      "Yannis",
+      "Squad QA / contrôle qualité",
+      "https://mobsuccess.slack.com/archives/C0BGRGS0WP2"
+    ],
+    [
+      "#iadops-collab-process",
+      "09/07/2026",
+      "Yannis",
+      "Squad orga & process",
+      "https://mobsuccess.slack.com/archives/C0BH3JM86G0"
+    ]
+  ],
+  "actu": {
+    "editions": [
+      {
+        "id": "ed-0",
+        "label": "27 juil.",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Le grand chantier du moment <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— pilotage &amp; adoption</span></div>\n      <div class=\"darkbox\">\n        <div class=\"rl\"></div>\n        <h3>Chacun son cockpit de suivi</h3>\n        <div class=\"sub\">Un dashboard perso, connecté au Dashboard Mobsuccess, qui devient le premier écran du matin : campagnes actives, alertes, to-do et actions en un clic. Objectif : un standard commun pour toute l'équipe.</div>\n        <div class=\"cgrid\">\n          <div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:var(--green);color:#fff\">✓</span><div><h5>Emeric a montré la voie</h5><p>Son dashboard présenté à l'équipe, avec tutoriel d'installation partagé.</p><div class=\"d\">Fait</div></div></div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:#fff;color:var(--ink)\">2</span><div><h5>Chacun crée le sien</h5><p>Base commune (le prompt d'Emeric) que chacun adapte à son scope.</p><div class=\"d\">jeu. 30 juil. · présentations au weekly</div></div></div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:var(--brand);color:#fff\">3</span><div><h5>Le dashboard standardisé</h5><p>On assemble le best-of de tous les cockpits en un standard.</p><div class=\"d\">jeu. 6 août · le best-of</div></div></div>\n          </div>\n          <div class=\"mdash\">\n            <div class=\"mtop\"><i style=\"background:#ff5f57\"></i><i style=\"background:#febc2e\"></i><i style=\"background:#28c840\"></i><span style=\"margin-left:6px\">Dashboard AdOps — vue d'ensemble</span></div>\n            <div class=\"mbody\">\n              <div class=\"mk\">\n                <div class=\"t\"><div class=\"v\">128 k€</div><div class=\"l\">Budget</div></div>\n                <div class=\"t\"><div class=\"v\">24,6 M</div><div class=\"l\">Impressions</div></div>\n                <div class=\"t\"><div class=\"v\">1,04 %</div><div class=\"l\">CTR</div></div>\n                <div class=\"t\"><div class=\"v\">18</div><div class=\"l\">Campagnes</div></div>\n              </div>\n              <div style=\"margin-top:10px\">\n                <div class=\"mrow\"><span class=\"nm\">Decathlon</span><span class=\"trk\"><i style=\"width:82%\"></i></span><span class=\"pc\">82%</span></div>\n                <div class=\"mrow\"><span class=\"nm\">Weldom</span><span class=\"trk\"><i style=\"width:76%\"></i></span><span class=\"pc\">76%</span></div>\n                <div class=\"mrow\"><span class=\"nm\">Carrefour</span><span class=\"trk\"><i style=\"width:64%\"></i></span><span class=\"pc\">64%</span></div>\n                <div class=\"mrow\"><span class=\"nm\">Intersport</span><span class=\"trk\"><i style=\"width:91%\"></i></span><span class=\"pc\">91%</span></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"sec-title\">Les squads <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— 3 squads, tous les sujets répartis</span></div>\n      <div class=\"card\" style=\"margin-bottom:12px\"><p class=\"lbl\">Chaque squad porte ses sujets de bout en bout (cadrage, tests, industrialisation) et rend compte au weekly. Plus de sujet sans propriétaire.</p></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Squad</span><h3 style=\"margin-top:6px\">Rapports &amp; bilans</h3><p class=\"lbl\"><b style=\"color:var(--ink)\">Rapport auto · Bilan auto · Analyses spécifiques.</b><br>Rapport auto « fait la police » : tout rapport passe obligatoirement par le skill → next : l'améliorer avec les retours des AdOps.</p></div>\n        <div class=\"card\"><span class=\"pill s-fiab\">Squad</span><h3 style=\"margin-top:6px\">QA / Contrôle qualité</h3><p class=\"lbl\"><b style=\"color:var(--ink)\">QA · Set-up auto.</b><br>Audit avant lancement, délivrabilité, récaps de mise en ligne — zéro erreur avant le go-live.</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Squad</span><h3 style=\"margin-top:6px\">Collab &amp; process</h3><p class=\"lbl\"><b style=\"color:var(--ink)\">Mémoire · dashboards · adoption.</b><br>Espace collaboratif partagé, mémoire du compte, cockpits et animation de l'équipe.</p></div>\n      </div>\n\n      <div class=\"sec-title\">Transverse <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— la forme des livrables</span></div>\n      <div class=\"card\" style=\"display:flex;align-items:center;gap:16px;margin-bottom:8px\"><span class=\"pill s-test\" style=\"flex:0 0 auto\">Charte MS</span><div><h3>Uniformisation à la charte Mobsuccess</h3><p class=\"lbl\" style=\"margin-top:4px\">Un format unifié inter-comptes pour tous les livrables — mail client, infographie, HTML — à la charte MS.</p></div></div>\n\n      <div class=\"sec-title\">Déjà en production <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— deux usages concrets</span></div>\n      <div class=\"grid g2\">\n        <div class=\"card\">\n          <span class=\"pill s-acquis\">QA · récap quotidien</span>\n          <h3 style=\"margin-top:8px\">Le récap de campagne, chaque jour</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Généré par Claude depuis le Dashboard Mobsuccess et posté automatiquement dans le canal Slack du client. Déjà sur des comptes pilotes → bientôt étendu à tous les clients.</p>\n          <div style=\"background:var(--brand-soft);border-radius:10px;padding:10px 12px;margin-top:12px\">\n            <div style=\"font-weight:600;font-size:13px\">Weldom · Drive-to-Store — 6U07</div>\n            <div class=\"lbl\" style=\"font-size:11px\">Données J-1 · Fin 21/07 · 100 % du temps écoulé</div>\n            <table class=\"rtab\">\n              <tbody><tr><td class=\"lv\">Meta</td><td>96 % budget</td><td class=\"num\">286 % imp.</td></tr>\n              <tr><td class=\"lv\">RTB Display</td><td>96 % budget</td><td class=\"num\">215 % imp.</td></tr>\n              <tr><td class=\"lv\">Google PMax</td><td>95 % budget</td><td class=\"num\">95 % imp.</td></tr>\n              <tr><td class=\"lv\">Total</td><td>127 477 € / 133 100 €</td><td class=\"num\">96 %</td></tr>\n            </tbody></table>\n          </div>\n        </div>\n        <div class=\"card\">\n          <span class=\"pill s-test\">Rapport &amp; bilan augmenté</span>\n          <h3 style=\"margin-top:8px\">Le bilan client, augmenté par le contexte</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Le rapport factuel devient un bilan enrichi du contexte du compte. Exemple : Hespéride, vague 2 (Drive-to-Store).</p>\n          <div class=\"grid g4\" style=\"margin-top:12px\">\n            <div class=\"kpim\"><div class=\"v\">7,6 M</div><div class=\"l\">Impressions</div></div>\n            <div class=\"kpim\"><div class=\"v\">133 K</div><div class=\"l\">Clics</div></div>\n            <div class=\"kpim\"><div class=\"v\">3,88 €</div><div class=\"l\">CPM</div></div>\n            <div class=\"kpim\"><div class=\"v\">1,76 %</div><div class=\"l\">CTR</div></div>\n          </div>\n          <div class=\"augn\"><b>L'effet « augmenté » :</b> en lisant le canal Slack, Claude a repéré que <b>Pacer AI (Orchestrator)</b> avait été activé — oublié du bilan manuel — et l'a mis en avant. Recos ajoutées : Meta vs Display, LP Drive-to-Store.</div>\n        </div>\n      </div>\n\n      <div class=\"sec-title\">On embarque toute l'équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— retours &amp; animation</span></div>\n      <div class=\"grid g2\">\n        <div class=\"card\">\n          <div class=\"canalh\"><span># adops_team_ia</span><span class=\"mem\">le canal IA de l'équipe · 22/07</span></div>\n          <div class=\"post\"><span class=\"au\">Skills déployés</span> <span class=\"tm\">· à installer</span><div class=\"tt\"><span class=\"amono\">automation-ia-ready</span> · <span class=\"amono\">mob-skill-autodiagnostic</span></div><div class=\"tx\">Diagnostic des connecteurs + audit qualité d'un skill (grille Mobsuccess 13 critères), en duo avec <span class=\"amono\">skill-creator</span>.</div></div>\n          <div class=\"post\"><span class=\"au\">Célina</span> <span class=\"tm\">· retour d'expérience</span><div class=\"tt\">Bilan Point P × Havas × Widely (Cowork)</div><div class=\"tx\">PPTX généré depuis un Excel de stats. ~5 min de review vs une demi-journée.</div></div>\n        </div>\n        <div class=\"card\" style=\"background:var(--brand-soft);border-color:#dfe1ff;display:flex;flex-direction:column;justify-content:center\">\n          <span class=\"pill s-test\">Trophées AdOps</span>\n          <h3 style=\"margin-top:10px\">Chacun monte en puissance</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours et les trophées de l'équipe sont dans l'onglet <b>Progression AdOps</b>.</p>\n        </div>\n      </div>\n    "
+      },
+      {
+        "id": "ed-1",
+        "label": "3 août",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Le grand chantier du moment <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— vers LE dashboard AdOps unifié</span></div>\n      <div class=\"darkbox\">\n        <div class=\"rl\"></div>\n        <h3>Chacun son cockpit → un standard commun</h3>\n        <div class=\"sub\">Chaque AdOps a créé son dashboard de suivi (présentés au weekly du 30 juillet). Prochaine étape : fusionner le best-of de chaque artefact en un seul dashboard AdOps de référence, connecté au Dashboard Mobsuccess.</div>\n        <div class=\"cgrid\">\n          <div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:var(--green);color:#fff\">✓</span><div><h5>La base d'Emeric</h5><p>Son cockpit + un tutoriel d'installation partagés à l'équipe (to-do semi-auto, bouton « vue client » en call, bouton report).</p><div class=\"d\">Fait</div></div></div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:var(--green);color:#fff\">✓</span><div><h5>Chacun a présenté le sien</h5><p>Démo d'1 min par AdOps au weekly, chacun adapté à son scope.</p><div class=\"d\">jeu. 30 juil.</div></div></div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:var(--brand);color:#fff\">3</span><div><h5>Dépôt dans le Drive « COCKPITS ADOPS »</h5><p>HTML du dashboard + notice Claude, pour que Noura &amp; Ghofrane assemblent le best-of.</p><div class=\"d\">avant mer. 5 août</div></div></div>\n            <div class=\"cstep\"><span class=\"n\" style=\"background:#fff;color:var(--ink)\">4</span><div><h5>Le dashboard standardisé</h5><p>Un seul cockpit de référence, enrichi des meilleures fonctions de chacun.</p><div class=\"d\">à suivre</div></div></div>\n          </div>\n          <div class=\"mdash\">\n            <div class=\"mtop\"><i style=\"background:#ff5f57\"></i><i style=\"background:#febc2e\"></i><i style=\"background:#28c840\"></i><span style=\"margin-left:6px\">Dashboard AdOps — best-of en cours</span></div>\n            <div class=\"mbody\">\n              <div class=\"mk\">\n                <div class=\"t\"><div class=\"v\">1 clic</div><div class=\"l\">Rapport</div></div>\n                <div class=\"t\"><div class=\"v\">Vue client</div><div class=\"l\">En call</div></div>\n                <div class=\"t\"><div class=\"v\">To-do</div><div class=\"l\">Semi-auto</div></div>\n                <div class=\"t\"><div class=\"v\">14 j</div><div class=\"l\">Tendance</div></div>\n              </div>\n              <div style=\"margin-top:10px\">\n                <div class=\"mrow\"><span class=\"nm\">Alertes automatiques</span><span class=\"trk\"><i style=\"width:90%\"></i></span><span class=\"pc\">✓</span></div>\n                <div class=\"mrow\"><span class=\"nm\">CPM par format</span><span class=\"trk\"><i style=\"width:80%\"></i></span><span class=\"pc\">✓</span></div>\n                <div class=\"mrow\"><span class=\"nm\">Journal d'optis</span><span class=\"trk\"><i style=\"width:70%\"></i></span><span class=\"pc\">✓</span></div>\n                <div class=\"mrow\"><span class=\"nm\">Export Excel</span><span class=\"trk\"><i style=\"width:95%\"></i></span><span class=\"pc\">✓</span></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"sec-title\">Déjà en production <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les retours d'expérience de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\">\n          <span class=\"pill s-acquis\">Anis · bilan</span>\n          <h3 style=\"margin-top:8px\">Ouverture Brico Dépôt</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Bilan construit avec Claude à partir de l'Excel du skill + les indicateurs business de la cliente (CA, entrées, taux de transfo, panier moyen). Quelques allers-retours, puis relecture métier.</p>\n          <div class=\"augn\"><b>Gain :</b> une demi-journée à une journée complète de production économisée.</div>\n        </div>\n        <div class=\"card\">\n          <span class=\"pill s-test\">Célina · bilan</span>\n          <h3 style=\"margin-top:8px\">Point P × Havas × Widely</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Bilan PPTX généré depuis l'Excel de stats, repassé en mode Design à la charte MS. Astuce : demander à Design de ne toucher qu'à la forme → export PPTX nickel.</p>\n          <div class=\"augn\"><b>Gain :</b> ~5 min de review vs une demi-journée de mise en page.</div>\n        </div>\n        <div class=\"card\">\n          <span class=\"pill s-fiab\">Jeremy · test</span>\n          <h3 style=\"margin-top:8px\">Prod de bilans à l'échelle</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Tests de génération de bilans face au benchmark Hespéride, pour cadrer une production en série fiable et comparable.</p>\n          <div class=\"augn\"><b>Objectif :</b> un standard de qualité reproductible, campagne après campagne.</div>\n        </div>\n      </div>\n\n      <div class=\"sec-title\">On embarque toute l'équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— canal, skills &amp; scoreboard</span></div>\n      <div class=\"grid g2\">\n        <div class=\"card\">\n          <div class=\"canalh\"><span># adops_team_ia</span><span class=\"mem\">le canal IA de l'équipe</span></div>\n          <div class=\"post\"><span class=\"au\">Skills déployés</span> <span class=\"tm\">· à installer</span><div class=\"tt\"><span class=\"amono\">automation-ia-ready</span> · <span class=\"amono\">mob-skill-autodiagnostic</span></div><div class=\"tx\">Diagnostic des connecteurs (machine IA-ready) + audit qualité d'un skill avant partage (grille 13 critères).</div></div>\n          <div class=\"post\"><span class=\"au\">Nico</span> <span class=\"tm\">· idée</span><div class=\"tt\">Des dashboards tournés vers l'action</div><div class=\"tx\">CTA « fin de campagne » → draft mail/Slack « campagne fully delivered », rapport Excel et faits marquants générés en un clic.</div></div>\n        </div>\n        <div class=\"card\" style=\"background:var(--brand-soft);border-color:#dfe1ff;display:flex;flex-direction:column;justify-content:center\">\n          <span class=\"pill s-test\">Scoreboard iAdOps</span>\n          <h3 style=\"margin-top:10px\">La Progression AdOps est en ligne</h3>\n          <p class=\"lbl\" style=\"margin-top:6px\">Chacun sur son parcours, d'<b>Initié</b> à <b>Référent</b>, avec ses trophées — voir l'onglet <b>Progression AdOps</b>.</p>\n          <div style=\"background:#fff;border-radius:10px;padding:10px 12px;margin-top:12px\">\n            <div style=\"font-weight:600;font-size:13px\">À l'honneur cette semaine</div>\n            <ul class=\"lbl\" style=\"font-size:11.5px;margin:6px 0 0;padding-left:16px\">\n              <li><b>Emeric</b> — a ouvert la voie avec son cockpit + tuto</li>\n              <li><b>Steeve</b> — le récap Weldom posté automatiquement chaque matin</li>\n              <li><b>Noura &amp; Ghofrane</b> — le bilan Hespéride augmenté par le contexte</li>\n              <li><b>Steph</b> — le one-pager qui aide les clientes à convaincre leur groupement</li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    "
+      },
+      {
+        "id": "ed-2",
+        "label": "10 août",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Côté équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les wins de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Olivier · dashboard</span><h3 style=\"margin-top:6px\">La marge dans les dashboards</h3><p class=\"lbl\" style=\"margin-top:6px\">KPI <span class=\"amono\">buying_cost</span> trouvé via Claude → <b>marge = spend − buying_cost</b> directement dans les cockpits (restent les fees mesure).</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Ekaterina · automatisation</span><h3 style=\"margin-top:6px\">La chasse aux campagnes à facturer, automatisée</h3><p class=\"lbl\" style=\"margin-top:6px\">Tâche planifiée Claude → message Slack : campagnes récemment terminées + lien du rapport Excel, et campagnes en sous-dépense + lien LCM. Chacun règle ses critères.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Outillage</span><h3 style=\"margin-top:6px\">MCP Mobsuccess réparé</h3><p class=\"lbl\" style=\"margin-top:6px\">Le connecteur MCP MS refonctionne (penser à actualiser les outils). Base saine pour tous les skills data.</p></div>\n      </div>\n    "
+      },
+      {
+        "id": "ed-4",
+        "label": "24 août",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Côté équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les wins de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Anis · one-pager</span><h3 style=\"margin-top:6px\">Deux one-pagers Boulanger</h3><p class=\"lbl\" style=\"margin-top:6px\">Produits en ~10 min, à quelques détails et textes près. Le format qui parle aux PDV peu matures sur le digital.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Célina · one-pager</span><h3 style=\"margin-top:6px\">One-pager Botanic</h3><p class=\"lbl\" style=\"margin-top:6px\">~5-10 min en faisant autre chose après avoir lancé la task. Post-lancement, ça rassure et l'expérience client est dingue.</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Ekaterina &amp; Yannis · brand safety</span><h3 style=\"margin-top:6px\">Whitelist IA de placement</h3><p class=\"lbl\" style=\"margin-top:6px\">Claude catégorise/trie les publishers et retire les jeux douteux → <span class=\"amono\">Whiteliste_08_26</span> à mettre en inclusion. À tester sur vos campagnes.</p></div>\n      </div>\n    "
+      },
+      {
+        "id": "ed-5",
+        "label": "31 août",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Côté équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les wins de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Nico · skill</span><h3 style=\"margin-top:6px\">Skill Bilan &amp; Point d'étape</h3><p class=\"lbl\" style=\"margin-top:6px\">Dispo à toute l'équipe : distinction auto campagne terminée (bilan) vs en cours (point d'étape), question créa + logo, stats via les skills MCP MS, contrôle qualité des chiffres et garde-fous charte. Testé sur Botanic.</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Nico · Claude Design</span><h3 style=\"margin-top:6px\">Le mode « Animation » (motion design)</h3><p class=\"lbl\" style=\"margin-top:6px\">Design passe de 3 à 13 options de création, dont « Animation » : un .md en entrée → une vidéo MP4 en ~3 min. Exemple : le fonctionnement de Pacer sur Carrefour pour l'AO.</p></div>\n        <div class=\"card\"><span class=\"pill s-reflex\">Cap à tenir</span><h3 style=\"margin-top:6px\">Du one-pager au skill + routine</h3><p class=\"lbl\" style=\"margin-top:6px\">Prochain cran : transformer les one-pagers en skill et déclencher la routine dès quelques jours après le lancement (récap qui rassure le client), pas seulement en fin de campagne.</p></div>\n      </div>\n    "
+      },
+      {
+        "id": "ed-6",
+        "label": "7 sept",
+        "active": false,
+        "html": "\n      <div class=\"sec-title\">Côté équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les productions de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Yannis · doc d'opé</span><h3 style=\"margin-top:6px\">Doc d'alignement Picard × Havas</h3><p class=\"lbl\" style=\"margin-top:6px\">Page (Cowork + Design) qui aligne tous les acteurs sur le set-up, signale les points en attente/bloquants et intègre Katchr. Scan de l'opé LCM + CSV Google Ads + URLs d'aperçus.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Célina · one-pager</span><h3 style=\"margin-top:6px\">Suivi budget Feu Vert</h3><p class=\"lbl\" style=\"margin-top:6px\">Mini one-pagers de conso budget vs temps écoulé sur un fil rouge annuel (restrictions Google) — synthétique et partageable, ~15 min.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Alphonse · one-pager</span><h3 style=\"margin-top:6px\">One-pager + données Vistar (DOOH)</h3><p class=\"lbl\" style=\"margin-top:6px\">Le skill one-pager avec récupération des données Vistar désormais accessibles dans Claude. Waël l'a aussi testé sur un bilan intermédiaire ITS.</p></div>\n      </div>\n      <div class=\"card\" style=\"margin-top:12px;background:var(--brand-soft);border-color:#dfe1ff\"><span class=\"pill s-test\">Nouveau · onglet</span><h3 style=\"margin-top:6px\">Progression → « Optimisation Claude »</h3><p class=\"lbl\" style=\"margin-top:6px\">Un onglet qui analyse l'usage de chacun (outils utilisés, % par modèle) avec une reco perso, et une piste d'optimisation des tokens (Fable en lead / Sonnet en sidekick, élaborée avec Ahmat) à tester.</p></div>\n    "
+      },
+      {
+        "id": "ed-7",
+        "label": "14 sept",
+        "active": true,
+        "html": "\n      <div class=\"sec-title\">Le grand chantier du moment <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— MAM, le hub de gestion de campagnes</span></div>\n      <div class=\"card\" style=\"background:var(--brand-soft);border-color:#dfe1ff;margin-bottom:12px\"><span class=\"pill s-acquis\">Yannis · nouvel outil</span><h3 style=\"margin-top:6px\">MAM — la gestion de campagnes centralisée</h3><p class=\"lbl\" style=\"margin-top:6px\">Un hub complet de pilotage des campagnes, construit par Yannis. Présenté au <b>Meetup Ops (16/09)</b> — très bien reçu, avec une session dédiée au feedback et aux idées — puis au <b>Comité Innovation</b> devant la direction.</p></div>\n      <div class=\"sec-title\">Côté équipe <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— les productions de la semaine</span></div>\n      <div class=\"grid g3\">\n        <div class=\"card\"><span class=\"pill s-acquis\">Stéphanie · dashboard</span><h3 style=\"margin-top:6px\">Dashboard Boulanger (calls hebdo)</h3><p class=\"lbl\" style=\"margin-top:6px\">Remplace un Looker devenu lourd à maintenir : vue d'ensemble des perfs par campagne (CTR &amp; CPM/jour à la demande cliente) + un onglet de comparaison de deux campagnes. Support des points hebdo.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Olivier · dashboard</span><h3 style=\"margin-top:6px\">Suivi Google Ads (Intersport, Afflelou, Feu Vert)</h3><p class=\"lbl\" style=\"margin-top:6px\">Récupère auto les infos Google Ads + LCM, compare les deux, alerte si dates divergentes ou campagne manquante côté Google, indique trend &amp; perfs, actualisation horaire. Remplace le suivi Google Sheet manuel.</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Ghofrane · skill</span><h3 style=\"margin-top:6px\">Skill <span class=\"amono\">google-ads-editor-pmax-bulk</span></h3><p class=\"lbl\" style=\"margin-top:6px\">Génère les CSV bulk Google Ads Editor pour les PMax multi-magasins (formats, limites de caractères, budget calculé sur le non-margé), testé Maroc (23 magasins) &amp; Belgique (4). En complément du nouveau module LCM PMax.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Nico · Design System</span><h3 style=\"margin-top:6px\">Le design system dans Claude Design</h3><p class=\"lbl\" style=\"margin-top:6px\">Depuis un brand book / des présentations → design system hébergé sur GitHub via Cowork → appelé dans Claude Design pour des rendus fidèles. Test en cours sur la charte MS pour l'AO Carrefour.</p></div>\n        <div class=\"card\"><span class=\"pill s-test\">Diffusion</span><h3 style=\"margin-top:6px\">L'IA essaime aux autres équipes</h3><p class=\"lbl\" style=\"margin-top:6px\">La méthode AdOps s'étend : Paid Media Content (récup auto des créas, dont LinkedIn Ads), Conseil Newbiz (pédagogie IA) et Farly (cockpit de suivi + gamification). Sessions animées par Nico &amp; Yannis.</p></div>\n        <div class=\"card\"><span class=\"pill s-acquis\">Jérémy · fondations</span><h3 style=\"margin-top:6px\">Vistar (DOOH) &amp; setup ZIP</h3><p class=\"lbl\" style=\"margin-top:6px\">Connecteur MCP Vistar (DOOH) branché pour toute l'équipe en lecture seule, et setup ZIP Intersport avec un outil de vérification des remontées d'infos — à déployer client par client avec les leads.</p></div>\n      </div>\n      <div class=\"card\" style=\"margin-top:12px\"><span class=\"pill s-acquis\">Outillage</span><h3 style=\"margin-top:6px\">Claude Design mieux intégré</h3><p class=\"lbl\" style=\"margin-top:6px\">Design tourne désormais dans la conversation, sans ouvrir de fenêtre à part — plus fluide pour passer un livrable à la charte.</p></div>\n    "
+      }
+    ]
+  },
+  "realisations": {
+    "html": "\n    <!-- ============================================================\n         ONGLET RÉALISATIONS — COMMENT METTRE À JOUR\n         Chaque réalisation = une <div class=\"card\"> dans la bonne grille de sa section.\n         MODÈLE À COPIER (avec badge) :\n           <div class=\"card\"><span class=\"pill s-acquis\">badge</span><h3 style=\"margin-top:8px\">Titre</h3><p class=\"lbl\" style=\"margin-top:6px\">Description courte.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Auteur(s)</div></div>\n         MODÈLE SANS BADGE (section Analyses) : idem sans le <span class=\"pill\">.\n         Badges dispo : s-acquis (vert), s-test (bleu), s-fiab (ambre), s-reflex (gris), s-bloc (rouge), s-ecarte (écarté).\n         Grilles : g4 (KPIs) · g3 (3 col.) · g2 (2 col.). Ajoute un compte en <span class=\"chipm\">Nom</span>.\n         Pense à mettre à jour le KPI \"11 comptes\" et le compteur de la section si besoin.\n    ============================================================ -->\n    <div class=\"note\">Ce que les AdOps ont réellement produit avec Claude — bilans, reporting, analyses, cockpits — avec les gains de temps mesurés (mai → juillet 2026).</div>\n\n    <div class=\"grid g4\">\n      <div class=\"card\"><div class=\"big\">30-40 min</div><div class=\"lbl\">Un bilan client, contre 2h30 en manuel</div></div>\n      <div class=\"card\"><div class=\"big\">5 min</div><div class=\"lbl\">De relecture, contre une demi-journée de mise en page</div></div>\n      <div class=\"card\"><div class=\"big\">1er</div><div class=\"lbl\">Bilan 100 % IA validé en restitution client</div></div>\n      <div class=\"card\"><div class=\"big\">16</div><div class=\"lbl\">Comptes déjà embarqués</div></div>\n    </div>\n\n    <div class=\"sec-title\">Bilans de campagne</div>\n    <div class=\"grid g3\">\n      <div class=\"card\"><span class=\"pill s-acquis\">Première</span><h3 style=\"margin-top:8px\">1er bilan 100 % produit par l'IA — Hespéride</h3><p class=\"lbl\" style=\"margin-top:6px\">Sourcing auto via connecteurs (Mobsuccess, Slack, Notion, Gmail) + créas &amp; mesure, mise en forme à la charte, export PDF. Restitution client validée à 100 %. Bonus : Claude a repéré Pacer AI dans Slack, absent du bilan manuel.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Nicolas · Noura · Ghofrane · Briac</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">5 min de review</span><h3 style=\"margin-top:8px\">Bilan PPTX Point P × Havas × Widely</h3><p class=\"lbl\" style=\"margin-top:6px\">PPTX complet généré depuis un Excel de stats, repassé à la charte. Brief d'1 min, 2-3 phrases retouchées — vs une demi-journée de mise en page.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Célina Bouguenna</div></div>\n      <div class=\"card\"><span class=\"pill s-test\">À la charte</span><h3 style=\"margin-top:8px\">Bilan Decathlon SPRING P2 2026</h3><p class=\"lbl\" style=\"margin-top:6px\">Passé via Claude Design : rendu à la charte, et base réutilisable pour décliner les activations suivantes (Été Acte 1).</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Anne Coadou</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">30 min</span><h3 style=\"margin-top:8px\">Bilan intermédiaire B:BOT</h3><p class=\"lbl\" style=\"margin-top:6px\">Un bilan intermédiaire complet livré en trente minutes.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Noura</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">~10 min · devenu un skill</span><h3 style=\"margin-top:8px\">Bilan social media Gifi</h3><p class=\"lbl\" style=\"margin-top:6px\">Données ads (Meta, TikTok) + organique, charte importée via GitHub. Transformé en skill réutilisable : bilan complet en ~10 min, sans saisie manuelle.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Nicolas Saraiva</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Groupement</span><h3 style=\"margin-top:8px\">Bilan Écouter Voir — groupement Centre-Val de Loire</h3><p class=\"lbl\" style=\"margin-top:6px\">Présentation détaillée pour compléter les chiffres du groupement, avec une slide « enseignements &amp; recommandations » retravaillée. Cliente satisfaite.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Stéphanie Ta</div></div>\n    </div>\n\n    <div class=\"sec-title\">One-pagers client <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— le skill qui rassure en 10-15 min</span></div>\n    <div class=\"grid g3\">\n      <div class=\"card\"><span class=\"pill s-acquis\">~15 min</span><h3 style=\"margin-top:8px\">Suivi budget Feu Vert (fil rouge annuel)</h3><p class=\"lbl\" style=\"margin-top:6px\">Mini one-pagers de suivi conso budget vs temps écoulé sur des campagnes annuelles (restrictions de diffusion Google) : un visuel synthétique et partageable en un coup d'œil. Export Excel du suivi GG + brief Claude.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Célina Bouguenna</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">~10 min</span><h3 style=\"margin-top:8px\">One-pagers Boulanger &amp; bilan Brico Dépôt</h3><p class=\"lbl\" style=\"margin-top:6px\">Deux one-pagers Boulanger produits en ~10 min ; et un bilan d'ouverture Brico Dépôt enrichi des indicateurs business de la cliente (CA, entrées, panier moyen).</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Anis Alouane</div></div>\n      <div class=\"card\"><span class=\"pill s-test\">Bilan intermédiaire</span><h3 style=\"margin-top:8px\">One-pager ITS Trade Marketing</h3><p class=\"lbl\" style=\"margin-top:6px\">Bilan intermédiaire d'une campagne en cours : rendu très propre et particulièrement rapide à générer dans ce cas de figure.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Waël Ben Yahia</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Données Vistar · DOOH</span><h3 style=\"margin-top:8px\">One-pager avec données Vistar</h3><p class=\"lbl\" style=\"margin-top:6px\">Skill one-pager avec récupération des données Vistar (DOOH) désormais accessibles dans Claude. Marche très bien.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Alphonse Arthur</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Skill · charte MS</span><h3 style=\"margin-top:8px\">Le skill one-pager</h3><p class=\"lbl\" style=\"margin-top:6px\">Skill dédié (bilan / point d'étape) : déclenchement annonceur + campagne, question créa + logo, stats via les skills MCP MS, contrôle des chiffres et garde-fous charte.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Nicolas Saraiva</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Franchisés</span><h3 style=\"margin-top:8px\">One-pager Afflelou Belgique</h3><p class=\"lbl\" style=\"margin-top:6px\">Inspiré du modèle de Stéphanie, à partager aux franchisés. Bien reçu par la cliente.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Ekaterina Salnikova</div></div>\n    </div>\n\n    <div class=\"sec-title\">Rapports &amp; reporting automatisés</div>\n    <div class=\"grid g2\">\n      <div class=\"card\"><span class=\"pill s-acquis\">Quotidien · en production</span><h3 style=\"margin-top:8px\">Rapports Weldom Drive-to-Store</h3><p class=\"lbl\" style=\"margin-top:6px\">Rapport multi-campagnes chaque jour : budget, impressions, livraison par levier, analyse rédigée. Publié dans Slack, avec HTML, PDF et dashboard live.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Steeve Gueret</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Standardisé · multi-comptes</span><h3 style=\"margin-top:8px\">Le rapport Excel de campagne</h3><p class=\"lbl\" style=\"margin-top:6px\">Un Excel propre sorti du Dashboard en une phrase : global, par levier, par format, par magasin avec budget planifié du Geo Planner. La 1ère marche avant les bilans.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Ekaterina Salnikova &amp; l'équipe</div></div>\n      <div class=\"card\"><span class=\"pill s-test\">Intersport</span><h3 style=\"margin-top:8px\">Bilans &amp; rapports Excel Intersport</h3><p class=\"lbl\" style=\"margin-top:6px\">Reprise de la chaîne rapport → bilan via Claude sur le compte.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Waël Ben Yahia</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Automatisé</span><h3 style=\"margin-top:8px\">Le récap de facturation</h3><p class=\"lbl\" style=\"margin-top:6px\">Récap automatique des campagnes facturées, publié dans le canal facturation.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Olivier Ta</div></div>\n    </div>\n\n    <div class=\"sec-title\">Analyses, données &amp; qualité</div>\n    <div class=\"grid g3\">\n      <div class=\"card\"><h3>Matomo branché dans Claude</h3><p class=\"lbl\" style=\"margin-top:6px\">Connexion API des stats Matomo à côté des stats campagnes : un seul outil pour tout lire, et des rapports Excel enrichis derrière.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Yannis · Nicolas · Alphonse — Decathlon</div></div>\n      <div class=\"card\"><h3>Le contrôle qualité avant lancement</h3><p class=\"lbl\" style=\"margin-top:6px\">Audit du set-up : OI, tracking, formats, geo planner, footfall, synchro DSP — avec une partie Meta approfondie.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Christopher Allène · Yannis</div></div>\n      <div class=\"card\"><h3>La mémoire Mobsuccess</h3><p class=\"lbl\" style=\"margin-top:6px\">Knowledge Hub, mails d'équipe et Drives clients indexés, + une mémoire par client : n'importe qui peut demander un doc à Claude.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Christopher Allène</div></div>\n      <div class=\"card\"><h3>Génération des bulk PMax (Google Ads Editor)</h3><p class=\"lbl\" style=\"margin-top:6px\">Skill qui construit les CSV bulk multi-magasins (structure Editor, limites de caractères, budget calculé sur le non-margé) et repère les dépassements avant l'import. Testé Maroc (23 magasins) &amp; Belgique (4). En complément du module LCM PMax.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Ghofrane Touati</div></div>\n      <div class=\"card\"><h3>Vistar (DOOH) &amp; setup ZIP branchés</h3><p class=\"lbl\" style=\"margin-top:6px\">Connecteur MCP Vistar (DOOH) accessible à toute l'équipe en lecture seule, et setup ZIP Intersport avec un outil de vérification des remontées d'infos — à déployer client par client avec les leads.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Jérémy · Christopher</div></div>\n      <div class=\"card\"><h3>Le design system dans Claude Design</h3><p class=\"lbl\" style=\"margin-top:6px\">Un design system créé depuis un brand book, hébergé sur GitHub via Cowork et appelé dans Claude Design pour des rendus fidèles à la charte. Test sur la charte MS de l'AO Carrefour.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Nicolas Saraiva</div></div>\n      <div class=\"card\"><h3>Whitelist IA de placement (brand safety)</h3><p class=\"lbl\" style=\"margin-top:6px\">Claude catégorise/trie les publishers RTB et écarte les inventaires douteux → whitelist d'inclusion (<span class=\"amono\">Whiteliste_08_26</span>), plus fiable qu'une blacklist réactive. À appliquer sur les comptes.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Ekaterina Salnikova &amp; Yannis</div></div>\n    </div>\n\n    <div class=\"sec-title\">Cockpits de pilotage</div>\n    <div class=\"grid g2\">\n      <div class=\"card\"><span class=\"pill s-acquis\">Installé en 5 min</span><h3 style=\"margin-top:8px\">Le dashboard AdOps partagé</h3><p class=\"lbl\" style=\"margin-top:6px\">Suivi quotidien par client et campagne, tendance 14 j, CPM par format, recommandations, to-do du jour, journal d'optimisations, export Excel et vue client partageable en call. Diffusé avec son tutoriel : chacun installe sa copie.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Emeric Moulinneuf</div></div>\n      <div class=\"card\"><span class=\"pill s-test\">Côté Leads</span><h3 style=\"margin-top:8px\">Le cockpit Leads Ops</h3><p class=\"lbl\" style=\"margin-top:6px\">Comptes, équipe, budgets, campagnes en cours et à venir, charge par personne — avec actions auto : rapport mi-campagne, récap Slack, brouillon d'email de fin de campagne.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Nicolas · Stéphanie · Noura</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Support call hebdo</span><h3 style=\"margin-top:8px\">Dashboard Boulanger</h3><p class=\"lbl\" style=\"margin-top:6px\">Remplace un Looker devenu lourd à maintenir : vue d'ensemble des perfs par campagne (CTR &amp; CPM par jour, à la demande cliente) + un onglet de comparaison de deux campagnes. Support des points hebdo.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Stéphanie Ta</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Google Ads · MAJ horaire</span><h3 style=\"margin-top:8px\">Suivi Google Ads multi-comptes</h3><p class=\"lbl\" style=\"margin-top:6px\">Intersport, Afflelou, Feu Vert : récupère automatiquement Google Ads + LCM, compare les deux, alerte si dates divergentes ou campagne manquante côté Google, indique trend &amp; perfs. Remplace le suivi Google Sheet manuel.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Olivier Ta</div></div>\n      <div class=\"card\"><span class=\"pill s-acquis\">Yannis · hub</span><h3 style=\"margin-top:8px\">MAM — gestion de campagnes centralisée</h3><p class=\"lbl\" style=\"margin-top:6px\">Un hub complet de pilotage des campagnes. Présenté au Meetup Ops et au Comité Innovation (16/09) devant la direction.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Yannis Echchelh</div></div>\n    </div>\n\n    <div class=\"sec-title\">Docs d'alignement &amp; set-up d'opé</div>\n    <div class=\"card\"><span class=\"pill s-acquis\">Cowork + Design · charte MS</span><h3 style=\"margin-top:8px\"><a href=\"https://statics.mobsuccess.ai/p/op-picard\" target=\"_blank\" style=\"color:inherit\">Doc d'alignement set-up — Opé Picard × Havas</a></h3><p class=\"lbl\" style=\"margin-top:6px\">Page partagée qui aligne tous les acteurs (Havas, Picard) sur le set-up de l'opération, signale les points en attente et bloquants, et intègre Katchr. Construite avec Cowork (scan de l'opé LCM) + le CSV des campagnes Google Ads (export Editor) + les URLs d'aperçus, mise à la charte via Claude Design.</p><div class=\"lbl\" style=\"color:var(--brand);font-weight:600;margin-top:8px\">Yannis Echchelh</div><div class=\"lbl\" style=\"margin-top:8px\"><a href=\"https://statics.mobsuccess.ai/p/op-picard\" target=\"_blank\" style=\"color:var(--brand);font-weight:600\">Ouvrir le doc →</a></div></div>\n\n    <div class=\"sec-title\">Ce qui diffuse l'usage</div>\n    <div class=\"grid g3\">\n      <div class=\"card\"><h3>On anime l'équipe</h3><ul class=\"clean\"><li>Canal <b>#adops_team_ia</b> : veille, skills à installer, galères &amp; wins</li><li>Veille du lundi : actus Claude/adtech + un cas d'usage + une astuce</li><li>Office hour Cowork : un skill créé en direct en 7 min</li><li>Point IA du weekly, récurrent, avec les Ops</li></ul></div>\n      <div class=\"card\"><h3>On partage les skills</h3><ul class=\"clean\"><li>Diagnostic des connecteurs (machine prête, puis installation)</li><li>Autodiagnostic de skill : grille qualité Mobsuccess avant partage</li><li>Rapport Excel &amp; contrôle qualité de campagne</li><li>Dépôt commun de skills AdOps : on crée, on audite, on partage</li></ul></div>\n      <div class=\"card\"><h3>On s'organise en squads</h3><ul class=\"clean\"><li><b>Taskforce iAdOps</b> — pilotage global (mai 2026)</li><li><b>Rapports &amp; bilans</b> — chaîne rapport → bilan → augmenté</li><li><b>QA</b> — audit avant lancement, récap mise en ligne, optis</li><li><b>Collaboratif</b> — espace Cowork partagé (pilote Afflelou)</li></ul></div>\n      <div class=\"card\"><h3>On essaime aux autres équipes</h3><ul class=\"clean\"><li><b>Paid Media Content</b> — bilans + récup auto des créas (dont LinkedIn Ads)</li><li><b>Conseil Newbiz</b> — pédagogie IA, cas d'usage concrets</li><li><b>Farly</b> — cockpit de suivi + gamification de la progression</li><li>Méthode AdOps rejouée, animée par Nico &amp; Yannis</li></ul></div>\n    </div>\n\n    <div class=\"sec-title\">Les comptes embarqués <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— 16 clients touchés par la chaîne IA</span></div>\n    <div style=\"display:flex;flex-wrap:wrap;gap:8px\">\n      <span class=\"chipm\">Decathlon</span><span class=\"chipm\">Bouygues</span><span class=\"chipm\">Écoutez Voir</span><span class=\"chipm\">Tape à l'Œil</span><span class=\"chipm\">Atol</span><span class=\"chipm\">Hespéride</span><span class=\"chipm\">Point P</span><span class=\"chipm\">Weldom</span><span class=\"chipm\">Gifi</span><span class=\"chipm\">Intersport</span><span class=\"chipm\">Afflelou</span><span class=\"chipm\">Picard</span><span class=\"chipm\">Boulanger</span><span class=\"chipm\">Botanic</span><span class=\"chipm\">Feu Vert</span><span class=\"chipm\">Brico Dépôt</span>\n    </div>\n  "
+  },
+  "vue": {
+    "html": "\n    <div class=\"sec-title\">Le socle</div>\n    <div class=\"grid g3\">\n      <div class=\"card\"><h3>Structure d'usage</h3><p class=\"lbl\" style=\"margin-top:6px\">Un espace Claude par compte = mémoire vivante. Plus de contexte (Slack, Monday, LCM, Gmail, bilans passés) = sorties démultipliées.</p></div>\n      <div class=\"card\"><h3>Méthode</h3><p class=\"lbl\" style=\"margin-top:6px\">Piloter → Itérer → Généraliser. Équipe pilote de 3-4 profils, point hebdo. Règle d'or : rien en manuel sans l'avoir tenté via Claude.</p></div>\n      <div class=\"card\"><h3>But final</h3><p class=\"lbl\" style=\"margin-top:6px\">Agentification : les 4 briques mises bout à bout forment un agent autonome de bout en bout. R&amp;D · MVP Q4 → 2027.</p></div>\n    </div>\n    <div class=\"sec-title\">Cap stratégique</div>\n    <div class=\"card\" style=\"background:var(--brand-soft);border-color:#dfe1ff;margin-bottom:12px\"><p class=\"lbl\">Le métier AdOps évolue vers un rôle de <b style=\"color:var(--ink)\">« bâtisseur »</b> pour les clients, avec demain de <b style=\"color:var(--ink)\">l'orchestration d'agents</b>. Message passé au CODIR (16/09) : monter en expertise sur ces outils, participer à l'évolution des fiches de poste, et rester à la pointe — individuellement et collectivement.</p></div>\n    <div class=\"sec-title\">Où en est chaque sujet <span style=\"font-weight:500;text-transform:none;letter-spacing:0\">— degré d'utilisation &amp; d'adoption</span></div>\n    <style>\n    #vue .ado-block{margin-bottom:14px}\n    #vue .ado-fam{font-size:11px;font-weight:700;color:var(--ink);margin:0 0 8px}\n    #vue .ado-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #F1ECE4}\n    #vue .ado-row:last-child{border-bottom:0}\n    #vue .ado-name{flex:1;font-size:13px;font-weight:600}\n    #vue .ado-seg{display:flex;gap:3px;width:132px;flex:0 0 auto}\n    #vue .ado-seg i{height:8px;flex:1;border-radius:3px;background:#EDE8E0}\n    #vue .ado-lab{width:122px;flex:0 0 auto;font-size:11px;font-weight:700;text-align:right}\n    #vue .ado-leg{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--muted);margin:0 0 12px}\n    #vue .ado-leg span{display:inline-flex;align-items:center;gap:6px}\n    #vue .ado-leg i{width:11px;height:11px;border-radius:3px;display:inline-block}\n    #vue .subj .subseg{display:flex;gap:3px;width:88px;flex:0 0 auto;margin-right:10px;align-self:center}\n    #vue .subj .subseg i{height:7px;flex:1;border-radius:2px;background:#EDE8E0}\n    </style>\n    <div class=\"ado-leg\">\n      <span><i style=\"background:#B9B3A7\"></i>À explorer</span>\n      <span><i style=\"background:#0891B2\"></i>En construction</span>\n      <span><i style=\"background:#F59E0B\"></i>Premiers usages</span>\n      <span><i style=\"background:#5C2EFD\"></i>En adoption</span>\n      <span><i style=\"background:#00C99C\"></i>Généralisé</span>\n      <span><i style=\"background:#8A8497\"></i>Écarté <span style=\"opacity:.7\">(testé, on arrête)</span></span>\n    </div>\n    <div class=\"note\">Le degré d'utilisation &amp; d'adoption est modifiable et sauvegardé localement dans ce cockpit : chaque sujet a sa jauge, chaque brique son indice d'avancement. Filtre ci-dessous.</div>\n    <div class=\"toolbar\" id=\"filters\">\n      <span class=\"filt active\" data-f=\"all\">Tous</span>\n      <span class=\"filt\" data-f=\"acquis\">Généralisé</span>\n      <span class=\"filt\" data-f=\"test\">En adoption</span>\n      <span class=\"filt\" data-f=\"fiab\">Premiers usages</span>\n      <span class=\"filt\" data-f=\"build\">En construction</span>\n      <span class=\"filt\" data-f=\"reflex\">À explorer</span>\n      <span class=\"filt\" data-f=\"bloc\">En pause</span>\n      <span class=\"filt\" data-f=\"ecarte\">Écarté</span>\n      <button class=\"reset\" id=\"resetBtn\">Réinitialiser</button>\n    </div>\n    <div id=\"subjects\"><div class=\"family-head\" style=\"display: block;\">A · Chaîne de production</div><div class=\"chantier\" data-id=\"c-setup\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--teal,#0d9488)\"></span><h3>Set-up auto</h3><span class=\"chipm\">Squad Set-up</span><span class=\"chip-num\">5</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#B9B3A7\">Brique : À explorer</div><div class=\"bar\"><i style=\"width:25%;background:#B9B3A7\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"setup-monday-ecarte\" data-status=\"ecarte\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#8A8497\"></span><div class=\"body\"><div class=\"name\">Set-up via brief Monday</div><div class=\"desc\">Ancienne approche : brief Monday comme source de vérité → OI → campagne LCM. Écartée, remplacée par le flux MAM.</div></div><span class=\"subseg\"><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"setup-monday-ecarte\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\" selected=\"\">Écarté</option></select></div><div class=\"subj\" data-id=\"setup-recept-brief-client\" data-status=\"build\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#0891B2\"></span><div class=\"body\"><div class=\"name\">Réception auto du brief client (MAM)</div><div class=\"desc\">Réception et structuration automatiques du brief annonceur (mail, doc, échange) en amont du set-up.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"setup-recept-brief-client\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\" selected=\"\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"setup-recept-brief-crea\" data-status=\"build\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#0891B2\"></span><div class=\"body\"><div class=\"name\">Réception auto du brief créa client (MAM)</div><div class=\"desc\">Réception et structuration automatiques du brief créatif transmis par le client.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"setup-recept-brief-crea\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\" selected=\"\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"setup-envoi-brief-adcontent\" data-status=\"build\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#0891B2\"></span><div class=\"body\"><div class=\"name\">Envoi auto du brief créa à Adcontent (MAM)</div><div class=\"desc\">Transmettre automatiquement le brief créatif reçu du client à Adcontent (studio créa).</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"setup-envoi-brief-adcontent\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\" selected=\"\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"setup-lcm-from-mam\" data-status=\"build\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#0891B2\"></span><div class=\"body\"><div class=\"name\">Création auto de projet LCM depuis un brief (MAM)</div><div class=\"desc\">Générer le projet LCM (OI + campagne) directement à partir d'un brief structuré dans MAM.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"setup-lcm-from-mam\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\" selected=\"\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-qa\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--amber)\"></span><h3>QA / Contrôle qualité</h3><span class=\"chipm\">Squad QA</span><span class=\"chip-num\">6</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#5C2EFD\">Brique : En adoption</div><div class=\"bar\"><i style=\"width:75%;background:#5C2EFD\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"qa-audit\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">Audit / contrôle avant lancement</div><div class=\"desc\">Cf. tous les canaux d'alerting. Setup : OI, formats, tracking, geo, audiences. Skills QA Carrefour de Christopher (preflight check DLPO/Aladin + cohérence LCM ; live check J+1 magasins sans diffusion) à mutualiser.</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Katie</span></div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-audit\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"qa-proactive\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">QA proactive (alerter avant le client)</div><div class=\"desc\">Un agent détecte les erreurs et prévient avant que le client (ex. Olivier/Carrefour) ne les voie. Angle clé de la QA agentique (AO Carrefour 27/07). Aujourd'hui rempli en partie par le nouvel agent IA Katchr.</div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-proactive\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"qa-delivrabilite\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Suivi délivrabilité &amp; optis</div><div class=\"desc\">Dépenses, impressions, CPM, magasins en retard + suivi des optimisations (Pacer AI). Presque un monitoring naturel &amp; partagé.</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Emeric</span></div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-delivrabilite\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"qa-mel\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">Récap de mise en ligne</div><div class=\"desc\">Au lancement de la campagne (mail, Excel…).</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Célina · Steeve</span></div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-mel\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"qa-quotidien\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">Récap quotidien</div><div class=\"desc\">Envoyé chaque matin dans le canal client (mail, Excel…).</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Célina · Steeve</span></div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-quotidien\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"qa-whitelist\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">Whitelist IA de placement (brand safety)</div><div class=\"desc\">Claude catégorise/trie les publishers et retire les jeux douteux → whitelist d'inclusion tenue à jour (Whiteliste_08_26, Ekaterina &amp; Yannis, 31/08). Plus fiable qu'une blacklist à courir après.</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Ekaterina</span></div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"qa-whitelist\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-analyses\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--green)\"></span><h3>Supports &amp; livrables client</h3><span class=\"chipm\">Squad Rapports &amp; bilans</span><span class=\"chip-num\">6</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#5C2EFD\">Brique : En adoption</div><div class=\"bar\"><i style=\"width:75%;background:#5C2EFD\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"rap-excel\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Rapport de campagne</div><div class=\"desc\">Le rapport de perf : factuel (Excel structuré par levier / format / magasin, campaign-excel-report) puis augmenté (commenté + contexte), et les récaps mi-campagne &amp; fin de campagne. Déjà utilisé par les équipes.</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"rap-excel\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"bil-auto\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Bilan de campagne</div><div class=\"desc\">Le bilan factuel (synthèse de perf + recommandations) puis augmenté du contexte du compte (Slack, Gmail, historique) pour des corrélations qu'un humain raterait.</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"bil-auto\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"bil-onepager\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">One-pager</div><div class=\"desc\">Livrable court et clair pour les PDV/centrales peu matures : produit en ~5-10 min (Steph, Anis/Boulanger, Célina/Botanic). Tous formats : HTML via statics.mobsuccess, PDF, artefact…</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"bil-onepager\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"sup-pige\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Doc d'alignement set-up</div><div class=\"desc\">Document d'alignement avant le set-up de la campagne : cadrage et validation des éléments avant mise en ligne, puis point de suivi. Format adapté (HTML via statics.mobsuccess, PDF, artefact…).</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"sup-pige\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"bil-analyses\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Analyses ad hoc (tous formats)</div><div class=\"desc\">Analyses à la demande, déclinables dans tous les formats via skill : Excel, mail, PDF, infographie charte MS ; format HTML-mail unifié inter-comptes.</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"bil-analyses\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"sup-hub-faq\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Hub Analyses &amp; FAQ client</div><div class=\"desc\">Un hub qui regroupe les analyses et une FAQ pour le client : point d'entrée unique des supports, au format adapté.</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"sup-hub-faq\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"family-head\" style=\"display: block;\">B · Mémoire &amp; collaboration</div><div class=\"chantier\" data-id=\"c-memoire\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--brand)\"></span><h3>Mémoire &amp; espace collaboratif</h3><span class=\"chipm\">Squad Collab &amp; process</span><span class=\"chipm\" style=\"background:var(--mint);color:#000050;border:0\">Squad Collab</span><span class=\"chip-num\">3</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#F59E0B\">Brique : Premiers usages</div><div class=\"bar\"><i style=\"width:50%;background:#F59E0B\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"col-cowork\" data-status=\"test\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--blue)\"></span><div class=\"body\"><div class=\"name\">Espace Cowork collaboratif partagé</div><div class=\"desc\">Solution mémoire partagée via un Drive (pilote Afflelou) : fiche client HTML + historique décisionnel + récap quotidien. Archi (Jérémy) : chaque projet Cowork reste local, tous pointent vers le même dossier Drive ; instructions communes à recopier dans chaque projet à chaque modif. But final : la Cabé.</div></div><span class=\"subseg\"><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#5C2EFD\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-cowork\"><option value=\"acquis\">Généralisé</option><option value=\"test\" selected=\"\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"col-memoire-cabe\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Mémoire &amp; fiche client</div><div class=\"desc\">Mémoire métier via le MCP Mobsuccess (recall/remember/forget) clustérisée par client + la Cabé (Notion + Drive + SharePoint indexés). Fiche client sur le modèle 3 strates (sans recopie) ; couche vivante poussée dans un board Monday [PILOTAGE]. Posé par Christopher (22-24/07).</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-memoire-cabe\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"col-nocturne\" data-status=\"reflex\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--grey)\"></span><div class=\"body\"><div class=\"name\">Tâche planifiée nocturne (synthèse quotidienne)</div><div class=\"desc\">Tourne sur un poste admin, agrège Slack + TL;DV + Drive → fiche client / « vie du client » à jour. POC Ahmat sur les comptes de Samy.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-nocturne\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\" selected=\"\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-outillage\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--blue)\"></span><h3>Outillage collaborateur</h3><span class=\"chipm\">Squad Collab &amp; process</span><span class=\"chip-num\">3</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#F59E0B\">Brique : Premiers usages</div><div class=\"bar\"><i style=\"width:50%;background:#F59E0B\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"col-onboarding\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Onboarding outillé (/adops-onboarding)</div><div class=\"desc\">Raccorde un arrivant selon son rôle (Admin/Lead/User) + installe les bons skills.</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"col-onboarding\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"col-collecteurs\" data-status=\"ecarte\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#8A8497\"></span><div class=\"body\"><div class=\"name\">Collecteurs + capture-session + consolidateur</div><div class=\"desc\">Collecte des sources → journaux → récap quotidien.</div></div><span class=\"subseg\"><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-collecteurs\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\" selected=\"\">Écarté</option></select></div><div class=\"subj\" data-id=\"col-static\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Projets Cowork × statics.mobsuccess</div><div class=\"desc\">Produire des pages/livrables dans Cowork et les publier sur statics.mobsuccess (hébergement Mobsuccess) : docs d'alignement, one-pagers, supports partageables par URL. Ex. op-picard.</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-static\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"family-head\" style=\"display: block;\">C · Pilotage &amp; adoption</div><div class=\"chantier\" data-id=\"c-pilotage\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--purple,#a855f7)\"></span><h3>Dashboards &amp; cockpits</h3><span class=\"chipm\">Collab &amp; process · Transverse</span><span class=\"chip-num\">3</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#5C2EFD\">Brique : En adoption</div><div class=\"bar\"><i style=\"width:75%;background:#5C2EFD\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"dash-mam\" data-status=\"build\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:#0891B2\"></span><div class=\"body\"><div class=\"name\">MAM — Media Activity Manager</div><div class=\"desc\">Hub centralisé de gestion des campagnes — dashboard et cockpit en un seul outil. Présenté au Meetup Ops et au Comité Innovation (16/09).</div><div style=\"margin-top:5px;display:flex;gap:6px;flex-wrap:wrap\"><span style=\"font-size:10px;font-weight:700;color:#000050;background:var(--mint);border-radius:999px;padding:2px 8px\">Noura, Yannis</span></div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"dash-mam\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\" selected=\"\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"init-cockpit-leads\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Cockpit AdOps personnalisé (via artefact) → unifié</div><div class=\"desc\">Concours d'équipe : Emeric a montré la voie (tuto partagé) ; chaque AdOps a présenté le sien au weekly du 30/07 ; dépôt du HTML + notice dans le Drive « COCKPITS ADOPS » → assemblage du best-of en LE dashboard standardisé (Noura &amp; Ghofrane). + layer d'actions auto (récap Slack, rapport, vue client).</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"init-cockpit-leads\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"dash-factu\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Relance facturation automatisée</div><div class=\"desc\">Tâche planifiée Claude → Slack : campagnes terminées + lien du rapport Excel, et campagnes en sous-dépense + lien LCM. Critères réglables par personne (Ekaterina, 06/08).</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"dash-factu\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-adoption\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--brand)\"></span><h3>Adoption de l'équipe</h3><span class=\"chipm\">Squad Collab &amp; process</span><span class=\"chip-num\">2</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#00C99C\">Brique : Généralisé</div><div class=\"bar\"><i style=\"width:100%;background:#00C99C\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"col-canal-ia\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Canal #adops_team_ia (diffusion &amp; animation)</div><div class=\"desc\">Hub de communication IA de toute l'équipe AdOps (créé le 22/07) : veille IA hebdo chaque lundi, skill/astuce de la semaine, partage de skills &amp; tutoriels, retours d'expérience (REX), entraide. Sert à diffuser les avancées et animer l'adoption.</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"col-canal-ia\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"col-suivi-adoption\" data-status=\"acquis\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--green)\"></span><div class=\"body\"><div class=\"name\">Suivi de l'adoption (compteurs &amp; trophées)</div><div class=\"desc\">Nombre d'AdOps prêts (skill automation-ia-ready), compteurs et trophées de la montée en puissance (onglet Progression AdOps), et onglet Optimisation Claude qui lit l'usage par modèle depuis le spend-report admin.</div></div><span class=\"subseg\"><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i><i style=\"background:#00C99C\"></i></span><select data-id=\"col-suivi-adoption\"><option value=\"acquis\" selected=\"\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"family-head\" style=\"display: block;\">D · Innovation &amp; transverse</div><div class=\"chantier\" data-id=\"c-agent\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--grey)\"></span><h3>Agentification</h3><span class=\"chipm\">Transverse · R&amp;D</span><span class=\"chip-num\">2</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#B9B3A7\">Brique : À explorer</div><div class=\"bar\"><i style=\"width:25%;background:#B9B3A7\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"agent-mvp\" data-status=\"reflex\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--grey)\"></span><div class=\"body\"><div class=\"name\">Agent autonome bout-en-bout</div><div class=\"desc\">Les 4 briques mises bout à bout. MVP Q4 → 2027.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"agent-mvp\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\" selected=\"\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"agent-screenrec\" data-status=\"reflex\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--grey)\"></span><div class=\"body\"><div class=\"name\">Screen-record → skill auto</div><div class=\"desc\">Idée Nico (25/07) : filmer un parcours AdOps de A à Z (set up campagne, avec audio) et le donner à Claude pour générer des skills / briques d'automatisation, voire une version agentique du LCM.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"agent-screenrec\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\" selected=\"\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-assistants\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--purple,#a855f7)\"></span><h3>Assistants &amp; générations IA</h3><span class=\"chipm\">Transverse</span><span class=\"chip-num\">2</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#F59E0B\">Brique : Premiers usages</div><div class=\"bar\"><i style=\"width:50%;background:#F59E0B\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"col-brief-annonceur\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Brief annonceur auto (mémoire MCP)</div><div class=\"desc\">Via le seul MCP Mobsuccess, Claude génère un brief annonceur (historique, points d'attention, 3 infos clés). Démo sur Afflelou en PDF (24/07).</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"col-brief-annonceur\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div><div class=\"subj\" data-id=\"gen-animation\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Motion design via Claude Design (Animation)</div><div class=\"desc\">Nouveau mode « Animation » de Claude Design : un .md en entrée → une vidéo MP4 en quelques minutes. Ex. animation du fonctionnement de Pacer sur Carrefour pour l'AO (Nico, 01/09).</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"gen-animation\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-diffusion\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--blue)\"></span><h3>ROI &amp; mesure de la valeur</h3><span class=\"chipm\">Transverse</span><span class=\"chip-num\">1</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#B9B3A7\">Brique : À explorer</div><div class=\"bar\"><i style=\"width:25%;background:#B9B3A7\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"init-roi\" data-status=\"reflex\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--grey)\"></span><div class=\"body\"><div class=\"name\">ROI vs gain de temps</div><div class=\"desc\">Valoriser le temps gagné grâce à l'IA : heures rendues, € économisés, comptes couverts en plus — mesurer le retour sur investissement des chantiers.</div></div><span class=\"subseg\"><i style=\"background:#B9B3A7\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"init-roi\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\" selected=\"\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div><div class=\"chantier\" data-id=\"c-outils\" style=\"display: block;\"><div class=\"head\"><span class=\"dot\" style=\"width:12px;height:12px;background:var(--grey)\"></span><h3>Pistes outils</h3><span class=\"chipm\">Transverse</span><span class=\"chip-num\">1</span><div class=\"cbar\" style=\"margin-left:auto\"><div class=\"cnt\" style=\"color:#F59E0B\">Brique : Premiers usages</div><div class=\"bar\"><i style=\"width:50%;background:#F59E0B\"></i></div></div></div><div class=\"subs\"><div class=\"subj\" data-id=\"init-claude-tag\" data-status=\"fiab\" style=\"display: flex;\"><span class=\"dot\" style=\"margin-top:6px;background:var(--amber)\"></span><div class=\"body\"><div class=\"name\">Claude Tag (1 Claude par channel Slack)</div><div class=\"desc\">Pilote sur Intersport (avec la mémoire MCP). Marche mieux en mono-canal ; coût à l'usage à évaluer (risque trop cher). (Workstream 22/07)</div></div><span class=\"subseg\"><i style=\"background:#F59E0B\"></i><i style=\"background:#F59E0B\"></i><i style=\"background:#EDE8E0\"></i><i style=\"background:#EDE8E0\"></i></span><select data-id=\"init-claude-tag\"><option value=\"acquis\">Généralisé</option><option value=\"test\">En adoption</option><option value=\"fiab\" selected=\"\">Premiers usages</option><option value=\"build\">En construction</option><option value=\"reflex\">À explorer</option><option value=\"bloc\">En pause</option><option value=\"ecarte\">Écarté</option></select></div></div></div></div>\n    "
+  }
+}
