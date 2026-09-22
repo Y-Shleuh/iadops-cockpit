@@ -812,7 +812,7 @@ const D = {
     "The skill is available in your Claude. Tested on Botanic with Célina. If you have a wrap-up to do, now's the time to try it!",
 
   // ── actu.html — éditions 5 & 6 (7 sept / 14 sept) ────────────────────
-  'Les productions de la semaine': 'The week's productions',
+  'Les productions de la semaine': "The week's productions",
   "Doc d'alignement Picard × Havas": 'Picard × Havas alignment doc',
   "Page (Cowork + Design) qui aligne tous les acteurs sur le set-up, signale les points en attente/bloquants et intègre Katchr. Scan de l'opé LCM + CSV Google Ads + URLs d'aperçus.":
     'Page (Cowork + Design) that aligns all stakeholders on the setup, flags pending/blocking points and integrates Katchr. LCM op scan + Google Ads CSV + preview URLs.',
