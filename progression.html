@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -6,149 +6,214 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Progression AdOps — Cockpit iAdOps</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 :root{
   --ms-navy:#000050;--ms-cream:#F2EEE9;--ms-violet:#5C2EFD;--ms-mint:#00F5BE;
   --ms-orange:#FF481E;--ms-navy-700:#0A0A6E;--ms-violet-700:#4A1FE0;
   --ms-violet-100:#E4E1FE;--ms-mint-700:#00C99C;--ms-mint-100:#D6FCF1;
   --ms-cream-200:#E7E2DA;--ms-cream-300:#DAD4C9;
+  --ms-deep:#00002E;--ms-ink-dim:#A9A9E0;--ms-ink-soft:#C9C9EC;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:var(--ms-violet);text-decoration:none}
 h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
-@keyframes msRise{from{transform:scaleY(.05)}to{transform:scaleY(1)}}
-@keyframes msFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes msConfetti{0%{opacity:0;transform:translateY(-30px) rotate(0deg)}12%{opacity:1}100%{opacity:0;transform:translateY(320px) rotate(540deg)}}
+
+/* ── MOTION ─────────────────────────────────────────────────────────── */
+@keyframes sweep{to{transform:rotate(360deg)}}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(2.1)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes scanline{0%{transform:translateY(0);opacity:0}8%{opacity:.7}100%{transform:translateY(320px);opacity:0}}
+@keyframes confetti{0%{transform:translateY(-14px) rotate(0);opacity:0}12%{opacity:.85}100%{transform:translateY(190px) rotate(420deg);opacity:0}}
+.rise{animation:rise .9s var(--ease) both}
+.rise-1{animation-delay:.08s}.rise-2{animation-delay:.16s}.rise-3{animation-delay:.24s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-.nav{background:var(--ms-navy);padding:13px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+/* ── NAV ────────────────────────────────────────────────────────────── */
+.nav{background:var(--ms-deep);padding:13px 40px;display:flex;align-items:center;gap:26px;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(242,238,233,.12)}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0}
 .nav-brand img{height:22px;width:auto;display:block}
 .nav-sep{width:1px;height:20px;background:#3A3A78;display:block}
 .nav-title{color:#fff;font-size:16px;font-weight:600}
-.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:26px;flex-grow:1;flex-wrap:wrap}
+.nav-link{position:relative;color:var(--ms-ink-dim);font-size:15px;font-weight:500;transition:color .25s}
+.nav-link:hover{color:#fff}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--ms-mint);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-link:hover::after,.nav-link.is-active::after{transform:scaleX(1)}
+.nav-link.is-active{color:#fff;font-weight:600}
+.nav-tag{color:var(--ms-mint);font-size:13px;font-weight:600;flex-shrink:0}
 
-.hero{background:var(--ms-navy);color:var(--ms-cream);padding:30px 40px 36px;position:relative;overflow:hidden}
-.hero-bg1{position:absolute;top:-120px;right:60px;width:260px;height:260px;border-radius:50%;background:var(--ms-violet);opacity:.55}
-.hero-bg2{position:absolute;bottom:-120px;right:-40px;width:220px;height:220px;border-radius:50%;background:var(--ms-navy-700)}
-.hero-inner{max-width:1180px;margin:0 auto;position:relative}
-.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:14px;font-weight:600}
-.hero h1{color:#fff;font-size:42px;font-weight:700;line-height:1.04;margin-top:18px}
-.hero p{font-size:18px;line-height:1.45;color:#BFBFE0;margin-top:12px;max-width:720px}
+/* ── HERO ───────────────────────────────────────────────────────────── */
+.hero{background:var(--ms-navy);color:var(--ms-cream);padding:56px 40px 60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(242,238,233,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,238,233,.055) 1px,transparent 1px);background-size:80px 80px}
+.hero-glow{position:absolute;left:-170px;top:-160px;width:480px;height:480px;border-radius:50%;background:var(--ms-violet);filter:blur(140px);opacity:.5}
+.hero-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,245,190,.55),transparent);animation:scanline 7s linear infinite}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.4fr auto;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;background:rgba(0,245,190,.12);border:1px solid rgba(0,245,190,.3);color:var(--ms-mint);font-size:13px;font-weight:600;font-family:var(--mono);letter-spacing:.1em}
+.hero h1{color:#fff;font-size:58px;font-weight:800;line-height:1;margin-top:20px;letter-spacing:-.04em}
+.hero p{font-size:19px;line-height:1.5;color:var(--ms-ink-soft);margin-top:18px;max-width:620px;font-weight:300}
+.hero-stats{display:flex;gap:0;flex-shrink:0}
+.hstat{padding:0 26px;border-right:1px solid rgba(242,238,233,.18);text-align:center}
+.hstat:last-child{border-right:0;padding-right:0}
+.hstat:first-child{padding-left:0}
+.hstat-n{font-size:52px;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--ms-mint)}
+.hstat-l{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ms-ink-dim)}
 
-.tabs{background:var(--ms-cream);display:flex;justify-content:center;gap:10px;padding:22px 20px 0}
-.tab{padding:10px 26px;border-radius:999px;font-size:15px;font-weight:500;background:#fff;border:1px solid var(--ms-cream-200);color:var(--ms-navy);transition:transform .18s ease-out,background .18s ease-out;text-decoration:none}
-.tab:hover{background:var(--ms-violet-100);color:var(--ms-violet-700);transform:translateY(-1px)}
-.tab.active{background:var(--ms-navy);color:#fff;font-weight:600;border:none}
-.tab.active:hover{transform:translateY(-1px);background:var(--ms-navy)}
-
-main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-direction:column;gap:32px}
-
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:16px}
+/* ── MAIN ───────────────────────────────────────────────────────────── */
+main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-direction:column;gap:40px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:20px;flex-wrap:wrap}
 .sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
 .sec-meta{color:#6E6E92;font-size:13px}
 
-/* STEP CHART */
-.chart-box{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:26px 30px 20px}
-.chart-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;align-items:end;height:230px}
-.chart-bar{border-radius:14px 14px 0 0;transform-origin:bottom;animation:msRise .7s ease-out both;position:relative}
-.chart-labels{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;border-top:2px solid var(--ms-cream-200);padding-top:12px}
-.chart-label-title{font-size:14.5px;font-weight:600}
-.chart-label-sub{font-size:12.5px;color:#6E6E92;margin-top:3px;line-height:1.4}
-.bar-avatars{position:absolute;top:8px;left:0;right:0;display:flex;flex-wrap:wrap;justify-content:center;gap:3px;padding:0 5px}
-.bar-av{position:relative;width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.75);cursor:default;flex:0 0 26px}
-.bar-av img{width:100%;height:100%;object-fit:cover;display:block;clip-path:circle(50% at 50% 50%)}
-.bar-av-init{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:rgba(0,0,0,.2);clip-path:circle(50% at 50% 50%)}
-.bar-av .av-tip{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(0,0,50,.88);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .14s;z-index:30}
-.bar-av .av-tip::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-bottom-color:rgba(0,0,50,.88)}
-.bar-av:hover .av-tip{opacity:1}
+/* ── LE PARCOURS — rail ─────────────────────────────────────────────── */
+.rail{position:relative;padding:16px 0 4px}
+.rail-line{position:absolute;left:0;right:0;top:50px;height:3px;background:var(--ms-cream-300);border-radius:999px}
+.rail-fill{position:absolute;left:0;top:50px;height:3px;border-radius:999px;background:var(--ms-violet);transform-origin:left;animation:growX 1.6s var(--ease) both}
+.rail-steps{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px}
+.step-dot{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800;letter-spacing:-.04em;border:3px solid #fff;box-shadow:0 0 0 3px var(--ms-cream-200);animation:bob 6s ease-in-out infinite}
+.step-name{margin-top:18px;font-size:18px;font-weight:700;letter-spacing:-.025em}
+.step-sub{margin-top:6px;font-size:13px;line-height:1.4;color:#6E6E92;max-width:170px;font-weight:300}
+.step-crew{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:14px;min-height:34px}
+.crew-av{position:relative;width:32px;height:32px;border-radius:50%;overflow:hidden;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,80,.14);background:var(--ms-cream-200);transition:transform .25s var(--ease)}
+.crew-av:hover{transform:translateY(-4px) scale(1.12);z-index:3}
+.crew-av img{width:100%;height:100%;object-fit:cover;display:block}
+.step-count{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8A8AA8}
 
-/* STEP LEGEND */
-.step-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.step-pill{padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:600}
+/* ── L'ÉQUIPE ───────────────────────────────────────────────────────── */
+.team-layout{display:grid;grid-template-columns:1fr 268px;gap:20px;align-items:start}
+.team-board{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;overflow:hidden}
+.team-hrow,.team-row{display:grid;grid-template-columns:44px 1fr 150px 130px 78px;gap:0;align-items:center;padding:13px 22px}
+.team-hrow{border-bottom:1px solid var(--ms-cream-200);font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#8A8AA8;background:var(--ms-cream)}
+.team-row{transition:background .3s}
+.team-row:hover{background:var(--ms-cream)}
+.trow{border-bottom:1px solid #F2EDE6}
+.trow:last-child{border-bottom:0}
+.trow>summary{list-style:none;cursor:pointer}
+.trow>summary::-webkit-details-marker{display:none}
+.trow[open] .team-row{background:var(--ms-cream)}
+.trow[open] .team-chev{transform:rotate(90deg)}
+.team-chev{display:inline-block;margin-left:8px;color:#8A8AA8;font-size:11px;transition:transform .3s var(--ease)}
+.trow-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 22px 18px 79px;background:var(--ms-cream)}
+.tchip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;background:#fff;border:1px solid var(--ms-cream-200);font-size:12.5px;font-weight:500}
+.tchip i{font-style:normal;font-size:13px}
+.team-rank{font-family:var(--mono);font-size:14px;font-weight:700;color:#8A8AA8}
+.team-who{display:flex;align-items:center;gap:13px;min-width:0}
+.team-thumb{width:40px;height:40px;border-radius:13px;overflow:hidden;flex-shrink:0;background:var(--ms-cream-200);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--ms-navy)}
+.team-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.team-name{font-size:16px;font-weight:600;letter-spacing:-.02em}
+.team-role{font-size:12px;color:#6E6E92;font-weight:300}
+.team-bar{height:8px;border-radius:999px;background:var(--ms-cream-200);overflow:hidden;margin-right:26px}
+.team-bar i{display:block;height:8px;border-radius:999px;transform-origin:left;animation:growX 1.5s var(--ease) both}
+.team-step{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600}
+.team-cups{text-align:right;font-size:22px;font-weight:800;letter-spacing:-.04em}
+.team-cups span{font-size:12px;font-weight:500;color:#8A8AA8;margin-left:3px}
 
-/* TROPHEES */
-.trophies-wrap{position:relative;border-radius:28px;overflow:hidden;padding:4px}
-.confetti-layer{position:absolute;inset:0;pointer-events:none;z-index:2}
-.confetti-piece{position:absolute;top:0}
-.trophies-grid{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.trophy-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.trophy-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.trophy-icon{width:44px;height:44px;flex:0 0 44px;border-radius:14px;background:var(--ms-navy);display:flex;align-items:center;justify-content:center}
-.trophy-title{font-size:17px;font-weight:600;line-height:1.2}
-.trophy-desc{font-size:13.5px;color:#3B3B6B;margin-top:5px;line-height:1.45}
-.trophy-authors{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
-.author-chip{display:flex;align-items:center;gap:7px;background:var(--ms-cream);border-radius:999px;padding:4px 12px 4px 4px}
-.author-thumb{width:26px;height:26px;border-radius:9px;overflow:hidden;background:var(--ms-navy);display:block;flex:0 0 26px}
+.sidebar{background:var(--ms-navy);border-radius:24px;padding:22px;color:var(--ms-cream);position:relative;overflow:hidden}
+.sidebar-glow{position:absolute;right:-90px;top:-90px;width:240px;height:240px;border-radius:50%;background:var(--ms-violet);filter:blur(80px);opacity:.55}
+.sidebar-in{position:relative}
+.sidebar-tag{display:inline-flex;padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:12px;font-weight:600}
+.sidebar-in p{margin-top:12px;font-size:14px;line-height:1.55;color:var(--ms-ink-soft);font-weight:300}
+.coach{display:flex;align-items:center;gap:11px;margin-top:12px;padding:10px;border-radius:14px;background:rgba(242,238,233,.07);border:1px solid rgba(242,238,233,.14)}
+.coach-thumb{width:38px;height:38px;border-radius:12px;overflow:hidden;flex-shrink:0;background:rgba(242,238,233,.14)}
+.coach-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.coach-name{font-size:14px;font-weight:600;color:#fff}
+.coach-role{font-size:11.5px;color:var(--ms-ink-dim);font-weight:300}
+.coach-role.inactive{color:#8A8AB8;font-style:italic}
+
+/* ── CATALOGUE ──────────────────────────────────────────────────────── */
+.cat-levels{display:flex;flex-direction:column;gap:14px}
+.cat-level{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;overflow:hidden}
+.cat-head{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--ms-cream-200);background:var(--ms-cream)}
+.cat-chip{width:26px;height:26px;border-radius:8px;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ms-navy)}
+.cat-n{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8A8AA8}
+.cat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.cat-item{padding:16px 18px;border-right:1px solid #F2EDE6;transition:background .3s}
+.cat-item:last-child{border-right:0}
+.cat-item:hover{background:var(--ms-cream)}
+.cat-ico{font-size:19px;line-height:1}
+.cat-label{margin-top:9px;font-size:15px;font-weight:600;letter-spacing:-.02em}
+.cat-desc{margin-top:5px;font-size:12.5px;line-height:1.45;color:#6E6E92;font-weight:300}
+
+/* ── TROPHÉES REMIS ─────────────────────────────────────────────────── */
+.trophies-wrap{position:relative;background:var(--ms-deep);border-radius:26px;padding:28px;overflow:hidden}
+.confetti-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti-piece{position:absolute;top:0;display:block}
+.trophies-grid{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.trophy-card{background:rgba(242,238,233,.05);border:1px solid rgba(242,238,233,.14);border-radius:18px;padding:20px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s,background .4s}
+.trophy-card:hover{transform:translateY(-8px);border-color:rgba(0,245,190,.5);background:rgba(0,245,190,.06)}
+.trophy-icon{flex-shrink:0}
+.trophy-title{font-size:17px;font-weight:700;line-height:1.16;letter-spacing:-.025em;color:#fff}
+.trophy-desc{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--ms-ink-soft);font-weight:300}
+.trophy-authors{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:16px}
+.author-chip{display:inline-flex;align-items:center;gap:7px;padding:4px 11px 4px 4px;border-radius:999px;background:rgba(242,238,233,.09);border:1px solid rgba(242,238,233,.16)}
+.author-thumb{width:22px;height:22px;border-radius:50%;overflow:hidden;flex-shrink:0;background:rgba(242,238,233,.18)}
 .author-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.author-name{font-size:13px;font-weight:600}
+.author-name{font-size:12px;font-weight:500;color:var(--ms-cream)}
 
-/* TEAM GRID */
-.team-layout{display:grid;grid-template-columns:1fr 244px;gap:18px;align-items:start}
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(182px,1fr));gap:14px}
-.member-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;height:100%}
-/* FLIP CARD */
-.flip-card{perspective:900px;height:100%}
-.flip-card-inner{position:relative;height:100%;min-height:220px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
-.flip-card-front,.flip-card-back{-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:24px}
-.flip-card-front{height:100%}
-.flip-card-back{position:absolute;inset:0;transform:rotateY(180deg);background:var(--ms-navy);padding:14px 14px;display:flex;flex-direction:column;gap:6px;overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none}
-.flip-card-back::-webkit-scrollbar{display:none}
-.flip-back-name{font-size:14px;font-weight:700;color:#fff;line-height:1.2}
-.flip-back-step{display:inline-flex;align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:600}
-.flip-trophies{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
-.flip-trophy{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.1);border-radius:999px;padding:3px 8px;font-size:10.5px;color:#fff;white-space:nowrap}
-.member-avatar{width:80px;height:80px;border-radius:22px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:26px;position:relative;flex:0 0 80px}
-.member-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.member-name{font-size:16.5px;font-weight:600;margin-top:14px}
-.member-role{font-size:12px;color:#6E6E92;margin-top:3px;min-height:30px;line-height:1.3}
-.member-step{margin-top:10px;padding:5px 13px;border-radius:999px;font-size:12.5px;font-weight:600;display:inline-block}
-.member-trophies{display:flex;align-items:center;gap:8px;margin-top:12px;padding:6px 12px 6px 6px;border-radius:999px;background:var(--ms-cream)}
-.trophy-badge{width:24px;height:24px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.trophy-text{font-size:12.5px;color:#3B3B6B;font-weight:500}
-
-/* SIDEBAR */
-.sidebar{background:var(--ms-navy);border-radius:24px;padding:20px 18px;display:flex;flex-direction:column;gap:14px}
-.sidebar-intro p{font-size:13px;color:#BFBFE0;margin-top:10px;line-height:1.45}
-.sidebar-coach{display:flex;align-items:center;gap:11px;background:var(--ms-navy-700);border-radius:16px;padding:10px}
-.sidebar-coach-thumb{width:42px;height:42px;flex:0 0 42px;border-radius:13px;overflow:hidden;background:var(--ms-navy)}
-.sidebar-coach-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.sidebar-coach-name{font-size:14px;font-weight:600;color:#fff}
-.sidebar-coach-role{font-size:11.5px;color:var(--ms-mint)}
-.sidebar-coach-role.inactive{color:#BFBFE0}
-
-/* HIGHLIGHTS */
-.highlights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
-.highlight-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:20px;display:flex;gap:14px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.highlight-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.highlight-thumb{width:56px;height:56px;flex:0 0 56px;border-radius:16px;overflow:hidden;background:var(--ms-navy)}
+/* ── POINTS FORTS ───────────────────────────────────────────────────── */
+.highlights-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.highlight-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;padding:22px;transition:transform .4s var(--ease),box-shadow .4s}
+.highlight-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,80,.12)}
+.highlight-thumb{width:52px;height:52px;border-radius:16px;overflow:hidden;background:var(--ms-cream-200);margin-bottom:16px}
 .highlight-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.highlight-name{font-size:16.5px;font-weight:600}
-.highlight-specialty{font-size:12.5px;color:var(--ms-violet-700);font-weight:600;margin-top:2px}
-.highlight-body{font-size:13.5px;color:#3B3B6B;margin-top:6px;line-height:1.45}
+.highlight-name{font-size:18px;font-weight:700;letter-spacing:-.025em}
+.highlight-specialty{margin-top:3px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ms-violet-700)}
+.highlight-body{margin-top:10px;font-size:13.5px;line-height:1.5;color:#6E6E92;font-weight:300}
 
-/* CTA BANNER */
-.cta-banner{background:var(--ms-navy);border-radius:24px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff;text-decoration:none;transition:transform .2s ease-out}
-.cta-banner:hover{transform:translateY(-3px)}
-.cta-banner-link{font-weight:600;font-size:15px;color:var(--ms-mint);white-space:nowrap}
-
-/* TESTS */
-.tests-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.test-navy{background:var(--ms-navy);border-radius:28px;padding:24px 28px;color:var(--ms-cream);display:flex;flex-direction:column;gap:16px}
-.test-row{background:var(--ms-navy-700);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-.test-cards{display:flex;flex-direction:column;gap:18px}
-.test-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px 24px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.test-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.test-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.test-badge{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
-
+/* ── CTA + FOOTER ───────────────────────────────────────────────────── */
+.cta-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--ms-navy);border-radius:28px;padding:28px 34px;text-decoration:none;transition:transform .4s var(--ease),background .18s}
+.cta-banner:hover{background:var(--ms-navy-700);transform:translateY(-6px)}
+.cta-banner-link{font-weight:700;font-size:15px;color:var(--ms-mint);flex-shrink:0}
 .mint-rule{height:6px;background:var(--ms-mint)}
-footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+footer{background:var(--ms-deep);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
 footer img{height:20px;width:auto;display:block;opacity:.85}
+.loading{padding:28px;text-align:center;color:#8A8AA8;font-size:14px}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media(max-width:1080px){
+  .hero-inner{grid-template-columns:1fr;gap:34px}
+  .hero h1{font-size:46px}
+  .hero-stats{justify-content:flex-start}
+  .highlights-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .trophies-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat-item:nth-child(2n){border-right:0}
+  .team-layout{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .nav{padding:10px 16px;gap:12px;flex-wrap:wrap}
+  .nav-brand{flex-grow:1}
+  .nav-tag{display:none}
+  .nav-links{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:18px;padding-bottom:3px;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-link{white-space:nowrap;font-size:14px}
+  .hero{padding:40px 20px 44px}
+  .hero h1{font-size:36px}
+  main{padding:28px 20px 40px;gap:30px}
+  .rail-line,.rail-fill{display:none}
+  .rail-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 10px}
+  .step-sub{max-width:none}
+  .team-hrow{display:none}
+  .team-row{grid-template-columns:34px 1fr 70px;gap:8px 10px;padding:14px 16px}
+  .team-bar{grid-column:2/4;margin-right:0}
+  .team-step{grid-column:2/4;justify-self:start}
+  .highlights-grid{grid-template-columns:1fr}
+  .trophies-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .cat-item{border-right:0;border-bottom:1px solid #F2EDE6}
+  .cat-item:last-child{border-bottom:0}
+  .cta-banner{flex-direction:column;align-items:flex-start;padding:24px}
+}
 </style>
 </head>
 <body>
@@ -160,25 +225,32 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     <span class="nav-sep"></span>
     <span class="nav-title">Cockpit iAdOps</span>
   </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Le projet</a>
+    <a href="progression.html" class="nav-link is-active">Progression AdOps</a>
+    <a href="optimisation.html" class="nav-link">Optimisation</a>
+    <a href="realisations.html" class="nav-link">Réalisations</a>
+    <a href="actu.html" class="nav-link">L'actu</a>
+  </div>
   <span class="nav-tag">Scaling Infinity</span>
 </nav>
 
 <div class="hero">
-  <div class="hero-bg1"></div>
-  <div class="hero-bg2"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-scan"></div>
   <div class="hero-inner">
-    <span class="hero-pill">Adoption &amp; livrables</span>
-    <h1>La progression des AdOps</h1>
-    <p>Chacun avance à son rythme sur l'IA — et chaque usage débloque un trophée. Voici où en est l'équipe, et ce qu'elle a déjà produit.</p>
+    <div>
+      <span class="hero-pill rise">Adoption &amp; livrables</span>
+      <h1 class="rise rise-1">La progression des AdOps</h1>
+      <p class="rise rise-2">Chacun avance à son rythme sur l'IA — et chaque usage débloque un trophée. Voici où en est l'équipe, et ce qu'elle a déjà produit.</p>
+    </div>
+    <div class="hero-stats rise rise-3">
+      <div class="hstat"><div class="hstat-n" id="h-people">—</div><div class="hstat-l">ADOPS EN PISTE</div></div>
+      <div class="hstat"><div class="hstat-n" id="h-trophies">—</div><div class="hstat-l">TROPHÉES</div></div>
+      <div class="hstat"><div class="hstat-n" id="h-levels">—</div><div class="hstat-l">MARCHES</div></div>
+    </div>
   </div>
-</div>
-
-<div class="tabs">
-  <a href="index.html" class="tab">Le projet</a>
-  <a href="progression.html" class="tab active">Progression AdOps</a>
-  <a href="optimisation.html" class="tab">Optimisation</a>
-  <a href="realisations.html" class="tab">Réalisations</a>
-  <a href="actu.html" class="tab">L'actu</a>
 </div>
 
 <main>
@@ -189,46 +261,37 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
       <span class="sec-label">Le parcours</span>
       <span class="sec-meta">Équipe Équipée · 6 marches</span>
     </div>
-    <div class="chart-box">
-      <div class="chart-bars">
-        <div class="chart-bar" style="height:34%;background:#B9AEF9;animation-delay:.05s">
-          <div class="bar-avatars">
-            <div class="bar-av"><div class="bar-av-init" style="background:rgba(0,0,80,.18);color:#000050">ET</div><div class="av-tip">Eric Ta</div></div>
-            <div class="bar-av"><img src="photos/steeve.jpg" alt=""><div class="av-tip">Steeve Guerret</div></div>
-            <div class="bar-av"><img src="photos/alphonse.jpg" alt=""><div class="av-tip">Alphonse Arthur</div></div>
-            <div class="bar-av"><img src="photos/wael.jpg" alt=""><div class="av-tip">Waël Ben Yahia</div></div>
-            <div class="bar-av"><img src="photos/ghofrane.jpg" alt=""><div class="av-tip">Ghofrane Touati</div></div>
-            <div class="bar-av"><img src="photos/fares.jpg" alt=""><div class="av-tip">Farès Ramdani</div></div>
+    <div class="rail" id="parcours-root"><div class="loading">Chargement…</div></div>
+  </section>
+
+  <!-- L'équipe -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-label">L'équipe, marche par marche</span>
+      <span class="sec-meta" id="team-meta">Trophées débloqués sur les 23 du catalogue</span>
+    </div>
+    <div class="team-layout">
+      <div class="team-board" id="team-root"><div class="loading">Chargement…</div></div>
+
+      <aside class="sidebar">
+        <div class="sidebar-glow"></div>
+        <div class="sidebar-in">
+          <span class="sidebar-tag">En tribune</span>
+          <p>On regarde l'équipe jouer : on cadre, on outille, on encourage — les trophées sont les leurs.</p>
+          <div class="coach">
+            <div class="coach-thumb"><img src="photos/yannis.jpg" alt="Yannis Echchelh"></div>
+            <div><div class="coach-name">Yannis Echchelh</div><div class="coach-role">Senior Team Lead</div></div>
+          </div>
+          <div class="coach">
+            <div class="coach-thumb"><img src="photos/olivier.jpg" alt="Olivier Ta"></div>
+            <div><div class="coach-name">Olivier Ta</div><div class="coach-role">Senior Team Lead</div></div>
+          </div>
+          <div class="coach">
+            <div class="coach-thumb"><img src="photos/sofia.jpg" alt="Sofia"></div>
+            <div><div class="coach-name">Sofia</div><div class="coach-role inactive">Congé maternité</div></div>
           </div>
         </div>
-        <div class="chart-bar" style="height:48%;background:#9B8CF6;animation-delay:.14s">
-          <div class="bar-avatars">
-            <div class="bar-av"><img src="photos/stephanie.jpg" alt=""><div class="av-tip">Stéphanie Ta</div></div>
-            <div class="bar-av"><img src="photos/emeric.jpg" alt=""><div class="av-tip">Emeric Moulinneuf</div></div>
-          </div>
-        </div>
-        <div class="chart-bar" style="height:62%;background:#7C62F3;animation-delay:.23s">
-          <div class="bar-avatars">
-            <div class="bar-av"><img src="photos/noura.jpg" alt=""><div class="av-tip">Noura Abou</div></div>
-            <div class="bar-av"><img src="photos/celina.jpg" alt=""><div class="av-tip">Célina Bouguenna</div></div>
-            <div class="bar-av"><img src="photos/ekaterina.jpg" alt=""><div class="av-tip">Ekaterina Salnikova</div></div>
-            <div class="bar-av"><img src="photos/anis.jpg" alt=""><div class="av-tip">Anis Alouane</div></div>
-          </div>
-        </div>
-        <div class="chart-bar" style="height:76%;background:var(--ms-violet);animation-delay:.32s"></div>
-        <div class="chart-bar" style="height:88%;background:var(--ms-violet-700);animation-delay:.41s"></div>
-        <div class="chart-bar" style="height:100%;background:var(--ms-mint-700);animation-delay:.5s">
-          <div style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:16px solid var(--ms-mint);border-top:11px solid transparent;border-bottom:11px solid transparent"></div>
-        </div>
-      </div>
-      <div class="chart-labels">
-        <div><div class="chart-label-title">Initié</div><div class="chart-label-sub">Claude en place &amp; en marche</div></div>
-        <div><div class="chart-label-title">Actif</div><div class="chart-label-sub">Un livrable réel produit avec l'IA</div></div>
-        <div><div class="chart-label-title">Aguerri</div><div class="chart-label-sub">Les usages métier acquis</div></div>
-        <div><div class="chart-label-title">Expert</div><div class="chart-label-sub">Automatisation &amp; mesure</div></div>
-        <div><div class="chart-label-title">Maître</div><div class="chart-label-sub">Autonomie &amp; innovation</div></div>
-        <div><div class="chart-label-title">Référent</div><div class="chart-label-sub">Forme les autres &amp; diffuse</div></div>
-      </div>
+      </aside>
     </div>
   </section>
 
@@ -238,71 +301,10 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
       <span class="sec-label">Le catalogue des trophées</span>
       <span class="sec-meta">23 trophées · 6 niveaux séquentiels</span>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#B9AEF9"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 1 — INITIÉ</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🚀</span><div><div style="font-size:13.5px;font-weight:600">Installé</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Claude installé sur le poste + connecteurs de base opérationnels.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">✅</span><div><div style="font-size:13.5px;font-weight:600">Ready</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Skill « automation-ia-ready » lancé et validé — environnement complet.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🔁</span><div><div style="font-size:13.5px;font-weight:600">Usage régulier</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Utilise Claude plusieurs fois par semaine, spontanément.</div></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#9B8CF6"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 2 — ACTIF</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">📄</span><div><div style="font-size:13.5px;font-weight:600">1er rapport</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A produit au moins un rapport de campagne via un skill.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">📊</span><div><div style="font-size:13.5px;font-weight:600">1er bilan</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A produit au moins un bilan de campagne via Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🏢</span><div><div style="font-size:13.5px;font-weight:600">Multi-comptes</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Utilise Claude sur au moins deux comptes clients différents.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">✉️</span><div><div style="font-size:13.5px;font-weight:600">Reformulation de mails</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Rédige / reformule ses mails clients avec Claude.</div></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#7C62F3"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 3 — AGUERRI</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🔎</span><div><div style="font-size:13.5px;font-weight:600">Recherche de data</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Fait rechercher / récupérer des données par Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🧪</span><div><div style="font-size:13.5px;font-weight:600">Analyse</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Fait analyser des performances de campagne par Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">📈</span><div><div style="font-size:13.5px;font-weight:600">Suivi campagne &amp; optis</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Suit ses campagnes et pilote ses optimisations avec Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🗂️</span><div><div style="font-size:13.5px;font-weight:600">Recap / dashboard campagne</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Produit un récap de campagne en cours / un dashboard de suivi.</div></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ms-violet)"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 4 — EXPERT</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">⚙️</span><div><div style="font-size:13.5px;font-weight:600">Zéro manuel</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Ne fait plus en manuel ce que Claude peut faire — réflexe par défaut.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🧠</span><div><div style="font-size:13.5px;font-weight:600">Créateur de skill</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A créé ou amélioré un skill réutilisable par l'équipe.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">⏱️</span><div><div style="font-size:13.5px;font-weight:600">Gain de temps mesuré</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A documenté un gain de temps chiffré sur une tâche.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">⏰</span><div><div style="font-size:13.5px;font-weight:600">Tâche programmée</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A mis en place une automatisation récurrente qui tourne seule.</div></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ms-violet-700)"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 5 — MAÎTRE</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🔗</span><div><div style="font-size:13.5px;font-weight:600">Nouveau connecteur</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A branché un nouveau connecteur / MCP utile à l'équipe.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">⚙️</span><div><div style="font-size:13.5px;font-weight:600">Set-up auto</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A monté une campagne (LCM/DSP) sans saisie manuelle, via Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🛡️</span><div><div style="font-size:13.5px;font-weight:600">QA sans faille</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Contrôle qualité systématique avant go-live, zéro erreur de paramétrage.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">✨</span><div><div style="font-size:13.5px;font-weight:600">Bilan augmenté</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A produit un bilan enrichi du contexte du compte (Slack, Notion, historique).</div></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ms-mint-700)"></span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;color:#6E6E92">NIVEAU 6 — RÉFÉRENT</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🎓</span><div><div style="font-size:13.5px;font-weight:600">Ambassadeur</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">Forme les autres / propose des cas d'usage.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🎥</span><div><div style="font-size:13.5px;font-weight:600">Workshop IA</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A animé / produit un workshop via Claude.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">💡</span><div><div style="font-size:13.5px;font-weight:600">Nouveau cas d'usage</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A proposé un nouveau cas d'usage IA.</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px"><span style="font-size:20px;flex:0 0 24px">🎓</span><div><div style="font-size:13.5px;font-weight:600">Mentor cross-équipe</div><div style="font-size:12px;color:#6E6E92;margin-top:2px;line-height:1.35">A formé / diffusé un usage à une autre équipe que les AdOps.</div></div></div>
-        </div>
-      </div>
-
-    </div>
+    <div class="cat-levels" id="catalogue-root"><div class="loading">Chargement…</div></div>
   </section>
 
-  <!-- Trophées -->
+  <!-- Trophées remis -->
   <section>
     <div class="sec-head">
       <span class="sec-label">Les trophées remis</span>
@@ -310,121 +312,89 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     </div>
     <div class="trophies-wrap">
       <div class="confetti-layer">
-        <span class="confetti-piece" style="left:6%;width:9px;height:14px;border-radius:2px;background:var(--ms-mint);animation:msConfetti 4.2s .1s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:16%;width:8px;height:8px;border-radius:50%;background:var(--ms-violet);animation:msConfetti 4.8s .7s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:27%;width:10px;height:5px;border-radius:2px;background:var(--ms-cream-300);animation:msConfetti 5.1s 1.4s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:38%;width:7px;height:12px;border-radius:2px;background:var(--ms-orange);animation:msConfetti 4.5s 2.1s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:49%;width:9px;height:9px;border-radius:50%;background:var(--ms-mint);animation:msConfetti 5.4s .4s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:60%;width:8px;height:14px;border-radius:2px;background:var(--ms-violet);animation:msConfetti 4.1s 1.9s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:71%;width:10px;height:6px;border-radius:2px;background:var(--ms-mint);animation:msConfetti 4.9s 1.1s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:82%;width:7px;height:7px;border-radius:50%;background:var(--ms-cream-300);animation:msConfetti 5.6s 2.5s ease-in infinite"></span>
-        <span class="confetti-piece" style="left:92%;width:9px;height:13px;border-radius:2px;background:var(--ms-violet);animation:msConfetti 4.4s .9s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:6%;width:9px;height:14px;border-radius:2px;background:var(--ms-mint);animation:confetti 4.2s .1s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:16%;width:8px;height:8px;border-radius:50%;background:var(--ms-violet);animation:confetti 4.8s .7s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:27%;width:10px;height:5px;border-radius:2px;background:var(--ms-cream-300);animation:confetti 5.1s 1.4s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:38%;width:7px;height:12px;border-radius:2px;background:var(--ms-orange);animation:confetti 4.5s 2.1s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:49%;width:9px;height:9px;border-radius:50%;background:var(--ms-mint);animation:confetti 5.4s .4s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:60%;width:8px;height:14px;border-radius:2px;background:var(--ms-violet);animation:confetti 4.1s 1.9s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:71%;width:10px;height:6px;border-radius:2px;background:var(--ms-mint);animation:confetti 4.9s 1.1s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:82%;width:7px;height:7px;border-radius:50%;background:var(--ms-cream-300);animation:confetti 5.6s 2.5s ease-in infinite"></span>
+        <span class="confetti-piece" style="left:92%;width:9px;height:13px;border-radius:2px;background:var(--ms-violet);animation:confetti 4.4s .9s ease-in infinite"></span>
       </div>
       <div class="trophies-grid">
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .04s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon">
-              <svg width="26" height="22" viewBox="0 0 26 22" fill="none"><rect x="5" y="0" width="16" height="13" rx="8" ry="0" fill="none"/><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" ry="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" ry="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg>
-            </div>
-            <div>
-              <div class="trophy-title">Le premier bilan 100 % IA</div>
-              <p class="trophy-desc">Le bilan Hespéride entièrement produit avec Claude, restitué au client et approuvé à 100 %.</p>
-            </div>
+        <div class="trophy-card">
+          <div class="trophy-icon">
+            <svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg>
           </div>
+          <div class="trophy-title" style="margin-top:14px">Le premier bilan 100 % IA</div>
+          <p class="trophy-desc">Le bilan Hespéride entièrement produit avec Claude, restitué au client et approuvé à 100 %.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/noura.jpg" alt="Noura Abou"></span><span class="author-name">Noura Abou</span></span>
             <span class="author-chip"><span class="author-thumb"><img src="photos/ghofrane.jpg" alt="Ghofrane Touati"></span><span class="author-name">Ghofrane Touati</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .08s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le bilan éclair</div>
-              <p class="trophy-desc">Bilan PPTX Point P × Havas généré depuis un Excel : 5 minutes de relecture au lieu d'une demi-journée.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le bilan éclair</div>
+          <p class="trophy-desc">Bilan PPTX Point P × Havas généré depuis un Excel : 5 minutes de relecture au lieu d'une demi-journée.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/celina.jpg" alt="Célina Bouguenna"></span><span class="author-name">Célina Bouguenna</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .12s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le reporting quotidien</div>
-              <p class="trophy-desc">Les rapports Weldom Drive-to-Store produits et publiés chaque jour, en routine.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le reporting quotidien</div>
+          <p class="trophy-desc">Les rapports Weldom Drive-to-Store produits et publiés chaque jour, en routine.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/steeve.jpg" alt="Steeve Guerret"></span><span class="author-name">Steeve Guerret</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .16s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le rapport standardisé</div>
-              <p class="trophy-desc">Le rapport Excel de campagne sorti du Dashboard en une phrase, utilisé en multi-comptes.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le rapport standardisé</div>
+          <p class="trophy-desc">Le rapport Excel de campagne sorti du Dashboard en une phrase, utilisé en multi-comptes.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/ekaterina.jpg" alt="Ekaterina Salnikova"></span><span class="author-name">Ekaterina Salnikova</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .20s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le cockpit partagé</div>
-              <p class="trophy-desc">Le premier dashboard AdOps interactif, diffusé à l'équipe avec son tutoriel d'installation.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le cockpit partagé</div>
+          <p class="trophy-desc">Le premier dashboard AdOps interactif, diffusé à l'équipe avec son tutoriel d'installation.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/emeric.jpg" alt="Emeric Moulinneuf"></span><span class="author-name">Emeric Moulinneuf</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .24s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">La donnée branchée</div>
-              <p class="trophy-desc">Matomo connecté dans Claude sur Decathlon : stats campagnes et site lues dans un seul outil.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">La donnée branchée</div>
+          <p class="trophy-desc">Matomo connecté dans Claude sur Decathlon : stats campagnes et site lues dans un seul outil.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/alphonse.jpg" alt="Alphonse Arthur"></span><span class="author-name">Alphonse Arthur</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .28s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le pilotage des leads</div>
-              <p class="trophy-desc">Le cockpit Leads Ops : comptes, budgets, charge par personne et actions automatiques.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le pilotage des leads</div>
+          <p class="trophy-desc">Le cockpit Leads Ops : comptes, budgets, charge par personne et actions automatiques.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/stephanie.jpg" alt="Stéphanie Ta"></span><span class="author-name">Stéphanie Ta</span></span>
             <span class="author-chip"><span class="author-thumb"><img src="photos/noura.jpg" alt="Noura Abou"></span><span class="author-name">Noura Abou</span></span>
           </div>
         </div>
 
-        <div class="trophy-card" style="animation:msFadeUp .5s .32s ease-out both">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
-            <div>
-              <div class="trophy-title">Le compte embarqué</div>
-              <p class="trophy-desc">Intersport passé sur la chaîne rapport → bilan via Claude.</p>
-            </div>
-          </div>
+        <div class="trophy-card">
+          <div class="trophy-icon"><svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true"><path d="M5 0 h16 v13 a8 8 0 0 1-16 0 Z" fill="#00F5BE"/><rect x="0" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="19" y="1" width="7" height="9" rx="5" fill="none" stroke="#00F5BE" stroke-width="2"/><rect x="11" y="12" width="4" height="5" fill="#00F5BE"/><rect x="7" y="18" width="12" height="4" rx="2" fill="#00F5BE"/></svg></div>
+          <div class="trophy-title" style="margin-top:14px">Le compte embarqué</div>
+          <p class="trophy-desc">Intersport passé sur la chaîne rapport → bilan via Claude.</p>
           <div class="trophy-authors">
             <span class="author-chip"><span class="author-thumb"><img src="photos/wael.jpg" alt="Waël Ben Yahia"></span><span class="author-name">Waël Ben Yahia</span></span>
           </div>
@@ -434,322 +404,42 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     </div>
   </section>
 
-  <!-- Équipe -->
-  <section>
-    <div class="sec-head">
-      <span class="sec-label">L'équipe, marche par marche</span>
-      <span class="sec-meta">12 AdOps en piste</span>
-    </div>
-    <div class="step-legend">
-      <span class="step-pill" style="background:#B9AEF9;color:var(--ms-navy)">Initié</span>
-      <span class="step-pill" style="background:#9B8CF6;color:#fff">Actif</span>
-      <span class="step-pill" style="background:#7C62F3;color:#fff">Aguerri</span>
-      <span class="step-pill" style="background:var(--ms-violet);color:#fff">Expert</span>
-      <span class="step-pill" style="background:var(--ms-violet-700);color:#fff">Maître</span>
-      <span class="step-pill" style="background:var(--ms-mint-700);color:var(--ms-navy)">Référent</span>
-    </div>
-    <div class="team-layout">
-      <div class="team-grid">
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#7C62F3"><span>NA</span><img src="photos/noura.jpg" alt="Noura Abou"></div>
-              <div class="member-name">Noura Abou</div>
-              <div class="member-role">Lead Operations Partner</div>
-              <span class="member-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="member-trophies"><span class="trophy-badge">13</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Noura Abou</div>
-              <span class="flip-back-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span><span class="flip-trophy">✨ Bilan augmenté</span><span class="flip-trophy">🎥 Workshop IA</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#9B8CF6"><span>ST</span><img src="photos/stephanie.jpg" alt="Stéphanie Ta"></div>
-              <div class="member-name">Stéphanie Ta</div>
-              <div class="member-role">Lead Operations Partner</div>
-              <span class="member-step" style="background:#9B8CF6;color:#fff">Actif</span>
-              <div class="member-trophies"><span class="trophy-badge">7</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Stéphanie Ta</div>
-              <span class="flip-back-step" style="background:#9B8CF6;color:#fff">Actif</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#9B8CF6"><span>EM</span><img src="photos/emeric.jpg" alt="Emeric Moulinneuf"></div>
-              <div class="member-name">Emeric Moulinneuf</div>
-              <div class="member-role">Operations Partner Specialist</div>
-              <span class="member-step" style="background:#9B8CF6;color:#fff">Actif</span>
-              <div class="member-trophies"><span class="trophy-badge">10</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Emeric Moulinneuf</div>
-              <span class="flip-back-step" style="background:#9B8CF6;color:#fff">Actif</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#7C62F3"><span>CB</span><img src="photos/celina.jpg" alt="Célina Bouguenna"></div>
-              <div class="member-name">Célina Bouguenna</div>
-              <div class="member-role">Operations Partner Specialist</div>
-              <span class="member-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="member-trophies"><span class="trophy-badge">15</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Célina Bouguenna</div>
-              <span class="flip-back-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">⚙️ Zéro manuel</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span><span class="flip-trophy">⏰ Tâche prog.</span><span class="flip-trophy">✨ Bilan augmenté</span><span class="flip-trophy">⏱️ Gain mesuré</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">ET</span><img src="photos/eric.jpg" alt="Eric Ta"></div>
-              <div class="member-name">Eric Ta</div>
-              <div class="member-role">Operations Partner Senior</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">4</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Eric Ta</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">🏢 Multi-comptes</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">SG</span><img src="photos/steeve.jpg" alt="Steeve Guerret"></div>
-              <div class="member-name">Steeve Guerret</div>
-              <div class="member-role">Operations Partner Senior</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">8</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Steeve Guerret</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">AA</span><img src="photos/alphonse.jpg" alt="Alphonse Arthur"></div>
-              <div class="member-name">Alphonse Arthur</div>
-              <div class="member-role">Operations Partner Senior</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">9</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Alphonse Arthur</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">⚙️ Zéro manuel</span><span class="flip-trophy">🧠 Créateur skill</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#7C62F3"><span>ES</span><img src="photos/ekaterina.jpg" alt="Ekaterina Salnikova"></div>
-              <div class="member-name">Ekaterina Salnikova</div>
-              <div class="member-role">Operations Partner</div>
-              <span class="member-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="member-trophies"><span class="trophy-badge">14</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Ekaterina Salnikova</div>
-              <span class="flip-back-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span><span class="flip-trophy">⚙️ Zéro manuel</span><span class="flip-trophy">🧠 Créateur skill</span><span class="flip-trophy">⏰ Tâche programmée</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">WB</span><img src="photos/wael.jpg" alt="Waël Ben Yahia"></div>
-              <div class="member-name">Waël Ben Yahia</div>
-              <div class="member-role">Operations Partner</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">6</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Waël Ben Yahia</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">GT</span><img src="photos/ghofrane.jpg" alt="Ghofrane Touati"></div>
-              <div class="member-name">Ghofrane Touati</div>
-              <div class="member-role">Operations Partner Junior</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">12</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Ghofrane Touati</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span><span class="flip-trophy">🧠 Créateur skill</span><span class="flip-trophy">⏰ Tâche prog.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#7C62F3"><span>AA</span><img src="photos/anis.jpg" alt="Anis Alouane"></div>
-              <div class="member-name">Anis Alouane</div>
-              <div class="member-role">Operations Partner Junior</div>
-              <span class="member-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="member-trophies"><span class="trophy-badge">14</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Anis Alouane</div>
-              <span class="flip-back-step" style="background:#7C62F3;color:#fff">Aguerri</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span><span class="flip-trophy">✉️ Mails</span><span class="flip-trophy">🔎 Recherche</span><span class="flip-trophy">🧪 Analyse</span><span class="flip-trophy">📈 Suivi optis</span><span class="flip-trophy">🗂️ Recap</span><span class="flip-trophy">⏱️ Gain mesuré</span><span class="flip-trophy">⏰ Tâche prog.</span><span class="flip-trophy">✨ Bilan augmenté</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front member-card">
-              <div class="member-avatar" style="background:#B9AEF9"><span style="color:#000050">FR</span><img src="photos/fares.jpg" alt="Farès Ramdani"></div>
-              <div class="member-name">Farès Ramdani</div>
-              <div class="member-role">Operations Partner Junior</div>
-              <span class="member-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="member-trophies"><span class="trophy-badge">6</span><span class="trophy-text">trophées</span></div>
-            </div>
-            <div class="flip-card-back">
-              <div class="flip-back-name">Farès Ramdani</div>
-              <span class="flip-back-step" style="background:#B9AEF9;color:#000050">Initié</span>
-              <div class="flip-trophies">
-                <span class="flip-trophy">🚀 Installé</span><span class="flip-trophy">✅ Ready</span><span class="flip-trophy">🔁 Régulier</span><span class="flip-trophy">📄 1er rapport</span><span class="flip-trophy">📊 1er bilan</span><span class="flip-trophy">🏢 Multi-comptes</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <aside class="sidebar">
-        <div class="sidebar-intro">
-          <span style="display:inline-flex;padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:12px;font-weight:600">En tribune</span>
-          <p>On regarde l'équipe jouer : on cadre, on outille, on encourage — les trophées sont les leurs.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div class="sidebar-coach">
-            <div class="sidebar-coach-thumb"><img src="photos/yannis.jpg" alt="Yannis Echchelh"></div>
-            <div><div class="sidebar-coach-name">Yannis Echchelh</div><div class="sidebar-coach-role">Senior Team Lead</div></div>
-          </div>
-          <div class="sidebar-coach">
-            <div class="sidebar-coach-thumb"><img src="photos/olivier.jpg" alt="Olivier Ta"></div>
-            <div><div class="sidebar-coach-name">Olivier Ta</div><div class="sidebar-coach-role">Senior Team Lead</div></div>
-          </div>
-          <div class="sidebar-coach">
-            <div class="sidebar-coach-thumb"><img src="photos/sofia.jpg" alt="Sofia"></div>
-            <div><div class="sidebar-coach-name">Sofia</div><div class="sidebar-coach-role inactive">Congé maternité</div></div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- Highlights -->
+  <!-- Points forts -->
   <section>
     <div class="sec-head">
       <span class="sec-label">Les points forts</span>
       <span class="sec-meta">Ce que chacun maîtrise avec Claude</span>
     </div>
     <div class="highlights-grid">
-      <div class="highlight-card" style="animation:msFadeUp .5s .10s ease-out both">
+      <div class="highlight-card">
         <div class="highlight-thumb"><img src="photos/emeric.jpg" alt="Emeric Moulinneuf"></div>
-        <div>
-          <div class="highlight-name">Emeric</div>
-          <div class="highlight-specialty">Le cockpit de suivi</div>
-          <p class="highlight-body">Premier dashboard perso connecté au Dashboard Mobsuccess, partagé avec son tutoriel d'installation.</p>
-        </div>
+        <div class="highlight-name">Emeric</div>
+        <div class="highlight-specialty">Le cockpit de suivi</div>
+        <p class="highlight-body">Premier dashboard perso connecté au Dashboard Mobsuccess, partagé avec son tutoriel d'installation.</p>
       </div>
-      <div class="highlight-card" style="animation:msFadeUp .5s .16s ease-out both">
+      <div class="highlight-card">
         <div class="highlight-thumb"><img src="photos/celina.jpg" alt="Célina Bouguenna"></div>
-        <div>
-          <div class="highlight-name">Célina</div>
-          <div class="highlight-specialty">Le bilan express</div>
-          <p class="highlight-body">Bilan PPTX généré depuis un Excel de stats : 1 min de brief, 5 min de relecture au lieu d'une demi-journée.</p>
-        </div>
+        <div class="highlight-name">Célina</div>
+        <div class="highlight-specialty">Le bilan express</div>
+        <p class="highlight-body">Bilan PPTX généré depuis un Excel de stats : 1 min de brief, 5 min de relecture au lieu d'une demi-journée.</p>
       </div>
-      <div class="highlight-card" style="animation:msFadeUp .5s .22s ease-out both">
+      <div class="highlight-card">
         <div class="highlight-thumb"><img src="photos/noura.jpg" alt="Noura Abou"></div>
-        <div>
-          <div class="highlight-name">Noura</div>
-          <div class="highlight-specialty">L'usage au quotidien</div>
-          <p class="highlight-body">Utilise Claude sur ses comptes sans y penser : récaps, contrôles et rapports passent par la chaîne IA.</p>
-        </div>
+        <div class="highlight-name">Noura</div>
+        <div class="highlight-specialty">L'usage au quotidien</div>
+        <p class="highlight-body">Utilise Claude sur ses comptes sans y penser : récaps, contrôles et rapports passent par la chaîne IA.</p>
       </div>
-      <div class="highlight-card" style="animation:msFadeUp .5s .28s ease-out both">
+      <div class="highlight-card">
         <div class="highlight-thumb"><img src="photos/ghofrane.jpg" alt="Ghofrane Touati"></div>
-        <div>
-          <div class="highlight-name">Ghofrane</div>
-          <div class="highlight-specialty">La montée éclair</div>
-          <p class="highlight-body">Arrivée récemment dans l'équipe, déjà 4 trophées au compteur — une montée en puissance remarquable dès les premières semaines.</p>
-        </div>
+        <div class="highlight-name">Ghofrane</div>
+        <div class="highlight-specialty">La montée éclair</div>
+        <p class="highlight-body">Arrivée récemment dans l'équipe, déjà 4 trophées au compteur — une montée en puissance remarquable dès les premières semaines.</p>
       </div>
-      <div class="highlight-card" style="animation:msFadeUp .5s .34s ease-out both">
+      <div class="highlight-card">
         <div class="highlight-thumb"><img src="photos/stephanie.jpg" alt="Stéphanie Ta"></div>
-        <div>
-          <div class="highlight-name">Stéphanie</div>
-          <div class="highlight-specialty">Le relais terrain</div>
-          <p class="highlight-body">Fait remonter les cas réels des comptes pour que les skills collent au quotidien des équipes.</p>
-        </div>
+        <div class="highlight-name">Stéphanie</div>
+        <div class="highlight-specialty">Le relais terrain</div>
+        <p class="highlight-body">Fait remonter les cas réels des comptes pour que les skills collent au quotidien des équipes.</p>
       </div>
     </div>
   </section>
@@ -757,12 +447,11 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <!-- CTA -->
   <a href="realisations.html" class="cta-banner">
     <span>
-      <span style="display:block;font-size:22px;font-weight:700;color:#fff">Tout ce que l'équipe a déjà produit</span>
-      <span style="display:block;font-size:14.5px;color:#BFBFE0;margin-top:4px">Bilans clients, reporting quotidien, analyses, cockpits — avec les gains de temps mesurés.</span>
+      <span style="display:block;font-size:24px;font-weight:700;color:#fff;letter-spacing:-.03em">Tout ce que l'équipe a déjà produit</span>
+      <span style="display:block;font-size:14.5px;color:#BFBFE0;margin-top:6px;font-weight:300">Bilans clients, reporting quotidien, analyses, cockpits — avec les gains de temps mesurés.</span>
     </span>
     <span class="cta-banner-link">Voir les réalisations →</span>
   </a>
-
 
 </main>
 
@@ -773,5 +462,188 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 </footer>
 
 <script src="lang.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   Contenu absent de iadops-data.json — maintenu ici.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Le fichier photo ne suit pas toujours l'id de la personne. */
+var PHOTO = { 'p-steph': 'stephanie', 'p-katie': 'ekaterina' };
+
+/* Intitulés de poste. */
+var ROLES = {
+  'p-noura': 'Lead Operations Partner',
+  'p-steph': 'Lead Operations Partner',
+  'p-emeric': 'Operations Partner Specialist',
+  'p-celina': 'Operations Partner Specialist',
+  'p-eric': 'Operations Partner Senior',
+  'p-steeve': 'Operations Partner Senior',
+  'p-alphonse': 'Operations Partner Senior',
+  'p-katie': 'Operations Partner',
+  'p-wael': 'Operations Partner',
+  'p-ghofrane': 'Operations Partner Junior',
+  'p-anis': 'Operations Partner Junior',
+  'p-fares': 'Operations Partner Junior'
+};
+
+/* Ce que chaque marche veut dire, en une ligne. */
+var STEP_SUB = [
+  'Claude en place & en marche',
+  "Un livrable réel produit avec l'IA",
+  'Les usages métier acquis',
+  'Automatisation & mesure',
+  'Autonomie & innovation',
+  'Forme les autres & diffuse'
+];
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function photoOf(p) {
+  return 'photos/' + (PHOTO[p.id] || p.id.replace(/^p-/, '')) + '.jpg';
+}
+
+function initials(name) {
+  return String(name).split(/\s+/).slice(0, 2).map(function (w) { return w[0]; }).join('').toUpperCase();
+}
+
+function animateCount(el, target) {
+  if (!el || !isFinite(target)) return;
+  el.textContent = String(target);
+  if (REDUCED || document.visibilityState !== 'visible') return;
+  var start = null, dur = 1400;
+  el.textContent = '0';
+  var guard = setTimeout(function () { el.textContent = String(target); }, dur + 800);
+  function step(ts) {
+    if (start === null) start = ts;
+    var p = Math.min(1, (ts - start) / dur);
+    var e = 1 - Math.pow(1 - p, 3);
+    el.textContent = String(Math.round(target * e));
+    if (p < 1) { requestAnimationFrame(step); } else { clearTimeout(guard); }
+  }
+  requestAnimationFrame(step);
+}
+
+(async function render() {
+  var parcours = document.getElementById('parcours-root');
+  var team = document.getElementById('team-root');
+  var cat = document.getElementById('catalogue-root');
+
+  try {
+    var res = await fetch('iadops-data.json');
+    if (!res.ok) throw new Error('fetch');
+    var d = await res.json();
+    var c = d.classement;
+    var levels = c.levels, people = c.people, trophies = c.trophies, bareme = c.bareme;
+
+    /* ── Repères du hero ──────────────────────────────────────────────── */
+    animateCount(document.getElementById('h-people'), people.length);
+    animateCount(document.getElementById('h-trophies'), trophies.length);
+    animateCount(document.getElementById('h-levels'), levels.length);
+
+    /* ── Le parcours ──────────────────────────────────────────────────── */
+    var reached = Math.max.apply(null, people.map(function (p) { return p.level; }));
+    /* On s'arrête au centre du point de la marche la plus haute atteinte. */
+    var fillPct = ((reached - 0.5) / levels.length) * 100;
+
+    parcours.innerHTML =
+      '<div class="rail-line"></div>' +
+      '<div class="rail-fill" style="width:' + fillPct + '%"></div>' +
+      '<div class="rail-steps">' + levels.map(function (lv, i) {
+        var crew = people.filter(function (p) { return p.level === lv.n; });
+        var avs = crew.map(function (p) {
+          return '<span class="crew-av" title="' + esc(p.name) + '">' +
+            '<img src="' + esc(photoOf(p)) + '" alt="' + esc(p.name) + '"></span>';
+        }).join('');
+        var count = crew.length ? crew.length + ' ADOPS' : 'À VENIR';
+        return '<div class="step">' +
+          '<span class="step-dot" style="background:' + esc(lv.col) + ';color:' +
+            (lv.n >= 4 ? '#fff' : '#000050') + '">' + lv.n + '</span>' +
+          '<span class="step-name">' + esc(lv.name) + '</span>' +
+          '<span class="step-sub">' + esc(STEP_SUB[i] || lv.desc) + '</span>' +
+          '<span class="step-crew">' + avs + '</span>' +
+          '<span class="step-count">' + count + '</span>' +
+          '</div>';
+      }).join('') + '</div>';
+
+    /* ── L'équipe ─────────────────────────────────────────────────────── */
+    var ranked = people.slice().sort(function (a, b) {
+      return (b.level - a.level) || (b.badges.length - a.badges.length) || a.name.localeCompare(b.name);
+    });
+    var total = trophies.length;
+
+    team.innerHTML =
+      '<div class="team-hrow"><div>#</div><div>ADOPS</div><div>TROPHÉES DÉBLOQUÉS</div><div>MARCHE</div><div style="text-align:right">TOTAL</div></div>' +
+      ranked.map(function (p, i) {
+        var lv = levels[p.level - 1] || levels[0];
+        var pct = Math.round((p.badges.length / total) * 100);
+        var ink = p.level >= 4 ? '#fff' : '#000050';
+
+        /* Les trophées de la personne, dans l'ordre du catalogue. */
+        var chips = trophies.filter(function (t) { return p.badges.indexOf(t.id) !== -1; })
+          .map(function (t) {
+            return '<span class="tchip"><i>' + esc(t.icon) + '</i>' + esc(t.label) + '</span>';
+          }).join('');
+
+        return '<details class="trow"><summary>' +
+          '<div class="team-row">' +
+            '<div class="team-rank">' + (i < 9 ? '0' : '') + (i + 1) + '</div>' +
+            '<div class="team-who">' +
+              '<span class="team-thumb"><img src="' + esc(photoOf(p)) + '" alt="' + esc(p.name) + '"></span>' +
+              '<span><span class="team-name">' + esc(p.name) +
+              '<span class="team-chev" aria-hidden="true">▸</span></span>' +
+              '<span class="team-role">' + esc(ROLES[p.id] || '') + '</span></span>' +
+            '</div>' +
+            '<div><span class="team-bar"><i style="width:' + pct + '%;background:' + esc(lv.col) + '"></i></span></div>' +
+            '<div><span class="team-step" style="background:' + esc(lv.col) + ';color:' + ink + '">' + esc(lv.name) + '</span></div>' +
+            '<div class="team-cups">' + p.badges.length + '<span>/ ' + total + '</span></div>' +
+          '</div>' +
+          '</summary><div class="trow-chips">' + chips + '</div></details>';
+      }).join('');
+
+    /* ── Catalogue des trophées ───────────────────────────────────────── */
+    var byLevel = {};
+    trophies.forEach(function (t) {
+      var lv = bareme[t.id];
+      (byLevel[lv] = byLevel[lv] || []).push(t);
+    });
+
+    cat.innerHTML = levels.map(function (lv) {
+      var items = byLevel[lv.n] || [];
+      if (!items.length) return '';
+      return '<div class="cat-level">' +
+        '<div class="cat-head">' +
+          '<span class="cat-chip" style="background:' + esc(lv.col) + ';color:' + (lv.n >= 4 ? '#fff' : '#000050') + '">' + lv.n + '</span>' +
+          '<span class="cat-title">NIVEAU ' + lv.n + ' — ' + esc(lv.name.toUpperCase()) + '</span>' +
+          '<span class="cat-n">' + items.length + '</span>' +
+        '</div>' +
+        '<div class="cat-grid">' + items.map(function (t) {
+          return '<div class="cat-item">' +
+            '<div class="cat-ico">' + esc(t.icon) + '</div>' +
+            '<div class="cat-label">' + esc(t.label) + '</div>' +
+            '<div class="cat-desc">' + esc(t.desc) + '</div>' +
+            '</div>';
+        }).join('') + '</div></div>';
+    }).join('');
+
+    /* Ces sections arrivent après DOMContentLoaded : lang.js ne les a pas
+       vues passer, on lui redemande d'appliquer la langue courante. */
+    if (window.iadopsLang) window.iadopsLang.refresh();
+
+  } catch (e) {
+    var msg = '<div class="loading">Données indisponibles — rechargez la page.</div>';
+    if (parcours) parcours.innerHTML = msg;
+    if (team) team.innerHTML = msg;
+    if (cat) cat.innerHTML = msg;
+  }
+})();
+</script>
 </body>
 </html>
