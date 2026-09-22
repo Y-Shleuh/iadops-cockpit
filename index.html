@@ -398,15 +398,21 @@ var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function animateCount(el, target) {
   if (!el || !isFinite(target)) return;
-  if (REDUCED) { el.textContent = String(target); return; }
+
+  /* La valeur finale est posée d'abord : si l'animation ne démarre pas
+     (onglet en arrière-plan, rAF gelé), le chiffre reste juste. */
+  el.textContent = String(target);
+  if (REDUCED || document.visibilityState !== 'visible') return;
+
   var start = null, dur = 1400;
   el.textContent = '0';
+  var guard = setTimeout(function () { el.textContent = String(target); }, dur + 800);
   function step(ts) {
     if (start === null) start = ts;
     var p = Math.min(1, (ts - start) / dur);
     var e = 1 - Math.pow(1 - p, 3);
     el.textContent = String(Math.round(target * e));
-    if (p < 1) requestAnimationFrame(step);
+    if (p < 1) { requestAnimationFrame(step); } else { clearTimeout(guard); }
   }
   requestAnimationFrame(step);
 }
