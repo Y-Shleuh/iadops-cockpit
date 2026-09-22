@@ -90,7 +90,11 @@ main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-dir
 /* ── L'ÉQUIPE ───────────────────────────────────────────────────────── */
 .team-layout{display:grid;grid-template-columns:1fr 268px;gap:20px;align-items:start}
 .team-board{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;overflow:hidden}
-.team-hrow,.team-row{display:grid;grid-template-columns:44px 1fr 150px 130px 78px;gap:0;align-items:center;padding:13px 22px}
+.team-hrow,.team-row{display:grid;grid-template-columns:44px 1fr 268px 116px 78px;gap:0;align-items:center;padding:13px 22px}
+.team-next{padding-right:26px}
+.team-miss{margin-top:6px;font-size:11.5px;line-height:1.35;color:#6E6E92;font-weight:300}
+.team-miss b{font-weight:600;color:var(--ms-navy)}
+.team-miss.is-top{color:#0B6B4F;font-weight:600}
 .team-hrow{border-bottom:1px solid var(--ms-cream-200);font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#8A8AA8;background:var(--ms-cream)}
 .team-row{transition:background .3s}
 .team-row:hover{background:var(--ms-cream)}
@@ -110,7 +114,7 @@ main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-dir
 .team-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .team-name{font-size:16px;font-weight:600;letter-spacing:-.02em}
 .team-role{font-size:12px;color:#6E6E92;font-weight:300}
-.team-bar{height:8px;border-radius:999px;background:var(--ms-cream-200);overflow:hidden;margin-right:26px}
+.team-bar{display:block;height:8px;border-radius:999px;background:var(--ms-cream-200);overflow:hidden}
 .team-bar i{display:block;height:8px;border-radius:999px;transform-origin:left;animation:growX 1.5s var(--ease) both}
 .team-step{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600}
 .team-cups{text-align:right;font-size:22px;font-weight:800;letter-spacing:-.04em}
@@ -205,7 +209,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   .step-sub{max-width:none}
   .team-hrow{display:none}
   .team-row{grid-template-columns:34px 1fr 70px;gap:8px 10px;padding:14px 16px}
-  .team-bar{grid-column:2/4;margin-right:0}
+  .team-next{grid-column:2/4;padding-right:0}
   .team-step{grid-column:2/4;justify-self:start}
   .highlights-grid{grid-template-columns:1fr}
   .trophies-grid{grid-template-columns:1fr}
@@ -268,7 +272,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <section>
     <div class="sec-head">
       <span class="sec-label">L'équipe, marche par marche</span>
-      <span class="sec-meta" id="team-meta">Trophées débloqués sur les 23 du catalogue</span>
+      <span class="sec-meta" id="team-meta">La barre mesure la marche suivante, pas le total — les marches sont séquentielles</span>
     </div>
     <div class="team-layout">
       <div class="team-board" id="team-root"><div class="loading">Chargement…</div></div>
@@ -574,17 +578,50 @@ function animateCount(el, target) {
       }).join('') + '</div>';
 
     /* ── L'équipe ─────────────────────────────────────────────────────── */
+    /* Les trophées exigés par chaque marche, d'après le barème. */
+    var required = {};
+    trophies.forEach(function (t) {
+      var lv = bareme[t.id];
+      (required[lv] = required[lv] || []).push(t);
+    });
+
+    /* Ce qui sépare une personne de la marche suivante. Les marches sont
+       séquentielles : le premier niveau incomplet est celui qui bloque. */
+    function nextStep(p) {
+      var have = {};
+      p.badges.forEach(function (b) { have[b] = 1; });
+      for (var n = 1; n <= levels.length; n++) {
+        var req = required[n] || [];
+        var missing = req.filter(function (t) { return !have[t.id]; });
+        if (missing.length) {
+          return { level: n, missing: missing, held: req.length - missing.length, total: req.length };
+        }
+      }
+      return null; /* tout le catalogue est obtenu */
+    }
+
     var ranked = people.slice().sort(function (a, b) {
       return (b.level - a.level) || (b.badges.length - a.badges.length) || a.name.localeCompare(b.name);
     });
     var total = trophies.length;
 
     team.innerHTML =
-      '<div class="team-hrow"><div>#</div><div>ADOPS</div><div>TROPHÉES DÉBLOQUÉS</div><div>MARCHE</div><div style="text-align:right">TOTAL</div></div>' +
+      '<div class="team-hrow"><div>#</div><div>ADOPS</div><div>PROCHAINE MARCHE</div><div>MARCHE</div><div style="text-align:right">TOTAL</div></div>' +
       ranked.map(function (p, i) {
         var lv = levels[p.level - 1] || levels[0];
-        var pct = Math.round((p.badges.length / total) * 100);
         var ink = p.level >= 4 ? '#fff' : '#000050';
+
+        var ns = nextStep(p);
+        var pct = ns ? Math.round((ns.held / ns.total) * 100) : 100;
+        var miss;
+        if (!ns) {
+          miss = '<div class="team-miss is-top">Catalogue complet</div>';
+        } else {
+          var noms = ns.missing.map(function (t) { return esc(t.label); }).join(', ');
+          var mot = ns.missing.length > 1 ? ' trophées' : ' trophée';
+          miss = '<div class="team-miss">à <b>' + ns.missing.length + mot +
+            '</b> de la marche ' + esc(levels[ns.level - 1].name) + ' — ' + noms + '</div>';
+        }
 
         /* Les trophées de la personne, dans l'ordre du catalogue. */
         var chips = trophies.filter(function (t) { return p.badges.indexOf(t.id) !== -1; })
@@ -601,7 +638,7 @@ function animateCount(el, target) {
               '<span class="team-chev" aria-hidden="true">▸</span></span>' +
               '<span class="team-role">' + esc(ROLES[p.id] || '') + '</span></span>' +
             '</div>' +
-            '<div><span class="team-bar"><i style="width:' + pct + '%;background:' + esc(lv.col) + '"></i></span></div>' +
+            '<div class="team-next"><span class="team-bar"><i style="width:' + pct + '%;background:' + esc(lv.col) + '"></i></span>' + miss + '</div>' +
             '<div><span class="team-step" style="background:' + esc(lv.col) + ';color:' + ink + '">' + esc(lv.name) + '</span></div>' +
             '<div class="team-cups">' + p.badges.length + '<span>/ ' + total + '</span></div>' +
           '</div>' +
