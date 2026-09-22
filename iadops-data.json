@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-22T19:09:42.026Z",
+    "generatedAt": "2026-09-22T20:40:29.015Z",
     "source": "iadops-cockpit",
     "schema": 2
   },
@@ -250,7 +250,6 @@
         "id": "p-noura",
         "name": "Noura Abou",
         "badges": [
-          "install",
           "ready",
           "rapport",
           "bilan",
@@ -262,7 +261,9 @@
           "c-suivi",
           "c-recap",
           "n-bilanaug",
-          "c-workshop"
+          "c-workshop",
+          "install",
+          "zeromanuel"
         ],
         "level": 3,
         "levelName": "Aguerri"
@@ -273,7 +274,6 @@
         "badges": [
           "install",
           "bilan",
-          "c-mails",
           "ready",
           "multi",
           "regulier",
@@ -283,10 +283,15 @@
           "n-bilanaug",
           "c-recherche",
           "c-analyse",
-          "c-usecase"
+          "c-usecase",
+          "c-mails",
+          "zeromanuel",
+          "skill",
+          "c-gain",
+          "n-tache"
         ],
-        "level": 3,
-        "levelName": "Aguerri"
+        "level": 4,
+        "levelName": "Expert"
       },
       {
         "id": "p-eric",
@@ -295,7 +300,11 @@
           "install",
           "regulier",
           "multi",
-          "ready"
+          "ready",
+          "c-mails",
+          "bilan",
+          "c-recherche",
+          "c-recap"
         ],
         "level": 1,
         "levelName": "Initié"
@@ -311,10 +320,16 @@
           "regulier",
           "multi",
           "c-suivi",
-          "c-recap"
+          "c-mails",
+          "c-analyse",
+          "n-tache",
+          "c-recherche",
+          "c-recap",
+          "zeromanuel",
+          "c-gain"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 3,
+        "levelName": "Aguerri"
       },
       {
         "id": "p-alphonse",
@@ -328,10 +343,14 @@
           "regulier",
           "multi",
           "zeromanuel",
-          "skill"
+          "skill",
+          "c-mails",
+          "c-recherche",
+          "c-recap",
+          "c-suivi"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 3,
+        "levelName": "Aguerri"
       },
       {
         "id": "p-emeric",
@@ -346,10 +365,11 @@
           "c-recap",
           "regulier",
           "multi",
-          "c-mails"
+          "c-mails",
+          "c-analyse"
         ],
-        "level": 2,
-        "levelName": "Actif"
+        "level": 3,
+        "levelName": "Aguerri"
       },
       {
         "id": "p-celina",
@@ -405,10 +425,13 @@
           "rapport",
           "bilan",
           "regulier",
-          "multi"
+          "multi",
+          "c-mails",
+          "c-recherche",
+          "c-recap"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 2,
+        "levelName": "Actif"
       },
       {
         "id": "p-ghofrane",
@@ -425,10 +448,11 @@
           "c-suivi",
           "c-recap",
           "skill",
-          "n-tache"
+          "n-tache",
+          "c-mails"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 3,
+        "levelName": "Aguerri"
       },
       {
         "id": "p-anis",
@@ -444,10 +468,10 @@
           "c-recherche",
           "c-analyse",
           "c-suivi",
-          "c-recap",
-          "c-gain",
           "n-tache",
-          "n-bilanaug"
+          "n-bilanaug",
+          "c-gain",
+          "c-recap"
         ],
         "level": 3,
         "levelName": "Aguerri"
@@ -461,10 +485,13 @@
           "rapport",
           "bilan",
           "regulier",
-          "multi"
+          "multi",
+          "c-mails",
+          "c-recherche",
+          "c-analyse"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 2,
+        "levelName": "Actif"
       }
     ]
   },
