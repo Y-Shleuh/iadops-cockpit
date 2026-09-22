@@ -810,6 +810,46 @@ const D = {
     'Wrap-up / status update skill — available for the whole team',
   "Le skill est disponible dans votre Claude. Testé sur Botanic avec Célina. Si vous avez un bilan à faire, c'est le moment de l'essayer !":
     "The skill is available in your Claude. Tested on Botanic with Célina. If you have a wrap-up to do, now's the time to try it!",
+
+  // ── actu.html — éditions 5 & 6 (7 sept / 14 sept) ────────────────────
+  'Les productions de la semaine': 'The week's productions',
+  "Doc d'alignement Picard × Havas": 'Picard × Havas alignment doc',
+  "Page (Cowork + Design) qui aligne tous les acteurs sur le set-up, signale les points en attente/bloquants et intègre Katchr. Scan de l'opé LCM + CSV Google Ads + URLs d'aperçus.":
+    'Page (Cowork + Design) that aligns all stakeholders on the setup, flags pending/blocking points and integrates Katchr. LCM op scan + Google Ads CSV + preview URLs.',
+  'Suivi budget Feu Vert': 'Feu Vert budget tracking',
+  "Mini one-pagers de conso budget vs temps écoulé sur un fil rouge annuel (restrictions Google) — synthétique et partageable, ~15 min.":
+    'Mini one-pagers of budget spend vs. time elapsed on an annual ongoing account (Google restrictions) — concise and shareable, ~15 min.',
+  'One-pager + données Vistar (DOOH)': 'One-pager + Vistar data (DOOH)',
+  "Le skill one-pager avec récupération des données Vistar désormais accessibles dans Claude. Waël l'a aussi testé sur un bilan intermédiaire ITS.":
+    'The one-pager skill with Vistar data retrieval now accessible in Claude. Waël also tested it on an ITS mid-campaign summary.',
+  "Un onglet qui analyse l'usage de chacun (outils utilisés, % par modèle) avec une reco perso, et une piste d'optimisation des tokens (Fable en lead / Sonnet en sidekick, élaborée avec Ahmat) à tester.":
+    "A tab that analyzes each person's usage (tools used, % by model) with a personal recommendation, and a token optimization approach (Fable as lead / Sonnet as sidekick, developed with Ahmat) to test.",
+
+  // édition 6 — 14 sept
+  'MAM, le hub de gestion de campagnes': 'MAM, the campaign management hub',
+  'MAM — la gestion de campagnes centralisée': 'MAM — centralized campaign management',
+  "Un hub complet de pilotage des campagnes, construit par Yannis. Présenté au Meetup Ops (16/09) — très bien reçu, avec une session dédiée au feedback et aux idées — puis au Comité Innovation devant la direction : jugé « no-brainer, il faut avancer ».":
+    "A complete campaign management hub built by Yannis. Presented at the Ops Meetup (16/09) — very well received, with a dedicated session for feedback and ideas — then at the Innovation Committee in front of management: deemed \"no-brainer, let's move forward\".",
+  'Dashboard Boulanger (calls hebdo)': 'Boulanger dashboard (weekly calls)',
+  "Remplace un Looker devenu lourd à maintenir : vue d'ensemble des perfs par campagne (CTR & CPM/jour à la demande cliente) + un onglet de comparaison de deux campagnes. Support des points hebdo.":
+    'Replaces a Looker instance that became heavy to maintain: performance overview by campaign (CTR & CPM/day on client request) + a two-campaign comparison tab. Supports weekly check-ins.',
+  'Suivi Google Ads (Intersport, Afflelou, Feu Vert)': 'Google Ads tracking (Intersport, Afflelou, Feu Vert)',
+  'Récupère auto les infos Google Ads + LCM, compare les deux, alerte si dates divergentes ou campagne manquante côté Google, indique trend & perfs, actualisation horaire. Remplace le suivi Google Sheet manuel.':
+    'Auto-fetches Google Ads + LCM data, compares both, alerts on divergent dates or missing Google campaigns, shows trend & performance, hourly refresh. Replaces the manual Google Sheet tracking.',
+  'Génère les CSV bulk Google Ads Editor pour les PMax multi-magasins (formats, limites de caractères, budget calculé sur le non-margé), testé Maroc (23 magasins) & Belgique (4). En complément du nouveau module LCM PMax.':
+    'Generates bulk Google Ads Editor CSV files for multi-store PMax (formats, character limits, budget calculated on non-margined), tested Morocco (23 stores) & Belgium (4). Complements the new LCM PMax module.',
+  'Le design system dans Claude Design': 'The design system in Claude Design',
+  "Depuis un brand book / des présentations → design system hébergé sur GitHub via Cowork → appelé dans Claude Design pour des rendus fidèles. Test en cours sur la charte MS pour l'AO Carrefour.":
+    'From a brand book / presentations → design system hosted on GitHub via Cowork → called in Claude Design for faithful rendering. Currently testing with the MS charter for the Carrefour AO.',
+  "L'IA essaime aux autres équipes": 'AI spreads to other teams',
+  "La méthode AdOps s'étend : Paid Media Content (récup auto des créas, dont LinkedIn Ads), Conseil Newbiz (pédagogie IA) et Farly (cockpit de suivi + gamification). Sessions animées par Nico & Yannis.":
+    'The AdOps method expands: Paid Media Content (auto creative retrieval, incl. LinkedIn Ads), Conseil Newbiz (AI training) and Farly (tracking cockpit + gamification). Sessions led by Nico & Yannis.',
+  'Vistar (DOOH) & setup ZIP': 'Vistar (DOOH) & ZIP setup',
+  "Connecteur MCP Vistar (DOOH) branché pour toute l'équipe en lecture seule, et setup ZIP Intersport avec un outil de vérification des remontées d'infos — à déployer client par client avec les leads.":
+    'MCP Vistar (DOOH) connector connected for the whole team in read-only, and Intersport ZIP setup with a data verification tool — to deploy client by client with leads.',
+  'Claude Design mieux intégré': 'Claude Design better integrated',
+  "Design tourne désormais dans la conversation, sans ouvrir de fenêtre à part — plus fluide pour passer un livrable à la charte.":
+    'Design now runs inside the conversation, without opening a separate window — smoother for styling a deliverable to the brand guidelines.',
 };
 
 /* ── ENGINE ─────────────────────────────────────────────────────────── */

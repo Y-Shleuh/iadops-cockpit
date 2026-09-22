@@ -137,6 +137,21 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 48px;display:flex;flex-dir
 .test-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .test-badge{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
 
+/* CARD SYSTEM (éditions récentes) */
+.card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;padding:22px 24px;transition:transform .2s ease-out,box-shadow .2s ease-out}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,80,.1)}
+.lbl{font-size:13.5px;color:#3B3B6B;line-height:1.55}
+.grid{display:grid;gap:16px}
+.grid.g2{grid-template-columns:1fr 1fr}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.pill{display:inline-flex;padding:5px 13px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.03em}
+.pill.s-acquis{background:var(--ms-mint-100,#D6FCF1);color:var(--ms-mint-700,#00C99C)}
+.pill.s-test{background:var(--ms-violet-100);color:var(--ms-violet-700)}
+.pill.s-fiab{background:#FEF3C7;color:#92400E}
+.pill.s-reflex{background:#FEE2E2;color:#991B1B}
+.amono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--ms-violet-100);color:var(--ms-violet-700);border-radius:5px;padding:1px 5px}
+@media(max-width:760px){.grid.g3{grid-template-columns:1fr}.grid.g2{grid-template-columns:1fr}}
+
 .mint-rule{height:6px;background:var(--ms-mint)}
 footer{background:var(--ms-navy);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
@@ -159,7 +174,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <div class="hero-bg1"></div>
   <div class="hero-bg2"></div>
   <div class="hero-inner">
-    <span class="hero-pill">Point du 1er septembre 2026</span>
+    <span class="hero-pill">Point du 16 septembre 2026</span>
     <h1>L'actu du projet</h1>
     <p>Le grand chantier du moment, les usages déjà en production et la veille que l'équipe partage chaque semaine.</p>
   </div>
@@ -184,7 +199,9 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
       <button class="edition-btn upcoming" data-edition="1">Lun. 3 août</button>
       <button class="edition-btn upcoming" data-edition="2">Lun. 10 août</button>
       <button class="edition-btn upcoming" data-edition="3">Lun. 24 août</button>
-      <button class="edition-btn active" data-edition="4">Lun. 31 août</button>
+      <button class="edition-btn upcoming" data-edition="4">Lun. 31 août</button>
+      <button class="edition-btn upcoming" data-edition="5">Lun. 7 sept</button>
+      <button class="edition-btn active" data-edition="6">Lun. 14 sept</button>
     </div>
   </div>
 
@@ -1084,8 +1101,8 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 
   </div><!-- /edition-3 -->
 
-  <!-- Édition 4 : 1er sept. -->
-  <div id="edition-4" class="edition-panel">
+  <!-- Édition 4 : 31 août -->
+  <div id="edition-4" class="edition-panel hidden">
 
     <section>
       <div class="sec-head">
@@ -1257,6 +1274,107 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     </section>
 
   </div><!-- /edition-4 -->
+
+  <!-- Édition 5 : 7 sept -->
+  <div id="edition-5" class="edition-panel hidden">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Côté équipe</span>
+        <span class="sec-meta">Les productions de la semaine</span>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <span class="pill s-acquis">Yannis · doc d'opé</span>
+          <h3 style="margin-top:6px">Doc d'alignement Picard × Havas</h3>
+          <p class="lbl" style="margin-top:6px">Page (Cowork + Design) qui aligne tous les acteurs sur le set-up, signale les points en attente/bloquants et intègre Katchr. Scan de l'opé LCM + CSV Google Ads + URLs d'aperçus.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-acquis">Célina · one-pager</span>
+          <h3 style="margin-top:6px">Suivi budget Feu Vert</h3>
+          <p class="lbl" style="margin-top:6px">Mini one-pagers de conso budget vs temps écoulé sur un fil rouge annuel (restrictions Google) — synthétique et partageable, ~15 min.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-acquis">Alphonse · one-pager</span>
+          <h3 style="margin-top:6px">One-pager + données Vistar (DOOH)</h3>
+          <p class="lbl" style="margin-top:6px">Le skill one-pager avec récupération des données Vistar désormais accessibles dans Claude. Waël l'a aussi testé sur un bilan intermédiaire ITS.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card" style="background:var(--ms-brand-soft,#F0F0FF);border-color:#dfe1ff">
+        <span class="pill s-test">Nouveau · onglet</span>
+        <h3 style="margin-top:6px">Progression → « Optimisation Claude »</h3>
+        <p class="lbl" style="margin-top:6px">Un onglet qui analyse l'usage de chacun (outils utilisés, % par modèle) avec une reco perso, et une piste d'optimisation des tokens (Fable en lead / Sonnet en sidekick, élaborée avec Ahmat) à tester.</p>
+      </div>
+    </section>
+
+  </div><!-- /edition-5 -->
+
+  <!-- Édition 6 : 14 sept (active) -->
+  <div id="edition-6" class="edition-panel">
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Le grand chantier du moment</span>
+        <span class="sec-meta">MAM, le hub de gestion de campagnes</span>
+      </div>
+      <div class="card" style="background:var(--ms-brand-soft,#F0F0FF);border-color:#dfe1ff;margin-bottom:0">
+        <span class="pill s-acquis">Yannis · nouvel outil</span>
+        <h3 style="margin-top:6px">MAM — la gestion de campagnes centralisée</h3>
+        <p class="lbl" style="margin-top:6px">Un hub complet de pilotage des campagnes, construit par Yannis. Présenté au <b>Meetup Ops (16/09)</b> — très bien reçu, avec une session dédiée au feedback et aux idées — puis au <b>Comité Innovation</b> devant la direction : jugé « no-brainer, il faut avancer ».</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-label">Côté équipe</span>
+        <span class="sec-meta">Les productions de la semaine</span>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <span class="pill s-acquis">Stéphanie · dashboard</span>
+          <h3 style="margin-top:6px">Dashboard Boulanger (calls hebdo)</h3>
+          <p class="lbl" style="margin-top:6px">Remplace un Looker devenu lourd à maintenir : vue d'ensemble des perfs par campagne (CTR &amp; CPM/jour à la demande cliente) + un onglet de comparaison de deux campagnes. Support des points hebdo.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-acquis">Olivier · dashboard</span>
+          <h3 style="margin-top:6px">Suivi Google Ads (Intersport, Afflelou, Feu Vert)</h3>
+          <p class="lbl" style="margin-top:6px">Récupère auto les infos Google Ads + LCM, compare les deux, alerte si dates divergentes ou campagne manquante côté Google, indique trend &amp; perfs, actualisation horaire. Remplace le suivi Google Sheet manuel.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-test">Ghofrane · skill</span>
+          <h3 style="margin-top:6px">Skill <span class="amono">google-ads-editor-pmax-bulk</span></h3>
+          <p class="lbl" style="margin-top:6px">Génère les CSV bulk Google Ads Editor pour les PMax multi-magasins (formats, limites de caractères, budget calculé sur le non-margé), testé Maroc (23 magasins) &amp; Belgique (4). En complément du nouveau module LCM PMax.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-acquis">Nico · Design System</span>
+          <h3 style="margin-top:6px">Le design system dans Claude Design</h3>
+          <p class="lbl" style="margin-top:6px">Depuis un brand book / des présentations → design system hébergé sur GitHub via Cowork → appelé dans Claude Design pour des rendus fidèles. Test en cours sur la charte MS pour l'AO Carrefour.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-test">Diffusion</span>
+          <h3 style="margin-top:6px">L'IA essaime aux autres équipes</h3>
+          <p class="lbl" style="margin-top:6px">La méthode AdOps s'étend : Paid Media Content (récup auto des créas, dont LinkedIn Ads), Conseil Newbiz (pédagogie IA) et Farly (cockpit de suivi + gamification). Sessions animées par Nico &amp; Yannis.</p>
+        </div>
+        <div class="card">
+          <span class="pill s-acquis">Jérémy · fondations</span>
+          <h3 style="margin-top:6px">Vistar (DOOH) &amp; setup ZIP</h3>
+          <p class="lbl" style="margin-top:6px">Connecteur MCP Vistar (DOOH) branché pour toute l'équipe en lecture seule, et setup ZIP Intersport avec un outil de vérification des remontées d'infos — à déployer client par client avec les leads.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <span class="pill s-acquis">Outillage</span>
+        <h3 style="margin-top:6px">Claude Design mieux intégré</h3>
+        <p class="lbl" style="margin-top:6px">Design tourne désormais dans la conversation, sans ouvrir de fenêtre à part — plus fluide pour passer un livrable à la charte.</p>
+      </div>
+    </section>
+
+  </div><!-- /edition-6 -->
 
 </main>
 
