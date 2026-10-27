@@ -17,6 +17,8 @@
   --ms-deep:#00002E;--ms-ink-dim:#A9A9E0;--ms-ink-soft:#C9C9EC;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --ease:cubic-bezier(.2,.8,.2,1);
+  /* Alias attendus par le HTML exporté du cockpit. */
+  --ink:#000050;--brand:#5C2EFD;--brand-soft:#F0F0FF;--green:#00C99C;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Jost',system-ui,sans-serif;background:var(--ms-cream);color:var(--ms-navy);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -58,137 +60,117 @@ h1,h2,h3,h4,h5,p,li,td,th,span,div,a,button{color:inherit}
 .hero h1{color:#fff;font-size:58px;font-weight:800;line-height:1;margin-top:20px;letter-spacing:-.045em}
 .hero p{font-size:19px;line-height:1.5;color:var(--ms-ink-soft);margin-top:18px;max-width:740px;font-weight:300}
 
-/* ── MAIN & SECTIONS ────────────────────────────────────────────────── */
-main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-direction:column;gap:40px}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:20px;flex-wrap:wrap}
+/* ── MAIN ───────────────────────────────────────────────────────────── */
+main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-direction:column;gap:36px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:4px solid var(--ms-mint);padding-top:10px;margin-bottom:18px;flex-wrap:wrap}
 .sec-label{color:var(--ms-violet);font-size:13px;font-weight:600;letter-spacing:.1em}
 .sec-meta{color:#6E6E92;font-size:13px}
+.loading{padding:40px;text-align:center;color:#8A8AA8;font-size:14px}
 
-/* EDITION SWITCHER */
-.edition-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:4px solid var(--ms-mint);padding-top:12px}
-.edition-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
-.edition-btn{padding:8px 18px;border-radius:999px;border:1px solid var(--ms-cream-200);font-family:'Jost',sans-serif;font-size:14px;font-weight:600;cursor:pointer;background:#fff;color:var(--ms-navy);transition:background .15s,color .15s}
-.edition-btn.active{background:var(--ms-navy);color:#fff;border-color:var(--ms-navy)}
-.edition-btn.upcoming{color:#6E6E92;border:1px dashed var(--ms-cream-300)}
+/* ── SOMMAIRE DES SEMAINES ──────────────────────────────────────────── */
+.sommaire{display:flex;gap:8px;flex-wrap:wrap}
+.som-link{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--ms-cream-200);font-size:14px;font-weight:500;color:var(--ms-navy);transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+.som-link:hover{transform:translateY(-3px);background:var(--ms-navy);border-color:var(--ms-navy);color:var(--ms-mint)}
+.som-link.is-now{background:var(--ms-navy);border-color:var(--ms-navy);color:var(--ms-mint);font-weight:600}
+.som-link.is-now::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ms-mint);animation:pulseDot 2s ease-in-out infinite}
 
-.edition-panel{display:flex;flex-direction:column;gap:32px}
-.edition-panel.hidden{display:none}
+/* ── UNE SEMAINE ────────────────────────────────────────────────────── */
+.edition{scroll-margin-top:84px}
+.edition-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-top:4px solid var(--ms-mint);padding-top:12px;margin-bottom:18px}
+.edition-head h2{font-size:30px;font-weight:700;letter-spacing:-.035em}
+.edition-flag{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:999px;background:var(--ms-navy);color:var(--ms-mint);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+.edition-up{margin-left:auto;font-size:13px;font-weight:600;color:#8A8AA8;transition:color .25s}
+.edition-up:hover{color:var(--ms-violet)}
+.edition-body{display:flex;flex-direction:column;gap:14px}
 
-/* GRAND CHANTIER */
-.chantier-box{background:var(--ms-navy);border-radius:32px;padding:30px 34px;color:var(--ms-cream)}
-.chantier-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;margin-top:20px;align-items:start}
-.chantier-steps{display:flex;flex-direction:column;gap:14px}
-.chantier-step{display:flex;gap:16px;background:var(--ms-navy-700);border-radius:18px;padding:16px 18px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.chantier-step:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.3)}
-.chantier-step-num{width:36px;height:36px;flex:0 0 36px;border-radius:50%;font-weight:700;display:flex;align-items:center;justify-content:center}
-
-/* DASHBOARD PREVIEW */
-.dash-preview{background:#fff;border-radius:22px;overflow:hidden;color:var(--ms-navy);box-shadow:0 18px 50px rgba(0,0,80,.35)}
-.dash-topbar{background:var(--ms-cream);display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--ms-cream-200)}
-.dash-dot{width:11px;height:11px;border-radius:50%;display:block}
-.dash-body{padding:18px}
-.dash-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.dash-kpi{background:var(--ms-navy);border-radius:14px;padding:13px}
-.dash-kpi-num{font-size:22px;font-weight:700;color:#fff;line-height:1}
-.dash-kpi-label{font-size:11.5px;color:var(--ms-mint);font-weight:500;margin-top:6px}
-.dash-bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
-.dash-section{border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px}
-.dash-section-title{font-size:11.5px;letter-spacing:.08em;color:#6E6E92;font-weight:600;margin-bottom:8px}
-.dash-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.dash-bar-row:last-child{margin-bottom:0}
-.dash-bar-track{flex:1;height:8px;background:#EEE7DF;border-radius:5px;overflow:hidden}
-.dash-bar-fill{height:100%;background:var(--ms-violet);border-radius:5px}
-.dash-actions{display:flex;gap:10px;margin-top:12px}
-.dash-action{flex:1;text-align:center;font-size:12.5px;font-weight:600;padding:10px;border-radius:12px}
-
-/* SQUADS */
-.squads-box{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:24px 28px}
-.squads-intro{display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
-.squads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:20px}
-.squad-card{background:var(--ms-cream);border-radius:18px;padding:16px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.squad-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.squad-tag{display:inline-flex;padding:4px 11px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11.5px;font-weight:600}
-.squad-name{font-size:16px;font-weight:600;margin-top:10px}
-.squad-desc{font-size:13px;color:#6E6E92;margin-top:5px;line-height:1.45}
-
-/* EN PRODUCTION */
-.production-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
-.prod-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:28px;padding:26px 28px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.prod-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.prod-pill{display:inline-flex;padding:6px 14px;border-radius:999px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:13px;font-weight:600}
-.pdf-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;border-radius:999px;background:var(--ms-cream);border:1.5px solid var(--ms-cream-200);font-size:12.5px;font-weight:600;color:var(--ms-navy);text-decoration:none;transition:background .15s}
-.pdf-link:hover{background:var(--ms-cream-200)}
-.prod-h3{font-size:25px;font-weight:700;margin-top:14px;line-height:1.15}
-.prod-body{font-size:15px;color:#3B3B6B;margin-top:8px;line-height:1.55}
-
-/* SLACK PREVIEW */
-.slack-preview{border:1px solid var(--ms-cream-200);border-radius:18px;margin-top:16px;overflow:hidden}
-.slack-bar{background:var(--ms-navy);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.slack-body{background:var(--ms-cream);padding:16px 18px}
-.slack-table{width:100%;border-collapse:collapse;margin-top:14px}
-.slack-table td{font-size:13px;padding:7px 2px;border-bottom:1px solid #ECE7E0}
-.slack-table tr:last-child td{padding:8px 2px;border-top:2px solid var(--ms-cream-200);border-bottom:0}
-
-/* CANAL SECTION */
-.canal-grid{display:grid;grid-template-columns:1.18fr 1fr;gap:20px;align-items:start}
-.canal-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;overflow:hidden;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.canal-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.canal-header{background:var(--ms-navy);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.canal-msg{padding:16px 18px;border-bottom:1px solid #F2EDE6}
-.canal-msg:last-child{border-bottom:0}
-.canal-avatar{width:28px;height:28px;border-radius:9px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.canal-cta{background:var(--ms-violet);border-radius:28px;padding:24px 28px;display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none;transition:background .18s,transform .2s ease-out,box-shadow .2s ease-out}
-.canal-cta:hover{background:var(--ms-violet-700);transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.code-pill{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--ms-violet-100);color:var(--ms-violet-700);border-radius:7px;padding:2px 7px;font-size:12px;font-weight:600}
-
-/* UPCOMING */
-.upcoming-box{background:#fff;border:1px dashed var(--ms-cream-300);border-radius:28px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
-
-/* TESTS EN COURS */
-.tests-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.test-navy{background:var(--ms-navy);border-radius:28px;padding:24px 28px;color:var(--ms-cream);display:flex;flex-direction:column;gap:16px}
-.test-row{background:var(--ms-navy-700);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-.test-cards{display:flex;flex-direction:column;gap:18px}
-.test-card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:24px;padding:22px 24px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.test-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,80,.12)}
-.test-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.test-badge{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
-
-/* CARD SYSTEM (éditions récentes) */
-.card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;padding:22px 24px;transition:transform .2s ease-out,box-shadow .2s ease-out}
-.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,80,.1)}
-.lbl{font-size:13.5px;color:#3B3B6B;line-height:1.55}
-.grid{display:grid;gap:16px}
+/* ═══ CLASSES DU COCKPIT — le HTML exporté est injecté tel quel ═══════ */
+.sec-title{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ms-violet);margin-top:6px}
+.card{background:#fff;border:1px solid var(--ms-cream-200);border-radius:22px;padding:22px 24px;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,80,.1);border-color:var(--ms-cream-300)}
+.card h3{font-size:20px;font-weight:700;line-height:1.18;letter-spacing:-.025em}
+.lbl{font-size:13.5px;color:#3B3B6B;line-height:1.6;font-weight:300}
+.lbl b{font-weight:600;color:var(--ms-navy)}
+.grid{display:grid;gap:14px}
 .grid.g2{grid-template-columns:1fr 1fr}
-.grid.g3{grid-template-columns:repeat(3,1fr)}
-.pill{display:inline-flex;padding:5px 13px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.03em}
-.pill.s-acquis{background:var(--ms-mint-100,#D6FCF1);color:var(--ms-mint-700,#00C99C)}
+.grid.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pill{display:inline-flex;padding:5px 12px;border-radius:999px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em}
+.pill.s-acquis{background:var(--ms-mint-100);color:#00534F}
 .pill.s-test{background:var(--ms-violet-100);color:var(--ms-violet-700)}
 .pill.s-fiab{background:#FEF3C7;color:#92400E}
+.pill.s-build{background:#CFFAFE;color:#0E6A78}
 .pill.s-reflex{background:#FEE2E2;color:#991B1B}
-.amono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--ms-violet-100);color:var(--ms-violet-700);border-radius:5px;padding:1px 5px}
-@media(max-width:760px){.grid.g3{grid-template-columns:1fr}.grid.g2{grid-template-columns:1fr}}
+.pill.s-bloc{background:#FFE4E6;color:#9F1239}
+.amono{font-family:var(--mono);font-size:.86em;background:var(--ms-violet-100);color:var(--ms-violet-700);border-radius:5px;padding:1px 5px}
+.note{font-size:12.5px;color:#6E6E92;font-weight:300;line-height:1.5}
 
-/* ── AJUSTEMENTS DE LA REFONTE ──────────────────────────────────────── */
-.edition-bar{gap:12px}
-.edition-btn{border-radius:999px;font-family:'Jost',sans-serif;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
-.edition-btn:hover{transform:translateY(-2px);border-color:var(--ms-navy)}
-.edition-btn.active{background:var(--ms-navy);color:#fff;border-color:var(--ms-navy)}
-.card{border-radius:22px;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
-.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,80,.1);border-color:var(--ms-cream-300)}
-.chantier-box{background:var(--ms-deep);border-radius:28px;position:relative;overflow:hidden}
-.chantier-box::after{content:"";position:absolute;right:-130px;top:-130px;width:340px;height:340px;border-radius:50%;background:var(--ms-violet);filter:blur(100px);opacity:.42;pointer-events:none}
-.chantier-box>*{position:relative;z-index:1}
-.chantier-step{transition:transform .35s var(--ease),box-shadow .35s}
-.chantier-step:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
-.pill{font-family:var(--mono);font-size:10px;letter-spacing:.08em;font-weight:500;padding:5px 12px}
-.prod-card{transition:transform .4s var(--ease),box-shadow .4s}
-.prod-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,80,.1)}
+/* encadré sombre */
+.darkbox{background:var(--ms-deep);border-radius:24px;padding:26px 28px;color:var(--ms-cream);position:relative;overflow:hidden}
+.darkbox::after{content:"";position:absolute;right:-120px;top:-120px;width:320px;height:320px;border-radius:50%;background:var(--ms-violet);filter:blur(100px);opacity:.42;pointer-events:none}
+.darkbox>*{position:relative;z-index:1}
+.darkbox h3{font-size:28px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:14px}
+.darkbox .rl{display:block;width:72px;height:6px;border-radius:999px;background:var(--ms-mint)}
+.darkbox .sub{font-size:16px;line-height:1.55;color:var(--ms-ink-soft);margin-top:10px;font-weight:300;max-width:620px}
+.darkbox .lbl{color:var(--ms-ink-soft)}
+.darkbox .lbl b{color:#fff}
+
+/* étapes numérotées */
+.cgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;margin-top:20px;align-items:start}
+.cgrid>*,.mk>*,.grid>*{min-width:0}
+.cstep{display:flex;gap:14px;background:rgba(242,238,233,.07);border:1px solid rgba(242,238,233,.14);border-radius:16px;padding:14px 16px;margin-bottom:10px;transition:transform .35s var(--ease)}
+.cstep:hover{transform:translateY(-4px)}
+.cstep .n{width:32px;height:32px;flex:0 0 32px;border-radius:50%;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.cstep h5{font-size:16px;font-weight:600;color:#fff}
+.cstep p{font-size:13.5px;color:var(--ms-ink-soft);margin-top:4px;line-height:1.45;font-weight:300}
+.cstep .d{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ms-mint);margin-top:7px}
+
+/* fenêtre de dashboard simulée */
+.mdash{background:#fff;border-radius:18px;overflow:hidden;color:var(--ms-navy);box-shadow:0 18px 50px rgba(0,0,80,.35)}
+.mtop{background:var(--ms-cream);display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--ms-cream-200);font-size:12px;font-weight:600;color:#3B3B6B}
+.mtop i{width:10px;height:10px;border-radius:50%;display:block;flex-shrink:0}
+.mbody{padding:16px}
+.mk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.mk .t,.kpim{background:var(--ms-navy);border-radius:12px;padding:11px}
+.mk .v,.kpim .v{font-size:19px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em}
+.mk .l,.kpim .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ms-mint);margin-top:6px}
+.mrow{display:flex;align-items:center;gap:10px;margin-top:9px}
+.mrow .nm{width:92px;font-size:12.5px;font-weight:600;flex-shrink:0}
+.mrow .trk{flex:1;height:8px;background:#EEE7DF;border-radius:999px;overflow:hidden}
+.mrow .trk i{display:block;height:8px;background:var(--ms-violet);border-radius:999px}
+.mrow .pc{font-family:var(--mono);font-size:11px;font-weight:500;color:#6E6E92;width:38px;text-align:right}
+
+/* tableau compact */
+.rtab{width:100%;border-collapse:collapse;margin-top:10px}
+.rtab td{padding:7px 0;border-bottom:1px solid var(--ms-cream-200);font-size:13px;color:#3B3B6B}
+.rtab tr:last-child td{border-bottom:0}
+.rtab .lv{font-weight:600;color:var(--ms-navy)}
+.rtab .num{text-align:right;font-family:var(--mono);font-size:12px;color:var(--ms-mint-700);font-weight:500}
+
+/* encart « augmenté » */
+.augn{background:var(--ms-mint-100);border:1px solid rgba(0,201,156,.32);border-radius:16px;padding:14px 18px;margin-top:12px;font-size:13.5px;line-height:1.55;color:#00534F}
+.augn b{font-weight:700}
+
+/* canal Slack simulé */
+.canalh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:16px;font-weight:700;letter-spacing:-.02em}
+.canalh .mem{font-size:12px;font-weight:400;color:#6E6E92}
+.post{background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px 14px;margin-top:10px}
+.post .au{font-size:13px;font-weight:700;color:var(--ms-navy)}
+.post .tm{font-size:11.5px;color:#8A8AA8}
+.post .tt{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
+.post .tx{font-size:13px;line-height:1.5;color:#3B3B6B;margin-top:7px;font-weight:300}
+
+/* ── FOOTER ─────────────────────────────────────────────────────────── */
 .mint-rule{height:6px;background:var(--ms-mint)}
 footer{background:var(--ms-deep);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 footer span{color:var(--ms-mint);font-weight:600;font-size:15px}
 footer img{height:20px;width:auto;display:block;opacity:.85}
 
+/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media(max-width:1080px){
+  .cgrid{grid-template-columns:1fr}
+  .grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h1{font-size:44px}
+}
 @media(max-width:860px){
   .nav{padding:10px 16px;gap:12px;flex-wrap:wrap}
   .nav-brand{flex-grow:1}
@@ -198,8 +180,12 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   .nav-link{white-space:nowrap;font-size:14px}
   .hero{padding:38px 20px 42px}
   .hero h1{font-size:34px}
-  main{padding:28px 20px 40px;gap:30px}
-  .edition-buttons{margin-left:0}
+  main{padding:28px 20px 40px;gap:28px}
+  .grid.g2,.grid.g3,.grid.g4{grid-template-columns:1fr}
+  .mk{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .darkbox{padding:22px 18px}
+  .edition-head h2{font-size:24px}
+  .mrow .nm{width:72px}
 }
 </style>
 </head>
@@ -227,7 +213,7 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <div class="hero-glow"></div>
   <div class="hero-scan"></div>
   <div class="hero-inner">
-    <span class="hero-pill rise"><i></i>Point du 16 septembre 2026</span>
+    <span class="hero-pill rise"><i></i><span id="hero-edition">L'actu de l'équipe</span></span>
     <h1 class="rise rise-1">L'actu du projet</h1>
     <p class="rise rise-2">Le grand chantier du moment, les usages déjà en production et la veille que l'équipe partage chaque semaine.</p>
   </div>
@@ -235,1388 +221,15 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
 
 <main>
 
-  <!-- Edition switcher -->
-  <div class="edition-bar">
-    <span class="sec-label">Les éditions</span>
-    <span class="sec-meta">Un point toutes les une à deux semaines</span>
-    <div class="edition-buttons">
-      <button class="edition-btn upcoming" data-edition="0">Lun. 27 juil.</button>
-      <button class="edition-btn upcoming" data-edition="1">Lun. 3 août</button>
-      <button class="edition-btn upcoming" data-edition="2">Lun. 10 août</button>
-      <button class="edition-btn upcoming" data-edition="3">Lun. 24 août</button>
-      <button class="edition-btn upcoming" data-edition="4">Lun. 31 août</button>
-      <button class="edition-btn upcoming" data-edition="5">Lun. 7 sept</button>
-      <button class="edition-btn active" data-edition="6">Lun. 14 sept</button>
+  <section id="sommaire-sec">
+    <div class="sec-head">
+      <span class="sec-label">Les éditions</span>
+      <span class="sec-meta" id="som-meta">De la plus récente à la plus ancienne</span>
     </div>
-  </div>
+    <nav class="sommaire" id="sommaire"></nav>
+  </section>
 
-  <!-- Édition 0 : 27 juil. -->
-  <div id="edition-0" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">Pilotage &amp; adoption</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Chacun son cockpit de suivi</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Un dashboard perso, connecté au Dashboard Mobsuccess, qui devient le premier écran du matin : campagnes actives, alertes, to-do et actions en un clic. Objectif : un standard commun pour toute l'équipe.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Emeric a montré la voie</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Son dashboard présenté à l'équipe, avec tutoriel d'installation partagé.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Fait</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:#fff;color:var(--ms-navy)">2</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Chacun crée le sien</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Base commune (le prompt d'Emeric) que chacun adapte à son scope et ses comptes.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">jeu. 30 juil. · présentations au weekly</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Le dashboard standardisé</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">On assemble le best-of de tous les cockpits en un standard pour toute l'équipe.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">jeu. 6 août · le best-of</div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Dashboard AdOps — vue d'ensemble</span>
-            </div>
-            <div class="dash-body">
-              <div class="dash-kpis">
-                <div class="dash-kpi"><div class="dash-kpi-num">128 k€</div><div class="dash-kpi-label">Budget suivi</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">24,6 M</div><div class="dash-kpi-label">Impressions</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">1,04 %</div><div class="dash-kpi-label">CTR moyen</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">18</div><div class="dash-kpi-label">Campagnes actives</div></div>
-              </div>
-              <div class="dash-bottom">
-                <div class="dash-section">
-                  <div class="dash-section-title">CAMPAGNES ACTIVES</div>
-                  <div class="dash-bar-row">
-                    <span style="font-size:13px;font-weight:600;width:88px">Decathlon</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:82%"></span></span>
-                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">82%</span>
-                  </div>
-                  <div class="dash-bar-row">
-                    <span style="font-size:13px;font-weight:600;width:88px">Weldom</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:76%"></span></span>
-                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">76%</span>
-                  </div>
-                  <div class="dash-bar-row">
-                    <span style="font-size:13px;font-weight:600;width:88px">Carrefour</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:64%"></span></span>
-                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">64%</span>
-                  </div>
-                  <div class="dash-bar-row">
-                    <span style="font-size:13px;font-weight:600;width:88px">Intersport</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:91%"></span></span>
-                    <span style="font-size:12px;font-weight:700;width:36px;text-align:right">91%</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <div class="dash-section">
-                    <div class="dash-section-title">TO-DO DU JOUR</div>
-                    <div style="display:flex;flex-direction:column;gap:6px">
-                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;background:var(--ms-violet);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">✓</span>Vérifier délivrabilité Weldom</div>
-                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;border:2px solid var(--ms-violet);display:block"></span>Optimiser CTR Carrefour</div>
-                      <div style="display:flex;gap:9px;align-items:center;font-size:12.5px;color:#3B3B6B"><span style="width:16px;height:16px;flex:0 0 16px;border-radius:5px;border:2px solid var(--ms-violet);display:block"></span>Récap client Decathlon</div>
-                    </div>
-                  </div>
-                  <div class="dash-section">
-                    <div class="dash-section-title">ALERTES &amp; RECOS</div>
-                    <div style="display:flex;flex-direction:column;gap:6px">
-                      <div style="display:flex;gap:9px;font-size:12.5px;color:#3B3B6B"><b style="color:var(--ms-orange)">!</b>2 magasins sans diffusion (Carrefour)</div>
-                      <div style="display:flex;gap:9px;font-size:12.5px;color:#3B3B6B"><b style="color:var(--ms-orange)">!</b>Budget Google sous-consommé</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="dash-actions">
-                <span class="dash-action" style="background:var(--ms-violet);color:#fff">Générer le rapport</span>
-                <span class="dash-action" style="background:var(--ms-navy);color:#fff">Vue client (call)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Nouveau · les squads</span>
-        <span class="sec-meta">Famille A · Chaîne de production IA</span>
-      </div>
-      <div class="squads-box">
-        <div class="squads-intro">
-          <h3 style="font-size:26px;font-weight:700;line-height:1.15">Des squads dédiées, les sujets répartis</h3>
-          <p style="font-size:15px;color:#3B3B6B;line-height:1.55">Les sujets de la chaîne de production IA sont répartis entre 3 squads : chacune porte ses sujets de bout en bout — cadrage, tests, industrialisation — et rend compte au weekly. Plus de sujet sans propriétaire.</p>
-        </div>
-        <div class="squads-grid">
-          <div class="squad-card"><div class="squad-name">Set-up auto</div><p class="squad-desc">Le chantier de fond : monter une campagne sans saisie manuelle.</p></div>
-          <div class="squad-card"><div class="squad-name">QA / Contrôle qualité</div><p class="squad-desc">Zéro erreur avant le go-live, sur tous les comptes.</p></div>
-          <div class="squad-card"><div class="squad-name">Rapport auto</div><p class="squad-desc">100 % des rapports produits via le skill, sans retouche.</p></div>
-          <div class="squad-card"><div class="squad-name">Bilan auto</div><p class="squad-desc">Du pilote à la série : le bilan de vague en quelques minutes.</p></div>
-          <div class="squad-card"><div class="squad-name">Analyses spécifiques</div><p class="squad-desc">Les demandes sur mesure : potentiels, audiences, deep-dives.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Déjà en production</span>
-        <span class="sec-meta">Trois usages concrets</span>
-      </div>
-      <div class="production-grid">
-        <div class="prod-card">
-          <span class="prod-pill">QA · récap quotidien</span>
-          <h3 class="prod-h3">Le récap de campagne, chaque jour</h3>
-          <p class="prod-body">Généré par Claude depuis le Dashboard Mobsuccess et <b style="font-weight:600">posté automatiquement dans le canal Slack du client</b>. Déjà en place sur des comptes pilotes → bientôt étendu à <b style="font-weight:600">tous les clients</b>.</p>
-          <div class="slack-preview">
-            <div class="slack-bar">
-              <span style="color:#fff;font-size:14px;font-weight:600">Slack · # weldom-mobsuccess</span>
-              <span style="color:#8C8CC0;font-size:12px">7:02</span>
-            </div>
-            <div class="slack-body">
-              <div style="display:flex;align-items:center;gap:10px">
-                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">C</span>
-                <span style="font-weight:600;font-size:14.5px">Claude</span>
-                <span style="padding:2px 8px;border-radius:6px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:10.5px;font-weight:600;letter-spacing:.06em">APP</span>
-                <span style="font-size:12px;color:#6E6E92">poste le récap chaque matin</span>
-              </div>
-              <div style="font-weight:600;font-size:15px;margin-top:12px">Weldom · Drive-to-Store — 6U07</div>
-              <div style="font-size:12.5px;color:#6E6E92;margin-top:4px">Données J-1 · Fin 21/07 · 100 % du temps écoulé</div>
-              <table class="slack-table">
-                <tbody>
-                  <tr><td style="font-weight:600">Meta</td><td style="color:#3B3B6B">96 % budget</td><td style="text-align:right;font-weight:600">286 % imp.</td></tr>
-                  <tr><td style="font-weight:600">RTB Display</td><td style="color:#3B3B6B">96 % budget</td><td style="text-align:right;font-weight:600">215 % imp.</td></tr>
-                  <tr><td style="font-weight:600">Google PMax</td><td style="color:#3B3B6B">95 % budget</td><td style="text-align:right;font-weight:600">95 % imp.</td></tr>
-                  <tr><td style="font-weight:700">Total</td><td style="font-weight:700">127 477 € / 133 100 €</td><td style="text-align:right;font-weight:700">96 %</td></tr>
-                </tbody>
-              </table>
-              <p style="font-size:13px;color:#3B3B6B;margin-top:12px;line-height:1.55">« Dernier jour de diffusion, budget quasi intégralement consommé (96 %) sur les trois leviers. Meta et RTB en belle sur-livraison, portées par une forte demande. Performance d'ensemble très satisfaisante. »</p>
-            </div>
-          </div>
-        </div>
-        <div class="prod-card">
-          <span class="prod-pill">Rapport &amp; bilan augmenté</span>
-          <h3 class="prod-h3">Le bilan client, augmenté par le contexte</h3>
-          <p class="prod-body">Le rapport factuel devient un bilan enrichi du contexte du compte (Slack, Notion, historique). Exemple : Hespéride, vague 2 (Drive-to-Store).</p>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px">
-            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
-              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">7,6 M</div>
-              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">Impressions</div>
-            </div>
-            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
-              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">133 K</div>
-              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">Clics</div>
-            </div>
-            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
-              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">3,88 €</div>
-              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">CPM</div>
-            </div>
-            <div style="background:var(--ms-cream);border:1px solid var(--ms-cream-200);border-radius:14px;padding:12px;text-align:center">
-              <div style="font-size:20px;font-weight:700;color:var(--ms-violet-700);line-height:1">1,76 %</div>
-              <div style="font-size:11.5px;color:#6E6E92;margin-top:4px">CTR</div>
-            </div>
-          </div>
-          <div style="background:var(--ms-mint-100);border-radius:16px;padding:14px 16px;margin-top:16px;font-size:13.5px;color:#00534F;line-height:1.55">
-            <b style="color:var(--ms-navy)">L'effet « augmenté » :</b> en lisant le canal Slack, Claude a repéré que <b style="color:var(--ms-navy)">Pacer AI (Orchestrator)</b> avait été activé — oublié du bilan manuel — et l'a mis en avant. Recos ajoutées : Meta vs Display sur les visites, et pistes d'optimisation de la LP Drive-to-Store.
-          </div>
-          <p style="font-size:13.5px;color:#3B3B6B;margin-top:14px;line-height:1.55">Retour agence après la présentation : « Bravo à tous ! Très beau compte à potentiel… et à marge ! »</p>
-          <a href="docs/bilan-hesperide.pdf" class="pdf-link" download>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 7l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Bilan Hespéride (PDF)
-          </a>
-        </div>
-        <div class="prod-card" style="grid-column:2;grid-row:1/3">
-          <span class="prod-pill">One pager · conviction client</span>
-          <h3 class="prod-h3">Le one pager qui convainc les groupements</h3>
-          <p class="prod-body">Les clientes Écouter Voir ne sont pas calées en digital et se font malmener par leurs directeurs de magasin. Stéphanie leur produit un one pager en fin de campagne pour les aider à défendre l'investissement digital auprès de leur groupement.</p>
-          <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1.5px solid #E2DDD5;font-family:'Jost',sans-serif">
-            <div style="background:#fff;padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
-              <div>
-                <span style="display:inline-block;padding:3px 10px;border-radius:999px;background:#5C2EFD;color:#fff;font-size:9px;font-weight:700;letter-spacing:.04em">Bilan de campagne</span>
-                <div style="font-size:16px;font-weight:700;color:#000050;margin-top:6px;line-height:1.15">Écouter Voir — Ouverture<br>du magasin de Luçon</div>
-                <div style="font-size:9.5px;color:#6E6E92;margin-top:4px">Dispositif média local pour VYV3 · Meta &amp; Display (RTB)</div>
-              </div>
-              <span style="font-size:10px;font-weight:800;color:#000050;white-space:nowrap;padding-top:4px">mobsuccess</span>
-            </div>
-            <div style="background:#fff;border-top:1px solid #E8E4DF;padding:7px 14px;display:grid;grid-template-columns:1fr 1fr 1fr">
-              <div><div style="font-size:7.5px;color:#9E9EC0;font-weight:700;letter-spacing:.07em">PÉRIODE</div><div style="font-size:10.5px;font-weight:600;color:#000050;margin-top:1px">06 → 25 juil. 2026</div></div>
-              <div><div style="font-size:7.5px;color:#9E9EC0;font-weight:700;letter-spacing:.07em">MAGASIN</div><div style="font-size:10.5px;font-weight:600;color:#000050;margin-top:1px">Luçon (85)</div></div>
-              <div><div style="font-size:7.5px;color:#9E9EC0;font-weight:700;letter-spacing:.07em">BUDGET INVESTI</div><div style="font-size:10.5px;font-weight:600;color:#000050;margin-top:1px">2 248 €</div></div>
-            </div>
-            <div style="background:#000050;padding:11px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
-              <div><div style="font-size:15px;font-weight:700;color:#fff">497 888</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">IMPRESSIONS</div></div>
-              <div><div style="font-size:15px;font-weight:700;color:#fff">4 333</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">CLICS</div></div>
-              <div><div style="font-size:15px;font-weight:700;color:#fff">0,87 %</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">CTR GLOBAL</div></div>
-              <div><div style="font-size:15px;font-weight:700;color:#fff">4,52 €</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">CPM MOYEN</div></div>
-            </div>
-            <div style="background:#fff;padding:11px 14px">
-              <div style="font-size:10px;font-weight:700;color:#000050;margin-bottom:7px">Une couverture locale forte autour du magasin</div>
-              <div style="display:flex;flex-direction:column;gap:5px">
-                <div style="display:flex;align-items:center;justify-content:space-between;background:#F2EEE9;border-radius:8px;padding:7px 11px">
-                  <div><span style="display:inline-block;padding:1px 7px;border-radius:999px;background:#00C99C;color:#000050;font-size:7.5px;font-weight:700;letter-spacing:.04em">META</span><div style="font-size:15px;font-weight:700;color:#000050;margin-top:2px">115 179</div><div style="font-size:8.5px;color:#6E6E92">personnes exposées</div></div>
-                  <div style="text-align:right"><div style="font-size:18px;font-weight:700;color:#00C99C">x2,6</div><div style="font-size:8px;color:#6E6E92">répétition</div></div>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;background:#F2EEE9;border-radius:8px;padding:7px 11px">
-                  <div><span style="display:inline-block;padding:1px 7px;border-radius:999px;background:#5C2EFD;color:#fff;font-size:7.5px;font-weight:700;letter-spacing:.04em">DISPLAY (RTB)</span><div style="font-size:15px;font-weight:700;color:#000050;margin-top:2px">101 300</div><div style="font-size:8.5px;color:#6E6E92">personnes exposées</div></div>
-                  <div style="text-align:right"><div style="font-size:18px;font-weight:700;color:#5C2EFD">x2,0</div><div style="font-size:8px;color:#6E6E92">répétition</div></div>
-                </div>
-              </div>
-            </div>
-            <div style="background:#F2EEE9;padding:11px 14px;border-top:1px solid #E8E4DF">
-              <div style="font-size:10px;font-weight:700;color:#000050;margin-bottom:7px">Un engagement au-dessus de la moyenne</div>
-              <div style="display:flex;gap:10px;align-items:flex-start">
-                <div style="background:#5C2EFD;border-radius:9px;padding:9px 10px;min-width:66px;text-align:center;flex-shrink:0">
-                  <div style="font-size:18px;font-weight:700;color:#fff">3,17 %</div>
-                  <div style="font-size:7.5px;color:#E4E1FE;line-height:1.3;margin-top:2px">CTR Interstitiel</div>
-                </div>
-                <div style="flex:1;display:flex;flex-direction:column;gap:4px;padding-top:2px">
-                  <div style="display:flex;align-items:center;gap:5px;font-size:9.5px"><span style="width:62px;font-weight:600;color:#000050">Interstitiel</span><div style="flex:1;height:6px;background:#E2DDD5;border-radius:99px;overflow:hidden"><div style="height:100%;width:90%;background:#5C2EFD;border-radius:99px"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#000050">3,17%</span></div>
-                  <div style="display:flex;align-items:center;gap:5px;font-size:9.5px"><span style="width:62px;font-weight:600;color:#000050">Meta Vidéo</span><div style="flex:1;height:6px;background:#E2DDD5;border-radius:99px;overflow:hidden"><div style="height:100%;width:23%;background:#00F5BE;border-radius:99px"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#000050">0,72%</span></div>
-                  <div style="display:flex;align-items:center;gap:5px;font-size:9.5px"><span style="width:62px;font-weight:600;color:#000050">MPU</span><div style="flex:1;height:6px;background:#E2DDD5;border-radius:99px;overflow:hidden"><div style="height:100%;width:8%;background:#00F5BE;border-radius:99px"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#000050">0,24%</span></div>
-                  <div style="display:flex;align-items:center;gap:5px;font-size:9.5px"><span style="width:62px;font-weight:600;color:#000050">Bannière</span><div style="flex:1;height:6px;background:#E2DDD5;border-radius:99px;overflow:hidden"><div style="height:100%;width:4%;background:#00F5BE;border-radius:99px"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#000050">0,14%</span></div>
-                </div>
-              </div>
-            </div>
-            <div style="background:#fff;padding:11px 14px;border-top:1px solid #E8E4DF">
-              <div style="font-size:10px;font-weight:700;color:#000050;margin-bottom:7px">Un budget investi efficacement</div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">
-                <div style="background:#F2EEE9;border-radius:7px;padding:7px;text-align:center"><div style="font-size:12px;font-weight:700;color:#000050">2 248 €</div><div style="font-size:7.5px;color:#6E6E92;margin-top:2px">budget total</div></div>
-                <div style="background:#F2EEE9;border-radius:7px;padding:7px;text-align:center"><div style="font-size:12px;font-weight:700;color:#000050">4,52 €</div><div style="font-size:7.5px;color:#6E6E92;margin-top:2px">CPM moyen</div></div>
-                <div style="background:#F2EEE9;border-radius:7px;padding:7px;text-align:center"><div style="font-size:12px;font-weight:700;color:#000050">0,52 €</div><div style="font-size:7.5px;color:#6E6E92;margin-top:2px">CPC moyen</div></div>
-                <div style="background:#F2EEE9;border-radius:7px;padding:7px;text-align:center"><div style="font-size:12px;font-weight:700;color:#000050">20 jours</div><div style="font-size:7.5px;color:#6E6E92;margin-top:2px">durée</div></div>
-              </div>
-            </div>
-            <div style="background:#000050;padding:10px 14px">
-              <span style="display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #00F5BE;color:#00F5BE;font-size:7.5px;font-weight:700;letter-spacing:.06em;margin-bottom:5px">NOTRE RECOMMANDATION</span>
-              <p style="font-size:9.5px;color:#E4E1FE;line-height:1.55">Pour <b style="color:#fff;font-weight:700">2 248 €</b>, le dispositif a généré près de <b style="color:#fff;font-weight:700">500 000 impressions</b> et <b style="color:#fff;font-weight:700">216 000 expositions uniques</b>. Engagement fort porté par l'Interstitiel (3,17 % CTR). Reconduire sur les prochaines ouvertures du groupement.</p>
-            </div>
-            <div style="background:#F2EEE9;border-top:1px solid #E8E4DF;padding:6px 14px;display:flex;justify-content:space-between">
-              <span style="font-size:7.5px;color:#9E9EC0">Écouter Voir × VYV3 — Bilan Ouverture Luçon</span>
-              <span style="font-size:7.5px;color:#9E9EC0">Réalisé par Mobsuccess</span>
-            </div>
-          </div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:12px">Stéphanie Ta</div>
-          <a href="docs/bilan-ev-lucon.pdf" class="pdf-link" download>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 7l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Bilan Écouter Voir — Luçon (PDF)
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">On embarque toute l'équipe</span>
-        <span class="sec-meta">Veille &amp; retours d'expérience</span>
-      </div>
-      <div class="canal-grid">
-        <div class="canal-card">
-          <div class="canal-header">
-            <span style="display:flex;align-items:center;gap:10px">
-              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
-              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
-            </span>
-            <span style="font-size:12.5px;color:#8C8CC0">le canal IA de l'équipe · créé le 22/07</span>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 10:14</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 27 juil.</div>
-            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude apprend vos process en vous regardant faire (écran → skill réutilisable)</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google Ads étiquette les pubs générées par IA (avant l'AI Act, 2 août)</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Reporting &amp; détection d'anomalies automatisés : coût/conversion −20 à −30 %</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">OpenAI ouvre GPT-5.6 — un milieu de gamme aussi bon pour moitié prix</li>
-            </ul>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:8px">Astuce de la semaine : <span class="code-pill">campaign-excel-report</span></div>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-navy);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· 2ᵉ skill de la semaine</span>
-            </div>
-            <div style="margin-top:10px"><span class="code-pill">mob-skill-autodiagnostic</span></div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.45">Audite n'importe quel skill selon la grille officielle Mobsuccess (13 critères) et affiche un diagnostic + des correctifs. Idéal en duo avec <span class="code-pill">skill-creator</span>.</div>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">C</span>
-              <span style="font-size:13.5px;font-weight:600">Célina</span>
-              <span style="font-size:12px;color:#6E6E92">· retour d'expérience</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Bilan Point P × Havas × Widely, fait avec Claude Cowork</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Bilan PPTX généré depuis un Excel de stats. Brief d'1 min, relecture en ~5 min — contre une demi-journée habituellement.</div>
-          </div>
-        </div>
-        <a href="progression.html" class="canal-cta">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
-          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
-          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
-          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Tests en cours -->
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Les tests en cours</span>
-        <span class="sec-meta">Ce que l'équipe éprouve en ce moment</span>
-      </div>
-      <div class="tests-grid">
-        <div class="test-navy">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:13px;font-weight:600">Test collectif</span>
-          <h3 style="font-size:26px;font-weight:700;color:#fff;line-height:1.15">Chacun son cockpit de suivi</h3>
-          <p style="font-size:15px;line-height:1.55;color:#BFBFE0">Chaque AdOps construit son dashboard perso à partir de la base d'Emeric, l'adapte à son scope, puis le présente au weekly. Le best-of deviendra le standard de l'équipe.</p>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div class="test-row">
-              <span style="font-size:14.5px;color:#fff;font-weight:500">Présentations au weekly</span>
-              <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 30 juil.</span>
-            </div>
-            <div class="test-row">
-              <span style="font-size:14.5px;color:#fff;font-weight:500">Dashboard standardisé</span>
-              <span style="font-size:13px;color:var(--ms-mint);font-weight:600">jeu. 6 août</span>
-            </div>
-          </div>
-        </div>
-        <div class="test-cards">
-          <div class="test-card" style="height:100%">
-            <div class="test-card-head">
-              <h4 style="font-size:16px;font-weight:700">CR 28/07 — Sujets en cours</h4>
-              <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">4 sujets</span>
-            </div>
-            <div style="display:flex;flex-direction:column;margin-top:14px">
-              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                  <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Audit</span>
-                  <span style="font-size:13.5px;font-weight:600">Contrôle avant lancement</span>
-                </div>
-                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Stress-tester le skill QA sur d'autres leviers et campagnes — montrer un exemple de rendu au prochain point.</p>
-              </div>
-              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                  <span class="test-badge" style="background:var(--ms-violet-100);color:var(--ms-violet-700)">Rapport</span>
-                  <span style="font-size:13.5px;font-weight:600">Skill de mise en ligne testé</span>
-                </div>
-                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Synchro, leviers, formats, créas, tracking et geoplanner — rendu en Slack canevas. Prochain chantier : rapport quotidien avec tâche programmée.</p>
-              </div>
-              <div style="padding:12px 0;border-bottom:1px solid #F2EDE6">
-                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                  <span class="test-badge" style="background:var(--ms-mint-100);color:var(--ms-mint-700)">Optis</span>
-                  <span style="font-size:13.5px;font-weight:600">Dashboard + to-do chez Emeric</span>
-                </div>
-                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Optis historisées dans le dashboard, Claude propose aussi des améliorations. Prochaine étape : comparer avec les skills AdOps de Chris (lecture de log…).</p>
-              </div>
-              <div style="padding:12px 0">
-                <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
-                  <span class="test-badge" style="background:#FDE8E3;color:#C03B1A">Analyses</span>
-                  <span style="font-size:13.5px;font-weight:600">Bilan Excel → one pager client</span>
-                </div>
-                <p style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Bilan produit via Claude, quelques ajustements KPIs, puis retravail dans Claude Design avec les créas. Simplifier la procédure de récupération des visuels.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div><!-- /edition-0 -->
-
-  <!-- Édition 1 : 3 août -->
-  <div id="edition-1" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">Pilotage &amp; adoption</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Le dashboard unifié — le best-of</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Chaque AdOps a présenté son cockpit au weekly du 30 juillet. Noura ouvre le Drive « COCKPITS ADOPS » pour assembler le best-of en un dashboard standardisé pour toute l'équipe.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Weekly 30 juil. — démos en live</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Chaque AdOps présente son cockpit perso (1 min). Le chantier du dashboard unifié est lancé.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">30 juil. · fait</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Drive « COCKPITS ADOPS » ouvert</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Noura crée le dossier de dépôt (HTML + notice). Deadline : 5 août. Noura &amp; Ghofrane assemblent le best-of.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">31 juil. · fait</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Dashboard standardisé — le best-of</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Assemblage du meilleur de chaque cockpit en un standard unique pour l'équipe, avec layer d'actions auto.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">6 août · en cours</div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Drive · COCKPITS ADOPS</span>
-            </div>
-            <div class="dash-body">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:10px">COCKPITS DÉPOSÉS</div>
-              <div style="display:flex;flex-direction:column;gap:8px">
-                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-cream);border-radius:10px;padding:10px 12px">
-                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-violet);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">E</span>
-                  <div><div style="font-size:13px;font-weight:600;color:var(--ms-navy)">Emeric Moulinneuf</div><div style="font-size:11px;color:#6E6E92">dashboard-emeric.html · référence</div></div>
-                  <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--ms-mint)">✓</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-cream);border-radius:10px;padding:10px 12px">
-                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-mint-700);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">N</span>
-                  <div><div style="font-size:13px;font-weight:600;color:var(--ms-navy)">Noura Abou</div><div style="font-size:11px;color:#6E6E92">dashboard-noura.html</div></div>
-                  <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--ms-mint)">✓</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px;background:var(--ms-navy);border-radius:10px;padding:10px 12px">
-                  <span style="width:28px;height:28px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">★</span>
-                  <div><div style="font-size:13px;font-weight:600;color:#fff">Best-of unifié</div><div style="font-size:11px;color:#8C8CC0">assemblage en cours · Noura &amp; Ghofrane</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Déjà en production</span>
-        <span class="sec-meta">Deux nouveaux usages</span>
-      </div>
-      <div class="production-grid">
-        <div class="prod-card">
-          <span class="prod-pill">Pilotage · marge en temps réel</span>
-          <h3 class="prod-h3">La marge dans les dashboards</h3>
-          <p class="prod-body">Olivier découvre que le KPI <span class="code-pill">buying_cost</span> est lisible via Claude. Résultat : <b style="font-weight:600">marge = spend − buying_cost</b> directement dans les cockpits perso. Plus besoin d'aller chercher la donnée ailleurs.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
-            <div style="background:var(--ms-navy);border-radius:14px;padding:14px 16px;text-align:center">
-              <div style="font-size:22px;font-weight:700;color:#fff">spend</div>
-              <div style="font-size:11.5px;color:var(--ms-mint);margin-top:4px">−  buying_cost</div>
-            </div>
-            <div style="background:var(--ms-mint);border-radius:14px;padding:14px 16px;text-align:center">
-              <div style="font-size:22px;font-weight:700;color:var(--ms-navy)">= marge</div>
-              <div style="font-size:11.5px;color:var(--ms-navy);margin-top:4px;font-weight:600">en direct</div>
-            </div>
-          </div>
-          <div style="background:var(--ms-mint-100);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:13px;color:#00534F;line-height:1.5">Prochaine étape : intégrer les fees mesure dans le calcul.</div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:12px">Olivier · 5 août</div>
-        </div>
-        <div class="prod-card">
-          <span class="prod-pill">Connecteur · correctif MCP</span>
-          <h3 class="prod-h3">Correctif connecteur MCP Mobsuccess</h3>
-          <p class="prod-body">Le connecteur MCP Mobsuccess est mis à jour le 6 août, en même temps que le lancement de la tâche planifiée d'Ekaterina. Un point de fiabilité clé pour les skills qui lisent les données de campagne.</p>
-          <div class="slack-preview">
-            <div class="slack-bar">
-              <span style="color:#fff;font-size:14px;font-weight:600">Slack · # adops_team_ia</span>
-              <span style="color:#8C8CC0;font-size:12px">6 août</span>
-            </div>
-            <div class="slack-body">
-              <div style="display:flex;align-items:center;gap:10px">
-                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-mint-700);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">E</span>
-                <span style="font-weight:600;font-size:14px">Ekaterina Salnikova</span>
-              </div>
-              <div style="font-size:13px;color:#3B3B6B;margin-top:10px;line-height:1.55">Tâche planifiée en place ✓ — rapport matinal automatique + correctif connecteur MCP Mobsuccess déployé.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">On embarque toute l'équipe</span>
-        <span class="sec-meta">Veille &amp; retours d'expérience</span>
-      </div>
-      <div class="canal-grid">
-        <div class="canal-card">
-          <div class="canal-header">
-            <span style="display:flex;align-items:center;gap:10px">
-              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
-              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
-            </span>
-            <span style="font-size:12.5px;color:#8C8CC0">semaine du 3 août</span>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 3 août · 10:09</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 3 août</div>
-            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude Cowork disponible en solo — mode de travail profond sur un projet</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Anthropic ouvre les tâches planifiées en beta — automatiser sans coder</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google étiquette enfin les créas IA dans Google Ads (conformité AI Act)</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Meta AI dépasse 1 milliard d'utilisateurs actifs</li>
-            </ul>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-navy);color:#fff">O</span>
-              <span style="font-size:13.5px;font-weight:600">Olivier</span>
-              <span style="font-size:12px;color:#6E6E92">· mar. 5 août</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Marge dans les cockpits — buying_cost via Claude</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">J'ai trouvé comment accéder au <span class="code-pill">buying_cost</span> via Claude → on peut afficher la marge directement dans nos dashboards. Restent les fees mesure à intégrer.</div>
-          </div>
-        </div>
-        <a href="progression.html" class="canal-cta">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
-          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
-          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
-          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
-        </a>
-      </div>
-    </section>
-
-  </div><!-- /edition-1 -->
-
-  <!-- Édition 2 : 25 août -->
-  <div id="edition-2" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">Automatisation &amp; chaîne de prod</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Brief créa auto depuis Monday</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Un bouton sur le board Monday appelle un agent Mobsuccess qui lit la ligne, rédige le brief complet et le pousse directement sur le LCM. Zéro saisie manuelle, brief standardisé en quelques secondes.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Squad lancée</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Steph, Yannis, Anis + AdContent embarquent sur le chantier brief auto.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · squad constituée</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Faisabilité confirmée (Mobanksy)</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Monday supporte désormais les agents natifs. Testé avec Mobanksy : bouton → agent → brief complet → push LCM. Ça marche.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">24 août · validé</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Mise en place par Chris &amp; Ahmat</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Implémentation de l'agent sur le board Monday de production, connexion LCM.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Début sept. · à venir</div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Monday · Board Brief Créa</span>
-            </div>
-            <div class="dash-body">
-              <div style="background:var(--ms-cream);border-radius:12px;padding:12px 14px;margin-bottom:12px">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">LIGNE MONDAY</div>
-                <div style="display:flex;flex-direction:column;gap:6px">
-                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Client</span><span style="font-weight:600;color:var(--ms-navy)">Carrefour BIO</span></div>
-                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Format</span><span style="font-weight:600;color:var(--ms-navy)">Interstitiel 320×480</span></div>
-                  <div style="display:flex;gap:8px;font-size:12.5px"><span style="color:#6E6E92;width:72px;flex-shrink:0">Objectif</span><span style="font-weight:600;color:var(--ms-navy)">Drive-to-Store · oct. 2026</span></div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:center;padding:10px 0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <div style="width:38px;height:38px;border-radius:12px;background:var(--ms-violet);display:flex;align-items:center;justify-content:center">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                  </div>
-                  <span style="font-size:13px;font-weight:700;color:var(--ms-navy)">Agent Mobsuccess</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="var(--ms-mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span style="font-size:13px;font-weight:700;color:var(--ms-navy)">LCM</span>
-                </div>
-              </div>
-              <div style="background:var(--ms-navy);border-radius:12px;padding:12px 14px">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">BRIEF GÉNÉRÉ</div>
-                <div style="font-size:12px;color:#BFBFE0;line-height:1.55">Campagne Drive-to-Store pour Carrefour BIO — dispositif local autour des points de vente. Mettre en avant le rayon BIO accessible, ton chaleureux et naturel. Format interstitiel plein écran, CTA « Découvrir le magasin ».</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Déjà en production</span>
-        <span class="sec-meta">Deux nouveaux usages</span>
-      </div>
-      <div class="production-grid">
-        <div class="prod-card">
-          <span class="prod-pill">Tâche programmée · rapport matinal</span>
-          <h3 class="prod-h3">Le rapport du matin, sans rien faire</h3>
-          <p class="prod-body">Chaque matin, une tâche Claude programmée envoie un DM Slack à Ekaterina avec les <b style="font-weight:600">campagnes terminées la veille</b>, un lien vers le rapport Excel, et la liste des <b style="font-weight:600">campagnes en sous-dépense</b> avec leur lien LCM direct.</p>
-          <div class="slack-preview">
-            <div class="slack-bar">
-              <span style="color:#fff;font-size:14px;font-weight:600">Slack · DM Ekaterina</span>
-              <span style="color:#8C8CC0;font-size:12px">8:00</span>
-            </div>
-            <div class="slack-body">
-              <div style="display:flex;align-items:center;gap:10px">
-                <span style="width:28px;height:28px;border-radius:9px;background:var(--ms-violet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">C</span>
-                <span style="font-weight:600;font-size:14.5px">Claude</span>
-                <span style="padding:2px 8px;border-radius:6px;background:var(--ms-violet-100);color:var(--ms-violet-700);font-size:10.5px;font-weight:600;letter-spacing:.06em">TÂCHE AUTO</span>
-              </div>
-              <div style="font-weight:600;font-size:15px;margin-top:12px">📋 Rapport du matin — 25 août</div>
-              <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.5"><b style="color:var(--ms-navy)">Terminées hier :</b> Weldom Évreux (RTB), Decathlon Nantes (Meta)<br><span style="color:var(--ms-violet-700);text-decoration:underline">→ Rapport Excel</span></div>
-              <div style="font-size:13px;color:#3B3B6B;margin-top:8px;line-height:1.5"><b style="color:var(--ms-orange)">Sous-dépense :</b> Carrefour Bio Bordeaux (64 %)<br><span style="color:var(--ms-violet-700);text-decoration:underline">→ Voir sur LCM</span></div>
-            </div>
-          </div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Ekaterina Salnikova · lancé le 6 août</div>
-        </div>
-        <div class="prod-card">
-          <span class="prod-pill">1-pager livrable · méthode équipe</span>
-          <h3 class="prod-h3">Le livrable 5 min qui convainc</h3>
-          <p class="prod-body">Nicolas pousse l'équipe à créer des <b style="font-weight:600">templates de livrables</b> — des 1-pagers comme le test Botanic de Célina — réalisables en 5 à 10 min via Claude Design avec la charte Mobsuccess. La méthode Nicolas pour standardiser les rendus équipe.</p>
-          <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1.5px solid #E2DDD5;font-family:'Jost',sans-serif">
-            <div style="background:#fff;padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
-              <div>
-                <span style="display:inline-block;padding:3px 10px;border-radius:999px;background:#5C2EFD;color:#fff;font-size:9px;font-weight:700;letter-spacing:.04em">Test livrable</span>
-                <div style="font-size:16px;font-weight:700;color:#000050;margin-top:6px;line-height:1.15">Botanic × Célina<br>Bilan campagne</div>
-                <div style="font-size:9.5px;color:#6E6E92;margin-top:4px">Claude Design + charte MS · ~5 min</div>
-              </div>
-              <span style="font-size:10px;font-weight:800;color:#000050;white-space:nowrap;padding-top:4px">mobsuccess</span>
-            </div>
-            <div style="background:#000050;padding:11px 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
-              <div><div style="font-size:12px;font-weight:700;color:#fff">5 min</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">DURÉE</div></div>
-              <div><div style="font-size:12px;font-weight:700;color:#fff">Charte MS</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">DESIGN SYSTEM</div></div>
-              <div><div style="font-size:12px;font-weight:700;color:#fff">1-pager</div><div style="font-size:7.5px;color:#00F5BE;font-weight:700;letter-spacing:.05em;margin-top:2px">FORMAT</div></div>
-            </div>
-            <div style="background:#F2EEE9;padding:10px 14px">
-              <p style="font-size:10px;color:#3B3B6B;line-height:1.55">« Créez votre template de livrable client en 5-10 min avec Claude Design et la charte MS. Un standard à partager en équipe. »</p>
-              <div style="font-size:9.5px;color:var(--ms-violet-700);font-weight:600;margin-top:6px">Nicolas Saraiva · 24 août</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">On embarque toute l'équipe</span>
-        <span class="sec-meta">Veille &amp; retours d'expérience</span>
-      </div>
-      <div class="canal-grid">
-        <div class="canal-card">
-          <div class="canal-header">
-            <span style="display:flex;align-items:center;gap:10px">
-              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
-              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
-            </span>
-            <span style="font-size:12.5px;color:#8C8CC0">semaine du 11 août</span>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 11 août · 10:05</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 11 août</div>
-            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude dans Chrome = Cowork natif dans le navigateur — skills + connecteurs + historique</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Anthropic lève 3,5 Mds $ (valorisation 60 Mds) — l'entreprise IA la mieux financée</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Meta lance Movie Gen : génération vidéo pro directement depuis l'interface Ads</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Filigrane invisible sur les images IA (conformité AI Act en vue)</li>
-            </ul>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">E</span>
-              <span style="font-size:13.5px;font-weight:600">Ekaterina</span>
-              <span style="font-size:12px;color:#6E6E92">· mer. 6 août</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Tâche programmée — rapport matinal automatique</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">J'ai mis en place une tâche Claude qui m'envoie chaque matin les campagnes terminées + lien Excel + campagnes en sous-dépense. Plus besoin d'aller chercher l'info.</div>
-            <div style="margin-top:8px"><span class="code-pill">scheduled-task</span></div>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
-              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
-              <span style="font-size:12px;color:#6E6E92">· dim. 24 août</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Templates livrables — méthode équipe</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Je vous encourage tous à créer votre template de livrable client type (1-pager comme le test Botanic de Célina). 5-10 min avec Claude Design + charte MS. On partage en équipe pour standardiser nos rendus.</div>
-          </div>
-        </div>
-        <a href="progression.html" class="canal-cta">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
-          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
-          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
-          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
-        </a>
-      </div>
-    </section>
-
-  </div><!-- /edition-2 -->
-
-  <!-- Édition 3 : 11 août -->
-  <div id="edition-3" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">Automatisation &amp; outillage</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Claude dans Chrome = Cowork</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Claude dans Chrome devient une session Cowork à part entière : skills, connecteurs et historique directement dans le navigateur. La barrière des outils sans API (DSP, portails partenaires) tombe.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Claude dans Chrome = session Cowork</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Skills, connecteurs et historique disponibles dans le navigateur — plus besoin de basculer entre Claude Code et le portail.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · déployé</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Outils sans connecteur débloqués</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">DSP, portails partenaires, interfaces sans MCP dédié : Claude peut cliquer et remplir directement. À généraliser sur tous les portails.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">11 août · débloqué</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Généralisation sur tous les portails</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Documenter les parcours DSP + portails partenaires pour en faire des skills réutilisables par l'équipe.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">À venir</div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Chrome · session Cowork AdOps</span>
-            </div>
-            <div class="dash-body">
-              <div style="background:var(--ms-cream);border-radius:10px;padding:10px 12px;margin-bottom:10px">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:6px">COWORK ACTIF</div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11px;font-weight:600">Skills AdOps</span>
-                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-navy);color:#fff;font-size:11px;font-weight:600">MCP Mobsuccess</span>
-                  <span style="padding:4px 10px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:11px;font-weight:600">Historique</span>
-                </div>
-              </div>
-              <div style="background:var(--ms-navy);border-radius:10px;padding:10px 12px">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">PORTAILS DÉBLOQUÉS</div>
-                <div style="display:flex;flex-direction:column;gap:6px">
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> DSP / Trading desk</div>
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> Portails partenaires</div>
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#BFBFE0"><span style="color:var(--ms-mint)">✓</span> Interfaces sans MCP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Déjà en production</span>
-        <span class="sec-meta">Deux avancées majeures</span>
-      </div>
-      <div class="production-grid">
-        <div class="prod-card">
-          <span class="prod-pill">Looker · feu vert</span>
-          <h3 class="prod-h3">Looker : go pour les dashboards</h3>
-          <p class="prod-body">Le point Looker du 20 août aboutit à un <b style="font-weight:600">feu vert</b>. Les dashboards de reporting peuvent désormais s'appuyer sur Looker comme couche de visualisation, en complément des cockpits Claude.</p>
-          <div style="display:flex;align-items:center;gap:16px;margin-top:20px;padding:16px 20px;background:var(--ms-mint-100);border-radius:16px">
-            <span style="font-size:40px;line-height:1">✅</span>
-            <div>
-              <div style="font-size:18px;font-weight:700;color:var(--ms-navy)">Feu vert Looker</div>
-              <div style="font-size:13px;color:#00534F;margin-top:4px">Dashboards validés · intégration en cours</div>
-            </div>
-          </div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Point du 20 août</div>
-        </div>
-        <div class="prod-card">
-          <span class="prod-pill">Nouveau levier · ChatGPT Ads</span>
-          <h3 class="prod-h3">ChatGPT Ads ouvre en France</h3>
-          <p class="prod-body">OpenAI ouvre ChatGPT Ads à la France (+31 pays EU) le 24 août. <b style="font-weight:600">Ciblage par intention conversationnelle</b> — un levier inédit à intégrer aux recos client dès maintenant.</p>
-          <div style="background:var(--ms-navy);border-radius:14px;padding:16px 18px;margin-top:16px">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">NOUVEAU LEVIER</div>
-            <div style="font-size:17px;font-weight:700;color:#fff">ChatGPT Ads</div>
-            <div style="font-size:13px;color:#BFBFE0;margin-top:6px;line-height:1.45">Ciblage par intention conversationnelle · disponible en France depuis le 24/08</div>
-            <div style="display:inline-flex;margin-top:10px;padding:4px 12px;border-radius:999px;background:var(--ms-violet);color:#fff;font-size:11.5px;font-weight:600">À intégrer aux recos</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">On embarque toute l'équipe</span>
-        <span class="sec-meta">Veille &amp; retours d'expérience</span>
-      </div>
-      <div class="canal-grid">
-        <div class="canal-card">
-          <div class="canal-header">
-            <span style="display:flex;align-items:center;gap:10px">
-              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
-              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
-            </span>
-            <span style="font-size:12.5px;color:#8C8CC0">semaine du 24 août</span>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 24 août · 10:08</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 24 août</div>
-            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">ChatGPT Ads ouvre en France (+31 pays EU) — ciblage par intention conversationnelle à intégrer aux recos</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Looker feu vert : dashboards de reporting validés pour le cockpit</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Brief créa auto validé avec Mobanksy — pipeline Monday → LCM fonctionnel</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Google Ads : les enchères à cible (CPA / ROAS) changent de nom — rien ne change en pratique</li>
-            </ul>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
-              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
-              <span style="font-size:12px;color:#6E6E92">· dim. 24 août</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Templates livrables — faisabilité confirmée</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Brief créa auto validé avec Mobanksy : bouton Monday → agent → brief LCM. Je vous encourage à créer vos templates livrables client (1-pager type Botanic). 5-10 min avec Claude Design + charte MS.</div>
-          </div>
-        </div>
-        <a href="progression.html" class="canal-cta">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
-          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
-          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
-          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
-        </a>
-      </div>
-    </section>
-
-  </div><!-- /edition-3 -->
-
-  <!-- Édition 4 : 31 août -->
-  <div id="edition-4" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">QA &amp; Brand safety</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Whitelist IA de placement</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:600px">Claude catégorise et trie les publishers RTB, écarte les inventaires douteux et tient à jour une whitelist d'inclusion. Plus fiable et plus rapide qu'une blacklist à courir après.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Catégorisation des publishers</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Claude analyse et note chaque publisher selon la brand safety — jeux, contenu douteux et inventaires à risque exclus.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Fait</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Publication Whiteliste_08_26</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Ekaterina &amp; Yannis publient la whitelist v08_26 — prête à être appliquée sur les comptes.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">31 août · publiée</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">3</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Mise à jour mensuelle automatique</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Tâche planifiée Claude → actualisation mensuelle de la whitelist sans intervention manuelle.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Prochain cran</div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:13px;font-weight:600;color:#3B3B6B">Whitelist · Whiteliste_08_26</span>
-            </div>
-            <div class="dash-body">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">PUBLISHERS CATÉGORISÉS</div>
-              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="width:10px;height:10px;border-radius:50%;background:var(--ms-mint);flex-shrink:0"></span>
-                  <span style="font-size:12.5px;font-weight:600;color:var(--ms-navy)">Inclus (brand safe)</span>
-                  <span style="margin-left:auto;font-size:13px;font-weight:700;color:var(--ms-mint)">✓ whitelist</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="width:10px;height:10px;border-radius:50%;background:var(--ms-orange);flex-shrink:0"></span>
-                  <span style="font-size:12.5px;font-weight:600;color:var(--ms-navy)">Exclus (jeux, contenu douteux)</span>
-                  <span style="margin-left:auto;font-size:13px;font-weight:700;color:var(--ms-orange)">✗ retirés</span>
-                </div>
-              </div>
-              <div style="background:var(--ms-navy);border-radius:10px;padding:10px 12px">
-                <div style="font-size:11px;color:var(--ms-mint);font-weight:700;margin-bottom:4px">AVANTAGE</div>
-                <div style="font-size:12px;color:#BFBFE0;line-height:1.5">Whitelist d'inclusion → plus fiable qu'une blacklist réactive. Mise à jour mensuelle possible via tâche planifiée.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Déjà en production</span>
-        <span class="sec-meta">Trois livrables en une semaine</span>
-      </div>
-      <div class="production-grid">
-        <div class="prod-card">
-          <span class="prod-pill">Skill · bilan &amp; point d'étape</span>
-          <h3 class="prod-h3">Le skill bilan pour toute l'équipe</h3>
-          <p class="prod-body">Nicolas publie le skill « Bilan / Point d'étape » pour toute l'équipe. Il distingue automatiquement bilan (campagne terminée) et point d'étape (en cours), récupère les stats via les skills MCP et respecte la charte. <b style="font-weight:600">Testé sur Botanic (1/09).</b></p>
-          <div style="background:var(--ms-cream);border-radius:14px;padding:14px 16px;margin-top:14px">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#6E6E92;margin-bottom:8px">CE QUE FAIT LE SKILL</div>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Détecte bilan vs point d'étape</div>
-              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Pose les questions créa + logo</div>
-              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Récupère les stats via MCP</div>
-              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Contrôle la cohérence des chiffres</div>
-              <div style="display:flex;gap:8px;font-size:12.5px;color:#3B3B6B"><span style="color:var(--ms-violet-700);font-weight:700">→</span>Respecte la charte Mobsuccess</div>
-            </div>
-          </div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:14px">Nicolas Saraiva · 1er septembre</div>
-        </div>
-        <div class="prod-card">
-          <span class="prod-pill">Claude Design · motion design</span>
-          <h3 class="prod-h3">Animation Pacer × Carrefour</h3>
-          <p class="prod-body">Nicolas exploite le nouveau mode « Animation » de Claude Design : un <span class="code-pill">.md</span> en entrée → une vidéo MP4 en quelques minutes. Premier cas d'usage : <b style="font-weight:600">animation du fonctionnement de Pacer AI sur Carrefour</b> pour l'appel d'offres.</p>
-          <div style="background:var(--ms-navy);border-radius:14px;padding:16px 18px;margin-top:16px">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ms-mint);margin-bottom:8px">NOUVEAU MODE CLAUDE DESIGN</div>
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="text-align:center">
-                <div style="font-size:13px;color:#BFBFE0">Fichier .md</div>
-              </div>
-              <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M2 6h20M16 2l6 4-6 4" stroke="#00F5BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <div style="text-align:center">
-                <div style="font-size:13px;color:#BFBFE0">Vidéo MP4</div>
-              </div>
-              <div style="margin-left:auto;font-size:12px;font-weight:700;color:var(--ms-mint)">~5 min</div>
-            </div>
-          </div>
-          <div style="background:var(--ms-mint-100);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:13px;color:#00534F;line-height:1.5">One-pagers Anis (Boulanger) et Célina (Botanic) également produits en ~10 min chacun le même jour.</div>
-          <div style="font-size:13px;color:var(--ms-violet-700);font-weight:600;margin-top:12px">Nicolas Saraiva · 1er septembre</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">On embarque toute l'équipe</span>
-        <span class="sec-meta">Veille &amp; retours d'expérience</span>
-      </div>
-      <div class="canal-grid">
-        <div class="canal-card">
-          <div class="canal-header">
-            <span style="display:flex;align-items:center;gap:10px">
-              <span style="padding:3px 10px;border-radius:8px;background:var(--ms-mint);color:var(--ms-navy);font-size:11.5px;font-weight:700;letter-spacing:.06em">SLACK</span>
-              <span style="font-weight:600;font-size:15.5px"># adops_team_ia</span>
-            </span>
-            <span style="font-size:12.5px;color:#8C8CC0">semaine du 1er sept.</span>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-violet);color:#fff">Y</span>
-              <span style="font-size:13.5px;font-weight:600">Yannis</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 1 sept. · 10:12</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Veille IA adops — semaine du 1er sept.</div>
-            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Claude Design lance le mode Animation : .md → vidéo MP4 en quelques minutes</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">ChatGPT Ads désormais actif en France — premier levier conversationnel à cibler</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">Fable 5.1 — nouveau modèle Anthropic spécialisé agentique, en tête d'Agent Arena</li>
-              <li style="font-size:13px;color:#3B3B6B;line-height:1.4">AI Act : filigrane obligatoire sur les images IA dès le 15/09 — à anticiper sur nos créas</li>
-            </ul>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-mint-700);color:#fff">E</span>
-              <span style="font-size:13.5px;font-weight:600">Ekaterina Salnikova</span>
-              <span style="font-size:12px;color:#6E6E92">· dim. 31 août</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Whitelist IA de placement publiée — Whiteliste_08_26</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Avec Yannis, on a produit la whitelist IA des publishers RTB. Claude catégorise, retire les jeux douteux, tient la liste à jour. Disponible pour tous les comptes.</div>
-          </div>
-          <div class="canal-msg">
-            <div style="display:flex;gap:10px;align-items:center">
-              <span class="canal-avatar" style="background:var(--ms-navy);color:var(--ms-mint)">N</span>
-              <span style="font-size:13.5px;font-weight:600">Nicolas S.</span>
-              <span style="font-size:12px;color:#6E6E92">· lun. 1 sept.</span>
-            </div>
-            <div style="font-size:14px;font-weight:600;margin-top:10px">Skill bilan / point d'étape — dispo pour toute l'équipe</div>
-            <div style="font-size:13px;color:#3B3B6B;margin-top:6px;line-height:1.45">Le skill est disponible dans votre Claude. Testé sur Botanic avec Célina. Si vous avez un bilan à faire, c'est le moment de l'essayer !</div>
-            <div style="margin-top:8px"><span class="code-pill">skill-bilan-point-etape</span></div>
-          </div>
-        </div>
-        <a href="progression.html" class="canal-cta">
-          <span style="display:inline-flex;align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:600">Trophées AdOps</span>
-          <h3 style="font-size:27px;font-weight:700;line-height:1.15;margin-top:6px">Chacun monte en puissance</h3>
-          <p style="font-size:15px;line-height:1.55;color:#E4E1FE">De l'installation de Claude à l'ambassadeur qui forme les autres : on valorise chaque étape. Le parcours « Équipe Équipée », les trophées et les livrables de l'équipe.</p>
-          <span style="font-weight:600;font-size:15px;margin-top:6px;color:var(--ms-mint)">Voir la progression AdOps →</span>
-        </a>
-      </div>
-    </section>
-
-  </div><!-- /edition-4 -->
-
-  <!-- Édition 5 : 7 sept -->
-  <div id="edition-5" class="edition-panel hidden">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">Doc d&#39;opé · Picard × Havas</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Le doc d&#39;alignement d&#39;opé</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:620px">Une page qui aligne tout le monde sur le set-up avant la mise en ligne : la pige du dispositif levier par levier, les points en attente, et ce que chacun doit faire. Produite dans Cowork + Design, publiée sur statics.mobsuccess.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Le dispositif pigé automatiquement</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Scan de l&#39;opé LCM, du CSV Google Ads et des URLs d&#39;aperçus — objectifs, ciblage, formats et budgets remontés tels qu&#39;ils sont réellement paramétrés.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Relevé du 11/09</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Meta et Google mis face à face</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Objectif, ciblage, formats et mesure comparés levier par levier — l&#39;agence valide le set-up sur pièce au lieu de le croire sur parole.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Validé par Havas</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Katchr branché sur les créas</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Notre agent IA a relevé 6 échecs d&#39;orthographe et d&#39;accents sur les visuels ; le client a tranché en connaissance de cause.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">6 points remontés</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">4</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Les points bloquants suivis à vue</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Chaque point ouvert porte son échéance et son responsable, et bascule dans un historique une fois résolu. Plus de relance à l&#39;aveugle.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">6 résolus · 1 ouvert</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:12px;font-weight:600;color:#3B3B6B">statics.mobsuccess.ai/p/op-picard</span>
-            </div>
-            <div class="dash-body">
-              <div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:var(--ms-violet-700)">MOBSUCCESS × HAVAS · DRIVE-TO-STORE</div>
-              <div style="font-size:19px;font-weight:700;line-height:1.15;margin-top:5px;color:var(--ms-navy)">Picard — Soutien magasins Rentrée 2026</div>
-              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:9px">
-                <span style="padding:3px 9px;border-radius:999px;background:var(--ms-orange);color:#fff;font-size:10.5px;font-weight:700">Avant diffusion</span>
-                <span style="padding:3px 9px;border-radius:999px;background:var(--ms-cream);border:1px solid var(--ms-cream-200);font-size:10.5px;font-weight:600">29 magasins · Sud-Est</span>
-                <span style="padding:3px 9px;border-radius:999px;background:var(--ms-cream);border:1px solid var(--ms-cream-200);font-size:10.5px;font-weight:600">14 sept → 10 oct</span>
-              </div>
-
-              <div class="dash-kpis" style="margin-top:12px">
-                <div class="dash-kpi"><div class="dash-kpi-num">34,5 k€</div><div class="dash-kpi-label">investissement</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">22,8 M</div><div class="dash-kpi-label">impressions</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">377</div><div class="dash-kpi-label">annonces</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">27 j</div><div class="dash-kpi-label">de diffusion</div></div>
-              </div>
-
-              <div class="dash-bottom">
-                <div class="dash-section">
-                  <div class="dash-section-title">RÉPARTITION PAR LEVIER</div>
-                  <div class="dash-bar-row">
-                    <span style="width:52px;font-size:11.5px;font-weight:600;color:var(--ms-navy)">Meta</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:49.8%"></span></span>
-                    <span style="font-size:11px;font-weight:600;color:#6E6E92">17 166 €</span>
-                  </div>
-                  <div class="dash-bar-row">
-                    <span style="width:52px;font-size:11.5px;font-weight:600;color:var(--ms-navy)">Google</span>
-                    <span class="dash-bar-track"><span class="dash-bar-fill" style="width:50.2%;background:var(--ms-mint-700)"></span></span>
-                    <span style="font-size:11px;font-weight:600;color:#6E6E92">17 332 €</span>
-                  </div>
-                  <div style="font-size:10.5px;color:#6E6E92;margin-top:8px;line-height:1.45">Meta : Reach + Trafic 50/50 · Google : Demand Gen, maximiser les clics</div>
-                </div>
-                <div class="dash-section">
-                  <div class="dash-section-title">CE QUE LA PAGE COUVRE</div>
-                  <div style="display:flex;flex-direction:column;gap:5px">
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-mint);flex-shrink:0"></span>Lancement &amp; suivi <span style="margin-left:auto;font-weight:700;color:var(--ms-mint-700)">5/6</span></div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-mint);flex-shrink:0"></span>Setup comparé <span style="margin-left:auto;font-weight:700;color:var(--ms-mint-700)">4 vues</span></div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-mint);flex-shrink:0"></span>Liste des magasins <span style="margin-left:auto;font-weight:700;color:var(--ms-mint-700)">CSV</span></div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-orange);flex-shrink:0"></span>Points restants <span style="margin-left:auto;font-weight:700;color:var(--ms-orange)">1 · J-3</span></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="dash-actions">
-                <a href="https://statics.mobsuccess.ai/p/op-picard" target="_blank" rel="noopener" class="dash-action" style="background:var(--ms-navy);color:var(--ms-mint)">Ouvrir le doc ↗</a>
-                <span class="dash-action" style="background:var(--ms-cream);color:#6E6E92">3 pistes créas · 29 magasins</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Côté équipe</span>
-        <span class="sec-meta">Les productions de la semaine</span>
-      </div>
-      <div class="grid g2">
-        <div class="card">
-          <span class="pill s-acquis">Célina · one-pager</span>
-          <h3 style="margin-top:6px">Suivi budget Feu Vert</h3>
-          <p class="lbl" style="margin-top:6px">Mini one-pagers de conso budget vs temps écoulé sur un fil rouge annuel (restrictions Google) — synthétique et partageable, ~15 min.</p>
-        </div>
-        <div class="card">
-          <span class="pill s-acquis">Alphonse · one-pager</span>
-          <h3 style="margin-top:6px">One-pager + données Vistar (DOOH)</h3>
-          <p class="lbl" style="margin-top:6px">Le skill one-pager avec récupération des données Vistar désormais accessibles dans Claude. Waël l'a aussi testé sur un bilan intermédiaire ITS.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card" style="background:var(--ms-brand-soft,#F0F0FF);border-color:#dfe1ff">
-        <span class="pill s-test">Nouveau · onglet</span>
-        <h3 style="margin-top:6px">Progression → « Optimisation Claude »</h3>
-        <p class="lbl" style="margin-top:6px">Un onglet qui analyse l'usage de chacun (outils utilisés, % par modèle) avec une reco perso, et une piste d'optimisation des tokens (Fable en lead / Sonnet en sidekick, élaborée avec Ahmat) à tester.</p>
-      </div>
-    </section>
-
-  </div><!-- /edition-5 -->
-
-  <!-- Édition 6 : 14 sept (active) -->
-  <div id="edition-6" class="edition-panel">
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le grand chantier du moment</span>
-        <span class="sec-meta">MAM, le hub de gestion de campagnes</span>
-      </div>
-      <div class="card" style="background:var(--ms-brand-soft,#F0F0FF);border-color:#dfe1ff;margin-bottom:0">
-        <span class="pill s-acquis">AdOps · nouvel outil</span>
-        <h3 style="margin-top:6px">MAM — la gestion de campagnes centralisée</h3>
-        <p class="lbl" style="margin-top:6px">Un hub complet de pilotage des campagnes. Présenté au <b>Meetup Ops (16/09)</b> — très bien reçu, avec une session dédiée au feedback et aux idées — puis au <b>Comité Innovation</b> devant la direction : jugé « no-brainer, il faut avancer ».</p>
-      </div>
-    </section>
-
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Le livrable de la semaine</span>
-        <span class="sec-meta">Dashboard Boulanger · calls hebdo</span>
-      </div>
-      <div class="chantier-box">
-        <span style="display:block;width:80px;height:6px;border-radius:999px;background:var(--ms-mint)"></span>
-        <h2 style="font-size:38px;font-weight:700;color:#fff;margin-top:16px;line-height:1.08">Le dashboard qui remplace le Looker</h2>
-        <p style="font-size:18px;line-height:1.55;color:#BFBFE0;margin-top:12px;max-width:620px">Un cockpit de suivi Drive-to-Store construit par Stéphanie, qui prend la place d&#39;un Looker devenu lourd à maintenir. Il sert de support aux points hebdomadaires avec la cliente.</p>
-        <div class="chantier-grid">
-          <div class="chantier-steps">
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Les huit campagnes au même endroit</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Trois campagnes multilocales et cinq campagnes locales, suivies depuis le lancement du 23 juin, avec la répartition des coûts par canal.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Meta · Display · RTB · Snapchat</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Le CTR et le CPM au jour le jour</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Une demande explicite de la cliente : les courbes quotidiennes pour les multilocales, et le CTR par levier pour les campagnes locales.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">À la demande cliente</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-mint);color:var(--ms-navy)">✓</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Deux campagnes comparées canal par canal</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Un onglet dédié met deux campagnes face à face, en vue d&#39;ensemble puis dans le détail par canal, avec les écarts en pourcentage.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Comparateur intégré</div>
-              </div>
-            </div>
-            <div class="chantier-step">
-              <span class="chantier-step-num" style="background:var(--ms-violet);color:#fff">4</span>
-              <div>
-                <h4 style="font-size:17px;font-weight:600;color:#fff">Branché en direct sur la plateforme</h4>
-                <p style="font-size:14px;color:#BFBFE0;margin-top:4px;line-height:1.45">Le dashboard lit les données Mobsuccess par connecteur : pas d&#39;export à rejouer avant chaque point, les chiffres sont ceux du jour.</p>
-                <div style="font-size:13px;color:var(--ms-mint);font-weight:600;margin-top:6px">Modèle à décliner</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dash-preview">
-            <div class="dash-topbar">
-              <span class="dash-dot" style="background:#FF5F57"></span>
-              <span class="dash-dot" style="background:#FEBC2E"></span>
-              <span class="dash-dot" style="background:#28C840"></span>
-              <span style="margin-left:10px;font-size:12px;font-weight:600;color:#3B3B6B">claude.ai/artifact · Dashboard Boulanger</span>
-            </div>
-            <div class="dash-body">
-              <div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:var(--ms-violet-700)">MOBSUCCESS · SUIVI DE CAMPAGNES</div>
-              <div style="font-size:19px;font-weight:700;line-height:1.15;margin-top:5px;color:var(--ms-navy)">Boulanger — Drive-to-Store</div>
-              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:9px">
-                <span style="padding:3px 9px;border-radius:999px;background:var(--ms-mint);color:var(--ms-navy);font-size:10.5px;font-weight:700">En production</span>
-                <span style="padding:3px 9px;border-radius:999px;background:var(--ms-cream);border:1px solid var(--ms-cream-200);font-size:10.5px;font-weight:600">depuis le 23 juin 2026</span>
-              </div>
-
-              <div class="dash-kpis" style="margin-top:12px">
-                <div class="dash-kpi"><div class="dash-kpi-num">8</div><div class="dash-kpi-label">campagnes</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">4</div><div class="dash-kpi-label">canaux</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">7</div><div class="dash-kpi-label">indicateurs</div></div>
-                <div class="dash-kpi"><div class="dash-kpi-num">2</div><div class="dash-kpi-label">vues comparées</div></div>
-              </div>
-
-              <div class="dash-bottom">
-                <div class="dash-section">
-                  <div class="dash-section-title">LES SECTIONS</div>
-                  <div style="display:flex;flex-direction:column;gap:5px">
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-violet);flex-shrink:0"></span>Répartition par canal</div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-violet);flex-shrink:0"></span>Multilocales <span style="margin-left:auto;font-weight:700;color:#6E6E92">3</span></div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-violet);flex-shrink:0"></span>Locales <span style="margin-left:auto;font-weight:700;color:#6E6E92">5</span></div>
-                    <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ms-navy)"><span style="width:7px;height:7px;border-radius:50%;background:var(--ms-mint-700);flex-shrink:0"></span>Comparateur <span style="margin-left:auto;font-weight:700;color:var(--ms-mint-700)">2 vues</span></div>
-                  </div>
-                </div>
-                <div class="dash-section">
-                  <div class="dash-section-title">CE QUI EST MESURÉ</div>
-                  <div style="display:flex;flex-wrap:wrap;gap:4px">
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">Impressions</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">Clics</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">CTR</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">CPM</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">CPC</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">Dépense</span>
-                    <span style="padding:3px 8px;border-radius:7px;background:var(--ms-cream);font-size:10.5px;font-weight:600;color:var(--ms-navy)">Budget consommé</span>
-                  </div>
-                  <div style="font-size:10.5px;color:#6E6E92;margin-top:8px;line-height:1.45">Courbes quotidiennes de CTR et CPM, et CTR par levier sur les locales.</div>
-                </div>
-              </div>
-
-              <div class="dash-actions">
-                <a href="https://claude.ai/artifact/7PMCLdpTNDPyEXwmav73zR?sk=imwSq_LWeqUzwdNSZUHnGg" target="_blank" rel="noopener" class="dash-action" style="background:var(--ms-navy);color:var(--ms-mint)">Ouvrir le dashboard ↗</a>
-                <span class="dash-action" style="background:var(--ms-cream);color:#6E6E92">Stéphanie Ta</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <span class="sec-label">Côté équipe</span>
-        <span class="sec-meta">Les productions de la semaine</span>
-      </div>
-      <div class="grid g3">
-        <div class="card">
-          <span class="pill s-acquis">Olivier · dashboard</span>
-          <h3 style="margin-top:6px">Suivi Google Ads (Intersport, Afflelou, Feu Vert)</h3>
-          <p class="lbl" style="margin-top:6px">Récupère auto les infos Google Ads + LCM, compare les deux, alerte si dates divergentes ou campagne manquante côté Google, indique trend &amp; perfs, actualisation horaire. Remplace le suivi Google Sheet manuel.</p>
-        </div>
-        <div class="card">
-          <span class="pill s-test">Ghofrane · skill</span>
-          <h3 style="margin-top:6px">Skill <span class="amono">google-ads-editor-pmax-bulk</span></h3>
-          <p class="lbl" style="margin-top:6px">Génère les CSV bulk Google Ads Editor pour les PMax multi-magasins (formats, limites de caractères, budget calculé sur le non-margé), testé Maroc (23 magasins) &amp; Belgique (4). En complément du nouveau module LCM PMax.</p>
-        </div>
-        <div class="card">
-          <span class="pill s-acquis">Nico · Design System</span>
-          <h3 style="margin-top:6px">Le design system dans Claude Design</h3>
-          <p class="lbl" style="margin-top:6px">Depuis un brand book / des présentations → design system hébergé sur GitHub via Cowork → appelé dans Claude Design pour des rendus fidèles. Test en cours sur la charte MS pour l'AO Carrefour.</p>
-        </div>
-        <div class="card">
-          <span class="pill s-test">Diffusion</span>
-          <h3 style="margin-top:6px">L'IA essaime aux autres équipes</h3>
-          <p class="lbl" style="margin-top:6px">La méthode AdOps s'étend : Paid Media Content (récup auto des créas, dont LinkedIn Ads), Conseil Newbiz (pédagogie IA) et Farly (cockpit de suivi + gamification). Sessions animées par Nico &amp; Yannis.</p>
-        </div>
-        <div class="card">
-          <span class="pill s-acquis">Jérémy · fondations</span>
-          <h3 style="margin-top:6px">Vistar (DOOH) &amp; setup ZIP</h3>
-          <p class="lbl" style="margin-top:6px">Connecteur MCP Vistar (DOOH) branché pour toute l'équipe en lecture seule, et setup ZIP Intersport avec un outil de vérification des remontées d'infos — à déployer client par client avec les leads.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card">
-        <span class="pill s-acquis">Outillage</span>
-        <h3 style="margin-top:6px">Claude Design mieux intégré</h3>
-        <p class="lbl" style="margin-top:6px">Design tourne désormais dans la conversation, sans ouvrir de fenêtre à part — plus fluide pour passer un livrable à la charte.</p>
-      </div>
-    </section>
-
-  </div><!-- /edition-6 -->
+  <div id="editions-root"><div class="loading">Chargement…</div></div>
 
 </main>
 
@@ -1626,17 +239,62 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   <img src="assets/logo-mobsuccess-white.png" alt="Mobsuccess">
 </footer>
 
-<script>
-document.querySelectorAll('.edition-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const idx = this.dataset.edition;
-    document.querySelectorAll('.edition-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    document.querySelectorAll('.edition-panel').forEach(p => p.classList.add('hidden'));
-    document.getElementById('edition-' + idx).classList.remove('hidden');
-  });
-});
-</script>
 <script src="lang.js"></script>
+<script>
+/* L'actu est une page unique : toutes les semaines empilées, la plus
+   récente en haut. Le contenu vient de iadops-data.json, exporté par le
+   cockpit — rien n'est écrit en dur ici. */
+(async function renderActu() {
+  var root = document.getElementById('editions-root');
+  var som = document.getElementById('sommaire');
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  try {
+    var res = await fetch('iadops-data.json');
+    if (!res.ok) throw new Error('fetch');
+    var d = await res.json();
+    var editions = (d.actu && d.actu.editions) || [];
+    if (!editions.length) throw new Error('vide');
+
+    /* Le tableau va de la plus ancienne à la plus récente : on l'inverse. */
+    var ordre = editions.slice().reverse();
+    var courante = editions.filter(function (e) { return e.active; }).pop() || ordre[0];
+
+    var pill = document.getElementById('hero-edition');
+    if (pill) pill.textContent = 'Édition du ' + courante.label;
+    var meta = document.getElementById('som-meta');
+    if (meta) meta.textContent = ordre.length + ' éditions · de la plus récente à la plus ancienne';
+
+    som.innerHTML = ordre.map(function (e) {
+      var now = e.id === courante.id;
+      return '<a class="som-link' + (now ? ' is-now' : '') + '" href="#sem-' + esc(e.id) + '">' +
+        esc(e.label) + '</a>';
+    }).join('');
+
+    root.innerHTML = ordre.map(function (e) {
+      var now = e.id === courante.id;
+      return '<section class="edition" id="sem-' + esc(e.id) + '">' +
+        '<div class="edition-head">' +
+          '<h2>Lun. ' + esc(e.label) + '</h2>' +
+          (now ? '<span class="edition-flag">SEMAINE EN COURS</span>' : '') +
+          '<a class="edition-up" href="#sommaire-sec">Haut de page ↑</a>' +
+        '</div>' +
+        '<div class="edition-body">' + (e.html || '') + '</div>' +
+        '</section>';
+    }).join('');
+
+    /* Rendu après DOMContentLoaded : lang.js ne l'a pas vu passer. */
+    if (window.iadopsLang) window.iadopsLang.refresh();
+
+  } catch (e) {
+    root.innerHTML = '<div class="loading">Données indisponibles — rechargez la page.</div>';
+  }
+})();
+</script>
 </body>
 </html>
