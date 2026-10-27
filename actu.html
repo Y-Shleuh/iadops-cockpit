@@ -74,13 +74,23 @@ main{max-width:1180px;margin:0 auto;padding:40px 40px 56px;display:flex;flex-dir
 .som-link.is-now{background:var(--ms-navy);border-color:var(--ms-navy);color:var(--ms-mint);font-weight:600}
 .som-link.is-now::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ms-mint);animation:pulseDot 2s ease-in-out infinite}
 
+/* ── UN MOIS ────────────────────────────────────────────────────────── */
+.mois{scroll-margin-top:84px;display:flex;flex-direction:column;gap:26px}
+.mois-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:4px solid var(--ms-mint);padding-top:14px}
+.mois-head h2{font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1;text-transform:capitalize}
+.mois-head .an{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:#8A8AA8}
+.mois-head .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#8A8AA8}
+.mois-up{font-size:13px;font-weight:600;color:#8A8AA8;transition:color .25s}
+.mois-up:hover{color:var(--ms-violet)}
+
 /* ── UNE SEMAINE ────────────────────────────────────────────────────── */
-.edition{scroll-margin-top:84px}
-.edition-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-top:4px solid var(--ms-mint);padding-top:12px;margin-bottom:18px}
-.edition-head h2{font-size:30px;font-weight:700;letter-spacing:-.035em}
+.edition{scroll-margin-top:84px;padding-left:22px;border-left:2px solid var(--ms-cream-300)}
+.edition.is-now{border-left-color:var(--ms-mint)}
+.edition-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;position:relative}
+.edition-head::before{content:"";position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--ms-cream-300);border:3px solid var(--ms-cream)}
+.edition.is-now .edition-head::before{background:var(--ms-mint)}
+.edition-head h2{font-size:22px;font-weight:700;letter-spacing:-.03em}
 .edition-flag{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:999px;background:var(--ms-navy);color:var(--ms-mint);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
-.edition-up{margin-left:auto;font-size:13px;font-weight:600;color:#8A8AA8;transition:color .25s}
-.edition-up:hover{color:var(--ms-violet)}
 .edition-body{display:flex;flex-direction:column;gap:14px}
 
 /* ═══ CLASSES DU COCKPIT — le HTML exporté est injecté tel quel ═══════ */
@@ -184,7 +194,12 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
   .grid.g2,.grid.g3,.grid.g4{grid-template-columns:1fr}
   .mk{grid-template-columns:repeat(2,minmax(0,1fr))}
   .darkbox{padding:22px 18px}
-  .edition-head h2{font-size:24px}
+  .mois{gap:20px}
+  .mois-head h2{font-size:32px}
+  .mois-head .cnt{margin-left:0}
+  .edition{padding-left:16px}
+  .edition-head h2{font-size:19px}
+  .edition-head::before{left:-23px;width:10px;height:10px;top:6px}
   .mrow .nm{width:72px}
 }
 </style>
@@ -261,30 +276,78 @@ footer img{height:20px;width:auto;display:block;opacity:.85}
     var editions = (d.actu && d.actu.editions) || [];
     if (!editions.length) throw new Error('vide');
 
-    /* Le tableau va de la plus ancienne à la plus récente : on l'inverse. */
-    var ordre = editions.slice().reverse();
-    var courante = editions.filter(function (e) { return e.active; }).pop() || ordre[0];
+    /* Les libellés ne portent que le mois en abrégé ; on le reconnaît pour
+       regrouper, et on incrémente l'année quand le mois recule. */
+    var MOIS = [
+      ['janv', 'janvier'], ['févr', 'février'], ['mars', 'mars'], ['avr', 'avril'],
+      ['mai', 'mai'], ['juin', 'juin'], ['juil', 'juillet'], ['août', 'août'],
+      ['sept', 'septembre'], ['oct', 'octobre'], ['nov', 'novembre'], ['déc', 'décembre']
+    ];
+    function moisDe(label) {
+      var l = String(label).toLowerCase();
+      for (var i = 0; i < MOIS.length; i++) if (l.indexOf(MOIS[i][0]) !== -1) return i;
+      return -1;
+    }
+
+    var courante = editions.filter(function (e) { return e.active; }).pop() ||
+      editions[editions.length - 1];
+
+    /* Parcours du plus ancien au plus récent pour suivre les changements
+       d'année sans avoir de date dans les données. */
+    var anBase = new Date().getFullYear();
+    var groupes = [], dernierMois = -1, decalage = 0;
+    editions.forEach(function (e) {
+      var m = moisDe(e.label);
+      if (dernierMois !== -1 && m !== -1 && m < dernierMois) decalage++;
+      if (m !== -1) dernierMois = m;
+      var cle = decalage + '-' + m;
+      var g = groupes.filter(function (x) { return x.cle === cle; })[0];
+      if (!g) { g = { cle: cle, mois: m, decalage: decalage, editions: [] }; groupes.push(g); }
+      g.editions.push(e);
+    });
+    var decalageMax = groupes.length ? groupes[groupes.length - 1].decalage : 0;
+    groupes.forEach(function (g) { g.an = anBase - (decalageMax - g.decalage); });
+    var plusieursAnnees = groupes.some(function (g) { return g.an !== groupes[0].an; });
+
+    /* Le plus récent en haut, mois comme semaines. */
+    groupes.reverse();
+    groupes.forEach(function (g) { g.editions.reverse(); });
 
     var pill = document.getElementById('hero-edition');
     if (pill) pill.textContent = 'Édition du ' + courante.label;
     var meta = document.getElementById('som-meta');
-    if (meta) meta.textContent = ordre.length + ' éditions · de la plus récente à la plus ancienne';
+    if (meta) meta.textContent = editions.length + ' éditions · ' + groupes.length + ' mois';
 
-    som.innerHTML = ordre.map(function (e) {
-      var now = e.id === courante.id;
-      return '<a class="som-link' + (now ? ' is-now' : '') + '" href="#sem-' + esc(e.id) + '">' +
-        esc(e.label) + '</a>';
+    function nomMois(g) {
+      return g.mois === -1 ? 'Autres' : MOIS[g.mois][1];
+    }
+
+    som.innerHTML = groupes.map(function (g) {
+      var now = g.editions.some(function (e) { return e.id === courante.id; });
+      return '<a class="som-link' + (now ? ' is-now' : '') + '" href="#mois-' + esc(g.cle) + '">' +
+        esc(nomMois(g)) + (plusieursAnnees ? ' ' + g.an : '') +
+        ' <b style="font-weight:500;opacity:.65">' + g.editions.length + '</b></a>';
     }).join('');
 
-    root.innerHTML = ordre.map(function (e) {
-      var now = e.id === courante.id;
-      return '<section class="edition" id="sem-' + esc(e.id) + '">' +
-        '<div class="edition-head">' +
-          '<h2>Lun. ' + esc(e.label) + '</h2>' +
-          (now ? '<span class="edition-flag">SEMAINE EN COURS</span>' : '') +
-          '<a class="edition-up" href="#sommaire-sec">Haut de page ↑</a>' +
-        '</div>' +
-        '<div class="edition-body">' + (e.html || '') + '</div>' +
+    root.innerHTML = groupes.map(function (g) {
+      var semaines = g.editions.map(function (e) {
+        var now = e.id === courante.id;
+        return '<section class="edition' + (now ? ' is-now' : '') + '" id="sem-' + esc(e.id) + '">' +
+          '<div class="edition-head">' +
+            '<h2>Lun. ' + esc(e.label) + '</h2>' +
+            (now ? '<span class="edition-flag">SEMAINE EN COURS</span>' : '') +
+          '</div>' +
+          '<div class="edition-body">' + (e.html || '') + '</div>' +
+          '</section>';
+      }).join('');
+      var n = g.editions.length;
+      return '<section class="mois" id="mois-' + esc(g.cle) + '">' +
+        '<div class="mois-head">' +
+          '<h2>' + esc(nomMois(g)) + '</h2>' +
+          '<span class="an">' + g.an + '</span>' +
+          '<span class="cnt">' + n + (n > 1 ? ' SEMAINES' : ' SEMAINE') + '</span>' +
+          '<a class="mois-up" href="#sommaire-sec">Haut ↑</a>' +
+        '</div>' + semaines +
         '</section>';
     }).join('');
 
