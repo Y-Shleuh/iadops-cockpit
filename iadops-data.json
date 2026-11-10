@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-10T13:41:21.105Z",
+    "generatedAt": "2026-11-10T13:54:53.531Z",
     "source": "iadops-cockpit",
     "schema": 2
   },
@@ -304,10 +304,12 @@
           "c-mails",
           "bilan",
           "c-recherche",
-          "c-recap"
+          "c-recap",
+          "rapport",
+          "c-suivi"
         ],
-        "level": 1,
-        "levelName": "Initié"
+        "level": 2,
+        "levelName": "Actif"
       },
       {
         "id": "p-steeve",

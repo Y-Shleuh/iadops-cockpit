@@ -566,7 +566,10 @@ function animateCount(el, target) {
           return '<span class="crew-av" title="' + esc(p.name) + '">' +
             '<img src="' + esc(photoOf(p)) + '" alt="' + esc(p.name) + '"></span>';
         }).join('');
-        var count = crew.length ? crew.length + ' ADOPS' : 'À VENIR';
+        /* Une marche vide n'est pas « à venir » quand toute l'équipe l'a
+           déjà dépassée : elle est derrière nous. */
+        var count = crew.length ? crew.length + ' ADOPS'
+          : (lv.n < reached ? 'FRANCHIE' : 'À VENIR');
         return '<div class="step">' +
           '<span class="step-dot" style="background:' + esc(lv.col) + ';color:' +
             (lv.n >= 4 ? '#fff' : '#000050') + '">' + lv.n + '</span>' +
